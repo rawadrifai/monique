@@ -20,10 +20,6 @@ class ClientDetailView: UITableViewController, EditClientDelegate {
     @IBOutlet weak var labelEmail: UILabel!
     
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        fillData()
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +27,7 @@ class ClientDetailView: UITableViewController, EditClientDelegate {
         self.imgView.layer.cornerRadius = (self.imgView.image?.size.width)! / 5;
         self.imgView.clipsToBounds = true;
         
+        fillData()
     }
     
 
@@ -91,6 +88,7 @@ class ClientDetailView: UITableViewController, EditClientDelegate {
     }
     
     func imageChanged(client: Client) {
+        self.client = client
         self.imgView.image = client.profileImg
     }
 

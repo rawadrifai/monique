@@ -7,35 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9A1826BF1E6E9222006D2AE6 /* EditClientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1826BE1E6E9222006D2AE6 /* EditClientView.swift */; };
 		9A36296C1E5D3CDA003CFAF8 /* NewClientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A36296B1E5D3CDA003CFAF8 /* NewClientView.swift */; };
 		9A3BC6461E5A9AA700E9CA71 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3BC6451E5A9AA700E9CA71 /* AppDelegate.swift */; };
 		9A3BC64D1E5A9AA700E9CA71 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A3BC64B1E5A9AA700E9CA71 /* Main.storyboard */; };
 		9A3BC6521E5A9AA700E9CA71 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A3BC6501E5A9AA700E9CA71 /* LaunchScreen.storyboard */; };
 		9A3BC65C1E5AA5C300E9CA71 /* ClientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3BC65B1E5AA5C300E9CA71 /* ClientsView.swift */; };
+		9AAF34C31E70F1A600CAFE44 /* EditClientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAF34C21E70F1A600CAFE44 /* EditClientView.swift */; };
+		9AAF34C51E70F1B500CAFE44 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAF34C41E70F1B500CAFE44 /* Login.swift */; };
 		9AD116621E5E7A9F00113753 /* ClientDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD116611E5E7A9F00113753 /* ClientDetailView.swift */; };
 		9AD116641E5E87C400113753 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD116631E5E87C400113753 /* Client.swift */; };
 		9AD2ABEC1E61148E00998BBB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AD2ABEB1E61148E00998BBB /* Assets.xcassets */; };
-		9AD2ABF01E65426900998BBB /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD2ABEF1E65426900998BBB /* Login.swift */; };
 		9AD2ABF61E6655B200998BBB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9AD2ABF51E6655B200998BBB /* GoogleService-Info.plist */; };
 		F157B5535620BBF717CC805C /* Pods_Monique.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 249A8A95B69762213942D3C9 /* Pods_Monique.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		249A8A95B69762213942D3C9 /* Pods_Monique.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Monique.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A1826BE1E6E9222006D2AE6 /* EditClientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditClientView.swift; sourceTree = "<group>"; };
 		9A36296B1E5D3CDA003CFAF8 /* NewClientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewClientView.swift; path = monique/NewClientView.swift; sourceTree = SOURCE_ROOT; };
 		9A3BC6421E5A9AA700E9CA71 /* Monique.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Monique.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A3BC6451E5A9AA700E9CA71 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Monique/AppDelegate.swift; sourceTree = "<group>"; };
+		9A3BC6451E5A9AA700E9CA71 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9A3BC64C1E5A9AA700E9CA71 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9A3BC6511E5A9AA700E9CA71 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9A3BC6531E5A9AA700E9CA71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9A3BC65B1E5AA5C300E9CA71 /* ClientsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientsView.swift; path = Monique/ClientsView.swift; sourceTree = "<group>"; };
+		9AAF34C21E70F1A600CAFE44 /* EditClientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditClientView.swift; path = Monique/EditClientView.swift; sourceTree = "<group>"; };
+		9AAF34C41E70F1B500CAFE44 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Login.swift; path = Monique/Login.swift; sourceTree = "<group>"; };
 		9AD116611E5E7A9F00113753 /* ClientDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientDetailView.swift; path = Monique/ClientDetailView.swift; sourceTree = "<group>"; };
 		9AD116631E5E87C400113753 /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Client.swift; path = Monique/Client.swift; sourceTree = "<group>"; };
 		9AD2ABEB1E61148E00998BBB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		9AD2ABEF1E65426900998BBB /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
-		9AD2ABF51E6655B200998BBB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9AD2ABF51E6655B200998BBB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C66EC089496AEED42C212946 /* Pods-Monique.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Monique.release.xcconfig"; path = "Pods/Target Support Files/Pods-Monique/Pods-Monique.release.xcconfig"; sourceTree = "<group>"; };
 		DEDF5D978543327D60F28F05 /* Pods-Monique.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Monique.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Monique/Pods-Monique.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -72,14 +72,12 @@
 		9A3BC6391E5A9AA700E9CA71 = {
 			isa = PBXGroup;
 			children = (
-				9A3BC6451E5A9AA700E9CA71 /* AppDelegate.swift */,
-				9AD2ABEF1E65426900998BBB /* Login.swift */,
 				9A3BC64B1E5A9AA700E9CA71 /* Main.storyboard */,
-				9AD2ABF51E6655B200998BBB /* GoogleService-Info.plist */,
-				9A36296B1E5D3CDA003CFAF8 /* NewClientView.swift */,
-				9A1826BE1E6E9222006D2AE6 /* EditClientView.swift */,
+				9AAF34C41E70F1B500CAFE44 /* Login.swift */,
 				9A3BC65B1E5AA5C300E9CA71 /* ClientsView.swift */,
 				9AD116611E5E7A9F00113753 /* ClientDetailView.swift */,
+				9AAF34C21E70F1A600CAFE44 /* EditClientView.swift */,
+				9A36296B1E5D3CDA003CFAF8 /* NewClientView.swift */,
 				9AD116631E5E87C400113753 /* Client.swift */,
 				9A3BC65D1E5C194800E9CA71 /* New Group */,
 				9A3BC6431E5A9AA700E9CA71 /* Products */,
@@ -99,7 +97,9 @@
 		9A3BC65D1E5C194800E9CA71 /* New Group */ = {
 			isa = PBXGroup;
 			children = (
+				9A3BC6451E5A9AA700E9CA71 /* AppDelegate.swift */,
 				9A3BC6501E5A9AA700E9CA71 /* LaunchScreen.storyboard */,
+				9AD2ABF51E6655B200998BBB /* GoogleService-Info.plist */,
 				9A3BC6531E5A9AA700E9CA71 /* Info.plist */,
 				9AD2ABEB1E61148E00998BBB /* Assets.xcassets */,
 			);
@@ -233,12 +233,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A3BC6461E5A9AA700E9CA71 /* AppDelegate.swift in Sources */,
-				9A1826BF1E6E9222006D2AE6 /* EditClientView.swift in Sources */,
 				9A36296C1E5D3CDA003CFAF8 /* NewClientView.swift in Sources */,
 				9AD116621E5E7A9F00113753 /* ClientDetailView.swift in Sources */,
-				9AD2ABF01E65426900998BBB /* Login.swift in Sources */,
 				9AD116641E5E87C400113753 /* Client.swift in Sources */,
 				9A3BC65C1E5AA5C300E9CA71 /* ClientsView.swift in Sources */,
+				9AAF34C31E70F1A600CAFE44 /* EditClientView.swift in Sources */,
+				9AAF34C51E70F1B500CAFE44 /* Login.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
