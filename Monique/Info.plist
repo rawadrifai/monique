@@ -47,6 +47,8 @@
 	<string>Main</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Your images are safe here!</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Your images are safe here!</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

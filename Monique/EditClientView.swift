@@ -34,7 +34,32 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
         self.imgView.clipsToBounds = true;
         
         fillData()
+        
+        makeProfilePicInteractive()
     }
+    
+    func makeProfilePicInteractive() {
+        
+        // make the profile picture interactive
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        
+        imgView.isUserInteractionEnabled = true
+        imgView.addGestureRecognizer(tapGestureRecognizer)
+        
+    }
+    
+    func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        let image = UIImagePickerController()
+        image.allowsEditing = false
+        image.delegate = self
+        
+        // set the source to photo library
+        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        
+        self.present(image, animated: true)
+    }
+
     
     func fillData() {
         
@@ -136,7 +161,7 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
         image.delegate = self
         
         // set the source to photo library
-        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        image.sourceType = UIImagePickerControllerSourceType.camera
         
         self.present(image, animated: true)
         

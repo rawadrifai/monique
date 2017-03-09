@@ -12,6 +12,7 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         // Initialize sign-in
         var configureError: NSError?
         GGLContext.sharedInstance().configureWithError(&configureError)
@@ -22,7 +23,9 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         GIDSignIn.sharedInstance().uiDelegate = self
         
         signInButton.style = .wide
-        //self.signOutButton.isEnabled = false
+        
+        
+    
     }
     
     

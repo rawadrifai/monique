@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseStorage
 
-class ClientDetailView: UITableViewController, EditClientDelegate {
+class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDelegate {
 
     var userId = String()
     var client:Client!
@@ -55,11 +55,20 @@ class ClientDetailView: UITableViewController, EditClientDelegate {
                 destination.delegate = self
             }
         }
+        else if segue.identifier == "pictureTimeSegue" {
+            
+            // set the userId
+            if let destination = segue.destination as? PictureTimeView {
+                
+                destination.userId = self.userId
+                destination.client = self.client
+                destination.delegate = self
+            }
+        }
         
     }
     
-    
-    
+
    
     func loadImageFromFirebase(path: String, fileName: String) {
         
@@ -97,6 +106,10 @@ class ClientDetailView: UITableViewController, EditClientDelegate {
     func imageChanged(client: Client) {
         self.client.profileImg = client.profileImg
         self.imgView.image = client.profileImg
+    }
+    
+    func historyChanged(client: Client) {
+        
     }
 
 }

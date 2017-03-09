@@ -29,11 +29,34 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
         
         self.imgView.layer.cornerRadius = (self.imgView.image?.size.width)! / 5;
         self.imgView.clipsToBounds = true;
+ 
         
-       // self.img = UIImageJPEGRepresentation(imgView.image!, 0.8) as Data!
+        makeProfilePicInteractive()
+    }
+    
+    func makeProfilePicInteractive() {
+        
+        // make the profile picture interactive
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        
+        imgView.isUserInteractionEnabled = true
+        imgView.addGestureRecognizer(tapGestureRecognizer)
         
     }
     
+    func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        
+        let image = UIImagePickerController()
+        image.allowsEditing = false
+        image.delegate = self
+        
+        // set the source to photo library
+        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        
+        
+        self.present(image, animated: true)
+    }
     
 
     // if user clicks cancel without selecting an image
@@ -49,7 +72,7 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
         image.delegate = self
         
         // set the source to photo library
-        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        image.sourceType = UIImagePickerControllerSourceType.camera//.photoLibrary
     
         
         self.present(image, animated: true)
@@ -68,12 +91,17 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
             self.img = UIImageJPEGRepresentation(image, 0.8) as Data!
             imgView.image = image
             
+           // let tempImage = UIImage(data: self.img, scale: 200)
+            
+            
+            
+            
         }
         
         self.dismiss(animated: true, completion: nil)
     }
     
-    
+
     
     
     @IBAction func addClient(_ sender: UIButton) {
