@@ -80,7 +80,14 @@ class ClientDetailView: UITableViewController, EditClientDelegate {
     // Child Delegate
     func dataChanged(client: Client) {
         
-        self.client = client
+        self.client.clientId = client.clientId
+        self.client.clientName = client.clientName
+        self.client.clientEmail = client.clientEmail
+        
+        self.labelName.text = client.clientName
+        self.labelEmail.text = client.clientEmail
+        self.labelPhone.text = client.clientId
+        
     }
     
     func dataDeleted() {
@@ -88,7 +95,7 @@ class ClientDetailView: UITableViewController, EditClientDelegate {
     }
     
     func imageChanged(client: Client) {
-        self.client = client
+        self.client.profileImg = client.profileImg
         self.imgView.image = client.profileImg
     }
 
