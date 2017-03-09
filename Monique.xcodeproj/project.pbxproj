@@ -1,0 +1,411 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9A1826BF1E6E9222006D2AE6 /* EditClientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1826BE1E6E9222006D2AE6 /* EditClientView.swift */; };
+		9A36296C1E5D3CDA003CFAF8 /* NewClientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A36296B1E5D3CDA003CFAF8 /* NewClientView.swift */; };
+		9A3BC6461E5A9AA700E9CA71 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3BC6451E5A9AA700E9CA71 /* AppDelegate.swift */; };
+		9A3BC64D1E5A9AA700E9CA71 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A3BC64B1E5A9AA700E9CA71 /* Main.storyboard */; };
+		9A3BC6521E5A9AA700E9CA71 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A3BC6501E5A9AA700E9CA71 /* LaunchScreen.storyboard */; };
+		9A3BC65C1E5AA5C300E9CA71 /* ClientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3BC65B1E5AA5C300E9CA71 /* ClientsView.swift */; };
+		9AD116621E5E7A9F00113753 /* ClientDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD116611E5E7A9F00113753 /* ClientDetailView.swift */; };
+		9AD116641E5E87C400113753 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD116631E5E87C400113753 /* Client.swift */; };
+		9AD2ABEC1E61148E00998BBB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AD2ABEB1E61148E00998BBB /* Assets.xcassets */; };
+		9AD2ABF01E65426900998BBB /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD2ABEF1E65426900998BBB /* Login.swift */; };
+		9AD2ABF61E6655B200998BBB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9AD2ABF51E6655B200998BBB /* GoogleService-Info.plist */; };
+		F157B5535620BBF717CC805C /* Pods_Monique.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 249A8A95B69762213942D3C9 /* Pods_Monique.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		249A8A95B69762213942D3C9 /* Pods_Monique.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Monique.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A1826BE1E6E9222006D2AE6 /* EditClientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditClientView.swift; sourceTree = "<group>"; };
+		9A36296B1E5D3CDA003CFAF8 /* NewClientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewClientView.swift; path = monique/NewClientView.swift; sourceTree = SOURCE_ROOT; };
+		9A3BC6421E5A9AA700E9CA71 /* Monique.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Monique.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A3BC6451E5A9AA700E9CA71 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Monique/AppDelegate.swift; sourceTree = "<group>"; };
+		9A3BC64C1E5A9AA700E9CA71 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9A3BC6511E5A9AA700E9CA71 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9A3BC6531E5A9AA700E9CA71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9A3BC65B1E5AA5C300E9CA71 /* ClientsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientsView.swift; path = Monique/ClientsView.swift; sourceTree = "<group>"; };
+		9AD116611E5E7A9F00113753 /* ClientDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientDetailView.swift; path = Monique/ClientDetailView.swift; sourceTree = "<group>"; };
+		9AD116631E5E87C400113753 /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Client.swift; path = Monique/Client.swift; sourceTree = "<group>"; };
+		9AD2ABEB1E61148E00998BBB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9AD2ABEF1E65426900998BBB /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		9AD2ABF51E6655B200998BBB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C66EC089496AEED42C212946 /* Pods-Monique.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Monique.release.xcconfig"; path = "Pods/Target Support Files/Pods-Monique/Pods-Monique.release.xcconfig"; sourceTree = "<group>"; };
+		DEDF5D978543327D60F28F05 /* Pods-Monique.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Monique.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Monique/Pods-Monique.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9A3BC63F1E5A9AA700E9CA71 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F157B5535620BBF717CC805C /* Pods_Monique.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		48218D1D823D880B272EF557 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DEDF5D978543327D60F28F05 /* Pods-Monique.debug.xcconfig */,
+				C66EC089496AEED42C212946 /* Pods-Monique.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		68FF385C1A846D0140FD2222 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				249A8A95B69762213942D3C9 /* Pods_Monique.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9A3BC6391E5A9AA700E9CA71 = {
+			isa = PBXGroup;
+			children = (
+				9A3BC6451E5A9AA700E9CA71 /* AppDelegate.swift */,
+				9AD2ABEF1E65426900998BBB /* Login.swift */,
+				9A3BC64B1E5A9AA700E9CA71 /* Main.storyboard */,
+				9AD2ABF51E6655B200998BBB /* GoogleService-Info.plist */,
+				9A36296B1E5D3CDA003CFAF8 /* NewClientView.swift */,
+				9A1826BE1E6E9222006D2AE6 /* EditClientView.swift */,
+				9A3BC65B1E5AA5C300E9CA71 /* ClientsView.swift */,
+				9AD116611E5E7A9F00113753 /* ClientDetailView.swift */,
+				9AD116631E5E87C400113753 /* Client.swift */,
+				9A3BC65D1E5C194800E9CA71 /* New Group */,
+				9A3BC6431E5A9AA700E9CA71 /* Products */,
+				48218D1D823D880B272EF557 /* Pods */,
+				68FF385C1A846D0140FD2222 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		9A3BC6431E5A9AA700E9CA71 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A3BC6421E5A9AA700E9CA71 /* Monique.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A3BC65D1E5C194800E9CA71 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				9A3BC6501E5A9AA700E9CA71 /* LaunchScreen.storyboard */,
+				9A3BC6531E5A9AA700E9CA71 /* Info.plist */,
+				9AD2ABEB1E61148E00998BBB /* Assets.xcassets */,
+			);
+			name = "New Group";
+			path = Monique;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9A3BC6411E5A9AA700E9CA71 /* Monique */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9A3BC6561E5A9AA700E9CA71 /* Build configuration list for PBXNativeTarget "Monique" */;
+			buildPhases = (
+				C8BAFA780779A159E8D8102C /* [CP] Check Pods Manifest.lock */,
+				9A3BC63E1E5A9AA700E9CA71 /* Sources */,
+				9A3BC63F1E5A9AA700E9CA71 /* Frameworks */,
+				9A3BC6401E5A9AA700E9CA71 /* Resources */,
+				F0DD158469BA70BB44D73A26 /* [CP] Embed Pods Frameworks */,
+				07A7ACBE9281BCD1705299A5 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Monique;
+			productName = Monique;
+			productReference = 9A3BC6421E5A9AA700E9CA71 /* Monique.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9A3BC63A1E5A9AA700E9CA71 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Elrifai, Rawad";
+				TargetAttributes = {
+					9A3BC6411E5A9AA700E9CA71 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 3A8KT563CR;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 9A3BC63D1E5A9AA700E9CA71 /* Build configuration list for PBXProject "Monique" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9A3BC6391E5A9AA700E9CA71;
+			productRefGroup = 9A3BC6431E5A9AA700E9CA71 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9A3BC6411E5A9AA700E9CA71 /* Monique */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9A3BC6401E5A9AA700E9CA71 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AD2ABEC1E61148E00998BBB /* Assets.xcassets in Resources */,
+				9AD2ABF61E6655B200998BBB /* GoogleService-Info.plist in Resources */,
+				9A3BC6521E5A9AA700E9CA71 /* LaunchScreen.storyboard in Resources */,
+				9A3BC64D1E5A9AA700E9CA71 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		07A7ACBE9281BCD1705299A5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Monique/Pods-Monique-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C8BAFA780779A159E8D8102C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F0DD158469BA70BB44D73A26 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Monique/Pods-Monique-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9A3BC63E1E5A9AA700E9CA71 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A3BC6461E5A9AA700E9CA71 /* AppDelegate.swift in Sources */,
+				9A1826BF1E6E9222006D2AE6 /* EditClientView.swift in Sources */,
+				9A36296C1E5D3CDA003CFAF8 /* NewClientView.swift in Sources */,
+				9AD116621E5E7A9F00113753 /* ClientDetailView.swift in Sources */,
+				9AD2ABF01E65426900998BBB /* Login.swift in Sources */,
+				9AD116641E5E87C400113753 /* Client.swift in Sources */,
+				9A3BC65C1E5AA5C300E9CA71 /* ClientsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		9A3BC64B1E5A9AA700E9CA71 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9A3BC64C1E5A9AA700E9CA71 /* Base */,
+			);
+			name = Main.storyboard;
+			path = Monique;
+			sourceTree = "<group>";
+		};
+		9A3BC6501E5A9AA700E9CA71 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9A3BC6511E5A9AA700E9CA71 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9A3BC6541E5A9AA700E9CA71 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		9A3BC6551E5A9AA700E9CA71 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9A3BC6571E5A9AA700E9CA71 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DEDF5D978543327D60F28F05 /* Pods-Monique.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 3A8KT563CR;
+				INFOPLIST_FILE = Monique/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = rifai.Monique;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		9A3BC6581E5A9AA700E9CA71 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C66EC089496AEED42C212946 /* Pods-Monique.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 3A8KT563CR;
+				INFOPLIST_FILE = Monique/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = rifai.Monique;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9A3BC63D1E5A9AA700E9CA71 /* Build configuration list for PBXProject "Monique" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A3BC6541E5A9AA700E9CA71 /* Debug */,
+				9A3BC6551E5A9AA700E9CA71 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9A3BC6561E5A9AA700E9CA71 /* Build configuration list for PBXNativeTarget "Monique" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A3BC6571E5A9AA700E9CA71 /* Debug */,
+				9A3BC6581E5A9AA700E9CA71 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9A3BC63A1E5A9AA700E9CA71 /* Project object */;
+}

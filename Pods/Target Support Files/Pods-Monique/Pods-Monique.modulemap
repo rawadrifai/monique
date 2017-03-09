@@ -1,0 +1,6 @@
+framework module Pods_Monique {
+  umbrella header "Pods-Monique-umbrella.h"
+
+  export *
+  module * { export * }
+}
