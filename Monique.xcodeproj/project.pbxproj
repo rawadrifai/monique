@@ -145,7 +145,7 @@
 				TargetAttributes = {
 					9A3BC6411E5A9AA700E9CA71 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 3A8KT563CR;
+						DevelopmentTeam = 8WVDFQN9GC;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -365,10 +365,10 @@
 			baseConfigurationReference = DEDF5D978543327D60F28F05 /* Pods-Monique.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 3A8KT563CR;
+				DEVELOPMENT_TEAM = 8WVDFQN9GC;
 				INFOPLIST_FILE = Monique/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = rifai.Monique;
+				PRODUCT_BUNDLE_IDENTIFIER = rifai.monique.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -379,10 +379,10 @@
 			baseConfigurationReference = C66EC089496AEED42C212946 /* Pods-Monique.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 3A8KT563CR;
+				DEVELOPMENT_TEAM = 8WVDFQN9GC;
 				INFOPLIST_FILE = Monique/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = rifai.Monique;
+				PRODUCT_BUNDLE_IDENTIFIER = rifai.monique.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

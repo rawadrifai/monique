@@ -92,7 +92,7 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         image.allowsEditing = false
         image.delegate = self
         
-        image.sourceType = UIImagePickerControllerSourceType.camera
+        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
         
         self.present(image, animated: true)
     }
@@ -106,7 +106,7 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         image.allowsEditing = false
         image.delegate = self
         
-        image.sourceType = UIImagePickerControllerSourceType.camera
+        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
         
         self.present(image, animated: true)
     }
@@ -120,7 +120,7 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         image.allowsEditing = false
         image.delegate = self
         
-        image.sourceType = UIImagePickerControllerSourceType.camera
+        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
         
         self.present(image, animated: true)
     }
@@ -134,7 +134,7 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         image.allowsEditing = false
         image.delegate = self
         
-        image.sourceType = UIImagePickerControllerSourceType.camera
+        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
         
         self.present(image, animated: true)
     }
@@ -148,7 +148,7 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         image.allowsEditing = false
         image.delegate = self
         
-        image.sourceType = UIImagePickerControllerSourceType.camera
+        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
         
         self.present(image, animated: true)
     }
@@ -162,7 +162,7 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         image.allowsEditing = false
         image.delegate = self
         
-        image.sourceType = UIImagePickerControllerSourceType.camera
+        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
         
         self.present(image, animated: true)
     }

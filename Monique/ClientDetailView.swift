@@ -24,7 +24,7 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.imgView.layer.cornerRadius = (self.imgView.image?.size.width)! / 5;
+        self.imgView.layer.cornerRadius = 175 / 4;
         self.imgView.clipsToBounds = true;
         
         fillData()
