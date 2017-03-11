@@ -82,7 +82,7 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
     
 
     
-    @IBAction func save(_ sender: UIButton) {
+    @IBAction func save(_ sender: UIBarButtonItem) {
         
         self.client = Client()
         self.client.clientId = txfPhone.text ?? ""
@@ -182,7 +182,7 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func closeView(_ sender: UIButton) {
+    @IBAction func closeView(_ sender: UIBarButtonItem) {
         let _ = self.navigationController?.popViewController(animated: true)
     }
     

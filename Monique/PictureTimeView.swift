@@ -220,7 +220,10 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func save(_ sender: UIButton) {
+    @IBAction func save(_ sender: UIBarButtonItem) {
+        
+        var imageNames = [String]()
+        
         
         let date = Date()
         let calendar = Calendar.current
@@ -231,45 +234,56 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         let dateString = String(year) + "-" + String(month) + "-" + String(day)
         
         let notes = txvNotes.text ?? ""
-        self.client.clientVisit = ClientVisit(visitDate: dateString, notes: notes)
         
-
+        // modify the current client in memory
+        self.client.clientVisits.append(ClientVisit(visitDate: dateString, notes: notes))
         
-        
-        
-        // get reference to database
+        // save notes
         self.ref = FIRDatabase.database().reference()
-        
-        // insert values
-        self.ref.child(userId + "/clients/" + self.client.clientId + "/visits/" + self.client.clientVisit.visitDate).setValue(self.client.clientVisit.notes)
+        self.ref.child(userId + "/clients/" + self.client.clientId + "/visits/" + dateString + "/notes").setValue(notes)
         
         
         print("writing successful")
         
         if self.img1 != nil {
-            uploadImageToFirebase(data: self.img1, path: userId + "/clients/" + self.client.clientId + "/history/" + self.client.clientVisit.visitDate + "/", fileName: "1")
+            uploadImageToFirebase(data: self.img1, path: userId + "/clients/" + self.client.clientId + "/visits/" + dateString + "/", fileName: "1")
+            
+            imageNames.append("1")
         }
         
         if self.img2 != nil {
-            uploadImageToFirebase(data: self.img2, path: userId + "/clients/" + self.client.clientId + "/history/" + self.client.clientVisit.visitDate + "/", fileName: "2")
+            uploadImageToFirebase(data: self.img2, path: userId + "/clients/" + self.client.clientId + "/visits/" + dateString + "/", fileName: "2")
+            
+            imageNames.append("2")
         }
         
         if self.img3 != nil {
-            uploadImageToFirebase(data: self.img3, path: userId + "/clients/" + self.client.clientId + "/history/" + self.client.clientVisit.visitDate + "/", fileName: "3")
+            uploadImageToFirebase(data: self.img3, path: userId + "/clients/" + self.client.clientId + "/visits/" + dateString + "/", fileName: "3")
+            
+            imageNames.append("3")
         }
         
         if self.img4 != nil {
-            uploadImageToFirebase(data: self.img4, path: userId + "/clients/" + self.client.clientId + "/history/" + self.client.clientVisit.visitDate + "/", fileName: "4")
+            uploadImageToFirebase(data: self.img4, path: userId + "/clients/" + self.client.clientId + "/visits/" + dateString + "/", fileName: "4")
+            
+            imageNames.append("4")
         }
         
         if self.img5 != nil {
-            uploadImageToFirebase(data: self.img5, path: userId + "/clients/" + self.client.clientId + "/history/" + self.client.clientVisit.visitDate + "/", fileName: "5")
+            uploadImageToFirebase(data: self.img5, path: userId + "/clients/" + self.client.clientId + "/visits/" + dateString + "/", fileName: "5")
+            
+            imageNames.append("5")
         }
         
         if self.img6 != nil {
-            uploadImageToFirebase(data: self.img6, path: userId + "/clients/" + self.client.clientId + "/history/" + self.client.clientVisit.visitDate + "/", fileName: "6")
+            uploadImageToFirebase(data: self.img6, path: userId + "/clients/" + self.client.clientId + "/visits/" + dateString + "/", fileName: "6")
+            
+            imageNames.append("6")
         }
         
+        
+        // save image array
+        self.ref.child(userId + "/clients/" + self.client.clientId + "/visits/" + dateString + "/images").setValue(imageNames)
         
         
         if let del = self.delegate {
@@ -303,11 +317,27 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         }
     }
     
-    @IBAction func closeView(_ sender: UIButton) {
+    @IBAction func closeView(_ sender: UIBarButtonItem) {
         let _ = self.navigationController?.popViewController(animated: true)
     }
 
     
+}
+
+class TestClass {
+    
+    var id:String
+    var name:String
+    
+    init() {
+        id = ""
+        name = ""
+    }
+    
+    init(id:String, name:String) {
+        self.id = id
+        self.name = name
+    }
 }
 
 protocol PictureTimeDelegate {

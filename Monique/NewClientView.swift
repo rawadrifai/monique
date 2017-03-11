@@ -103,7 +103,7 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
 
     
     
-    @IBAction func addClient(_ sender: UIButton) {
+    @IBAction func addClient(_ sender: UIBarButtonItem) {
         
 
         
@@ -169,8 +169,9 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
         self.present(alert, animated: true, completion: nil)
     }
     
-    @IBAction func closeView(_ sender: UIButton) {
+    @IBAction func closeView(_ sender: UIBarButtonItem) {
         let _ = self.navigationController?.popViewController(animated: true)
     }
+
 
 }

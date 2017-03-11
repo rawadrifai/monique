@@ -16,14 +16,15 @@ class Client {
     var clientEmail:String
     var profileImg:UIImage?
     
-    var clientVisit:ClientVisit
+    var clientVisits:[ClientVisit]
     
     init() {
         clientId = ""
         clientName = ""
         clientEmail = ""
         profileImg = UIImage()
-        clientVisit = ClientVisit()
+        
+        clientVisits = []
     }
     
     init(clientId:String, clientName:String, clientEmail:String, profileImg:UIImage) {
@@ -31,7 +32,8 @@ class Client {
         self.clientName = clientName
         self.clientEmail = clientEmail
         self.profileImg = profileImg
-        clientVisit = ClientVisit()
+        
+        clientVisits = []
     }
     
 }
@@ -39,15 +41,18 @@ class Client {
 class ClientVisit {
     var visitDate:String
     var notes:String
+    var images:[String]
     
     init() {
         visitDate = ""
         notes = ""
+        images = [String]()
     }
     
     init(visitDate:String, notes:String) {
         self.visitDate = visitDate
         self.notes = notes
+        self.images = [String]()
     }
     
     

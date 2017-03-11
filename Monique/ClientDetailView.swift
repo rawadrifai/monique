@@ -19,10 +19,13 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
     @IBOutlet weak var labelPhone: UILabel!
     @IBOutlet weak var labelEmail: UILabel!
     
-    
+    var storageHomePath:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+        // set the user home path in firebase storage
+        storageHomePath = self.userId + "/clients/" + client.clientId + "/"
         
         self.imgView.layer.cornerRadius = 175 / 4;
         self.imgView.clipsToBounds = true;
@@ -38,9 +41,26 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
         labelPhone.text = client.clientId
         labelEmail.text = client.clientEmail
         
+        loadVisits()
         loadImageFromFirebase(path: self.userId + "/clients/" + client.clientId + "/", fileName: "profile")
         
         
+    }
+    
+    func loadVisits() {
+        
+        // get storage service reference
+        let storageRef = FIRStorage.storage().reference(withPath: storageHomePath + "visits/")
+        
+        
+        storageRef.data(withMaxSize: 5 * 1024 * 1024) { (data, err) in
+            
+            if data != nil {
+                self.imgView.image = UIImage(data:data!,scale:1.0)
+            }
+            
+            self.client.profileImg = self.imgView.image
+        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
