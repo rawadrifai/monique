@@ -41,27 +41,33 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
         labelPhone.text = client.clientId
         labelEmail.text = client.clientEmail
         
-        loadVisits()
         loadImageFromFirebase(path: self.userId + "/clients/" + client.clientId + "/", fileName: "profile")
         
         
     }
     
-    func loadVisits() {
+    
+    // must exist: returns number of rows
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        // get storage service reference
-        let storageRef = FIRStorage.storage().reference(withPath: storageHomePath + "visits/")
-        
-        
-        storageRef.data(withMaxSize: 5 * 1024 * 1024) { (data, err) in
-            
-            if data != nil {
-                self.imgView.image = UIImage(data:data!,scale:1.0)
-            }
-            
-            self.client.profileImg = self.imgView.image
-        }
+        return self.client.clientVisits.count
     }
+    
+    // must exist: customize each cell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "cell")
+        {
+        
+            cell.textLabel?.text = self.client.clientVisits[indexPath.row].visitDate
+            return cell
+        }
+        
+        return UITableViewCell(style: .default, reuseIdentifier: "cell")
+        
+    }
+    
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         

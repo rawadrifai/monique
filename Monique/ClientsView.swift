@@ -30,41 +30,65 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
     
     func getUserData() {
         
-        var clientIds:NSDictionary!
-        
-        var clients = [Client]()
-        
-        // get the logged in user
-        //userId = UserDefaults.standard.object(forKey: "userid") as! String!
+        self.cellData = [Client]()
         
         if (userId=="no user id") {return}
         
         ref = FIRDatabase.database().reference()
         
-        self.cellData = [Client]()
-        
-        // get data from "email/clients"
+        // get data from "email/clients" (async call)
         ref.child(userId + "/clients").observeSingleEvent(of: .value, with: { (snapshot) in
             
-            // Get user ids
-            clientIds = snapshot.value as? NSDictionary
             
-            // loop through ids and get rest of the info
-            for item in (clientIds?.allKeys)! {
-
-                let client = Client()
-                client.clientId = item as! String // set id
+            
+            
+            // Get a list of users, keys are client ids (or phone numbers)
+            if let clientsDictionary = snapshot.value as? NSDictionary {
                 
-                // get rest of the info
-                let clientInfo:NSDictionary = (clientIds.value(forKey: client.clientId) as? NSDictionary)!
                 
-                client.clientName = clientInfo.value(forKey: "clientName") as? String ?? ""
-                client.clientEmail = clientInfo.value(forKey: "clientEmail") as? String ?? ""
+                // loop through ids and get rest of the info
+                for clientItem in (clientsDictionary.allKeys) {
+                    
+                    // create a client and set the id to the key
+                    let client = Client()
+                    client.clientId = clientItem as! String
+                    
+                    
+                    // get rest of the client info
+                    let clientInfo = (clientsDictionary.value(forKey: client.clientId) as? NSDictionary)!
+                    client.clientName = clientInfo.value(forKey: "clientName") as? String ?? ""
+                    client.clientEmail = clientInfo.value(forKey: "clientEmail") as? String ?? ""
+                    
+                    
+                    // try to see if client has any visits already
+                    if let clientVisits = clientInfo.value(forKey: "visits") as? NSDictionary {
+                        
+                        // loop through the client visits
+                        for visit in (clientVisits.allKeys) {
+                            
+                            // create a client visit object and set the id to the key (visit date)
+                            let clientVisit = ClientVisit()
+                            clientVisit.visitDate = visit as! String
+                            
+                            
+                            // get the rest of the info
+                            let visitInfo = (clientVisits.value(forKey: clientVisit.visitDate) as? NSDictionary)!
+                            
+                            clientVisit.notes = visitInfo.value(forKey: "notes") as? String ?? ""
+                            clientVisit.images = visitInfo.value(forKey: "images") as? [String] ?? [String]()
+                            
+                            client.clientVisits.append(clientVisit)
+                            
+                        }
+                    }
+  
+                    
+                    // add client to array
+                    self.cellData.append(client)
+                }
                 
-                clients.append(client)
-                
-                self.cellData.append(client)
             }
+            
             
             
             // update table view from the UI thread

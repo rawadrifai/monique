@@ -55,5 +55,11 @@ class ClientVisit {
         self.images = [String]()
     }
     
+    init(visitDate:String, notes:String, images:[String]) {
+        self.visitDate = visitDate
+        self.notes = notes
+        self.images = images
+    }
+    
     
 }
