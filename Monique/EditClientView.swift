@@ -174,7 +174,7 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage
         {
             
-            self.img = UIImageJPEGRepresentation(image, 0.8) as Data!
+            self.img = UIImageJPEGRepresentation(image, 1) as Data!
             imgView.image = image
             
         }
@@ -196,8 +196,6 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
             self.ref.child(self.userId + "/clients/" + self.client.clientId).removeValue()
         
             print("delete successful")
-            
-//            let storageRef = FIRStorage.storage().reference(withPath: self.userId + "/clients/" + self.client.clientId + "/profile.jpeg")
             
             
             let storageRef = FIRStorage.storage().reference().child(self.userId).child("clients").child(self.client.clientId)

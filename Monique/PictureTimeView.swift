@@ -16,16 +16,13 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
     @IBOutlet weak var imgView1: UIImageView!
     @IBOutlet weak var imgView2: UIImageView!
     @IBOutlet weak var imgView3: UIImageView!
-    @IBOutlet weak var imgView4: UIImageView!
-    @IBOutlet weak var imgView5: UIImageView!
-    @IBOutlet weak var imgView6: UIImageView!
+
     
     var img1: Data!
     var img2: Data!
     var img3: Data!
-    var img4: Data!
-    var img5: Data!
-    var img6: Data!
+
+    var clientVisit:ClientVisit!
     
     var imgIndex:Int?
     var userId = String()
@@ -33,12 +30,69 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
     var ref: FIRDatabaseReference!
     
     var delegate: PictureTimeDelegate?
+    var storageHomePath:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        storageHomePath = self.userId + "/clients/" + client.clientId + "/"
+
         makePicsInteractive()
+        loadVisit()
+        
+        
     }
+    
+    func loadVisit() {
+        
+        self.txvNotes.text = self.clientVisit?.notes
+        loadImages()
+    }
+    
+    func loadImages() {
+        
+        for clientVisit in (client.clientVisits) {
+            
+            
+                for image in clientVisit.images {
+                    
+                    loadImageFromFirebase(path: storageHomePath, fileName: "visits/" + self.clientVisit.visitDate + "/" + image, image: image)
+                }
+            
+        }
+    }
+    
+    func loadImageFromFirebase(path: String, fileName: String, image:String) {
+        
+        // get storage service reference
+        let storageRef = FIRStorage.storage().reference(withPath: path + fileName)
+        
+        
+        storageRef.data(withMaxSize: 5 * 1024 * 1024) { (data, err) in
+            
+            if data != nil {
+                
+                switch image {
+                case "1":
+                    self.img1 = data
+                    self.imgView1.image = UIImage(data: data!)
+                    break
+                case "2":
+                    self.img2 = data
+                    self.imgView2.image = UIImage(data: data!)
+                    break
+                case "3":
+                    self.img3 = data
+                    self.imgView3.image = UIImage(data: data!)
+                    break
+                default:
+                    break
+                }
+            }
+            
+        }
+    }
+    
 
     
     func makePicsInteractive() {
@@ -50,12 +104,7 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         
         let tapGestureRecognizer3 = UITapGestureRecognizer(target: self, action: #selector(img3Tapped(tapGestureRecognizer3:)))
         
-        let tapGestureRecognizer4 = UITapGestureRecognizer(target: self, action: #selector(img4Tapped(tapGestureRecognizer4:)))
-        
-        let tapGestureRecognizer5 = UITapGestureRecognizer(target: self, action: #selector(img5Tapped(tapGestureRecognizer5:)))
-        
-        let tapGestureRecognizer6 = UITapGestureRecognizer(target: self, action: #selector(img6Tapped(tapGestureRecognizer6:)))
-        
+      
         imgView1.tag = 1
         imgView1.isUserInteractionEnabled = true
         imgView1.addGestureRecognizer(tapGestureRecognizer1)
@@ -67,20 +116,11 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         imgView3.tag = 3
         imgView3.isUserInteractionEnabled = true
         imgView3.addGestureRecognizer(tapGestureRecognizer3)
-        
-        imgView4.tag = 4
-        imgView4.isUserInteractionEnabled = true
-        imgView4.addGestureRecognizer(tapGestureRecognizer4)
-        
-        imgView5.tag = 5
-        imgView5.isUserInteractionEnabled = true
-        imgView5.addGestureRecognizer(tapGestureRecognizer5)
-        
-        imgView6.tag = 6
-        imgView6.isUserInteractionEnabled = true
-        imgView6.addGestureRecognizer(tapGestureRecognizer6)
-        
-    }
+     }
+    
+    var img1Tapped = false
+    var img2Tapped = false
+    var img3Tapped = false
     
     
     func img1Tapped(tapGestureRecognizer1: UITapGestureRecognizer)
@@ -124,50 +164,7 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         
         self.present(image, animated: true)
     }
-    
-    func img4Tapped(tapGestureRecognizer4: UITapGestureRecognizer)
-    {
-        
-        self.imgIndex = imgView4.tag
-        
-        let image = UIImagePickerController()
-        image.allowsEditing = false
-        image.delegate = self
-        
-        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
-        
-        self.present(image, animated: true)
-    }
-    
-    func img5Tapped(tapGestureRecognizer5: UITapGestureRecognizer)
-    {
-        
-        self.imgIndex = imgView5.tag
-        
-        let image = UIImagePickerController()
-        image.allowsEditing = false
-        image.delegate = self
-        
-        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
-        
-        self.present(image, animated: true)
-    }
-    
-    func img6Tapped(tapGestureRecognizer6: UITapGestureRecognizer)
-    {
-        
-        self.imgIndex = imgView6.tag
-        
-        let image = UIImagePickerController()
-        image.allowsEditing = false
-        image.delegate = self
-        
-        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
-        
-        self.present(image, animated: true)
-    }
-    
-
+   
     // execute after picking the image
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
     {
@@ -178,33 +175,22 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
             switch imgIndex! {
             case 1:
                 self.imgView1.image = image
-                self.img1 = UIImageJPEGRepresentation(image, 0.8) as Data!
+                img1Tapped = true
+                self.img1 = UIImageJPEGRepresentation(image, 0) as Data!
                 break
                 
             case 2:
                 imgView2.image = image
-                self.img2 = UIImageJPEGRepresentation(image, 0.8) as Data!
+                img2Tapped = true
+                self.img2 = UIImageJPEGRepresentation(image, 0) as Data!
                 break
                 
             case 3:
                 imgView3.image = image
-                self.img3 = UIImageJPEGRepresentation(image, 0.8) as Data!
+                img3Tapped = true
+                self.img3 = UIImageJPEGRepresentation(image, 0) as Data!
                 break
                 
-            case 4:
-                imgView4.image = image
-                self.img4 = UIImageJPEGRepresentation(image, 0.8) as Data!
-                break
-                
-            case 5:
-                imgView5.image = image
-                self.img5 = UIImageJPEGRepresentation(image, 0.8) as Data!
-                break
-                
-            case 6:
-                imgView6.image = image
-                self.img6 = UIImageJPEGRepresentation(image, 0.8) as Data!
-                break
                 
             default: break
                 
@@ -222,68 +208,82 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
     
     @IBAction func save(_ sender: UIBarButtonItem) {
         
+        let notes = txvNotes.text ?? ""
+        self.clientVisit.notes = notes
+        
         var imageNames = [String]()
         
+        // put visit dates in array
+        var visitDates = [String]()
+        for visit in client.clientVisits {
+            visitDates.append(visit.visitDate)
+        }
         
-        let date = Date()
-        let calendar = Calendar.current
-        
-        let year = calendar.component(.year, from: date)
-        let month = calendar.component(.month, from: date)
-        let day = calendar.component(.day, from: date)
-        let dateString = String(year) + "-" + String(month) + "-" + String(day)
-        
-        let notes = txvNotes.text ?? ""
         
         // modify the current client in memory
-        self.client.clientVisits.append(ClientVisit(visitDate: dateString, notes: notes))
+        if !visitDates.contains(self.clientVisit.visitDate) {
+            self.client.clientVisits.append(ClientVisit(visitDate: self.clientVisit.visitDate, notes: notes))
+        }
         
         // save notes
         self.ref = FIRDatabase.database().reference()
-        self.ref.child(userId + "/clients/" + self.client.clientId + "/visits/" + dateString + "/notes").setValue(notes)
+        self.ref.child(userId + "/clients/" + self.client.clientId + "/visits/" + self.clientVisit.visitDate + "/notes").setValue(notes)
         
         
         print("writing successful")
         
-        if self.img1 != nil {
-            uploadImageToFirebase(data: self.img1, path: userId + "/clients/" + self.client.clientId + "/visits/" + dateString + "/", fileName: "1")
+        
+        if self.imgView1.image != nil {
+            
+            if img1Tapped {
+            uploadImageToFirebase(data: UIImageJPEGRepresentation(imgView1.image!, 0) as Data!, path: userId + "/clients/" + self.client.clientId + "/visits/" + self.clientVisit.visitDate + "/", fileName: "1")
+            }
             
             imageNames.append("1")
+        } else {
+            if img1Tapped {
+            deleteImageFromFirebase(path: userId + "/clients/" + self.client.clientId + "/visits/" + self.clientVisit.visitDate + "/", fileName: "1")
+            }
         }
         
-        if self.img2 != nil {
-            uploadImageToFirebase(data: self.img2, path: userId + "/clients/" + self.client.clientId + "/visits/" + dateString + "/", fileName: "2")
+        
+        
+        
+        if self.imgView2.image != nil {
+            
+            if img2Tapped {
+            uploadImageToFirebase(data: UIImageJPEGRepresentation(imgView2.image!, 0) as Data!, path: userId + "/clients/" + self.client.clientId + "/visits/" + self.clientVisit.visitDate + "/", fileName: "2")
+            }
             
             imageNames.append("2")
+        } else {
+            if img2Tapped {
+            deleteImageFromFirebase(path: userId + "/clients/" + self.client.clientId + "/visits/" + self.clientVisit.visitDate + "/", fileName: "2")
+            }
         }
         
-        if self.img3 != nil {
-            uploadImageToFirebase(data: self.img3, path: userId + "/clients/" + self.client.clientId + "/visits/" + dateString + "/", fileName: "3")
+        
+        
+        if self.imgView3.image != nil {
+            if img3Tapped {
+            uploadImageToFirebase(data: UIImageJPEGRepresentation(imgView3.image!, 0) as Data!, path: userId + "/clients/" + self.client.clientId + "/visits/" + self.clientVisit.visitDate + "/", fileName: "3")
+            }
             
             imageNames.append("3")
-        }
-        
-        if self.img4 != nil {
-            uploadImageToFirebase(data: self.img4, path: userId + "/clients/" + self.client.clientId + "/visits/" + dateString + "/", fileName: "4")
             
-            imageNames.append("4")
+        } else {
+            if img3Tapped {
+            deleteImageFromFirebase(path: userId + "/clients/" + self.client.clientId + "/visits/" + self.clientVisit.visitDate + "/", fileName: "3")
+            }
         }
         
-        if self.img5 != nil {
-            uploadImageToFirebase(data: self.img5, path: userId + "/clients/" + self.client.clientId + "/visits/" + dateString + "/", fileName: "5")
-            
-            imageNames.append("5")
-        }
         
-        if self.img6 != nil {
-            uploadImageToFirebase(data: self.img6, path: userId + "/clients/" + self.client.clientId + "/visits/" + dateString + "/", fileName: "6")
-            
-            imageNames.append("6")
-        }
-        
+        img1Tapped = false
+        img2Tapped = false
+        img3Tapped = false
         
         // save image array
-        self.ref.child(userId + "/clients/" + self.client.clientId + "/visits/" + dateString + "/images").setValue(imageNames)
+        self.ref.child(userId + "/clients/" + self.client.clientId + "/visits/" + self.clientVisit.visitDate + "/images").setValue(imageNames)
         
         
         if let del = self.delegate {
@@ -317,27 +317,27 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         }
     }
     
+    func deleteImageFromFirebase(path: String, fileName: String) {
+        
+        let storageRef = FIRStorage.storage().reference(withPath: path + fileName)
+        
+        storageRef.delete { (err) in
+            
+            if err != nil {
+                print("received an error: \(err?.localizedDescription)")
+            }
+            else {
+                print("image deleted")
+            }
+        }
+    }
+    
+    
     @IBAction func closeView(_ sender: UIBarButtonItem) {
         let _ = self.navigationController?.popViewController(animated: true)
     }
 
     
-}
-
-class TestClass {
-    
-    var id:String
-    var name:String
-    
-    init() {
-        id = ""
-        name = ""
-    }
-    
-    init(id:String, name:String) {
-        self.id = id
-        self.name = name
-    }
 }
 
 protocol PictureTimeDelegate {

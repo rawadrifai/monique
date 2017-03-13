@@ -87,7 +87,7 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage
         {
             
-            self.img = UIImageJPEGRepresentation(image, 0.8) as Data!
+            self.img = UIImageJPEGRepresentation(image, 0) as Data!
             imgView.image = image
             
            // let tempImage = UIImage(data: self.img, scale: 200)

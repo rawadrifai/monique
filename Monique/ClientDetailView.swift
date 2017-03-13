@@ -17,7 +17,6 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var labelName: UILabel!
     @IBOutlet weak var labelPhone: UILabel!
-    @IBOutlet weak var labelEmail: UILabel!
     
     var storageHomePath:String!
     
@@ -39,7 +38,6 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
         
         labelName.text = client.clientName
         labelPhone.text = client.clientId
-        labelEmail.text = client.clientEmail
         
         loadImageFromFirebase(path: self.userId + "/clients/" + client.clientId + "/", fileName: "profile")
         
@@ -68,7 +66,22 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
         
     }
     
-
+    var clientVisit:ClientVisit?
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        _ = tableView.indexPathForSelectedRow!
+        if let _ = tableView.cellForRow(at: indexPath) {
+            
+            // set date to selected row
+            self.clientVisit = client.clientVisits[indexPath.row]
+    
+            self.performSegue(withIdentifier: "pictureTimeSegue", sender: self)
+            
+        }
+        
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "editClientSegue" {
@@ -88,6 +101,7 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
                 
                 destination.userId = self.userId
                 destination.client = self.client
+                destination.clientVisit = self.clientVisit
                 destination.delegate = self
             }
         }
@@ -96,6 +110,27 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
     
 
    
+    
+    
+    
+    
+    @IBAction func moveToPictureTimeView(_ sender: UIButton) {
+        
+        // set visit date to today
+        let date = Date()
+        let calendar = Calendar.current
+        let year = calendar.component(.year, from: date)
+        let month = calendar.component(.month, from: date)
+        let day = calendar.component(.day, from: date)
+        let hour = calendar.component(.hour, from: date)
+        let minute = calendar.component(.minute, from: date)
+        let second = calendar.component(.second, from: date)
+        self.clientVisit?.visitDate = String(year) + "-" + String(month) + "-" + String(day)
+            + " " + String(hour) + ":" + String(minute) + ":" + String(second)
+        
+        self.performSegue(withIdentifier: "pictureTimeSegue", sender: self)
+    }
+    
     func loadImageFromFirebase(path: String, fileName: String) {
         
         // get storage service reference
@@ -103,7 +138,7 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
         
         
         storageRef.data(withMaxSize: 5 * 1024 * 1024) { (data, err) in
-       
+            
             if data != nil {
                 self.imgView.image = UIImage(data:data!,scale:1.0)
             }
@@ -120,7 +155,6 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
         self.client.clientEmail = client.clientEmail
         
         self.labelName.text = client.clientName
-        self.labelEmail.text = client.clientEmail
         self.labelPhone.text = client.clientId
         
     }
@@ -136,6 +170,8 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
     
     func historyChanged(client: Client) {
         
+        self.client.clientVisits = client.clientVisits
+        self.tableView.reloadData()
     }
 
 }

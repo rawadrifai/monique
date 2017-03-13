@@ -122,6 +122,7 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
         // needed things for the search to work
         self.resultsController.tableView.dataSource = self
         self.resultsController.tableView.delegate = self
+        self.resultsController.tableView.rowHeight = 69
         
         customizeSearchController()
         
@@ -153,7 +154,10 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
             if self.searchController.searchBar.text! == ""
             {return true}
             
-            if data.clientName.lowercased().contains(self.searchController.searchBar.text!.lowercased()) {
+            if data.clientName.lowercased().contains(self.searchController.searchBar.text!.lowercased()) ||
+                data.clientId.lowercased().contains(self.searchController.searchBar.text!.lowercased()) ||
+                data.clientName.lowercased().contains(self.searchController.searchBar.text!.lowercased()) {
+                    
                 return true
             }
             else {
