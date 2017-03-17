@@ -7,24 +7,25 @@
 //
 
 import UIKit
-import FirebaseStorage
+import FirebaseDatabase
 
 class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDelegate {
 
     var userId = String()
     var client:Client!
+    var selectedVisitIndex:Int!
+    var ref: FIRDatabaseReference!
+
     
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var labelName: UILabel!
     @IBOutlet weak var labelPhone: UILabel!
-    
-    var storageHomePath:String!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        // set the user home path in firebase storage
-        storageHomePath = self.userId + "/clients/" + client.clientId + "/"
+
+        // get reference to database
+        self.ref = FIRDatabase.database().reference()
         
         self.imgView.layer.cornerRadius = 175 / 4;
         self.imgView.clipsToBounds = true;
@@ -33,6 +34,24 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
     }
     
 
+    @IBAction func newHaircut(_ sender: UIButton)
+    {
+        let date = Date()
+        let calendar = Calendar.current
+        let year = calendar.component(.year, from: date)
+        let month = calendar.component(.month, from: date)
+        let day = calendar.component(.day, from: date)
+        let hour = calendar.component(.hour, from: date)
+        let minute = calendar.component(.minute, from: date)
+        let second = calendar.component(.second, from: date)
+        let visitdate = String(year) + "-" + String(month) + "-" + String(day)
+            + " " + String(hour) + ":" + String(minute) + ":" + String(second)
+        
+        self.ref.child(userId + "/clients/" + self.client.clientId + "/visits/" + visitdate + "/notes").setValue("")
+        
+        self.tableView.reloadData()
+        
+    }
 
     func fillData() {
         
@@ -64,7 +83,6 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
         
     }
     
-    var clientVisit:ClientVisit?
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -72,7 +90,7 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
         if let _ = tableView.cellForRow(at: indexPath) {
             
             // set date to selected row
-            self.clientVisit = client.clientVisits[indexPath.row]
+            self.selectedVisitIndex = indexPath.row
     
             self.performSegue(withIdentifier: "pictureTimeSegue", sender: self)
             
@@ -99,7 +117,7 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
                 
                 destination.userId = self.userId
                 destination.client = self.client
-                destination.clientVisit = self.clientVisit
+                destination.selectedVisitIndex = self.selectedVisitIndex
                 destination.delegate = self
             }
         }
@@ -107,28 +125,7 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
     }
     
 
-   
-    
-    
-    
-    
-    @IBAction func moveToPictureTimeView(_ sender: UIButton) {
-        
-        // set visit date to today
-        let date = Date()
-        let calendar = Calendar.current
-        let year = calendar.component(.year, from: date)
-        let month = calendar.component(.month, from: date)
-        let day = calendar.component(.day, from: date)
-        let hour = calendar.component(.hour, from: date)
-        let minute = calendar.component(.minute, from: date)
-        let second = calendar.component(.second, from: date)
-        self.clientVisit?.visitDate = String(year) + "-" + String(month) + "-" + String(day)
-            + " " + String(hour) + ":" + String(minute) + ":" + String(second)
-        
-        self.performSegue(withIdentifier: "pictureTimeSegue", sender: self)
-    }
-    
+
 
     
     // Child Delegate

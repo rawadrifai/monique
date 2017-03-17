@@ -119,7 +119,7 @@
                                                 <color key="titleColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
                                             <connections>
-                                                <action selector="moveToPictureTimeView:" destination="cdu-h2-G3J" eventType="touchUpInside" id="DGu-WT-JKd"/>
+                                                <action selector="newHaircut:" destination="cdu-h2-G3J" eventType="touchUpInside" id="Iq3-Cu-wcb"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -170,7 +170,7 @@
                     <connections>
                         <outlet property="imgView" destination="qCe-To-KB4" id="mhx-tM-xNu"/>
                         <outlet property="labelName" destination="bYU-JW-HtW" id="voF-aG-Zrl"/>
-                        <outlet property="labelPhone" destination="Lnp-rq-Din" id="MC1-3f-fxL"/>
+                        <outlet property="labelPhone" destination="Lnp-rq-Din" id="fYe-Ji-8CB"/>
                         <segue destination="o9q-rL-Ugv" kind="show" identifier="pictureTimeSegue" id="S1p-Bx-7mW"/>
                     </connections>
                 </tableViewController>
@@ -738,7 +738,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="212"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fNT-hU-8AK">
+                                        <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fNT-hU-8AK">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="212"/>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </imageView>
@@ -766,7 +766,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="imgView1" destination="fNT-hU-8AK" id="RwA-wQ-gRZ"/>
                         <outlet property="txvNotes" destination="VZp-ys-fOQ" id="riv-zn-yHF"/>
                     </connections>
                 </tableViewController>
@@ -806,7 +805,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="T8G-ym-Bx6">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="998"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="997"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tka-pW-SzV">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="18"/>
@@ -826,28 +825,28 @@
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0vJ-3U-9Oc">
-                                            <rect key="frame" x="0.0" y="118" width="375" height="282"/>
+                                            <rect key="frame" x="0.0" y="118" width="375" height="281"/>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="0vJ-3U-9Oc" secondAttribute="height" multiplier="4:3" id="zeO-cz-2g1"/>
                                             </constraints>
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oWi-Fb-3rz">
-                                            <rect key="frame" x="0.0" y="400" width="375" height="281"/>
+                                            <rect key="frame" x="0.0" y="399" width="375" height="281"/>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="oWi-Fb-3rz" secondAttribute="height" multiplier="4:3" id="wyD-xe-oer"/>
                                             </constraints>
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Yl-Nv-CnB">
-                                            <rect key="frame" x="0.0" y="681" width="375" height="281"/>
+                                            <rect key="frame" x="0.0" y="680" width="375" height="281"/>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="1Yl-Nv-CnB" secondAttribute="height" multiplier="4:3" id="gur-oY-iuC"/>
                                             </constraints>
                                         </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KNM-fW-fi0">
-                                            <rect key="frame" x="0.0" y="962" width="375" height="36"/>
+                                            <rect key="frame" x="0.0" y="961" width="375" height="36"/>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                             <state key="normal" title="Delete Visit">

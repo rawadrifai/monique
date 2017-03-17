@@ -18,7 +18,6 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
     var userId = String()
     var client:Client!
     var ref: FIRDatabaseReference!
-    var img: Data!
     
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var txfName: UITextField!
@@ -112,8 +111,9 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
         
         
         
-        if self.img != nil && profileImageChanged {
-            uploadImageToFirebase(data: self.img, path: userId + "/clients/" + clientPhone! + "/", fileName: "profile")
+        if profileImageChanged && self.imgView.image?.sd_imageData() != nil {
+            
+            uploadImageToFirebase(data: (self.imgView.image?.sd_imageData())!, path: userId + "/clients/" + clientPhone! + "/profile/", fileName: UUID().uuidString)
         }
         
         if let del = self.delegate {
@@ -141,12 +141,11 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
                     return
                 }
                 
-                let uuid = UUID().uuidString
-                self.client.profileImg.imageName = uuid
+                self.client.profileImg.imageName = fileName
                 self.client.profileImg.imageUrl = (metadata?.downloadURL()?.absoluteString)!
                 
-                self.ref.child(self.userId + "/clients/" + self.client.clientId + "/profile/imageName").setValue(self.client.profileImg.imageName)
-                self.ref.child(self.userId + "/clients/" + self.client.clientId + "/profile/imageUrl").setValue(self.client.profileImg.imageUrl)
+                self.ref.child(path + "/imageName").setValue(self.client.profileImg.imageName)
+                self.ref.child(path + "imageUrl").setValue(self.client.profileImg.imageUrl)
                 
                 print(self.client.profileImg.imageUrl)
                 
@@ -181,8 +180,7 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage
         {
             
-            self.img = UIImageJPEGRepresentation(image, 1) as Data!
-            imgView.image = image
+            imgView.image = UIImage(data: image.sd_imageData()!,scale: 0)
             profileImageChanged = true
             
         }

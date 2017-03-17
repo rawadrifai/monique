@@ -13,19 +13,11 @@ import FirebaseDatabase
 class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     @IBOutlet weak var txvNotes: UITextView!
-    @IBOutlet weak var imgView1: UIImageView!
-    @IBOutlet weak var imgView2: UIImageView!
-    @IBOutlet weak var imgView3: UIImageView!
 
     
-    var img1: Data!
-    var img2: Data!
-    var img3: Data!
 
-    var clientVisit:ClientVisit!
-    
-    var imgIndex:Int?
-    var userId = String()
+    var selectedVisitIndex:Int!
+    var userId:String!
     var client:Client!
     var ref: FIRDatabaseReference!
     
@@ -37,212 +29,62 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         
         storageHomePath = self.userId + "/clients/" + client.clientId + "/"
 
-        makePicsInteractive()
+        
         loadVisit()
         
         
     }
     
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return self.client.clientVisits[selectedVisitIndex].images.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "cell")
+        {
+           
+            let imgobj = self.client.clientVisits[selectedVisitIndex].images[indexPath.row]
+    
+            let image = cell.viewWithTag(1) as! UIImageView
+            image.sd_setImage(with: URL(string: imgobj.imageUrl))
+
+            
+    
+            return cell
+        }
+        
+        return UITableViewCell(style: .default, reuseIdentifier: "cell")
+        
+    }
+    
+    
+    
+    
+    
+    
     func loadVisit() {
         
-        self.txvNotes.text = self.clientVisit?.notes
-        loadImages()
+        self.txvNotes.text = self.client.clientVisits[selectedVisitIndex].notes
+        
     }
     
-    func loadImages() {
-        
-        for clientVisit in (client.clientVisits) {
-            
-            
-                for image in clientVisit.images {
-                    
-     //todo               loadImageFromFirebase(path: storageHomePath, fileName: "visits/" + self.clientVisit.visitDate + "/" + image, image: image)
-                }
-            
-        }
-    }
-    
-    func loadImageFromFirebase(path: String, fileName: String, image:String) {
-        
-        // get storage service reference
-        let storageRef = FIRStorage.storage().reference(withPath: path + fileName)
-        
-        
-        storageRef.data(withMaxSize: 5 * 1024 * 1024) { (data, err) in
-            
-            if data != nil {
-                
-                switch image {
-                case "1":
-                    self.img1 = data
-                    self.imgView1.image = UIImage(data: data!)
-                    break
-                case "2":
-                    self.img2 = data
-                    self.imgView2.image = UIImage(data: data!)
-                    break
-                case "3":
-                    self.img3 = data
-                    self.imgView3.image = UIImage(data: data!)
-                    break
-                default:
-                    break
-                }
-            }
-            
-        }
-    }
-    
-
-    
-    func makePicsInteractive() {
-        
-        // make the profile picture interactive
-        let tapGestureRecognizer1 = UITapGestureRecognizer(target: self, action: #selector(img1Tapped(tapGestureRecognizer1:)))
-        
-        let tapGestureRecognizer2 = UITapGestureRecognizer(target: self, action: #selector(img2Tapped(tapGestureRecognizer2:)))
-        
-        let tapGestureRecognizer3 = UITapGestureRecognizer(target: self, action: #selector(img3Tapped(tapGestureRecognizer3:)))
-        
-      
-        imgView1.tag = 1
-        imgView1.isUserInteractionEnabled = true
-        imgView1.addGestureRecognizer(tapGestureRecognizer1)
-        
-        imgView2.tag = 2
-        imgView2.isUserInteractionEnabled = true
-        imgView2.addGestureRecognizer(tapGestureRecognizer2)
-        
-        imgView3.tag = 3
-        imgView3.isUserInteractionEnabled = true
-        imgView3.addGestureRecognizer(tapGestureRecognizer3)
-     }
-    
-    var img1Tapped = false
-    var img2Tapped = false
-    var img3Tapped = false
-    
-    
-       
-    // execute after picking the image
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
-    {
-        
-        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage
-        {
-            
-            switch imgIndex! {
-            case 1:
-                self.imgView1.image = image
-                img1Tapped = true
-                self.img1 = UIImageJPEGRepresentation(image, 0) as Data!
-                break
-                
-            case 2:
-                imgView2.image = image
-                img2Tapped = true
-                self.img2 = UIImageJPEGRepresentation(image, 0) as Data!
-                break
-                
-            case 3:
-                imgView3.image = image
-                img3Tapped = true
-                self.img3 = UIImageJPEGRepresentation(image, 0) as Data!
-                break
-                
-                
-            default: break
-                
-            }
-        }
-        
-        self.dismiss(animated: true, completion: nil)
-    }
-
     
     // if user clicks cancel without selecting an image
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
     
+    
+    
     @IBAction func save(_ sender: UIBarButtonItem) {
         
         let notes = txvNotes.text ?? ""
-        self.clientVisit.notes = notes
+        self.client.clientVisits[selectedVisitIndex].notes = notes
         
-        var imageNames = [String]()
-        
-        // put visit dates in array
-        var visitDates = [String]()
-        for visit in client.clientVisits {
-            visitDates.append(visit.visitDate)
-        }
-        
-        
-        // modify the current client in memory
-        if !visitDates.contains(self.clientVisit.visitDate) {
-            self.client.clientVisits.append(ClientVisit(visitDate: self.clientVisit.visitDate, notes: notes))
-        }
-        
-        // save notes
-        self.ref = FIRDatabase.database().reference()
-        self.ref.child(userId + "/clients/" + self.client.clientId + "/visits/" + self.clientVisit.visitDate + "/notes").setValue(notes)
-        
-        
-        print("writing successful")
-        
-        
-        if self.imgView1.image != nil {
-            
-            if img1Tapped {
-            uploadImageToFirebase(data: UIImageJPEGRepresentation(imgView1.image!, 0) as Data!, path: userId + "/clients/" + self.client.clientId + "/visits/" + self.clientVisit.visitDate + "/", fileName: "1")
-            }
-            
-            imageNames.append("1")
-        } else {
-            if img1Tapped {
-            deleteImageFromFirebase(path: userId + "/clients/" + self.client.clientId + "/visits/" + self.clientVisit.visitDate + "/", fileName: "1")
-            }
-        }
-        
-        
-        
-        
-        if self.imgView2.image != nil {
-            
-            if img2Tapped {
-            uploadImageToFirebase(data: UIImageJPEGRepresentation(imgView2.image!, 0) as Data!, path: userId + "/clients/" + self.client.clientId + "/visits/" + self.clientVisit.visitDate + "/", fileName: "2")
-            }
-            
-            imageNames.append("2")
-        } else {
-            if img2Tapped {
-            deleteImageFromFirebase(path: userId + "/clients/" + self.client.clientId + "/visits/" + self.clientVisit.visitDate + "/", fileName: "2")
-            }
-        }
-        
-        
-        
-        if self.imgView3.image != nil {
-            if img3Tapped {
-            uploadImageToFirebase(data: UIImageJPEGRepresentation(imgView3.image!, 0) as Data!, path: userId + "/clients/" + self.client.clientId + "/visits/" + self.clientVisit.visitDate + "/", fileName: "3")
-            }
-            
-            imageNames.append("3")
-            
-        } else {
-            if img3Tapped {
-            deleteImageFromFirebase(path: userId + "/clients/" + self.client.clientId + "/visits/" + self.clientVisit.visitDate + "/", fileName: "3")
-            }
-        }
-        
-        
-        img1Tapped = false
-        img2Tapped = false
-        img3Tapped = false
-        
-        // save image array
-        self.ref.child(userId + "/clients/" + self.client.clientId + "/visits/" + self.clientVisit.visitDate + "/images").setValue(imageNames)
+        saveImages()
         
         
         if let del = self.delegate {
@@ -254,27 +96,57 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         
         print("writing successful")
 
-        
     }
     
     
     
+    func saveImages() {
+        
+        // clean the image list
+        self.client.clientVisits[selectedVisitIndex].images = [ImageObject]()
+        
+        for cell in tableView.visibleCells {
+        
+            let imgview = cell.viewWithTag(1) as! UIImageView
+            let imgdata = imgview.image?.sd_imageData()
+            let visitdate = self.client.clientVisits[selectedVisitIndex].visitDate
+            let uuid = UUID().uuidString
+            
+            uploadImageToFirebase(data: imgdata!, path: userId + "/clients/" + self.client.clientId + "/visits/" + visitdate + "/", fileName: uuid)
+            
+        }
+    }
+    
+    
     func uploadImageToFirebase(data: Data, path: String, fileName: String) {
         
+        // get storage service reference
         let storageRef = FIRStorage.storage().reference(withPath: path + fileName)
-        
-        let metaData = FIRStorageMetadata()
-        metaData.contentType = "image/jpeg"
-        storageRef.put(data, metadata: metaData) { (md, err) in
+        storageRef.put(data, metadata: nil) { (metadata, err) in
             
             if err != nil {
                 print("received an error: \(err?.localizedDescription)")
             }
             else {
-                print("upload complete! here's some meta data: \(md)")
+                guard metadata != nil else {
+                    print("error occurred")
+                    return
+                }
+                
+                let imgobj = ImageObject()
+                imgobj.imageName = fileName
+                imgobj.imageUrl = (metadata?.downloadURL()?.absoluteString)!
+                
+                self.client.clientVisits[self.selectedVisitIndex].images.append(imgobj)
+                
+                self.ref.child(path).setValue(imgobj.imageName)
+                self.ref.child(path).setValue(imgobj.imageUrl)
+                
+                print(self.client.profileImg.imageUrl)
             }
         }
     }
+    
     
     func deleteImageFromFirebase(path: String, fileName: String) {
         

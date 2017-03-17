@@ -16,7 +16,6 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
 
     var userId = String()
     var ref: FIRDatabaseReference!
-    var img: Data!
     var client = Client()
     
     @IBOutlet weak var imgView: UIImageView!
@@ -91,11 +90,10 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
         
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage
         {
+            //imgView.image = image
             
-            self.img = UIImageJPEGRepresentation(image, 0) as Data!
-            imgView.image = image
-            
-            
+            imgView.image = UIImageJPEGRepresentation(imgView.image!, 0) as! UIImage
+            //imgView.image = UIImage(data: image.sd_imageData()!,scale: 0)
             
         }
         
@@ -132,11 +130,13 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
         print("writing successful")
         
         
-        
-        if self.img != nil {
-            uploadImageToFirebase(data: self.img, path: userId + "/clients/" + clientPhone! + "/", fileName: "profile")
+        if self.imgView.image?.sd_imageData() != nil {
+            
+            let compressedImage = UIImage(data: (self.imgView.image?.sd_imageData())!, scale: 0)
+            uploadImageToFirebase(data: (compressedImage?.sd_imageData())!, path: userId + "/clients/" + clientPhone! + "/profile/", fileName: UUID().uuidString)
         }
-        // close window
+        
+        
         let _ = self.navigationController?.popViewController(animated: true)
         
     }
@@ -159,12 +159,12 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
                     return
                 }
                 
-                let uuid = UUID().uuidString
-                self.client.profileImg.imageName = uuid
+        
+                self.client.profileImg.imageName = fileName
                 self.client.profileImg.imageUrl = (metadata?.downloadURL()?.absoluteString)!
                 
-                self.ref.child(self.userId + "/clients/" + self.client.clientId + "/profile/imageName").setValue(self.client.profileImg.imageName)
-                self.ref.child(self.userId + "/clients/" + self.client.clientId + "/profile/imageUrl").setValue(self.client.profileImg.imageUrl)
+                self.ref.child(path + "/imageName").setValue(self.client.profileImg.imageName)
+                self.ref.child(path + "imageUrl").setValue(self.client.profileImg.imageUrl)
   
                 print(self.client.profileImg.imageUrl)
             }
