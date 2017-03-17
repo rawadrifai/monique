@@ -14,7 +14,7 @@ class Client {
     var clientId:String
     var clientName:String
     var clientEmail:String
-    var profileImg:UIImage?
+    var profileImg:ImageObject
     
     var clientVisits:[ClientVisit]
     
@@ -22,12 +22,20 @@ class Client {
         clientId = ""
         clientName = ""
         clientEmail = ""
-        profileImg = UIImage()
+        profileImg = ImageObject()
         
         clientVisits = []
     }
     
-    init(clientId:String, clientName:String, clientEmail:String, profileImg:UIImage) {
+    init(clientId:String, clientName:String, clientEmail:String) {
+        self.clientId = clientId
+        self.clientName = clientName
+        self.clientEmail = clientEmail
+        self.profileImg = ImageObject()
+        clientVisits = []
+    }
+    
+    init(clientId:String, clientName:String, clientEmail:String, profileImg:ImageObject) {
         self.clientId = clientId
         self.clientName = clientName
         self.clientEmail = clientEmail
@@ -41,25 +49,41 @@ class Client {
 class ClientVisit {
     var visitDate:String
     var notes:String
-    var images:[String]
+    var images:[ImageObject]
     
     init() {
         visitDate = ""
         notes = ""
-        images = [String]()
+        images = [ImageObject]()
     }
     
     init(visitDate:String, notes:String) {
         self.visitDate = visitDate
         self.notes = notes
-        self.images = [String]()
+        self.images = [ImageObject]()
     }
     
-    init(visitDate:String, notes:String, images:[String]) {
+    init(visitDate:String, notes:String, images:[ImageObject]) {
         self.visitDate = visitDate
         self.notes = notes
         self.images = images
     }
-    
-    
 }
+
+class ImageObject {
+    var imageName:String
+    var imageUrl:String
+    
+    init() {
+        self.imageName=""
+        self.imageUrl=""
+    }
+    
+    init(imageName:String, imageUrl:String) {
+        self.imageName = imageName
+        self.imageUrl = imageUrl
+    }
+}
+
+
+

@@ -8,6 +8,7 @@ import Google
 class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
 
     var userId:String!
+    var ref: FIRDatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +25,8 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         
         signInButton.style = .wide
         
-        
+        // get reference to database
+        self.ref = FIRDatabase.database().reference()
     
     }
     
@@ -41,11 +43,13 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
             
             // print logged in email
             print("signed in as: ", user.profile.email ?? "no email address")
-            
-            // set the logged in user for the whole session
-            //UserDefaults.standard.set(user.profile.email, forKey: "userid")
+
             userId = user.profile.email.replacingOccurrences(of: ".", with: "")
             
+            self.ref.child(self.userId + "/givenName").setValue(user.profile.givenName)
+            self.ref.child(self.userId + "/familyName").setValue(user.profile.familyName)
+            self.ref.child(self.userId + "/email").setValue(user.profile.email)
+           
             self.performSegue(withIdentifier: "loginSegue", sender: self)
             
             

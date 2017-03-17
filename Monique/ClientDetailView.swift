@@ -38,9 +38,7 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
         
         labelName.text = client.clientName
         labelPhone.text = client.clientId
-        
-        loadImageFromFirebase(path: self.userId + "/clients/" + client.clientId + "/", fileName: "profile")
-        
+        imgView.sd_setImage(with: URL(string: client.profileImg.imageUrl))
         
     }
     
@@ -131,21 +129,7 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
         self.performSegue(withIdentifier: "pictureTimeSegue", sender: self)
     }
     
-    func loadImageFromFirebase(path: String, fileName: String) {
-        
-        // get storage service reference
-        let storageRef = FIRStorage.storage().reference(withPath: path + fileName)
-        
-        
-        storageRef.data(withMaxSize: 5 * 1024 * 1024) { (data, err) in
-            
-            if data != nil {
-                self.imgView.image = UIImage(data:data!,scale:1.0)
-            }
-            
-            self.client.profileImg = self.imgView.image
-        }
-    }
+
     
     // Child Delegate
     func dataChanged(client: Client) {
@@ -165,7 +149,8 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
     
     func imageChanged(client: Client) {
         self.client.profileImg = client.profileImg
-        self.imgView.image = client.profileImg
+        imgView.sd_setImage(with: URL(string: client.profileImg.imageUrl))
+
     }
     
     func historyChanged(client: Client) {

@@ -59,7 +59,17 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
                     client.clientName = clientInfo.value(forKey: "clientName") as? String ?? ""
                     client.clientEmail = clientInfo.value(forKey: "clientEmail") as? String ?? ""
                     
+                    // try to see if client has a profile image
+                    if let profile = clientInfo.value(forKey: "profile") as? NSDictionary {
+                        
+                        client.profileImg.imageName = profile.value(forKey: "imageName") as? String ?? ""
+                        client.profileImg.imageUrl = profile.value(forKey: "imageUrl") as? String ?? ""
+
+                    }
                     
+                    print("=============" + client.profileImg.imageName)
+
+
                     // try to see if client has any visits already
                     if let clientVisits = clientInfo.value(forKey: "visits") as? NSDictionary {
                         
@@ -75,7 +85,7 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
                             let visitInfo = (clientVisits.value(forKey: clientVisit.visitDate) as? NSDictionary)!
                             
                             clientVisit.notes = visitInfo.value(forKey: "notes") as? String ?? ""
-                            clientVisit.images = visitInfo.value(forKey: "images") as? [String] ?? [String]()
+  //todo                          clientVisit.images = visitInfo.value(forKey: "images") as? [String] ?? [String]()
                             
                             client.clientVisits.append(clientVisit)
                             

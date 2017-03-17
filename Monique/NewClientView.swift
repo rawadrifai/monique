@@ -17,6 +17,7 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
     var userId = String()
     var ref: FIRDatabaseReference!
     var img: Data!
+    var client = Client()
     
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var txfName: UITextField!
@@ -25,10 +26,14 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
  
         self.imgView.layer.cornerRadius = 175 / 4;
         self.imgView.clipsToBounds = true;
  
+        
+        // get reference to database
+        self.ref = FIRDatabase.database().reference()
         
         makeProfilePicInteractive()
     }
@@ -90,9 +95,6 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
             self.img = UIImageJPEGRepresentation(image, 0) as Data!
             imgView.image = image
             
-           // let tempImage = UIImage(data: self.img, scale: 200)
-            
-            
             
             
         }
@@ -100,7 +102,7 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
         self.dismiss(animated: true, completion: nil)
     }
     
-
+    
     
     
     @IBAction func addClient(_ sender: UIBarButtonItem) {
@@ -112,21 +114,24 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
         let clientEmail = txfEmail.text
         
         // validate input
-        if (clientName?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-            clientEmail?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-            clientPhone?.trimmingCharacters(in: .whitespacesAndNewlines) == "") {
+        if (clientPhone?.trimmingCharacters(in: .whitespacesAndNewlines) == "") {
             
             alert(message: "Please fill out at least phone number")
             return
         }
         
-        // get reference to database
-        self.ref = FIRDatabase.database().reference()
+        self.client.clientName = clientName!
+        self.client.clientId = clientPhone!
+        self.client.clientEmail = clientEmail!
+        
+        
 
         // insert values
-        self.ref.child(userId + "/clients/" + clientPhone! + "/clientName").setValue(clientName)
-        self.ref.child(userId + "/clients/" + clientPhone! + "/clientEmail").setValue(clientEmail)
+        self.ref.child(userId + "/clients/" + self.client.clientId + "/clientName").setValue(self.client.clientName)
+        self.ref.child(userId + "/clients/" + self.client.clientId + "/clientEmail").setValue(self.client.clientEmail)
         print("writing successful")
+        
+        
         
         if self.img != nil {
             uploadImageToFirebase(data: self.img, path: userId + "/clients/" + clientPhone! + "/", fileName: "profile")
@@ -143,24 +148,27 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
 
         // get storage service reference
         let storageRef = FIRStorage.storage().reference(withPath: path + fileName)
-        
-        // set meta data for file type
-        let metaData = FIRStorageMetadata()
-        metaData.contentType = "image/jpeg"
-        
-        // put data
-        storageRef.put(data, metadata: metaData) { (md, err) in
+        storageRef.put(data, metadata: nil) { (metadata, err) in
             
             if err != nil {
                 print("received an error: \(err?.localizedDescription)")
-                
             }
             else {
-                print("upload complete! here's some meta data: \(md)")
+                guard metadata != nil else {
+                    print("error occurred")
+                    return
+                }
                 
+                let uuid = UUID().uuidString
+                self.client.profileImg.imageName = uuid
+                self.client.profileImg.imageUrl = (metadata?.downloadURL()?.absoluteString)!
+                
+                self.ref.child(self.userId + "/clients/" + self.client.clientId + "/profile/imageName").setValue(self.client.profileImg.imageName)
+                self.ref.child(self.userId + "/clients/" + self.client.clientId + "/profile/imageUrl").setValue(self.client.profileImg.imageUrl)
+  
+                print(self.client.profileImg.imageUrl)
             }
         }
-        
     }
     
     func alert(message output:String) {

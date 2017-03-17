@@ -33,6 +33,9 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
         self.imgView.layer.cornerRadius = 175/4
         self.imgView.clipsToBounds = true;
         
+        // get reference to database
+        self.ref = FIRDatabase.database().reference()
+        
         fillData()
         
         makeProfilePicInteractive()
@@ -66,7 +69,7 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
         txfName.text = client.clientName 
         txfPhone.text = client.clientId
         txfEmail.text = client.clientEmail
-        imgView.image = client.profileImg ?? UIImage()
+        imgView.sd_setImage(with: URL(string: client.profileImg.imageUrl))
         
     }
     
@@ -84,35 +87,34 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
     
     @IBAction func save(_ sender: UIBarButtonItem) {
         
-        self.client = Client()
-        self.client.clientId = txfPhone.text ?? ""
-        self.client.clientName = txfName.text ?? ""
-        self.client.clientEmail = txfEmail.text ?? ""
-        self.client.profileImg = self.imgView.image ?? UIImage()
+        let clientName = txfName.text
+        let clientPhone = txfPhone.text
+        let clientEmail = txfEmail.text
+        
         
         // validate input
-        if (self.client.clientId.trimmingCharacters(in: .whitespacesAndNewlines) == "") {
+        if (clientPhone?.trimmingCharacters(in: .whitespacesAndNewlines) == "") {
+            
             alert(message: "Please fill out at least phone number")
             return
         }
         
+        self.client.clientName = clientName!
+        self.client.clientId = clientPhone!
+        self.client.clientEmail = clientEmail!
         
         
-        // get reference to database
-        self.ref = FIRDatabase.database().reference()
         
         // insert values
         self.ref.child(userId + "/clients/" + self.client.clientId + "/clientName").setValue(self.client.clientName)
         self.ref.child(userId + "/clients/" + self.client.clientId + "/clientEmail").setValue(self.client.clientEmail)
         print("writing successful")
         
-        if self.img != nil {
-            uploadImageToFirebase(data: self.img, path: userId + "/clients/" + self.client.clientId + "/", fileName: "profile")
+        
+        
+        if self.img != nil && profileImageChanged {
+            uploadImageToFirebase(data: self.img, path: userId + "/clients/" + clientPhone! + "/", fileName: "profile")
         }
-        else {
-            client.profileImg = nil
-        }
-
         
         if let del = self.delegate {
             del.dataChanged(client: self.client)
@@ -120,8 +122,7 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
         
         // close window
         let _ = self.navigationController?.popViewController(animated: true)
-        
-        print("writing successful")
+
         
     }
     
@@ -129,30 +130,34 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
         
         // get storage service reference
         let storageRef = FIRStorage.storage().reference(withPath: path + fileName)
-        
-        // set meta data for file type
-        let metaData = FIRStorageMetadata()
-        metaData.contentType = "image/jpeg"
-        
-        // put data
-        storageRef.put(data, metadata: metaData) { (md, err) in
+        storageRef.put(data, metadata: nil) { (metadata, err) in
             
             if err != nil {
                 print("received an error: \(err?.localizedDescription)")
-                
             }
             else {
-                print("upload complete! here's some meta data: \(md)")
+                guard metadata != nil else {
+                    print("error occurred")
+                    return
+                }
                 
-                self.client.profileImg = UIImage(data: data)
+                let uuid = UUID().uuidString
+                self.client.profileImg.imageName = uuid
+                self.client.profileImg.imageUrl = (metadata?.downloadURL()?.absoluteString)!
+                
+                self.ref.child(self.userId + "/clients/" + self.client.clientId + "/profile/imageName").setValue(self.client.profileImg.imageName)
+                self.ref.child(self.userId + "/clients/" + self.client.clientId + "/profile/imageUrl").setValue(self.client.profileImg.imageUrl)
+                
+                print(self.client.profileImg.imageUrl)
+                
                 if let del = self.delegate {
                     del.imageChanged(client:self.client)
                 }
             }
         }
-        
     }
- 
+    
+
     // when user click on select picture button
     @IBAction func selectPicture(_ sender: UIButton) {
         
@@ -167,6 +172,8 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
         
     }
     
+    var profileImageChanged = false
+    
     // execute after picking the image
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
     {
@@ -176,6 +183,7 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
             
             self.img = UIImageJPEGRepresentation(image, 1) as Data!
             imgView.image = image
+            profileImageChanged = true
             
         }
         

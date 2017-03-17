@@ -34,6 +34,7 @@
 		9AAF34C21E70F1A600CAFE44 /* EditClientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditClientView.swift; path = Monique/EditClientView.swift; sourceTree = "<group>"; };
 		9AAF34C41E70F1B500CAFE44 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Login.swift; path = Monique/Login.swift; sourceTree = "<group>"; };
 		9AAF34C61E713A0B00CAFE44 /* PictureTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PictureTimeView.swift; path = Monique/PictureTimeView.swift; sourceTree = "<group>"; };
+		9AB3EA2D1E7B84B7008E82CC /* Monique-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Monique-Bridging-Header.h"; sourceTree = "<group>"; };
 		9AD116611E5E7A9F00113753 /* ClientDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientDetailView.swift; path = Monique/ClientDetailView.swift; sourceTree = "<group>"; };
 		9AD116631E5E87C400113753 /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Client.swift; path = Monique/Client.swift; sourceTree = "<group>"; };
 		9AD2ABEB1E61148E00998BBB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -82,6 +83,7 @@
 				9AAF34C61E713A0B00CAFE44 /* PictureTimeView.swift */,
 				9A36296B1E5D3CDA003CFAF8 /* NewClientView.swift */,
 				9AD116631E5E87C400113753 /* Client.swift */,
+				9AB3EA2D1E7B84B7008E82CC /* Monique-Bridging-Header.h */,
 				9A3BC65D1E5C194800E9CA71 /* New Group */,
 				9A3BC6431E5A9AA700E9CA71 /* Products */,
 				48218D1D823D880B272EF557 /* Pods */,
@@ -146,6 +148,7 @@
 					9A3BC6411E5A9AA700E9CA71 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 8WVDFQN9GC;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -365,11 +368,14 @@
 			baseConfigurationReference = DEDF5D978543327D60F28F05 /* Pods-Monique.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 8WVDFQN9GC;
 				INFOPLIST_FILE = Monique/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = rifai.monique.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Monique-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -379,11 +385,13 @@
 			baseConfigurationReference = C66EC089496AEED42C212946 /* Pods-Monique.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 8WVDFQN9GC;
 				INFOPLIST_FILE = Monique/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = rifai.monique.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Monique-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

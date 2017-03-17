@@ -56,7 +56,7 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
             
                 for image in clientVisit.images {
                     
-                    loadImageFromFirebase(path: storageHomePath, fileName: "visits/" + self.clientVisit.visitDate + "/" + image, image: image)
+     //todo               loadImageFromFirebase(path: storageHomePath, fileName: "visits/" + self.clientVisit.visitDate + "/" + image, image: image)
                 }
             
         }
@@ -123,48 +123,7 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
     var img3Tapped = false
     
     
-    func img1Tapped(tapGestureRecognizer1: UITapGestureRecognizer)
-    {
-        
-        self.imgIndex = imgView1.tag
-        
-        let image = UIImagePickerController()
-        image.allowsEditing = false
-        image.delegate = self
-        
-        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
-        
-        self.present(image, animated: true)
-    }
-    
-    func img2Tapped(tapGestureRecognizer2: UITapGestureRecognizer)
-    {
-        
-        self.imgIndex = imgView2.tag
-        
-        let image = UIImagePickerController()
-        image.allowsEditing = false
-        image.delegate = self
-        
-        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
-        
-        self.present(image, animated: true)
-    }
-    
-    func img3Tapped(tapGestureRecognizer3: UITapGestureRecognizer)
-    {
-        
-        self.imgIndex = imgView3.tag
-        
-        let image = UIImagePickerController()
-        image.allowsEditing = false
-        image.delegate = self
-        
-        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
-        
-        self.present(image, animated: true)
-    }
-   
+       
     // execute after picking the image
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
     {
