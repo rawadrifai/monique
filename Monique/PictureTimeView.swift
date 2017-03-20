@@ -22,12 +22,11 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
     var ref: FIRDatabaseReference!
     
     var delegate: PictureTimeDelegate?
-    var storageHomePath:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        storageHomePath = self.userId + "/clients/" + client.clientId + "/"
+        self.ref = FIRDatabase.database().reference()
 
         
         loadVisit()
@@ -45,19 +44,15 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cell")
         {
-           
             let imgobj = self.client.clientVisits[selectedVisitIndex].images[indexPath.row]
-    
+            
             let image = cell.viewWithTag(1) as! UIImageView
             image.sd_setImage(with: URL(string: imgobj.imageUrl))
 
-            
-    
             return cell
         }
         
         return UITableViewCell(style: .default, reuseIdentifier: "cell")
-        
     }
     
     
@@ -72,19 +67,12 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
     }
     
     
-    // if user clicks cancel without selecting an image
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    
-    
     @IBAction func save(_ sender: UIBarButtonItem) {
         
         let notes = txvNotes.text ?? ""
+        
         self.client.clientVisits[selectedVisitIndex].notes = notes
         
-        saveImages()
         
         
         if let del = self.delegate {
@@ -95,27 +83,47 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         let _ = self.navigationController?.popViewController(animated: true)
         
         print("writing successful")
+        
+    }
+    
+    
+    @IBAction func addImage(_ sender: UIButton) {
+        
+        let image = UIImagePickerController()
+        image.allowsEditing = false
+        image.delegate = self
+        
+        // set the source to photo library
+        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        
+        self.present(image, animated: true)
+    }
+    
 
-    }
-    
-    
-    
-    func saveImages() {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
+    {
         
-        // clean the image list
-        self.client.clientVisits[selectedVisitIndex].images = [ImageObject]()
-        
-        for cell in tableView.visibleCells {
-        
-            let imgview = cell.viewWithTag(1) as! UIImageView
-            let imgdata = imgview.image?.sd_imageData()
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        {
+            // get the visit date
             let visitdate = self.client.clientVisits[selectedVisitIndex].visitDate
-            let uuid = UUID().uuidString
             
-            uploadImageToFirebase(data: imgdata!, path: userId + "/clients/" + self.client.clientId + "/visits/" + visitdate + "/", fileName: uuid)
+            // compress the image
+            let compressedImageData = UIImageJPEGRepresentation(image, 0)
             
+            uploadImageToFirebase(data: compressedImageData!, path: userId + "/clients/" + self.client.clientId + "/visits/" + visitdate + "/images/", fileName: UUID().uuidString)
         }
+        
+        self.dismiss(animated: true, completion: nil)
     }
+    
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
     
     
     func uploadImageToFirebase(data: Data, path: String, fileName: String) {
@@ -139,8 +147,12 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
                 
                 self.client.clientVisits[self.selectedVisitIndex].images.append(imgobj)
                 
-                self.ref.child(path).setValue(imgobj.imageName)
-                self.ref.child(path).setValue(imgobj.imageUrl)
+                self.ref.child(path + imgobj.imageName).setValue(imgobj.imageUrl)
+                self.tableView.reloadData()
+                
+                if let del = self.delegate {
+                    del.historyChanged(client: self.client)
+                }
                 
                 print(self.client.profileImg.imageUrl)
             }
@@ -174,3 +186,4 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
 protocol PictureTimeDelegate {
     func historyChanged(client: Client)
 }
+

@@ -23,7 +23,8 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.client.clientVisits.sort { $0.visitDate > $1.visitDate }
+        
         // get reference to database
         self.ref = FIRDatabase.database().reference()
         
@@ -47,9 +48,13 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
         let visitdate = String(year) + "-" + String(month) + "-" + String(day)
             + " " + String(hour) + ":" + String(minute) + ":" + String(second)
         
-        self.ref.child(userId + "/clients/" + self.client.clientId + "/visits/" + visitdate + "/notes").setValue("")
-        
-        self.tableView.reloadData()
+        self.ref.child(userId + "/clients/" + self.client.clientId + "/visits/" + visitdate + "/notes").setValue("") { (err, ref) in
+            
+            self.client.clientVisits.append(ClientVisit(visitDate: visitdate, notes: ""))
+            
+            self.client.clientVisits.sort { $0.visitDate > $1.visitDate }
+            self.tableView.reloadData()
+        }
         
     }
 
@@ -91,7 +96,6 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
             
             // set date to selected row
             self.selectedVisitIndex = indexPath.row
-    
             self.performSegue(withIdentifier: "pictureTimeSegue", sender: self)
             
         }
@@ -153,6 +157,8 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
     func historyChanged(client: Client) {
         
         self.client.clientVisits = client.clientVisits
+        self.client.clientVisits.sort { $0.visitDate > $1.visitDate }
+        
         self.tableView.reloadData()
     }
 

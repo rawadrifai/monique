@@ -113,7 +113,9 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
         
         if profileImageChanged && self.imgView.image?.sd_imageData() != nil {
             
-            uploadImageToFirebase(data: (self.imgView.image?.sd_imageData())!, path: userId + "/clients/" + clientPhone! + "/profile/", fileName: UUID().uuidString)
+            let compressedImageData = UIImageJPEGRepresentation(self.imgView.image!, 0)
+            
+            uploadImageToFirebase(data: compressedImageData!, path: userId + "/clients/" + clientPhone! + "/profile/", fileName: UUID().uuidString)
         }
         
         if let del = self.delegate {

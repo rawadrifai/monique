@@ -13,6 +13,7 @@ import FirebaseStorage
 
 class NewClientView: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
+    var delegate: NewClientDelegate?
 
     var userId = String()
     var ref: FIRDatabaseReference!
@@ -57,7 +58,6 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
         // set the source to photo library
         image.sourceType = UIImagePickerControllerSourceType.photoLibrary
         
-        
         self.present(image, animated: true)
     }
     
@@ -90,37 +90,29 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
         
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage
         {
-            //imgView.image = image
-            
-            imgView.image = UIImageJPEGRepresentation(imgView.image!, 0) as! UIImage
-            //imgView.image = UIImage(data: image.sd_imageData()!,scale: 0)
-            
+            imgView.image = image
         }
         
         self.dismiss(animated: true, completion: nil)
     }
     
     
-    
-    
     @IBAction func addClient(_ sender: UIBarButtonItem) {
         
-
-        
-        let clientName = txfName.text
-        let clientPhone = txfPhone.text
-        let clientEmail = txfEmail.text
+        let clientName = txfName.text ?? ""
+        let clientPhone = txfPhone.text ?? ""
+        let clientEmail = txfEmail.text ?? ""
         
         // validate input
-        if (clientPhone?.trimmingCharacters(in: .whitespacesAndNewlines) == "") {
+        if (clientPhone.trimmingCharacters(in: .whitespacesAndNewlines) == "") {
             
             alert(message: "Please fill out at least phone number")
             return
         }
         
-        self.client.clientName = clientName!
-        self.client.clientId = clientPhone!
-        self.client.clientEmail = clientEmail!
+        self.client.clientName = clientName
+        self.client.clientId = clientPhone
+        self.client.clientEmail = clientEmail
         
         
 
@@ -132,17 +124,13 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
         
         if self.imgView.image?.sd_imageData() != nil {
             
-            let compressedImage = UIImage(data: (self.imgView.image?.sd_imageData())!, scale: 0)
-            uploadImageToFirebase(data: (compressedImage?.sd_imageData())!, path: userId + "/clients/" + clientPhone! + "/profile/", fileName: UUID().uuidString)
+            let compressedImageData = UIImageJPEGRepresentation(self.imgView.image!, 0)
+            
+            uploadImageToFirebase(data: compressedImageData!, path: userId + "/clients/" + clientPhone + "/profile/", fileName: UUID().uuidString)
         }
         
-        
         let _ = self.navigationController?.popViewController(animated: true)
-        
     }
-    
-    
-    
     
     func uploadImageToFirebase(data: Data, path: String, fileName: String) {
 
@@ -164,9 +152,12 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
                 self.client.profileImg.imageUrl = (metadata?.downloadURL()?.absoluteString)!
                 
                 self.ref.child(path + "/imageName").setValue(self.client.profileImg.imageName)
-                self.ref.child(path + "imageUrl").setValue(self.client.profileImg.imageUrl)
+                self.ref.child(path + "/imageUrl").setValue(self.client.profileImg.imageUrl)
+                
+                if let del = self.delegate {
+                    del.dataChanged(client: self.client)
+                }
   
-                print(self.client.profileImg.imageUrl)
             }
         }
     }
@@ -180,6 +171,8 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
     @IBAction func closeView(_ sender: UIBarButtonItem) {
         let _ = self.navigationController?.popViewController(animated: true)
     }
+}
 
-
+protocol NewClientDelegate {
+    func dataChanged(client:Client)
 }
