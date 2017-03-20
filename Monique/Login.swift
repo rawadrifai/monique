@@ -10,13 +10,7 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     var userId:String!
     var ref: FIRDatabaseReference!
     
-    @IBOutlet weak var txfName: UITextField!
-    @IBOutlet weak var txfEmail: UITextField!
-    @IBOutlet weak var txfPhone: UITextField!
-    @IBOutlet weak var labelName: UILabel!
-    @IBOutlet weak var labelEmail: UILabel!
-    @IBOutlet weak var labelPhone: UILabel!
-    
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,56 +73,18 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
             
             if loggedInBefore == "true" {
                 self.userId = UIDevice.current.identifierForVendor!.uuidString
-                self.ref.child(self.userId + "/deviceId").setValue(self.userId)
-            
                 self.performSegue(withIdentifier: "loginSegue", sender: self)
+                
             }
             else {
-                defaults.setValue(nil, forKey: "loggedInBefore")
-                showFields(visible: true)
+                self.performSegue(withIdentifier: "saveUserInfoSegue", sender: self)
             }
             
         } else {
-
-            
-            if labelEmail.isHidden {
-                showFields(visible: true)
-            }
-            else {
-                
-                if validateInput() {
-                    
-                    self.userId = UIDevice.current.identifierForVendor!.uuidString
-                    self.ref.child(self.userId + "/deviceId").setValue(self.userId)
-                    self.ref.child(self.userId + "/name").setValue(txfName.text!)
-                    self.ref.child(self.userId + "/email").setValue(txfEmail!)
-                    self.ref.child(self.userId + "/phone").setValue(txfPhone!)
-                    
-                    self.performSegue(withIdentifier: "loginSegue", sender: self)
-                }
-                
-            }
-            defaults.setValue("true", forKey: "loggedInBefore")
+            self.performSegue(withIdentifier: "saveUserInfoSegue", sender: self)
         }
     }
-    
-    func validateInput() -> Bool {
-        
-        let clientName = txfName.text ?? ""
-        let clientPhone = txfPhone.text ?? ""
-        let clientEmail = txfEmail.text ?? ""
-        
-        // validate input
-        if (clientName.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-            clientEmail.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-            clientPhone.trimmingCharacters(in: .whitespacesAndNewlines) == "") {
-            
-            alert(message: "Please fill out your info once")
-            return false
-        }
 
-        return true
-    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "loginSegue" {
@@ -166,23 +122,7 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
        
     }
     
-    func showFields(visible:Bool) {
-        
-        txfName.isHidden = !visible
-        txfEmail.isHidden = !visible
-        txfPhone.isHidden = !visible
     
-        labelName.isHidden = !visible
-        labelEmail.isHidden = !visible
-        labelEmail.isHidden = !visible
-        
-    }
-    
-    func alert(message output:String) {
-        let alert = UIAlertController(title: "Invalid Input", message: output, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-    }
     
     @IBAction func resetclicked(_ sender: UIButton) {
         let defaults = UserDefaults.standard

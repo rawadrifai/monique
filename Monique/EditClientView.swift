@@ -24,7 +24,8 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
     @IBOutlet weak var txfPhone: UITextField!
     @IBOutlet weak var txfEmail: UITextField!
     
-    
+    var imageChanged = false
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -111,7 +112,7 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
         
         
         
-        if profileImageChanged && self.imgView.image?.sd_imageData() != nil {
+        if imageChanged && self.imgView.image?.sd_imageData() != nil {
             
             let compressedImageData = UIImageJPEGRepresentation(self.imgView.image!, 0)
             
@@ -173,7 +174,6 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
         
     }
     
-    var profileImageChanged = false
     
     // execute after picking the image
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
@@ -183,7 +183,7 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
         {
             
             imgView.image = UIImage(data: image.sd_imageData()!,scale: 0)
-            profileImageChanged = true
+            imageChanged = true
             
         }
         

@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseStorage
 
 class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDelegate {
 
@@ -101,6 +102,47 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
         }
         
     }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        
+        // get an instance of the client to be deleted
+        let visitToBeDeleted = self.client.clientVisits[indexPath.row] as ClientVisit
+        
+        let deleteAlert = UIAlertController(title: "Confirm", message: "Are you sure?", preferredStyle: UIAlertControllerStyle.alert)
+        
+        deleteAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+            
+            self.ref = FIRDatabase.database().reference()
+            
+            // delete from firebase database, with completion block
+            
+            self.ref.child(self.userId + "/clients/" + self.client.clientId + "/visits/" + visitToBeDeleted.visitDate).removeValue(completionBlock: { (err, ref) in
+                
+                self.client.clientVisits.remove(at: indexPath.row)
+                self.tableView.reloadData()
+                
+                // delete from firebase
+                let storageRef = FIRStorage.storage().reference().child(self.userId + "/clients/" + self.client.clientId + "/visits/" + visitToBeDeleted.visitDate)
+                
+                
+                storageRef.delete { (err) in
+                    
+                    if err != nil {
+                        print("received an error: \(err?.localizedDescription)")
+                    }
+                }
+            })
+        }))
+        
+        deleteAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+            
+        }))
+        
+        present(deleteAlert, animated: true, completion: nil)
+        
+    }
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         

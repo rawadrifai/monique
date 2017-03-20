@@ -56,7 +56,35 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
     }
     
     
-    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        
+        // get an instance of the image to be deleted
+        let imageToBeDeleted = self.client.clientVisits[selectedVisitIndex].images[indexPath.row] as ImageObject
+        
+       
+            self.ref = FIRDatabase.database().reference()
+            
+            // delete from firebase database, with completion block
+        
+            self.ref.child(self.userId + "/clients/" + self.client.clientId + "/visits/" + self.client.clientVisits[selectedVisitIndex].visitDate + "/" + imageToBeDeleted.imageName).removeValue { (err, ref) in
+                
+                self.client.clientVisits[self.selectedVisitIndex].images.remove(at: indexPath.row)
+                self.tableView.reloadData()
+                
+                // delete from firebase
+                let storageRef = FIRStorage.storage().reference().child(self.userId + "/clients/" + self.client.clientId + "/visits/" + self.client.clientVisits[self.selectedVisitIndex].visitDate + "/" + imageToBeDeleted.imageName)
+                
+                
+                storageRef.delete { (err) in
+                    
+                    if err != nil {
+                        print("received an error: \(err?.localizedDescription)")
+                    }
+                }
+        }
+        
+    }
     
     
     

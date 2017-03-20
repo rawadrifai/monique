@@ -24,6 +24,8 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
     @IBOutlet weak var txfPhone: UITextField!
     @IBOutlet weak var txfEmail: UITextField!
     
+    var imageChanged = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -93,6 +95,8 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
             imgView.image = image
         }
         
+        imageChanged = true
+        
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -122,7 +126,7 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
         print("writing successful")
         
         
-        if self.imgView.image?.sd_imageData() != nil {
+        if imageChanged && self.imgView.image?.sd_imageData() != nil {
             
             let compressedImageData = UIImageJPEGRepresentation(self.imgView.image!, 0)
             
