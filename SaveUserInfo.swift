@@ -36,16 +36,10 @@ class SaveUserInfo: UIViewController {
             
             self.ref.child(userId).setValue(user) { (err, ref) in
                 defaults.setValue("true", forKey: "loggedInBefore")
+                self.userId = userId
+                self.performSegue(withIdentifier: "loginSegue", sender: self)
             }
-
-            self.userId = userId
-            self.performSegue(withIdentifier: "loginSegue", sender: self)
-            
         }
-        
-        
-        
-        
     }
     
 

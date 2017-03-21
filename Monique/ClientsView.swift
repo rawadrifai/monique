@@ -119,7 +119,6 @@ class ClientsView: UITableViewController, UISearchResultsUpdating, NewClientDele
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        _ = tableView.indexPathForSelectedRow!
         if let _ = tableView.cellForRow(at: indexPath) {
             
             self.performSegue(withIdentifier: "clientDetailsSegue", sender: self)

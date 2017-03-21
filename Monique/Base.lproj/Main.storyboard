@@ -196,16 +196,16 @@
             </objects>
             <point key="canvasLocation" x="69" y="-62"/>
         </scene>
-        <!--Table View Controller-->
+        <!--More View-->
         <scene sceneID="2PM-Iq-KXg">
             <objects>
-                <tableViewController id="KZI-Y6-GH1" sceneMemberID="viewController">
+                <tableViewController id="KZI-Y6-GH1" customClass="MoreView" customModule="Monique" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="nKP-d1-fU1">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
-                            <tableViewSection headerTitle="Privacy" id="x50-OE-k7d">
+                            <tableViewSection headerTitle="Terms and Conditions" id="x50-OE-k7d">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="CsT-Sa-wQ1" style="IBUITableViewCellStyleDefault" id="Mqw-rn-Cbz">
                                         <rect key="frame" x="0.0" y="56" width="320" height="44"/>
@@ -214,7 +214,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Terms and Conditions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CsT-Sa-wQ1">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Terms of Service" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CsT-Sa-wQ1">
                                                     <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -223,6 +223,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="PIx-bd-12k" kind="show" id="Wak-ad-GZp"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="5J8-Zt-di8" style="IBUITableViewCellStyleDefault" id="m39-N4-WvV">
                                         <rect key="frame" x="0.0" y="100" width="320" height="44"/>
@@ -231,7 +234,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Privacy Statement" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5J8-Zt-di8">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Privacy Policy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5J8-Zt-di8">
                                                     <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -240,6 +243,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="X0f-dE-DfG" kind="show" id="o49-br-mAd"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -261,16 +267,19 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="8U2-2v-cqz" kind="show" id="MAK-EC-MbD"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Pcw-L7-O3y" style="IBUITableViewCellStyleDefault" id="Kq1-Dv-IEj">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="Pcw-L7-O3y" style="IBUITableViewCellStyleDefault" id="Kq1-Dv-IEj">
                                         <rect key="frame" x="0.0" y="245" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kq1-Dv-IEj" id="pfQ-QM-8rr">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Contact Us" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Pcw-L7-O3y">
-                                                    <rect key="frame" x="15" y="0.0" width="270" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="290" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -315,7 +324,96 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SFc-b3-ofD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="889" y="1253"/>
+            <point key="canvasLocation" x="889" y="1196"/>
+        </scene>
+        <!--Terms of Service-->
+        <scene sceneID="1tJ-nY-jXC">
+            <objects>
+                <viewController id="PIx-bd-12k" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1RI-P0-1iZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="tDi-sS-mJc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="j4o-fJ-qwC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0Fj-kC-KI9">
+                                <rect key="frame" x="16" y="64" width="288" height="455"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <mutableString key="text">Terms of Service
+
+The following terms and conditions govern all use of the Tuuk website and the related mobile app (collectively, the “Service”). The Service is owned and operated by Tuuk LLC (“Tuuk”). The Website is offered subject to your acceptance without modification of all of the terms and conditions contained herein and all other operating rules, policies (including, without limitation, Tuuk’ Privacy Policy) and procedures that may be published from time to time on this Site by Tuuk (collectively, the “Agreement”).
+
+Please read this Agreement carefully before accessing or using the Service. By accessing or using any part of the web site, you agree to become bound by the terms and conditions of this agreement. If you do not agree to all the terms and conditions of this agreement, then you may not access the Service or use any services. If these terms and conditions are considered an offer by Tuuk, acceptance is expressly limited to these terms. The Service is available only to individuals who are at least 13 years old.
+
+Your Tuuk Account and Site
+
+If you create an Account on the Service, you are responsible for maintaining the security of your account, and you are fully responsible for all activities that occur under the account and any other actions taken in connection with the account. You must immediately notify Tuuk of any unauthorized uses of your account or any other breaches of security. Tuuk will not be liable for any acts or omissions by You, including any damages of any kind incurred as a result of such acts or omissions.
+
+Responsibility of Website Visitors
+
+Tuuk has not reviewed, and cannot review, all of the material, including computer software, posted to the Service, and cannot therefore be responsible for that material’s content, use or effects. By operating the Service, Tuuk does not represent or imply that it endorses the material there posted, or that it believes such material to be accurate, useful or non-harmful. You are responsible for taking precautions as necessary to protect yourself and your computer systems from viruses, worms, Trojan horses, and other harmful or destructive content. The Service may contain content that is offensive, indecent, or otherwise objectionable, as well as content containing technical inaccuracies, typographical mistakes, and other errors. The Service may also contain material that violates the privacy or publicity rights, or infringes the intellectual property and other proprietary rights, of third parties, or the downloading, copying or use of which is subject to additional terms and conditions, stated or unstated. Tuuk disclaims any responsibility for any harm resulting from the use by visitors of the Service, or from any downloading by those visitors of content there posted.
+
+Content Posted on Other Websites
+
+We have not reviewed, and cannot review, all of the material, including computer software, made available through the websites and webpages to which Tuuk links, and that link to Tuuk. Tuuk does not have any control over those non-Tuuk websites and webpages, and is not responsible for their contents or their use. By linking to a non-Tuuk website or webpage, Tuuk does not represent or imply that it endorses such website or webpage. You are responsible for taking precautions as necessary to protect yourself and your computer systems from viruses, worms, Trojan horses, and other harmful or destructive content. Tuuk disclaims any responsibility for any harm resulting from your use of non-Tuuk websites and webpages.
+
+Intellectual Property
+
+This Agreement does not transfer from Tuuk to you any Tuuk or third party intellectual property, and all right, title and interest in and to such property will remain (as between the parties) solely with Tuuk. Tuuk, the Tuuk logo, and all other trademarks, service marks, graphics and logos used in connection with Tuuk, or the Service are trademarks or registered trademarks of Tuuk or Tuuk licensors. Other trademarks, service marks, graphics and logos used in connection with the Service may be the trademarks of other third parties. Your use of the Service grants you no right or license to reproduce or otherwise use any Tuuk or third-party trademarks.
+
+Changes
+
+Tuuk reserves the right, at its sole discretion, to modify or replace any part of this Agreement. It is your responsibility to check this Agreement periodically for changes. Your continued use of or access to the Service following the posting of any changes to this Agreement constitutes acceptance of those changes. Tuuk may also, in the future, offer new services and/or features through the Service (including, the release of new tools and resources). Such new features and/or services shall be subject to the terms and conditions of this Agreement.
+
+Termination
+
+Tuuk may terminate your access to all or any part of the Website at any time, with or without cause, with or without notice, effective immediately. If you wish to terminate this Agreement or your Tuuk account (if you have one), you may simply discontinue using the Service. All provisions of this Agreement which by their nature should survive termination shall survive termination, including, without limitation, ownership provisions, warranty disclaimers, indemnity and limitations of liability.
+
+Disclaimer of Warranties
+
+The Service is provided “as is”. Tuuk and its suppliers and licensors hereby disclaim all warranties of any kind, express or implied, including, without limitation, the warranties of merchantability, fitness for a particular purpose and non-infringement. Neither Tuuk nor its suppliers and licensors, makes any warranty that the Service will be error free or that access thereto will be continuous or uninterrupted. You understand that you download from, or otherwise obtain content or services through, the Service at your own discretion and risk.
+
+Limitation of Liability
+
+In no event will Tuuk, or its suppliers or licensors, be liable with respect to any subject matter of this agreement under any contract, negligence, strict liability or other legal or equitable theory for: (i) any special, incidental or consequential damages; (ii) the cost of procurement for substitute products or services; (iii) for interruption of use or loss or corruption of data; or (iv) for any amounts that exceed the fees paid by you to Tuuk under this agreement during the twelve (12) month period prior to the cause of action. Tuuk shall have no liability for any failure or delay due to matters beyond their reasonable control. The foregoing shall not apply to the extent prohibited by applicable law.
+
+General Representation and Warranty
+
+You represent and warrant that (i) your use of the Service will be in strict accordance with the Tuuk Privacy Policy, with this Agreement and with all applicable laws and regulations (including without limitation any local laws or regulations in your country, state, city, or other governmental area, regarding online conduct and acceptable content, and including all applicable laws regarding the transmission of technical data exported from the United States or the country in which you reside) and (ii) your use of the Service will not infringe or misappropriate the intellectual property rights of any third party.
+
+Indemnification
+
+You agree to indemnify and hold harmless Tuuk, its contractors, and its licensors, and their respective directors, officers, employees and agents from and against any and all claims and expenses, including attorneys’ fees, arising out of your use of the Service, including but not limited to your violation of this Agreement.
+
+Refund Policy
+
+All of our digital products purchased directly on our web site, Google Play or Apple AppStore are non-refundable, and all sales are final.
+Miscellaneous
+
+This Agreement constitutes the entire agreement between Tuuk and you concerning the subject matter hereof, and they may only be modified by a written amendment signed by an authorized executive of Tuuk , or by the posting by Tuuk of a revised version. Except to the extent applicable law, if any, provides otherwise, this Agreement, any access to or use of the Service will be governed by the laws of the state of California, U.S.A., excluding its conflict of law provisions, and the proper venue for any disputes arising out of or relating to any of the same will be the state and federal courts located in Los Angeles County, California. Except for claims for injunctive or equitable relief or claims regarding intellectual property rights (which may be brought in any competent court without the posting of a bond), any dispute arising under this Agreement shall be finally settled in accordance with the Comprehensive Arbitration Rules of the Judicial Arbitration and Mediation Service, Inc. (“JAMS”) by three arbitrators appointed in accordance with such Rules. The arbitration shall take place in Los Angeles, California, in the English language and the arbitral decision may be enforced in any court. The prevailing party in any action or proceeding to enforce this Agreement shall be entitled to costs and attorneys’ fees. If any part of this Agreement is held invalid or unenforceable, that part will be construed to reflect the parties’ original intent, and the remaining portions will remain in full force and effect. A waiver by either party of any term or condition of this Agreement or any breach thereof, in any one instance, will not waive such term or condition or any subsequent breach thereof. You may assign your rights under this Agreement to any party that consents to, and agrees to be bound by, its terms and conditions; Tuuk may assign its rights under this Agreement without condition. This Agreement will be binding upon and will inure to the benefit of the parties, their successors and permitted assigns.
+
+Some portions of this document are borrowed—with permission—from here under a Creative Commons license.
+
+This Agreement was last modified on 03/20/2017</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="tDi-sS-mJc" firstAttribute="top" secondItem="0Fj-kC-KI9" secondAttribute="bottom" id="OIl-WH-Nb6"/>
+                            <constraint firstItem="0Fj-kC-KI9" firstAttribute="top" secondItem="1RI-P0-1iZ" secondAttribute="bottom" id="Oia-Nu-qt4"/>
+                            <constraint firstItem="0Fj-kC-KI9" firstAttribute="leading" secondItem="j4o-fJ-qwC" secondAttribute="leadingMargin" id="irM-oh-tNC"/>
+                            <constraint firstItem="0Fj-kC-KI9" firstAttribute="trailing" secondItem="j4o-fJ-qwC" secondAttribute="trailingMargin" id="zi3-SH-07h"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Terms of Service" id="55b-ie-yZU"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZWJ-6R-BYq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1744" y="828"/>
         </scene>
         <!--Save User Info-->
         <scene sceneID="QcQ-ZC-8AD">
@@ -458,11 +556,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="NFV-W4-JD3">
-                                <rect key="frame" x="16" y="219" width="288" height="130"/>
+                            <stackView contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="NFV-W4-JD3">
+                                <rect key="frame" x="16" y="184" width="288" height="200"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D7d-mP-eHJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="288" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="60"/>
                                         <state key="normal" title="reset">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -471,11 +569,11 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="waZ-m5-ly2" customClass="GIDSignInButton">
-                                        <rect key="frame" x="0.0" y="40" width="288" height="50"/>
+                                        <rect key="frame" x="0.0" y="70" width="288" height="60"/>
                                         <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="08A-hu-Lj6">
-                                        <rect key="frame" x="0.0" y="100" width="288" height="30"/>
+                                        <rect key="frame" x="0.0" y="140" width="288" height="60"/>
                                         <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                         <state key="normal" title="Sign In">
@@ -486,7 +584,9 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.88628043680000002" green="0.99476839090000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="sZL-SX-vj7"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -970,6 +1070,120 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s0a-FX-RCF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="889" y="386"/>
+        </scene>
+        <!--Privacy Policy-->
+        <scene sceneID="yda-R2-ztM">
+            <objects>
+                <viewController id="X0f-dE-DfG" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ede-Ug-4HR"/>
+                        <viewControllerLayoutGuide type="bottom" id="JJE-Cu-Juw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="r1g-Jd-jZt">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4RT-Mg-PIu">
+                                <rect key="frame" x="16" y="64" width="288" height="455"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <mutableString key="text">Privacy Policy
+
+This Privacy Policy describes all Tuuk apps policies and procedures on the collection, use and disclosure of your information. Tuuk receives your information through our various web sites, SMS, APIs, and other services (“Services”). When using any of our Services you consent to the collection, transfer, manipulation, storage, disclosure and other uses of your information as described in this Privacy Policy. Irrespective of which country that you reside in or create information from, your information may be used by Tuuk in the United States or any other country where Tuuk operates.
+
+If you have any questions or comments about this Privacy Policy, please contact us at tuukinfo@gmail.com
+
+Information Collection &amp; Use
+
+We collect and use your information to provide our Services and improve them over time.
+
+Information Collected Upon Registration or Login: When you create or reconfigure a Tuuk account, you provide some personal information, we may collect information such as your name, username, email address, location and contacts info through connecting to your Tuuk account (with your consent) This information is not displayed with the public nor is it ever shared without your explicit consent. We may use your contact information to send you information about our Services or alert you to important events. If you contact us via email or other electronic communication, we may keep your message, email address and contact information to respond to your request.
+
+Text Messages: Our Services are primarily designed to help you share information privately with whom you choose. None of the information is ever made public, unless you explicitly opt-in for that.
+
+Log Data: Our servers automatically record information (“Log Data”) created by your use of the Services. Log Data may include information such as your IP address, browser type, phone type, the referring domain, pages visited. Other actions, such as interactions with advertisements, may also be included in Log Data.
+
+Links: Tuuk may keep track of how you interact with links in Updates by redirecting clicks or through other means. We do this to help improve our Services, including advertising, and to be able to share aggregate click statistics such as how many times a particular link was clicked on.
+
+Cookies: Like many websites, we use “cookies” to collect additional website usage data and to improve our Services, and to authenticate users. A cookie is a small data file that is transferred to your computer’s hard disk. Tuuk may use both session cookies and persistent cookies to better understand how you interact with our Services, to monitor aggregate usage by our users and web traffic routing on our Services, and to improve our Services. Most Internet browsers automatically accept cookies. You can instruct your browser, by editing its options, to stop accepting cookies or to prompt you before accepting a cookie from the websites you visit.
+
+Third Party Services: Tuuk uses a variety of services hosted by third parties to help provide our Services and to help us understand the use of our Services, such as Google Analytics, CleverTap. These services may collect information sent by your browser or your phone, such as cookies, your email, IP Address or location.
+
+Information Sharing &amp; Disclosure
+
+We do not disclose your private information except in the limited circumstances described here.
+
+Your Consent: We may share or disclose your information with your consent, such as when you use a third party web client to access your Tuuk account.
+
+Service Providers: We engage certain trusted third parties to perform functions and provide services to us. We may share your personal information with these third parties, but only to the extent necessary to perform these functions and provide such services, and only pursuant to obligations mirroring the protections of this privacy policy.
+
+Law and Harm: We may disclose your information if we believe that it is reasonably necessary to comply with a law, regulation or legal request; to protect the safety of any person; to address fraud, security or technical issues; or to protect Tuuk’ rights or property.
+
+Business Transfers: In the event that Tuuk is involved in a bankruptcy, merger, acquisition, reorganization or sale of assets, your information may be sold or transferred as part of that transaction. The promises in this privacy policy will apply to your information as transferred to the new entity.
+
+Non-Private or Non-Personal Information: We may share or disclose aggregated or otherwise non-personal information, such as usage patterns or link click statistics
+
+Information Sharing &amp; Disclosure
+
+If you are a registered user of our Services, we provide you with tools to access or modify the personal information you provided to us and associated with your account.
+
+Information Sharing &amp; Disclosure
+
+This Privacy Policy may be updated from time to time for any reason. We will notify you of any changes to our Privacy Policy by posting the new Privacy Policy here. You are advised to consult this Privacy Policy regularly for any changes, as continued use is deemed approval of all changes.</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4RT-Mg-PIu" firstAttribute="trailing" secondItem="r1g-Jd-jZt" secondAttribute="trailingMargin" id="HAM-Wy-WiZ"/>
+                            <constraint firstItem="JJE-Cu-Juw" firstAttribute="top" secondItem="4RT-Mg-PIu" secondAttribute="bottom" id="HCC-pk-3vc"/>
+                            <constraint firstItem="4RT-Mg-PIu" firstAttribute="top" secondItem="ede-Ug-4HR" secondAttribute="bottom" id="aIY-2Z-RbW"/>
+                            <constraint firstItem="4RT-Mg-PIu" firstAttribute="leading" secondItem="r1g-Jd-jZt" secondAttribute="leadingMargin" id="dZO-Dh-87m"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Privacy Policy" id="hfO-r8-BwD"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="543-1S-0To" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1744" y="1497"/>
+        </scene>
+        <!--About The App-->
+        <scene sceneID="eTs-mT-RVn">
+            <objects>
+                <viewController id="8U2-2v-cqz" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wOi-o1-F8d"/>
+                        <viewControllerLayoutGuide type="bottom" id="tPb-hA-Dq5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="O3T-tz-sbR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eDX-f8-qA1">
+                                <rect key="frame" x="16" y="64" width="288" height="455"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">About The App
+
+Tuuk is an app made to assisnt hair stylists and barbers. Tuuk allows the stylist to maintain a portfolio for their clients. Using Tuuk, you, the stylist, will be able to provice special care for your clients and instantly access every haircut they have had with you.
+
+Enjoy!</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="eDX-f8-qA1" firstAttribute="top" secondItem="wOi-o1-F8d" secondAttribute="bottom" id="B0h-bQ-klq"/>
+                            <constraint firstItem="tPb-hA-Dq5" firstAttribute="top" secondItem="eDX-f8-qA1" secondAttribute="bottom" id="To6-UO-qLm"/>
+                            <constraint firstItem="eDX-f8-qA1" firstAttribute="leading" secondItem="O3T-tz-sbR" secondAttribute="leadingMargin" id="kXV-CO-kOT"/>
+                            <constraint firstItem="eDX-f8-qA1" firstAttribute="trailing" secondItem="O3T-tz-sbR" secondAttribute="trailingMargin" id="paQ-Sp-OqC"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="About The App" id="KZR-rX-ygt"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ktC-pg-dcm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="889" y="1993"/>
         </scene>
     </scenes>
     <resources>

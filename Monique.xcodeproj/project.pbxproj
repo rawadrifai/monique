@@ -16,6 +16,7 @@
 		9AAF34C51E70F1B500CAFE44 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAF34C41E70F1B500CAFE44 /* Login.swift */; };
 		9AAF34C71E713A0B00CAFE44 /* PictureTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAF34C61E713A0B00CAFE44 /* PictureTimeView.swift */; };
 		9AB3EA311E7F9CF7008E82CC /* SaveUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB3EA301E7F9CF7008E82CC /* SaveUserInfo.swift */; };
+		9ACCCAB41E80A66000CA19ED /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACCCAB31E80A66000CA19ED /* MoreView.swift */; };
 		9AD116621E5E7A9F00113753 /* ClientDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD116611E5E7A9F00113753 /* ClientDetailView.swift */; };
 		9AD116641E5E87C400113753 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD116631E5E87C400113753 /* Client.swift */; };
 		9AD2ABEC1E61148E00998BBB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AD2ABEB1E61148E00998BBB /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 		9AAF34C61E713A0B00CAFE44 /* PictureTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PictureTimeView.swift; path = Monique/PictureTimeView.swift; sourceTree = "<group>"; };
 		9AB3EA2D1E7B84B7008E82CC /* Monique-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Monique-Bridging-Header.h"; sourceTree = "<group>"; };
 		9AB3EA301E7F9CF7008E82CC /* SaveUserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveUserInfo.swift; sourceTree = "<group>"; };
+		9ACCCAB31E80A66000CA19ED /* MoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; };
 		9AD116611E5E7A9F00113753 /* ClientDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientDetailView.swift; path = Monique/ClientDetailView.swift; sourceTree = "<group>"; };
 		9AD116631E5E87C400113753 /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Client.swift; path = Monique/Client.swift; sourceTree = "<group>"; };
 		9AD2ABEB1E61148E00998BBB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				9A3BC64B1E5A9AA700E9CA71 /* Main.storyboard */,
+				9ACCCAB31E80A66000CA19ED /* MoreView.swift */,
 				9AAF34C41E70F1B500CAFE44 /* Login.swift */,
 				9AB3EA301E7F9CF7008E82CC /* SaveUserInfo.swift */,
 				9A3BC65B1E5AA5C300E9CA71 /* ClientsView.swift */,
@@ -250,6 +253,7 @@
 				9AAF34C71E713A0B00CAFE44 /* PictureTimeView.swift in Sources */,
 				9AB3EA311E7F9CF7008E82CC /* SaveUserInfo.swift in Sources */,
 				9AAF34C51E70F1B500CAFE44 /* Login.swift in Sources */,
+				9ACCCAB41E80A66000CA19ED /* MoreView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,6 +379,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 8WVDFQN9GC;
 				INFOPLIST_FILE = Monique/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = rifai.monique.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -392,6 +397,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 8WVDFQN9GC;
 				INFOPLIST_FILE = Monique/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = rifai.monique.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";

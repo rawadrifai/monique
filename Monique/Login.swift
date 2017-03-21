@@ -68,6 +68,7 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     
     @IBAction func signInUsignDeviceId(_ sender: UIButton) {
         
+
         let defaults = UserDefaults.standard
         if let loggedInBefore = defaults.string(forKey: "loggedInBefore") {
             
