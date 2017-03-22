@@ -14,7 +14,7 @@ import FirebaseStorage
 class NewClientView: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     var delegate: NewClientDelegate?
-
+    
     var userId = String()
     var ref: FIRDatabaseReference!
     var client = Client()
@@ -29,10 +29,10 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
     override func viewDidLoad() {
         super.viewDidLoad()
         
- 
+        
         self.imgView.layer.cornerRadius = 175 / 4;
         self.imgView.clipsToBounds = true;
- 
+        
         
         // get reference to database
         self.ref = FIRDatabase.database().reference()
@@ -58,34 +58,17 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
         image.delegate = self
         
         // set the source to photo library
-        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        image.sourceType = UIImagePickerControllerSourceType.camera
         
         self.present(image, animated: true)
     }
     
-
+    
     // if user clicks cancel without selecting an image
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
-    
-    // when user click on select picture button
-    @IBAction func selectPicture(_ sender: UIButton) {
-        
-        let image = UIImagePickerController()
-        image.allowsEditing = false
-        image.delegate = self
-        
-        // set the source to photo library
-        image.sourceType = UIImagePickerControllerSourceType.camera//.photoLibrary
-    
-        
-        self.present(image, animated: true)
-            
-        
-        
-    }
-    
+
     // execute after picking the image
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
     {
@@ -101,43 +84,63 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
     }
     
     
-    @IBAction func addClient(_ sender: UIBarButtonItem) {
+    func validateInput() -> Bool {
         
         let clientName = txfName.text ?? ""
         let clientPhone = txfPhone.text ?? ""
         let clientEmail = txfEmail.text ?? ""
         
         // validate input
+        if (clientName.trimmingCharacters(in: .whitespacesAndNewlines) == "") {
+            alert(message: "Invalid Name")
+            return false
+        }
+        if (!isValidEmail(testStr: clientEmail)) {
+            alert(message: "Invalid Email")
+            return false
+        }
         if (clientPhone.trimmingCharacters(in: .whitespacesAndNewlines) == "") {
-            
-            alert(message: "Please fill out at least phone number")
-            return
+            alert(message: "Invalid Phone")
+            return false
         }
         
-        self.client.clientName = clientName
-        self.client.clientId = clientPhone
-        self.client.clientEmail = clientEmail
+        return true
+    }
+    
+    func isValidEmail(testStr:String) -> Bool {
         
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
         
-
-        // insert values
-        self.ref.child(userId + "/clients/" + self.client.clientId + "/clientName").setValue(self.client.clientName)
-        self.ref.child(userId + "/clients/" + self.client.clientId + "/clientEmail").setValue(self.client.clientEmail)
-        print("writing successful")
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: testStr)
+    }
+    
+    @IBAction func addClient(_ sender: UIBarButtonItem) {
         
-        
-        if imageChanged && self.imgView.image?.sd_imageData() != nil {
+        if (validateInput()) {
             
-            let compressedImageData = UIImageJPEGRepresentation(self.imgView.image!, 0)
+            self.client.clientName = txfName.text!
+            self.client.clientId = txfPhone.text!
+            self.client.clientEmail = txfEmail.text!
             
-            uploadImageToFirebase(data: compressedImageData!, path: userId + "/clients/" + clientPhone + "/profile/", fileName: UUID().uuidString)
+            // insert values
+            self.ref.child(userId + "/clients/" + self.client.clientId + "/clientName").setValue(self.client.clientName)
+            self.ref.child(userId + "/clients/" + self.client.clientId + "/clientEmail").setValue(self.client.clientEmail)
+            
+            
+            if imageChanged && self.imgView.image?.sd_imageData() != nil {
+                
+                let compressedImageData = UIImageJPEGRepresentation(self.imgView.image!, 0)
+                
+                uploadImageToFirebase(data: compressedImageData!, path: self.userId + "/clients/" + self.client.clientId + "/profile/", fileName: UUID().uuidString)
+            }
+            
+            let _ = self.navigationController?.popViewController(animated: true)
         }
-        
-        let _ = self.navigationController?.popViewController(animated: true)
     }
     
     func uploadImageToFirebase(data: Data, path: String, fileName: String) {
-
+        
         // get storage service reference
         let storageRef = FIRStorage.storage().reference(withPath: path + fileName)
         storageRef.put(data, metadata: nil) { (metadata, err) in
@@ -151,7 +154,7 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
                     return
                 }
                 
-        
+                
                 self.client.profileImg.imageName = fileName
                 self.client.profileImg.imageUrl = (metadata?.downloadURL()?.absoluteString)!
                 
@@ -161,7 +164,6 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
                 if let del = self.delegate {
                     del.dataChanged(client: self.client)
                 }
-  
             }
         }
     }

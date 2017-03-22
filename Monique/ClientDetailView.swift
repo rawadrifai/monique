@@ -18,6 +18,7 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
     var ref: FIRDatabaseReference!
 
     
+    @IBOutlet weak var btnNewHC: UIButton!
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var labelName: UILabel!
     @IBOutlet weak var labelPhone: UILabel!
@@ -31,6 +32,9 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
         
         self.imgView.layer.cornerRadius = 175 / 4;
         self.imgView.clipsToBounds = true;
+        
+        self.btnNewHC.layer.cornerRadius = 175 / 10;
+        self.btnNewHC.clipsToBounds = true;
         
         fillData()
     }

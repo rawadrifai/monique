@@ -264,7 +264,6 @@ class ClientsView: UITableViewController, UISearchResultsUpdating, NewClientDele
                         
                     }
                     
-                    
                     // try to see if client has any visits already
                     if let clientVisits = clientInfo.value(forKey: "visits") as? NSDictionary {
                         
@@ -291,21 +290,16 @@ class ClientsView: UITableViewController, UISearchResultsUpdating, NewClientDele
                                     clientVisit.images.append(ImageObject(imageName: image as! String, imageUrl: visitImages.value(forKey: image as! String) as! String))
                                 }
                             }
-                            
                             client.clientVisits.append(clientVisit)
-                            
                         }
                     }
                     
                     tempClientData.append(client)
                     
-                    
                     // add client to array
                     self.cellData.append(client)
                 }
-                
             }
-            
             
             tempClientData.sort { $0.clientName < $1.clientName }
             

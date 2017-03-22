@@ -51,15 +51,28 @@ class SaveUserInfo: UIViewController {
         let clientEmail = txfEmail.text ?? ""
         
         // validate input
-        if (clientName.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-            clientEmail.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-            clientPhone.trimmingCharacters(in: .whitespacesAndNewlines) == "") {
-            
-            alert(message: "Please fill out your info once")
+        if (clientName.trimmingCharacters(in: .whitespacesAndNewlines) == "") {
+            alert(message: "Invalid Name")
+            return false
+        }
+        if (!isValidEmail(testStr: clientEmail)) {
+            alert(message: "Invalid Email")
+            return false
+        }
+        if (clientPhone.trimmingCharacters(in: .whitespacesAndNewlines) == "") {
+            alert(message: "Invalid Phone")
             return false
         }
         
         return true
+    }
+    
+    func isValidEmail(testStr:String) -> Bool {
+        
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: testStr)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -76,7 +76,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="oKr-3Z-Cjl">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="274"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="290"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ApV-jV-P42">
@@ -96,8 +96,8 @@
                                         <constraint firstAttribute="width" constant="175" id="Y7T-Nd-ar2"/>
                                     </constraints>
                                 </imageView>
-                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="p6Y-7R-3yE">
-                                    <rect key="frame" x="20" y="193" width="280" height="85.5"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="p6Y-7R-3yE">
+                                    <rect key="frame" x="20" y="193" width="280" height="89.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYU-JW-HtW">
                                             <rect key="frame" x="0.0" y="0.0" width="280" height="26.5"/>
@@ -106,16 +106,17 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lnp-rq-Din">
-                                            <rect key="frame" x="0.0" y="27.5" width="280" height="18"/>
+                                            <rect key="frame" x="0.0" y="29.5" width="280" height="18"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                             <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vmL-sm-0EM">
-                                            <rect key="frame" x="0.0" y="46.5" width="280" height="39"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vmL-sm-0EM">
+                                            <rect key="frame" x="0.0" y="50.5" width="280" height="39"/>
+                                            <color key="backgroundColor" red="0.2998966065" green="0.57743794999999998" blue="0.80399349620000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                             <state key="normal" title="+">
-                                                <color key="titleColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
                                                 <action selector="newHaircut:" destination="cdu-h2-G3J" eventType="touchUpInside" id="Iq3-Cu-wcb"/>
@@ -137,7 +138,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" textLabel="WHL-s6-tts" rowHeight="63" style="IBUITableViewCellStyleDefault" id="4H3-HP-5zV">
-                                <rect key="frame" x="0.0" y="302" width="320" height="63"/>
+                                <rect key="frame" x="0.0" y="318" width="320" height="63"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4H3-HP-5zV" id="qAD-x3-NfC">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="62"/>
@@ -167,6 +168,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="btnNewHC" destination="vmL-sm-0EM" id="mEC-oj-Hfd"/>
                         <outlet property="imgView" destination="qCe-To-KB4" id="mhx-tM-xNu"/>
                         <outlet property="labelName" destination="bYU-JW-HtW" id="voF-aG-Zrl"/>
                         <outlet property="labelPhone" destination="Lnp-rq-Din" id="fYe-Ji-8CB"/>
@@ -175,7 +177,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xXl-6S-404" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2353" y="-121"/>
+            <point key="canvasLocation" x="2351.25" y="-121.47887323943662"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -434,16 +436,16 @@ This Agreement was last modified on 03/20/2017</mutableString>
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gV3-U5-meE">
-                                                <rect key="frame" x="0.0" y="0.0" width="75" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="30"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="75" id="H3k-ja-Lfz"/>
+                                                    <constraint firstAttribute="width" constant="50" id="H3k-ja-Lfz"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RQm-6Y-eMy">
-                                                <rect key="frame" x="85" y="0.0" width="195" height="30"/>
+                                                <rect key="frame" x="60" y="0.0" width="220" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -454,16 +456,16 @@ This Agreement was last modified on 03/20/2017</mutableString>
                                         <rect key="frame" x="0.0" y="40" width="280" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rdQ-2U-F8n">
-                                                <rect key="frame" x="0.0" y="0.0" width="75" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="30"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="75" id="kjS-kb-42M"/>
+                                                    <constraint firstAttribute="width" constant="50" id="kjS-kb-42M"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yJj-c1-uB4">
-                                                <rect key="frame" x="85" y="0.0" width="195" height="30"/>
+                                                <rect key="frame" x="60" y="0.0" width="220" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -474,16 +476,16 @@ This Agreement was last modified on 03/20/2017</mutableString>
                                         <rect key="frame" x="0.0" y="80" width="280" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E-mail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qxX-V2-Abs">
-                                                <rect key="frame" x="0.0" y="0.0" width="75" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="30"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="75" id="THO-lJ-2aj"/>
+                                                    <constraint firstAttribute="width" constant="50" id="THO-lJ-2aj"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rxc-Ji-Dz2">
-                                                <rect key="frame" x="85" y="0.0" width="195" height="30"/>
+                                                <rect key="frame" x="60" y="0.0" width="220" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -556,26 +558,19 @@ This Agreement was last modified on 03/20/2017</mutableString>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="Wtb-kU-Lok">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </imageView>
                             <stackView contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="NFV-W4-JD3">
-                                <rect key="frame" x="16" y="184" width="288" height="200"/>
+                                <rect key="frame" x="16" y="209" width="288" height="150"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D7d-mP-eHJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="288" height="60"/>
-                                        <state key="normal" title="reset">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="resetclicked:" destination="yoX-Q4-vMH" eventType="touchUpInside" id="uk6-hn-z7V"/>
-                                        </connections>
-                                    </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="waZ-m5-ly2" customClass="GIDSignInButton">
-                                        <rect key="frame" x="0.0" y="70" width="288" height="60"/>
-                                        <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="70"/>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="08A-hu-Lj6">
-                                        <rect key="frame" x="0.0" y="140" width="288" height="60"/>
-                                        <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                        <rect key="frame" x="0.0" y="80" width="288" height="70"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                         <state key="normal" title="Sign In">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -585,15 +580,18 @@ This Agreement was last modified on 03/20/2017</mutableString>
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="sZL-SX-vj7"/>
+                                    <constraint firstAttribute="height" constant="150" id="sZL-SX-vj7"/>
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Wtb-kU-Lok" firstAttribute="leading" secondItem="Kqa-jY-2nE" secondAttribute="leading" id="3v8-EA-HPc"/>
                             <constraint firstItem="NFV-W4-JD3" firstAttribute="trailing" secondItem="Kqa-jY-2nE" secondAttribute="trailingMargin" id="5Ru-tr-pOM"/>
                             <constraint firstItem="NFV-W4-JD3" firstAttribute="centerX" secondItem="Kqa-jY-2nE" secondAttribute="centerX" id="Eu7-J2-5Fg"/>
+                            <constraint firstItem="u0Q-vR-RFs" firstAttribute="top" secondItem="Wtb-kU-Lok" secondAttribute="bottom" id="NGL-jJ-L9j"/>
                             <constraint firstItem="NFV-W4-JD3" firstAttribute="leading" secondItem="Kqa-jY-2nE" secondAttribute="leadingMargin" id="Ubb-wF-cxD"/>
+                            <constraint firstAttribute="trailing" secondItem="Wtb-kU-Lok" secondAttribute="trailing" id="cF8-uP-uFC"/>
+                            <constraint firstItem="Wtb-kU-Lok" firstAttribute="top" secondItem="8TD-HI-yZg" secondAttribute="bottom" id="z1v-KC-Jxd"/>
                             <constraint firstItem="NFV-W4-JD3" firstAttribute="centerY" secondItem="Kqa-jY-2nE" secondAttribute="centerY" id="zyT-y4-zGI"/>
                         </constraints>
                     </view>
@@ -605,7 +603,7 @@ This Agreement was last modified on 03/20/2017</mutableString>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gna-fx-yhJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-788" y="-62"/>
+            <point key="canvasLocation" x="-789.375" y="-62.323943661971832"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xzu-Ro-4tb">
@@ -640,23 +638,8 @@ This Agreement was last modified on 03/20/2017</mutableString>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TWy-Ae-dOu">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="96"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kaz-et-9rv">
-                                            <rect key="frame" x="267" y="8" width="45" height="45"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="45" id="10O-3V-MT7"/>
-                                                <constraint firstAttribute="width" constant="45" id="Buo-KU-zM2"/>
-                                            </constraints>
-                                            <state key="normal" image="button"/>
-                                            <connections>
-                                                <action selector="selectPicture:" destination="JU3-Xh-DcQ" eventType="touchUpInside" id="rso-ow-qlm"/>
-                                            </connections>
-                                        </button>
-                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="Kaz-et-9rv" secondAttribute="trailing" constant="8" id="7I8-Ce-ETu"/>
-                                        <constraint firstItem="Kaz-et-9rv" firstAttribute="top" secondItem="TWy-Ae-dOu" secondAttribute="top" constant="8" id="LdY-My-XSd"/>
                                         <constraint firstAttribute="height" constant="96" id="ngA-ri-ExK"/>
                                     </constraints>
                                 </view>
@@ -674,16 +657,16 @@ This Agreement was last modified on 03/20/2017</mutableString>
                                             <rect key="frame" x="0.0" y="0.0" width="280" height="30"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oEy-Xs-5Sl">
-                                                    <rect key="frame" x="0.0" y="0.0" width="75" height="30"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="30"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="75" id="1Iq-VZ-K0b"/>
+                                                        <constraint firstAttribute="width" constant="50" id="1Iq-VZ-K0b"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iGV-Lb-D6e">
-                                                    <rect key="frame" x="85" y="0.0" width="195" height="30"/>
+                                                    <rect key="frame" x="60" y="0.0" width="220" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -694,16 +677,16 @@ This Agreement was last modified on 03/20/2017</mutableString>
                                             <rect key="frame" x="0.0" y="40" width="280" height="30"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSS-mV-LcS">
-                                                    <rect key="frame" x="0.0" y="0.0" width="75" height="30"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="30"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="75" id="kUd-J3-TeY"/>
+                                                        <constraint firstAttribute="width" constant="50" id="kUd-J3-TeY"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3v0-Uk-e04">
-                                                    <rect key="frame" x="85" y="0.0" width="195" height="30"/>
+                                                    <rect key="frame" x="60" y="0.0" width="220" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -714,16 +697,16 @@ This Agreement was last modified on 03/20/2017</mutableString>
                                             <rect key="frame" x="0.0" y="80" width="280" height="30"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E-mail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PI7-6C-W4G">
-                                                    <rect key="frame" x="0.0" y="0.0" width="75" height="30"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="30"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="75" id="IKo-yz-ldc"/>
+                                                        <constraint firstAttribute="width" constant="50" id="IKo-yz-ldc"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="199-OC-QHz">
-                                                    <rect key="frame" x="85" y="0.0" width="195" height="30"/>
+                                                    <rect key="frame" x="60" y="0.0" width="220" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -795,24 +778,9 @@ This Agreement was last modified on 03/20/2017</mutableString>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O8p-9D-kWj">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="96"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RJN-HP-4le">
-                                            <rect key="frame" x="267" y="8" width="45" height="45"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="45" id="2Fd-iD-muU"/>
-                                                <constraint firstAttribute="height" constant="45" id="9Ji-P6-aQs"/>
-                                            </constraints>
-                                            <state key="normal" image="button"/>
-                                            <connections>
-                                                <action selector="selectPicture:" destination="JZf-he-PWa" eventType="touchUpInside" id="2wT-A4-ofU"/>
-                                            </connections>
-                                        </button>
-                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" relation="lessThanOrEqual" constant="96" id="HOR-xs-ElP"/>
-                                        <constraint firstAttribute="trailing" secondItem="RJN-HP-4le" secondAttribute="trailing" constant="8" id="Vgh-er-3Xq"/>
-                                        <constraint firstItem="RJN-HP-4le" firstAttribute="top" secondItem="O8p-9D-kWj" secondAttribute="top" constant="8" id="uLq-uW-VI3"/>
                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="96" id="vTB-GA-ch3"/>
                                         <constraint firstAttribute="height" constant="96" id="ym4-7k-gcl"/>
                                     </constraints>
@@ -826,22 +794,22 @@ This Agreement was last modified on 03/20/2017</mutableString>
                                     </constraints>
                                 </imageView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="4UM-JQ-wDa">
-                                    <rect key="frame" x="20" y="203" width="280" height="180"/>
+                                    <rect key="frame" x="20" y="203" width="280" height="110"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="2ih-CA-Lv6">
                                             <rect key="frame" x="0.0" y="0.0" width="280" height="30"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sa3-qO-HR8">
-                                                    <rect key="frame" x="0.0" y="0.0" width="75" height="30"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="30"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="75" id="RDY-Ni-KRH"/>
+                                                        <constraint firstAttribute="width" constant="50" id="RDY-Ni-KRH"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FMi-ux-fWc">
-                                                    <rect key="frame" x="85" y="0.0" width="195" height="30"/>
+                                                    <rect key="frame" x="60" y="0.0" width="220" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -852,16 +820,16 @@ This Agreement was last modified on 03/20/2017</mutableString>
                                             <rect key="frame" x="0.0" y="40" width="280" height="30"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vBt-B4-0nP">
-                                                    <rect key="frame" x="0.0" y="0.0" width="75" height="30"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="30"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="75" id="kcP-2M-aeG"/>
+                                                        <constraint firstAttribute="width" constant="50" id="kcP-2M-aeG"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XxK-0U-XSP">
-                                                    <rect key="frame" x="85" y="0.0" width="195" height="30"/>
+                                                    <rect key="frame" x="60" y="0.0" width="220" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -872,39 +840,22 @@ This Agreement was last modified on 03/20/2017</mutableString>
                                             <rect key="frame" x="0.0" y="80" width="280" height="30"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E-mail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Wk-nI-XtV">
-                                                    <rect key="frame" x="0.0" y="0.0" width="75" height="30"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="30"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="75" id="AuT-hL-1JF"/>
+                                                        <constraint firstAttribute="width" constant="50" id="AuT-hL-1JF"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k3f-qk-Syh">
-                                                    <rect key="frame" x="85" y="0.0" width="195" height="30"/>
+                                                    <rect key="frame" x="60" y="0.0" width="220" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
                                         </stackView>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lTT-Ke-OWg">
-                                            <rect key="frame" x="0.0" y="120" width="280" height="20"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="20" id="Mjf-mg-ap7"/>
-                                            </constraints>
-                                        </view>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GTM-vP-XUm">
-                                            <rect key="frame" x="0.0" y="150" width="280" height="30"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                            <state key="normal" title="Delete Client">
-                                                <color key="titleColor" red="1" green="0.093634695310000002" blue="0.033323564549999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="deleteClient:" destination="JZf-he-PWa" eventType="touchUpInside" id="4PD-1f-cdt"/>
-                                            </connections>
-                                        </button>
                                     </subviews>
                                 </stackView>
                             </subviews>
@@ -952,16 +903,16 @@ This Agreement was last modified on 03/20/2017</mutableString>
         <scene sceneID="A0a-IB-LWO">
             <objects>
                 <tableViewController id="o9q-rL-Ugv" customClass="PictureTimeView" customModule="Monique" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="213" sectionHeaderHeight="28" sectionFooterHeight="28" id="fBQ-oX-o4w">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="250" sectionHeaderHeight="28" sectionFooterHeight="28" id="fBQ-oX-o4w">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="oBk-aM-3fS">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="199"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="163"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="G7T-ZM-HYE">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="199"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="152"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kcr-Wf-CGE">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="18"/>
@@ -972,28 +923,16 @@ This Agreement was last modified on 03/20/2017</mutableString>
                                         </label>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" indicatorStyle="black" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VZp-ys-fOQ">
                                             <rect key="frame" x="0.0" y="18" width="320" height="100"/>
-                                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="100" id="V5Z-Ey-cPb"/>
                                             </constraints>
-                                            <color key="textColor" red="1" green="0.99045915200000001" blue="0.85839072270000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eXJ-5S-wLM">
-                                            <rect key="frame" x="0.0" y="118" width="320" height="36"/>
-                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
-                                            <state key="normal" title="Delete Visit">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="deleteClient:" destination="JZf-he-PWa" eventType="touchUpInside" id="YGZ-Kt-7SO"/>
-                                            </connections>
-                                        </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7gn-yG-uSF">
-                                            <rect key="frame" x="0.0" y="154" width="320" height="45"/>
-                                            <state key="normal" image="button"/>
+                                            <rect key="frame" x="0.0" y="118" width="320" height="34"/>
+                                            <state key="normal" image="camera"/>
                                             <connections>
                                                 <action selector="addImage:" destination="o9q-rL-Ugv" eventType="touchUpInside" id="kPY-OE-oFq"/>
                                                 <action selector="selectPicture:" destination="JU3-Xh-DcQ" eventType="touchUpInside" id="2dW-9Z-rUh"/>
@@ -1010,15 +949,15 @@ This Agreement was last modified on 03/20/2017</mutableString>
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="213" id="JWc-No-Xb5">
-                                <rect key="frame" x="0.0" y="227" width="320" height="213"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="250" id="JWc-No-Xb5">
+                                <rect key="frame" x="0.0" y="191" width="320" height="250"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JWc-No-Xb5" id="92J-OF-fGQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="212"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="249"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fNT-hU-8AK">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="212"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="249.5"/>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </imageView>
                                     </subviews>
@@ -1050,7 +989,7 @@ This Agreement was last modified on 03/20/2017</mutableString>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pKT-I2-J0X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3171" y="283"/>
+            <point key="canvasLocation" x="3170.625" y="282.04225352112678"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8Rj-V4-LwN">
@@ -1187,7 +1126,8 @@ Enjoy!</string>
         </scene>
     </scenes>
     <resources>
-        <image name="button" width="45" height="45"/>
+        <image name="background" width="564" height="1004"/>
+        <image name="camera" width="50" height="34"/>
         <image name="user" width="450" height="450"/>
     </resources>
     <inferredMetricsTieBreakers>

@@ -7,14 +7,14 @@ import Google
 
 class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
 
+    @IBOutlet weak var signInButton: GIDSignInButton!
     var userId:String!
     var ref: FIRDatabaseReference!
     
-  
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         
+        super.viewDidLoad()
         
         // Initialize sign-in
         var configureError: NSError?
@@ -31,8 +31,6 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         self.ref = FIRDatabase.database().reference()
     
     }
-    
-    
     
     // what to do when you sign in
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
@@ -65,27 +63,25 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         
     }
     
-    
     @IBAction func signInUsignDeviceId(_ sender: UIButton) {
         
-
-        let defaults = UserDefaults.standard
-        if let loggedInBefore = defaults.string(forKey: "loggedInBefore") {
+        self.userId = UIDevice.current.identifierForVendor!.uuidString
+        
+        self.ref.child(userId + "/deviceId").observe(.value, with: {
             
-            if loggedInBefore == "true" {
-                self.userId = UIDevice.current.identifierForVendor!.uuidString
-                self.performSegue(withIdentifier: "loginSegue", sender: self)
-                
+            if let value = $0.value {
+                if String(describing: value) == self.userId {
+                    self.performSegue(withIdentifier: "loginSegue", sender: self)
+                }
+                else {
+                    self.performSegue(withIdentifier: "saveUserInfoSegue", sender: self)
+                }
             }
             else {
                 self.performSegue(withIdentifier: "saveUserInfoSegue", sender: self)
             }
-            
-        } else {
-            self.performSegue(withIdentifier: "saveUserInfoSegue", sender: self)
-        }
+        })
     }
-
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "loginSegue" {
@@ -101,29 +97,6 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
             }
         }
     }
-    
-    @IBOutlet weak var signInButton: GIDSignInButton!
-
-    
-    
-    @IBAction func signOutClick(_ sender: UIButton)
-    
-    {
-        let firebaseAuth = FIRAuth.auth()
-        
-        do {
-            try firebaseAuth?.signOut()
-            print ("signed out successfully")
-        } catch  {
-            print("Error signing out")
-            return
-        }
-        
-        signInButton.isEnabled = true
-       
-    }
-    
-    
     
     @IBAction func resetclicked(_ sender: UIButton) {
         let defaults = UserDefaults.standard

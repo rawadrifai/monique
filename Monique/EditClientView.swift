@@ -25,7 +25,7 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
     @IBOutlet weak var txfEmail: UITextField!
     
     var imageChanged = false
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,15 +58,15 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
         image.delegate = self
         
         // set the source to photo library
-        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        image.sourceType = UIImagePickerControllerSourceType.camera
         
         self.present(image, animated: true)
     }
-
+    
     
     func fillData() {
         
-        txfName.text = client.clientName 
+        txfName.text = client.clientName
         txfPhone.text = client.clientId
         txfEmail.text = client.clientEmail
         imgView.sd_setImage(with: URL(string: client.profileImg.imageUrl))
@@ -82,51 +82,62 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
     }
     
     
-    
-
-    
     @IBAction func save(_ sender: UIBarButtonItem) {
         
-        let clientName = txfName.text
-        let clientPhone = txfPhone.text
-        let clientEmail = txfEmail.text
+        if (validateInput()) {
+            
+            self.client.clientName = txfName.text!
+            self.client.clientId = txfPhone.text!
+            self.client.clientEmail = txfEmail.text!
+            
+            // insert values
+            self.ref.child(userId + "/clients/" + self.client.clientId + "/clientName").setValue(self.client.clientName)
+            self.ref.child(userId + "/clients/" + self.client.clientId + "/clientEmail").setValue(self.client.clientEmail)
+            
+            if let del = self.delegate {
+                del.dataChanged(client: self.client)
+            }
+            
+            if imageChanged && self.imgView.image?.sd_imageData() != nil {
+                
+                let compressedImageData = UIImageJPEGRepresentation(self.imgView.image!, 0)
+                
+                uploadImageToFirebase(data: compressedImageData!, path: self.userId + "/clients/" + self.client.clientId + "/profile/", fileName: UUID().uuidString)
+            }
+            
+            let _ = self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    func validateInput() -> Bool {
         
+        let clientName = txfName.text ?? ""
+        let clientPhone = txfPhone.text ?? ""
+        let clientEmail = txfEmail.text ?? ""
         
         // validate input
-        if (clientPhone?.trimmingCharacters(in: .whitespacesAndNewlines) == "") {
-            
-            alert(message: "Please fill out at least phone number")
-            return
+        if (clientName.trimmingCharacters(in: .whitespacesAndNewlines) == "") {
+            alert(message: "Invalid Name")
+            return false
+        }
+        if (!isValidEmail(testStr: clientEmail)) {
+            alert(message: "Invalid Email")
+            return false
+        }
+        if (clientPhone.trimmingCharacters(in: .whitespacesAndNewlines) == "") {
+            alert(message: "Invalid Phone")
+            return false
         }
         
-        self.client.clientName = clientName!
-        self.client.clientId = clientPhone!
-        self.client.clientEmail = clientEmail!
+        return true
+    }
+    
+    func isValidEmail(testStr:String) -> Bool {
         
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
         
-        
-        // insert values
-        self.ref.child(userId + "/clients/" + self.client.clientId + "/clientName").setValue(self.client.clientName)
-        self.ref.child(userId + "/clients/" + self.client.clientId + "/clientEmail").setValue(self.client.clientEmail)
-        print("writing successful")
-        
-        
-        
-        if imageChanged && self.imgView.image?.sd_imageData() != nil {
-            
-            let compressedImageData = UIImageJPEGRepresentation(self.imgView.image!, 0)
-            
-            uploadImageToFirebase(data: compressedImageData!, path: userId + "/clients/" + clientPhone! + "/profile/", fileName: UUID().uuidString)
-        }
-        
-        if let del = self.delegate {
-            del.dataChanged(client: self.client)
-        }
-        
-        // close window
-        let _ = self.navigationController?.popViewController(animated: true)
-
-        
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: testStr)
     }
     
     func uploadImageToFirebase(data: Data, path: String, fileName: String) {
@@ -159,20 +170,6 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
         }
     }
     
-
-    // when user click on select picture button
-    @IBAction func selectPicture(_ sender: UIButton) {
-        
-        let image = UIImagePickerController()
-        image.allowsEditing = false
-        image.delegate = self
-        
-        // set the source to photo library
-        image.sourceType = UIImagePickerControllerSourceType.camera
-        
-        self.present(image, animated: true)
-        
-    }
     
     
     // execute after picking the image
@@ -192,44 +189,6 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
     
     @IBAction func closeView(_ sender: UIBarButtonItem) {
         let _ = self.navigationController?.popViewController(animated: true)
-    }
-    
-    @IBAction func deleteClient(_ sender: UIButton) {
-        
-        let deleteAlert = UIAlertController(title: "Confirm", message: "Positive?", preferredStyle: UIAlertControllerStyle.alert)
-        
-        deleteAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
-            
-            self.ref = FIRDatabase.database().reference()
-            self.ref.child(self.userId + "/clients/" + self.client.clientId).removeValue()
-        
-            print("delete successful")
-            
-            
-            let storageRef = FIRStorage.storage().reference().child(self.userId).child("clients").child(self.client.clientId)
-            
-            storageRef.delete(completion: { (err) in
-                print("received an error: \(err?.localizedDescription)")
-            })
-            
-            if let del = self.delegate {
-                del.dataDeleted()
-            }
-            
-            let _ = self.navigationController?.popViewController(animated: true)
-            
-            
-            
-        }))
-        
-        deleteAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
-            
-        }))
-        
-        present(deleteAlert, animated: true, completion: nil)
-        
-        
-      
     }
     
 }

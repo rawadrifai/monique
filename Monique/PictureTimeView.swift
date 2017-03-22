@@ -99,19 +99,19 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         
         let notes = txvNotes.text ?? ""
         
+        let selectedVisit = self.client.clientVisits[selectedVisitIndex]
+        
         self.client.clientVisits[selectedVisitIndex].notes = notes
+        self.ref.child(userId + "/clients/" + self.client.clientId + "/visits/" + selectedVisit.visitDate + "/notes").setValue(notes)
+            
+            if let del = self.delegate {
+                del.historyChanged(client: self.client)
+            }
         
-        
-        
-        if let del = self.delegate {
-            del.historyChanged(client: self.client)
-        }
         
         // close window
         let _ = self.navigationController?.popViewController(animated: true)
-        
-        print("writing successful")
-        
+                
     }
     
     
@@ -122,7 +122,7 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         image.delegate = self
         
         // set the source to photo library
-        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        image.sourceType = UIImagePickerControllerSourceType.camera
         
         self.present(image, animated: true)
     }
@@ -149,10 +149,6 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
-    
-    
-    
-    
     
     func uploadImageToFirebase(data: Data, path: String, fileName: String) {
         
@@ -202,13 +198,6 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
             }
         }
     }
-    
-    
-    @IBAction func closeView(_ sender: UIBarButtonItem) {
-        let _ = self.navigationController?.popViewController(animated: true)
-    }
-
-    
 }
 
 protocol PictureTimeDelegate {
