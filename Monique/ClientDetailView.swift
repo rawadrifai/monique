@@ -47,11 +47,8 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
         let year = calendar.component(.year, from: date)
         let month = calendar.component(.month, from: date)
         let day = calendar.component(.day, from: date)
-        let hour = calendar.component(.hour, from: date)
-        let minute = calendar.component(.minute, from: date)
-        let second = calendar.component(.second, from: date)
+
         let visitdate = String(year) + "-" + String(month) + "-" + String(day)
-            + " " + String(hour) + ":" + String(minute) + ":" + String(second)
         
         self.ref.child(userId + "/clients/" + self.client.clientId + "/visits/" + visitdate + "/notes").setValue("") { (err, ref) in
             
