@@ -88,7 +88,7 @@
                                     </constraints>
                                 </view>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="qCe-To-KB4">
-                                    <rect key="frame" x="72.5" y="8" width="175" height="175"/>
+                                    <rect key="frame" x="73" y="8" width="175" height="175"/>
                                     <color key="backgroundColor" red="0.57570786470000002" green="0.73471907380000001" blue="0.51770002550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="175" id="6Nv-3e-aBD"/>
@@ -343,7 +343,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0Fj-kC-KI9">
                                 <rect key="frame" x="16" y="64" width="288" height="455"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <mutableString key="text">Terms of Service
+                                <string key="text">Terms of Service
 
 The following terms and conditions govern all use of the Tuuk website and the related mobile app (collectively, the “Service”). The Service is owned and operated by Tuuk LLC (“Tuuk”). The Website is offered subject to your acceptance without modification of all of the terms and conditions contained herein and all other operating rules, policies (including, without limitation, Tuuk’ Privacy Policy) and procedures that may be published from time to time on this Site by Tuuk (collectively, the “Agreement”).
 
@@ -398,7 +398,7 @@ This Agreement constitutes the entire agreement between Tuuk and you concerning 
 
 Some portions of this document are borrowed—with permission—from here under a Creative Commons license.
 
-This Agreement was last modified on 03/20/2017</mutableString>
+This Agreement was last modified on 03/20/2017</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -644,7 +644,7 @@ This Agreement was last modified on 03/20/2017</mutableString>
                                     </constraints>
                                 </view>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="Nqo-Ot-wzh">
-                                    <rect key="frame" x="72.5" y="8" width="175" height="175"/>
+                                    <rect key="frame" x="73" y="8" width="175" height="175"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="175" id="Qgz-a4-D1d"/>
                                         <constraint firstAttribute="height" constant="175" id="yod-SB-iBl"/>
@@ -786,7 +786,7 @@ This Agreement was last modified on 03/20/2017</mutableString>
                                     </constraints>
                                 </view>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="0ek-vB-Pq3">
-                                    <rect key="frame" x="72.5" y="8" width="175" height="175"/>
+                                    <rect key="frame" x="73" y="8" width="175" height="175"/>
                                     <color key="backgroundColor" red="0.57570786470000002" green="0.73471907380000001" blue="0.51770002550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="175" id="MLt-Es-65E"/>
@@ -957,7 +957,7 @@ This Agreement was last modified on 03/20/2017</mutableString>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fNT-hU-8AK">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="249.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="250"/>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </imageView>
                                     </subviews>
@@ -985,11 +985,60 @@ This Agreement was last modified on 03/20/2017</mutableString>
                     </navigationItem>
                     <connections>
                         <outlet property="txvNotes" destination="VZp-ys-fOQ" id="riv-zn-yHF"/>
+                        <segue destination="50F-x7-qVY" kind="presentation" identifier="imageViewSegue" id="E4a-mk-VSe"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pKT-I2-J0X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3170.625" y="282.04225352112678"/>
+        </scene>
+        <!--Image View-->
+        <scene sceneID="ypx-8c-9sT">
+            <objects>
+                <viewController id="50F-x7-qVY" customClass="ImageView" customModule="Monique" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="q3G-Mo-lLE"/>
+                        <viewControllerLayoutGuide type="bottom" id="M0J-sp-srp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2JP-4U-Nhd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xrU-ua-jCF">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="enz-Zp-0PN">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="enz-Zp-0PN" firstAttribute="top" secondItem="xrU-ua-jCF" secondAttribute="top" id="0S8-mi-qZW"/>
+                                    <constraint firstAttribute="bottom" secondItem="enz-Zp-0PN" secondAttribute="bottom" id="IKE-aV-3hB"/>
+                                    <constraint firstItem="enz-Zp-0PN" firstAttribute="centerX" secondItem="xrU-ua-jCF" secondAttribute="centerX" id="XQt-pn-Hxl"/>
+                                    <constraint firstItem="enz-Zp-0PN" firstAttribute="height" secondItem="xrU-ua-jCF" secondAttribute="height" id="YWi-4G-e2g"/>
+                                    <constraint firstAttribute="trailing" secondItem="enz-Zp-0PN" secondAttribute="trailing" id="lQF-Ae-DmC"/>
+                                    <constraint firstItem="enz-Zp-0PN" firstAttribute="leading" secondItem="xrU-ua-jCF" secondAttribute="leading" id="z0A-5r-tAK"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="M0J-sp-srp" firstAttribute="top" secondItem="xrU-ua-jCF" secondAttribute="bottom" id="3h2-8a-jwg"/>
+                            <constraint firstItem="xrU-ua-jCF" firstAttribute="centerY" secondItem="2JP-4U-Nhd" secondAttribute="centerY" id="5qM-Qp-GQI"/>
+                            <constraint firstItem="xrU-ua-jCF" firstAttribute="top" secondItem="2JP-4U-Nhd" secondAttribute="top" id="Bok-jP-Ugx"/>
+                            <constraint firstItem="xrU-ua-jCF" firstAttribute="centerX" secondItem="2JP-4U-Nhd" secondAttribute="centerX" id="Hk4-uw-2Vm"/>
+                            <constraint firstItem="xrU-ua-jCF" firstAttribute="leading" secondItem="2JP-4U-Nhd" secondAttribute="leading" id="Kul-T3-dHM"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imgView" destination="enz-Zp-0PN" id="vV8-c4-1ee"/>
+                        <outlet property="scrollView" destination="xrU-ua-jCF" id="lfw-Ov-ejl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EZN-Pa-Ymv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4320" y="282.04225352112678"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8Rj-V4-LwN">
@@ -1025,7 +1074,7 @@ This Agreement was last modified on 03/20/2017</mutableString>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4RT-Mg-PIu">
                                 <rect key="frame" x="16" y="64" width="288" height="455"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <mutableString key="text">Privacy Policy
+                                <string key="text">Privacy Policy
 
 This Privacy Policy describes all Tuuk apps policies and procedures on the collection, use and disclosure of your information. Tuuk receives your information through our various web sites, SMS, APIs, and other services (“Services”). When using any of our Services you consent to the collection, transfer, manipulation, storage, disclosure and other uses of your information as described in this Privacy Policy. Irrespective of which country that you reside in or create information from, your information may be used by Tuuk in the United States or any other country where Tuuk operates.
 
@@ -1067,7 +1116,7 @@ If you are a registered user of our Services, we provide you with tools to acces
 
 Information Sharing &amp; Disclosure
 
-This Privacy Policy may be updated from time to time for any reason. We will notify you of any changes to our Privacy Policy by posting the new Privacy Policy here. You are advised to consult this Privacy Policy regularly for any changes, as continued use is deemed approval of all changes.</mutableString>
+This Privacy Policy may be updated from time to time for any reason. We will notify you of any changes to our Privacy Policy by posting the new Privacy Policy here. You are advised to consult this Privacy Policy regularly for any changes, as continued use is deemed approval of all changes.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>

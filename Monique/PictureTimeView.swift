@@ -86,6 +86,30 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "imageViewSegue" {
+            
+            if let destination = segue.destination as? ImageView {
+            
+                destination.image = self.client.clientVisits[selectedVisitIndex].images[tappedImageIndex] as ImageObject
+                //destination.image = self.cli
+            }
+        }
+    }
+    
+    var tappedImageIndex:Int!
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if let _ = tableView.cellForRow(at: indexPath) {
+            
+            self.tappedImageIndex = indexPath.row
+            self.performSegue(withIdentifier: "imageViewSegue", sender: self)
+            
+        }
+    }
+    
     
     
     func loadVisit() {
@@ -122,7 +146,7 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         image.delegate = self
         
         // set the source to photo library
-        image.sourceType = UIImagePickerControllerSourceType.camera
+        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
         
         self.present(image, animated: true)
     }

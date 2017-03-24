@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A1856E31E84FCFE00C2EA2F /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1856E21E84FCFE00C2EA2F /* ImageView.swift */; };
 		9A36296C1E5D3CDA003CFAF8 /* NewClientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A36296B1E5D3CDA003CFAF8 /* NewClientView.swift */; };
 		9A3BC6461E5A9AA700E9CA71 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3BC6451E5A9AA700E9CA71 /* AppDelegate.swift */; };
 		9A3BC64D1E5A9AA700E9CA71 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A3BC64B1E5A9AA700E9CA71 /* Main.storyboard */; };
@@ -15,8 +16,8 @@
 		9AAF34C31E70F1A600CAFE44 /* EditClientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAF34C21E70F1A600CAFE44 /* EditClientView.swift */; };
 		9AAF34C51E70F1B500CAFE44 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAF34C41E70F1B500CAFE44 /* Login.swift */; };
 		9AAF34C71E713A0B00CAFE44 /* PictureTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAF34C61E713A0B00CAFE44 /* PictureTimeView.swift */; };
-		9AB3EA311E7F9CF7008E82CC /* SaveUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB3EA301E7F9CF7008E82CC /* SaveUserInfo.swift */; };
-		9ACCCAB41E80A66000CA19ED /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACCCAB31E80A66000CA19ED /* MoreView.swift */; };
+		9AB6B8E11E84F869009231B0 /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB6B8E01E84F869009231B0 /* MoreView.swift */; };
+		9AB6B8EA1E84F9CA009231B0 /* SaveUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB6B8E91E84F9CA009231B0 /* SaveUserInfo.swift */; };
 		9AD116621E5E7A9F00113753 /* ClientDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD116611E5E7A9F00113753 /* ClientDetailView.swift */; };
 		9AD116641E5E87C400113753 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD116631E5E87C400113753 /* Client.swift */; };
 		9AD2ABEC1E61148E00998BBB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AD2ABEB1E61148E00998BBB /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		249A8A95B69762213942D3C9 /* Pods_Monique.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Monique.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A1856E21E84FCFE00C2EA2F /* ImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		9A36296B1E5D3CDA003CFAF8 /* NewClientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewClientView.swift; path = monique/NewClientView.swift; sourceTree = SOURCE_ROOT; };
 		9A3BC6421E5A9AA700E9CA71 /* Monique.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Monique.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A3BC6451E5A9AA700E9CA71 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -36,9 +38,9 @@
 		9AAF34C21E70F1A600CAFE44 /* EditClientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditClientView.swift; path = Monique/EditClientView.swift; sourceTree = "<group>"; };
 		9AAF34C41E70F1B500CAFE44 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Login.swift; path = Monique/Login.swift; sourceTree = "<group>"; };
 		9AAF34C61E713A0B00CAFE44 /* PictureTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PictureTimeView.swift; path = Monique/PictureTimeView.swift; sourceTree = "<group>"; };
-		9AB3EA2D1E7B84B7008E82CC /* Monique-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Monique-Bridging-Header.h"; sourceTree = "<group>"; };
-		9AB3EA301E7F9CF7008E82CC /* SaveUserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveUserInfo.swift; sourceTree = "<group>"; };
-		9ACCCAB31E80A66000CA19ED /* MoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; };
+		9AB6B8E01E84F869009231B0 /* MoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MoreView.swift; path = Monique/MoreView.swift; sourceTree = "<group>"; };
+		9AB6B8E91E84F9CA009231B0 /* SaveUserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SaveUserInfo.swift; path = Monique/SaveUserInfo.swift; sourceTree = "<group>"; };
+		9AB6B8EB1E84FA10009231B0 /* Monique-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Monique-Bridging-Header.h"; sourceTree = "<group>"; };
 		9AD116611E5E7A9F00113753 /* ClientDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientDetailView.swift; path = Monique/ClientDetailView.swift; sourceTree = "<group>"; };
 		9AD116631E5E87C400113753 /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Client.swift; path = Monique/Client.swift; sourceTree = "<group>"; };
 		9AD2ABEB1E61148E00998BBB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -80,16 +82,17 @@
 			isa = PBXGroup;
 			children = (
 				9A3BC64B1E5A9AA700E9CA71 /* Main.storyboard */,
-				9ACCCAB31E80A66000CA19ED /* MoreView.swift */,
+				9A1856E21E84FCFE00C2EA2F /* ImageView.swift */,
+				9AAF34C61E713A0B00CAFE44 /* PictureTimeView.swift */,
 				9AAF34C41E70F1B500CAFE44 /* Login.swift */,
-				9AB3EA301E7F9CF7008E82CC /* SaveUserInfo.swift */,
 				9A3BC65B1E5AA5C300E9CA71 /* ClientsView.swift */,
 				9AD116611E5E7A9F00113753 /* ClientDetailView.swift */,
+				9AB6B8E01E84F869009231B0 /* MoreView.swift */,
+				9AB6B8E91E84F9CA009231B0 /* SaveUserInfo.swift */,
+				9AB6B8EB1E84FA10009231B0 /* Monique-Bridging-Header.h */,
 				9AAF34C21E70F1A600CAFE44 /* EditClientView.swift */,
-				9AAF34C61E713A0B00CAFE44 /* PictureTimeView.swift */,
 				9A36296B1E5D3CDA003CFAF8 /* NewClientView.swift */,
 				9AD116631E5E87C400113753 /* Client.swift */,
-				9AB3EA2D1E7B84B7008E82CC /* Monique-Bridging-Header.h */,
 				9A3BC65D1E5C194800E9CA71 /* New Group */,
 				9A3BC6431E5A9AA700E9CA71 /* Products */,
 				48218D1D823D880B272EF557 /* Pods */,
@@ -248,12 +251,13 @@
 				9A36296C1E5D3CDA003CFAF8 /* NewClientView.swift in Sources */,
 				9AD116621E5E7A9F00113753 /* ClientDetailView.swift in Sources */,
 				9AD116641E5E87C400113753 /* Client.swift in Sources */,
+				9A1856E31E84FCFE00C2EA2F /* ImageView.swift in Sources */,
 				9A3BC65C1E5AA5C300E9CA71 /* ClientsView.swift in Sources */,
 				9AAF34C31E70F1A600CAFE44 /* EditClientView.swift in Sources */,
+				9AB6B8EA1E84F9CA009231B0 /* SaveUserInfo.swift in Sources */,
 				9AAF34C71E713A0B00CAFE44 /* PictureTimeView.swift in Sources */,
-				9AB3EA311E7F9CF7008E82CC /* SaveUserInfo.swift in Sources */,
 				9AAF34C51E70F1B500CAFE44 /* Login.swift in Sources */,
-				9ACCCAB41E80A66000CA19ED /* MoreView.swift in Sources */,
+				9AB6B8E11E84F869009231B0 /* MoreView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
