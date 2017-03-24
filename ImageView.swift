@@ -17,9 +17,9 @@ class ImageView: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        imgView.sd_setImage(with: URL(string: image.imageUrl))
         makeProfilePicInteractive()
+        imgView.sd_setImage(with: URL(string: image.imageUrl))
+        
     }
     
     
@@ -44,8 +44,9 @@ class ImageView: UIViewController, UIScrollViewDelegate {
     func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
         
-        
-        let _ = self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: false) {}
+        //let _ = self.navigationController?.popToRootViewController(animated: false)
+        //let _ = self.navigationController?.popViewController(animated: true)
         
     }
     

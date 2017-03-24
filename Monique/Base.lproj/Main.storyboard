@@ -985,7 +985,7 @@ This Agreement was last modified on 03/20/2017</string>
                     </navigationItem>
                     <connections>
                         <outlet property="txvNotes" destination="VZp-ys-fOQ" id="riv-zn-yHF"/>
-                        <segue destination="50F-x7-qVY" kind="presentation" identifier="imageViewSegue" id="E4a-mk-VSe"/>
+                        <segue destination="50F-x7-qVY" kind="presentation" identifier="imageViewSegue" animates="NO" id="E4a-mk-VSe"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pKT-I2-J0X" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1020,6 +1020,9 @@ This Agreement was last modified on 03/20/2017</string>
                                     <constraint firstAttribute="trailing" secondItem="enz-Zp-0PN" secondAttribute="trailing" id="lQF-Ae-DmC"/>
                                     <constraint firstItem="enz-Zp-0PN" firstAttribute="leading" secondItem="xrU-ua-jCF" secondAttribute="leading" id="z0A-5r-tAK"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="50F-x7-qVY" id="BKg-EJ-lAt"/>
+                                </connections>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
