@@ -69,8 +69,13 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
         txfName.text = client.clientName
         txfPhone.text = client.clientId
         txfEmail.text = client.clientEmail
-        imgView.sd_setImage(with: URL(string: client.profileImg.imageUrl))
         
+        if client.profileImg.imageUrl != "" {
+            imgView.sd_setImage(with: URL(string: client.profileImg.imageUrl))
+        }
+        else {
+            imgView.image = UIImage(imageLiteralResourceName: "user")
+        }
     }
     
     

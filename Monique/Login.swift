@@ -25,7 +25,7 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().uiDelegate = self
         
-        signInButton.style = .wide
+        signInButton.style = .iconOnly
         
         // get reference to database
         self.ref = FIRDatabase.database().reference()

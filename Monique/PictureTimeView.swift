@@ -67,13 +67,13 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
             
             // delete from firebase database, with completion block
         
-            self.ref.child(self.userId + "/clients/" + self.client.clientId + "/visits/" + self.client.clientVisits[selectedVisitIndex].visitDate + "/" + imageToBeDeleted.imageName).removeValue { (err, ref) in
+            self.ref.child(self.userId + "/clients/" + self.client.clientId + "/visits/" + self.client.clientVisits[selectedVisitIndex].visitDate + "/images/" + imageToBeDeleted.imageName).removeValue { (err, ref) in
                 
                 self.client.clientVisits[self.selectedVisitIndex].images.remove(at: indexPath.row)
                 self.tableView.reloadData()
                 
                 // delete from firebase
-                let storageRef = FIRStorage.storage().reference().child(self.userId + "/clients/" + self.client.clientId + "/visits/" + self.client.clientVisits[self.selectedVisitIndex].visitDate + "/" + imageToBeDeleted.imageName)
+                let storageRef = FIRStorage.storage().reference().child(self.userId + "/clients/" + self.client.clientId + "/visits/" + self.client.clientVisits[self.selectedVisitIndex].visitDate + "/images/" + imageToBeDeleted.imageName)
                 
                 
                 storageRef.delete { (err) in
@@ -142,12 +142,12 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
     @IBAction func addImage(_ sender: UIButton) {
         
         let image = UIImagePickerController()
-        image.allowsEditing = false
+        image.allowsEditing = true
         image.delegate = self
         
         // set the source to photo library
         image.sourceType = UIImagePickerControllerSourceType.photoLibrary
-        
+                
         self.present(image, animated: true)
     }
     
@@ -155,7 +155,8 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
     {
         
-        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage
+
+        if let image = info[UIImagePickerControllerEditedImage] as? UIImage
         {
             // get the visit date
             let visitdate = self.client.clientVisits[selectedVisitIndex].visitDate
@@ -195,7 +196,18 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
                 
                 self.client.clientVisits[self.selectedVisitIndex].images.append(imgobj)
                 
-                self.ref.child(path + imgobj.imageName).setValue(imgobj.imageUrl)
+                // set pic url
+                self.ref.child(path + imgobj.imageName + "/imageUrl").setValue(imgobj.imageUrl)
+                
+                // set pic date
+//                let date = Date()
+//                let calendar = Calendar.current
+//                let year = calendar.component(.year, from: date)
+//                let month = calendar.component(.month, from: date)
+//                let day = calendar.component(.day, from: date)
+//                
+//                let pictureDate = String(year) + "-" + String(month) + "-" + String(day) + " " + String(day) + "-" + String(day) + "-" + String(day)
+                self.ref.child(path + imgobj.imageName + "/uploadDate").setValue(Date().timeIntervalSince1970)
                 self.tableView.reloadData()
                 
                 if let del = self.delegate {

@@ -73,15 +73,24 @@ class ClientVisit {
 class ImageObject {
     var imageName:String
     var imageUrl:String
+    var uploadDate:String
     
     init() {
         self.imageName=""
         self.imageUrl=""
+        self.uploadDate=""
     }
     
     init(imageName:String, imageUrl:String) {
         self.imageName = imageName
         self.imageUrl = imageUrl
+        self.uploadDate = ""
+    }
+    
+    init(imageName:String, imageUrl:String, uploadDate:String) {
+        self.imageName = imageName
+        self.imageUrl = imageUrl
+        self.uploadDate = uploadDate
     }
 }
 

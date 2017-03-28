@@ -50,6 +50,14 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
 
         let visitdate = String(year) + "-" + String(month) + "-" + String(day)
         
+        
+        // if visit date exists then don't add it
+        for v in client.clientVisits {
+            if v.visitDate == visitdate {
+                return
+            }
+        }
+        
         self.ref.child(userId + "/clients/" + self.client.clientId + "/visits/" + visitdate + "/notes").setValue("") { (err, ref) in
             
             self.client.clientVisits.append(ClientVisit(visitDate: visitdate, notes: ""))
@@ -64,7 +72,14 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
         
         labelName.text = client.clientName
         labelPhone.text = client.clientId
-        imgView.sd_setImage(with: URL(string: client.profileImg.imageUrl))
+        
+        if client.profileImg.imageUrl != "" {
+            imgView.sd_setImage(with: URL(string: client.profileImg.imageUrl))
+        }
+        else {
+            imgView.image = UIImage(imageLiteralResourceName: "user")
+        }
+        
         
     }
     
