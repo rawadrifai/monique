@@ -21,7 +21,8 @@
 		9AD116621E5E7A9F00113753 /* ClientDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD116611E5E7A9F00113753 /* ClientDetailView.swift */; };
 		9AD116641E5E87C400113753 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD116631E5E87C400113753 /* Client.swift */; };
 		9AD2ABEC1E61148E00998BBB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AD2ABEB1E61148E00998BBB /* Assets.xcassets */; };
-		9AD2ABF61E6655B200998BBB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9AD2ABF51E6655B200998BBB /* GoogleService-Info.plist */; };
+		9AD2ABF61E6655B200998BBB /* GoogleService-Info.old.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9AD2ABF51E6655B200998BBB /* GoogleService-Info.old.plist */; };
+		9AD2B3391E8A13D900DF308C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9AD2B3381E8A13D900DF308C /* GoogleService-Info.plist */; };
 		F157B5535620BBF717CC805C /* Pods_Monique.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 249A8A95B69762213942D3C9 /* Pods_Monique.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,7 +45,8 @@
 		9AD116611E5E7A9F00113753 /* ClientDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientDetailView.swift; path = Monique/ClientDetailView.swift; sourceTree = "<group>"; };
 		9AD116631E5E87C400113753 /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Client.swift; path = Monique/Client.swift; sourceTree = "<group>"; };
 		9AD2ABEB1E61148E00998BBB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		9AD2ABF51E6655B200998BBB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9AD2ABF51E6655B200998BBB /* GoogleService-Info.old.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.old.plist"; path = "../GoogleService-Info.old.plist"; sourceTree = "<group>"; };
+		9AD2B3381E8A13D900DF308C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C66EC089496AEED42C212946 /* Pods-Monique.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Monique.release.xcconfig"; path = "Pods/Target Support Files/Pods-Monique/Pods-Monique.release.xcconfig"; sourceTree = "<group>"; };
 		DEDF5D978543327D60F28F05 /* Pods-Monique.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Monique.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Monique/Pods-Monique.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -112,8 +114,9 @@
 			isa = PBXGroup;
 			children = (
 				9A3BC6451E5A9AA700E9CA71 /* AppDelegate.swift */,
+				9AD2B3381E8A13D900DF308C /* GoogleService-Info.plist */,
 				9A3BC6501E5A9AA700E9CA71 /* LaunchScreen.storyboard */,
-				9AD2ABF51E6655B200998BBB /* GoogleService-Info.plist */,
+				9AD2ABF51E6655B200998BBB /* GoogleService-Info.old.plist */,
 				9A3BC6531E5A9AA700E9CA71 /* Info.plist */,
 				9AD2ABEB1E61148E00998BBB /* Assets.xcassets */,
 			);
@@ -186,7 +189,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AD2ABEC1E61148E00998BBB /* Assets.xcassets in Resources */,
-				9AD2ABF61E6655B200998BBB /* GoogleService-Info.plist in Resources */,
+				9AD2ABF61E6655B200998BBB /* GoogleService-Info.old.plist in Resources */,
+				9AD2B3391E8A13D900DF308C /* GoogleService-Info.plist in Resources */,
 				9A3BC6521E5A9AA700E9CA71 /* LaunchScreen.storyboard in Resources */,
 				9A3BC64D1E5A9AA700E9CA71 /* Main.storyboard in Resources */,
 			);

@@ -443,6 +443,38 @@
             endingLineNumber = "227"
             landmarkName = "deleteImageFromFirebase(path:fileName:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Monique.PictureTimeView.deleteImageFromFirebase (path : Swift.String, fileName : Swift.String) -&gt; ()"
+                  moduleName = "Monique"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rawad.elrifai/github.com/iOS/monique/Monique/PictureTimeView.swift"
+                  timestampString = "512366887.214467"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "227"
+                  endingLineNumber = "227"
+                  offsetFromSymbolStart = "268">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Monique.PictureTimeView.(deleteImageFromFirebase (path : Swift.String, fileName : Swift.String) -&gt; ()).(closure #1)"
+                  moduleName = "Monique"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rawad.elrifai/github.com/iOS/monique/Monique/PictureTimeView.swift"
+                  timestampString = "512366887.215808"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "229"
+                  endingLineNumber = "229"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -458,6 +490,38 @@
             startingLineNumber = "98"
             endingLineNumber = "98"
             landmarkName = "cancel(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Monique/EditClientView.swift"
+            timestampString = "512365833.376317"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
+            landmarkName = "uploadImageToFirebase(data:path:fileName:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Monique/EditClientView.swift"
+            timestampString = "512365863.568015"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
+            landmarkName = "uploadImageToFirebase(data:path:fileName:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

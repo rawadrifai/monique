@@ -54,7 +54,7 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
     {
         
         let image = UIImagePickerController()
-        image.allowsEditing = false
+        image.allowsEditing = true
         image.delegate = self
         
         // set the source to photo library
@@ -73,7 +73,7 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
     {
         
-        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        if let image = info[UIImagePickerControllerEditedImage] as? UIImage
         {
             imgView.image = image
         }
