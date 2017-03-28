@@ -19,7 +19,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-Monique.xcscheme</key>
+		<key>Pods-CuteTip.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -37,7 +37,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>16F6C671EF5C014B6AF1BDEB3056C1DA</key>
+		<key>13BFE4B4DAD0A77DCA0808088D0B2D4A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>19D36AA0FE3D88885D756D50921F8FEF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -48,11 +53,6 @@
 			<true/>
 		</dict>
 		<key>B1C4AAFAF49036C7007633DAA3C806AD</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E9A38C49461CFE889D7B7665466CB336</key>
 		<dict>
 			<key>primary</key>
 			<true/>

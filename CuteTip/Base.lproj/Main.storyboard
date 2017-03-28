@@ -13,7 +13,7 @@
         <!--Clients-->
         <scene sceneID="4AB-gc-XS9">
             <objects>
-                <tableViewController id="ziU-oG-owb" customClass="ClientsView" customModule="Monique" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="ziU-oG-owb" customClass="ClientsView" customModule="CuteTip" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="28" sectionFooterHeight="28" id="wtp-iS-dcW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -70,7 +70,7 @@
         <!--Client Detail View-->
         <scene sceneID="g0d-CE-5jy">
             <objects>
-                <tableViewController id="cdu-h2-G3J" customClass="ClientDetailView" customModule="Monique" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="cdu-h2-G3J" customClass="ClientDetailView" customModule="CuteTip" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="63" sectionHeaderHeight="28" sectionFooterHeight="28" id="IzY-LG-Xfg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -190,7 +190,7 @@
         <!--More View-->
         <scene sceneID="2PM-Iq-KXg">
             <objects>
-                <tableViewController id="KZI-Y6-GH1" customClass="MoreView" customModule="Monique" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="KZI-Y6-GH1" customClass="MoreView" customModule="CuteTip" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="nKP-d1-fU1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -409,7 +409,7 @@ This Agreement was last modified on 03/20/2017</string>
         <!--Save User Info-->
         <scene sceneID="QcQ-ZC-8AD">
             <objects>
-                <viewController id="296-gp-6M8" customClass="SaveUserInfo" customModule="Monique" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="296-gp-6M8" customClass="SaveUserInfo" customModule="CuteTip" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mVH-EE-p2a"/>
                         <viewControllerLayoutGuide type="bottom" id="O7R-jK-6tq"/>
@@ -538,7 +538,7 @@ This Agreement was last modified on 03/20/2017</string>
         <!--Login-->
         <scene sceneID="PMS-f1-u1c">
             <objects>
-                <viewController id="yoX-Q4-vMH" customClass="Login" customModule="Monique" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="yoX-Q4-vMH" customClass="Login" customModule="CuteTip" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8TD-HI-yZg"/>
                         <viewControllerLayoutGuide type="bottom" id="u0Q-vR-RFs"/>
@@ -636,7 +636,7 @@ This Agreement was last modified on 03/20/2017</string>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9yR-0W-Xz0" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="contacts" id="rcm-6f-XcJ"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="AfO-F3-mUS">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="AfO-F3-mUS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -652,7 +652,7 @@ This Agreement was last modified on 03/20/2017</string>
         <!--New Client-->
         <scene sceneID="Flv-Hb-M5x">
             <objects>
-                <tableViewController id="JU3-Xh-DcQ" customClass="NewClientView" customModule="Monique" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="JU3-Xh-DcQ" customClass="NewClientView" customModule="CuteTip" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="adb-Ww-IWY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -782,7 +782,7 @@ This Agreement was last modified on 03/20/2017</string>
         <!--Client Info-->
         <scene sceneID="V0f-ac-Vn0">
             <objects>
-                <tableViewController id="JZf-he-PWa" customClass="EditClientView" customModule="Monique" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="JZf-he-PWa" customClass="EditClientView" customModule="CuteTip" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="KuT-8Q-Ilk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1007,7 +1007,7 @@ This Agreement was last modified on 03/20/2017</string>
         <!--Image View-->
         <scene sceneID="ypx-8c-9sT">
             <objects>
-                <viewController id="50F-x7-qVY" customClass="ImageView" customModule="Monique" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="50F-x7-qVY" customClass="ImageView" customModule="CuteTip" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="q3G-Mo-lLE"/>
                         <viewControllerLayoutGuide type="bottom" id="M0J-sp-srp"/>
@@ -1059,7 +1059,7 @@ This Agreement was last modified on 03/20/2017</string>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="m32-ze-ylf" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="more" id="ysb-Oa-uIw"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="hdr-Ba-Po8">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hdr-Ba-Po8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

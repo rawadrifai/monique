@@ -21,34 +21,69 @@
 		9AD116621E5E7A9F00113753 /* ClientDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD116611E5E7A9F00113753 /* ClientDetailView.swift */; };
 		9AD116641E5E87C400113753 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD116631E5E87C400113753 /* Client.swift */; };
 		9AD2ABEC1E61148E00998BBB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AD2ABEB1E61148E00998BBB /* Assets.xcassets */; };
-		9AD2ABF61E6655B200998BBB /* GoogleService-Info.old.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9AD2ABF51E6655B200998BBB /* GoogleService-Info.old.plist */; };
 		9AD2B3391E8A13D900DF308C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9AD2B3381E8A13D900DF308C /* GoogleService-Info.plist */; };
-		F157B5535620BBF717CC805C /* Pods_Monique.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 249A8A95B69762213942D3C9 /* Pods_Monique.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		9AD2B3421E8AE50800DF308C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9AD2B33A1E8AE50800DF308C /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2F6455BA2EB549E2434C44EE9274E3FD;
+			remoteInfo = GoogleToolboxForMac;
+		};
+		9AD2B3441E8AE50800DF308C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9AD2B33A1E8AE50800DF308C /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7C1E46E37629C75323645A80D723772B;
+			remoteInfo = GTMOAuth2;
+		};
+		9AD2B3461E8AE50800DF308C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9AD2B33A1E8AE50800DF308C /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A83446411F7A87C97B65A8C2FB4CD259;
+			remoteInfo = GTMSessionFetcher;
+		};
+		9AD2B3481E8AE50800DF308C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9AD2B33A1E8AE50800DF308C /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6F3488FA11605E15A728EEC339F69290;
+			remoteInfo = "Pods-CuteTip";
+		};
+		9AD2B34A1E8AE50800DF308C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9AD2B33A1E8AE50800DF308C /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B48E5469951E30DDF085EAEEC246CD04;
+			remoteInfo = SDWebImage;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		249A8A95B69762213942D3C9 /* Pods_Monique.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Monique.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A1856E21E84FCFE00C2EA2F /* ImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
-		9A36296B1E5D3CDA003CFAF8 /* NewClientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewClientView.swift; path = monique/NewClientView.swift; sourceTree = SOURCE_ROOT; };
-		9A3BC6421E5A9AA700E9CA71 /* Monique.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Monique.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A3BC6451E5A9AA700E9CA71 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8213314787EE8E8B25366B57 /* Pods-CuteTip.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CuteTip.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CuteTip/Pods-CuteTip.debug.xcconfig"; sourceTree = "<group>"; };
+		9A1856E21E84FCFE00C2EA2F /* ImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageView.swift; path = CuteTip/ImageView.swift; sourceTree = "<group>"; };
+		9A36296B1E5D3CDA003CFAF8 /* NewClientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewClientView.swift; path = CuteTip/NewClientView.swift; sourceTree = SOURCE_ROOT; };
+		9A3BC6421E5A9AA700E9CA71 /* CuteTip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CuteTip.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A3BC6451E5A9AA700E9CA71 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = CuteTip/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		9A3BC64C1E5A9AA700E9CA71 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9A3BC6511E5A9AA700E9CA71 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		9A3BC6531E5A9AA700E9CA71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9A3BC65B1E5AA5C300E9CA71 /* ClientsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientsView.swift; path = Monique/ClientsView.swift; sourceTree = "<group>"; };
-		9AAF34C21E70F1A600CAFE44 /* EditClientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditClientView.swift; path = Monique/EditClientView.swift; sourceTree = "<group>"; };
-		9AAF34C41E70F1B500CAFE44 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Login.swift; path = Monique/Login.swift; sourceTree = "<group>"; };
-		9AAF34C61E713A0B00CAFE44 /* PictureTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PictureTimeView.swift; path = Monique/PictureTimeView.swift; sourceTree = "<group>"; };
-		9AB6B8E01E84F869009231B0 /* MoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MoreView.swift; path = Monique/MoreView.swift; sourceTree = "<group>"; };
-		9AB6B8E91E84F9CA009231B0 /* SaveUserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SaveUserInfo.swift; path = Monique/SaveUserInfo.swift; sourceTree = "<group>"; };
+		9A3BC6531E5A9AA700E9CA71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = CuteTip/Info.plist; sourceTree = "<group>"; };
+		9A3BC65B1E5AA5C300E9CA71 /* ClientsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientsView.swift; path = CuteTip/ClientsView.swift; sourceTree = "<group>"; };
+		9AAF34C21E70F1A600CAFE44 /* EditClientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditClientView.swift; path = CuteTip/EditClientView.swift; sourceTree = "<group>"; };
+		9AAF34C41E70F1B500CAFE44 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Login.swift; path = CuteTip/Login.swift; sourceTree = "<group>"; };
+		9AAF34C61E713A0B00CAFE44 /* PictureTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PictureTimeView.swift; path = CuteTip/PictureTimeView.swift; sourceTree = "<group>"; };
+		9AB6B8E01E84F869009231B0 /* MoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MoreView.swift; path = CuteTip/MoreView.swift; sourceTree = "<group>"; };
+		9AB6B8E91E84F9CA009231B0 /* SaveUserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SaveUserInfo.swift; path = CuteTip/SaveUserInfo.swift; sourceTree = "<group>"; };
 		9AB6B8EB1E84FA10009231B0 /* Monique-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Monique-Bridging-Header.h"; sourceTree = "<group>"; };
-		9AD116611E5E7A9F00113753 /* ClientDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientDetailView.swift; path = Monique/ClientDetailView.swift; sourceTree = "<group>"; };
-		9AD116631E5E87C400113753 /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Client.swift; path = Monique/Client.swift; sourceTree = "<group>"; };
-		9AD2ABEB1E61148E00998BBB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		9AD2ABF51E6655B200998BBB /* GoogleService-Info.old.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.old.plist"; path = "../GoogleService-Info.old.plist"; sourceTree = "<group>"; };
-		9AD2B3381E8A13D900DF308C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		C66EC089496AEED42C212946 /* Pods-Monique.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Monique.release.xcconfig"; path = "Pods/Target Support Files/Pods-Monique/Pods-Monique.release.xcconfig"; sourceTree = "<group>"; };
-		DEDF5D978543327D60F28F05 /* Pods-Monique.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Monique.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Monique/Pods-Monique.debug.xcconfig"; sourceTree = "<group>"; };
+		9AD116611E5E7A9F00113753 /* ClientDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientDetailView.swift; path = CuteTip/ClientDetailView.swift; sourceTree = "<group>"; };
+		9AD116631E5E87C400113753 /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Client.swift; path = CuteTip/Client.swift; sourceTree = "<group>"; };
+		9AD2ABEB1E61148E00998BBB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = CuteTip/Assets.xcassets; sourceTree = SOURCE_ROOT; };
+		9AD2B3381E8A13D900DF308C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "CuteTip/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		9AD2B33A1E8AE50800DF308C /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
+		F387DCD0E479A404BFA165D6 /* Pods-CuteTip.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CuteTip.release.xcconfig"; path = "Pods/Target Support Files/Pods-CuteTip/Pods-CuteTip.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +91,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F157B5535620BBF717CC805C /* Pods_Monique.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,8 +100,8 @@
 		48218D1D823D880B272EF557 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				DEDF5D978543327D60F28F05 /* Pods-Monique.debug.xcconfig */,
-				C66EC089496AEED42C212946 /* Pods-Monique.release.xcconfig */,
+				8213314787EE8E8B25366B57 /* Pods-CuteTip.debug.xcconfig */,
+				F387DCD0E479A404BFA165D6 /* Pods-CuteTip.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -75,7 +109,7 @@
 		68FF385C1A846D0140FD2222 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				249A8A95B69762213942D3C9 /* Pods_Monique.framework */,
+				9AD2B33A1E8AE50800DF308C /* Pods.xcodeproj */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -105,7 +139,7 @@
 		9A3BC6431E5A9AA700E9CA71 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9A3BC6421E5A9AA700E9CA71 /* Monique.app */,
+				9A3BC6421E5A9AA700E9CA71 /* CuteTip.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -116,7 +150,6 @@
 				9A3BC6451E5A9AA700E9CA71 /* AppDelegate.swift */,
 				9AD2B3381E8A13D900DF308C /* GoogleService-Info.plist */,
 				9A3BC6501E5A9AA700E9CA71 /* LaunchScreen.storyboard */,
-				9AD2ABF51E6655B200998BBB /* GoogleService-Info.old.plist */,
 				9A3BC6531E5A9AA700E9CA71 /* Info.plist */,
 				9AD2ABEB1E61148E00998BBB /* Assets.xcassets */,
 			);
@@ -124,12 +157,24 @@
 			path = Monique;
 			sourceTree = "<group>";
 		};
+		9AD2B33B1E8AE50800DF308C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9AD2B3431E8AE50800DF308C /* GoogleToolboxForMac.framework */,
+				9AD2B3451E8AE50800DF308C /* GTMOAuth2.framework */,
+				9AD2B3471E8AE50800DF308C /* GTMSessionFetcher.framework */,
+				9AD2B3491E8AE50800DF308C /* Pods_CuteTip.framework */,
+				9AD2B34B1E8AE50800DF308C /* SDWebImage.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9A3BC6411E5A9AA700E9CA71 /* Monique */ = {
+		9A3BC6411E5A9AA700E9CA71 /* CuteTip */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9A3BC6561E5A9AA700E9CA71 /* Build configuration list for PBXNativeTarget "Monique" */;
+			buildConfigurationList = 9A3BC6561E5A9AA700E9CA71 /* Build configuration list for PBXNativeTarget "CuteTip" */;
 			buildPhases = (
 				C8BAFA780779A159E8D8102C /* [CP] Check Pods Manifest.lock */,
 				9A3BC63E1E5A9AA700E9CA71 /* Sources */,
@@ -142,9 +187,9 @@
 			);
 			dependencies = (
 			);
-			name = Monique;
+			name = CuteTip;
 			productName = Monique;
-			productReference = 9A3BC6421E5A9AA700E9CA71 /* Monique.app */;
+			productReference = 9A3BC6421E5A9AA700E9CA71 /* CuteTip.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -165,7 +210,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9A3BC63D1E5A9AA700E9CA71 /* Build configuration list for PBXProject "Monique" */;
+			buildConfigurationList = 9A3BC63D1E5A9AA700E9CA71 /* Build configuration list for PBXProject "CuteTip" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -176,12 +221,56 @@
 			mainGroup = 9A3BC6391E5A9AA700E9CA71;
 			productRefGroup = 9A3BC6431E5A9AA700E9CA71 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 9AD2B33B1E8AE50800DF308C /* Products */;
+					ProjectRef = 9AD2B33A1E8AE50800DF308C /* Pods.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
-				9A3BC6411E5A9AA700E9CA71 /* Monique */,
+				9A3BC6411E5A9AA700E9CA71 /* CuteTip */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		9AD2B3431E8AE50800DF308C /* GoogleToolboxForMac.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = GoogleToolboxForMac.framework;
+			remoteRef = 9AD2B3421E8AE50800DF308C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9AD2B3451E8AE50800DF308C /* GTMOAuth2.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = GTMOAuth2.framework;
+			remoteRef = 9AD2B3441E8AE50800DF308C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9AD2B3471E8AE50800DF308C /* GTMSessionFetcher.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = GTMSessionFetcher.framework;
+			remoteRef = 9AD2B3461E8AE50800DF308C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9AD2B3491E8AE50800DF308C /* Pods_CuteTip.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Pods_CuteTip.framework;
+			remoteRef = 9AD2B3481E8AE50800DF308C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9AD2B34B1E8AE50800DF308C /* SDWebImage.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SDWebImage.framework;
+			remoteRef = 9AD2B34A1E8AE50800DF308C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		9A3BC6401E5A9AA700E9CA71 /* Resources */ = {
@@ -189,7 +278,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AD2ABEC1E61148E00998BBB /* Assets.xcassets in Resources */,
-				9AD2ABF61E6655B200998BBB /* GoogleService-Info.old.plist in Resources */,
 				9AD2B3391E8A13D900DF308C /* GoogleService-Info.plist in Resources */,
 				9A3BC6521E5A9AA700E9CA71 /* LaunchScreen.storyboard in Resources */,
 				9A3BC64D1E5A9AA700E9CA71 /* Main.storyboard in Resources */,
@@ -211,7 +299,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Monique/Pods-Monique-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CuteTip/Pods-CuteTip-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C8BAFA780779A159E8D8102C /* [CP] Check Pods Manifest.lock */ = {
@@ -241,7 +329,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Monique/Pods-Monique-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CuteTip/Pods-CuteTip-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -274,7 +362,7 @@
 				9A3BC64C1E5A9AA700E9CA71 /* Base */,
 			);
 			name = Main.storyboard;
-			path = Monique;
+			path = CuteTip;
 			sourceTree = "<group>";
 		};
 		9A3BC6501E5A9AA700E9CA71 /* LaunchScreen.storyboard */ = {
@@ -283,6 +371,7 @@
 				9A3BC6511E5A9AA700E9CA71 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = ../CuteTip;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -381,12 +470,12 @@
 		};
 		9A3BC6571E5A9AA700E9CA71 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DEDF5D978543327D60F28F05 /* Pods-Monique.debug.xcconfig */;
+			baseConfigurationReference = 8213314787EE8E8B25366B57 /* Pods-CuteTip.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 8WVDFQN9GC;
-				INFOPLIST_FILE = Monique/Info.plist;
+				INFOPLIST_FILE = CuteTip/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = rifai.Monique.ios;
@@ -399,12 +488,12 @@
 		};
 		9A3BC6581E5A9AA700E9CA71 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C66EC089496AEED42C212946 /* Pods-Monique.release.xcconfig */;
+			baseConfigurationReference = F387DCD0E479A404BFA165D6 /* Pods-CuteTip.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 8WVDFQN9GC;
-				INFOPLIST_FILE = Monique/Info.plist;
+				INFOPLIST_FILE = CuteTip/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = rifai.Monique.ios;
@@ -417,7 +506,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9A3BC63D1E5A9AA700E9CA71 /* Build configuration list for PBXProject "Monique" */ = {
+		9A3BC63D1E5A9AA700E9CA71 /* Build configuration list for PBXProject "CuteTip" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9A3BC6541E5A9AA700E9CA71 /* Debug */,
@@ -426,7 +515,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9A3BC6561E5A9AA700E9CA71 /* Build configuration list for PBXNativeTarget "Monique" */ = {
+		9A3BC6561E5A9AA700E9CA71 /* Build configuration list for PBXNativeTarget "CuteTip" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9A3BC6571E5A9AA700E9CA71 /* Debug */,
