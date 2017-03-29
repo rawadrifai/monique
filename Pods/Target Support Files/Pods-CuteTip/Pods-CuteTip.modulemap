@@ -1,6 +1,0 @@
-framework module Pods_CuteTip {
-  umbrella header "Pods-CuteTip-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -19,7 +19,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-CuteTip.xcscheme</key>
+		<key>Pods-Prossimo.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -32,22 +32,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>058E3223C68A5FB572477D94E2362219</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>107A9565F9DF88517DFD3E28C05B2B96</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>13BFE4B4DAD0A77DCA0808088D0B2D4A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>19D36AA0FE3D88885D756D50921F8FEF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>681BE6E3D02A43F9BA63777AC435C8FD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>91594721B2502B805F02102FFD89FD2C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
