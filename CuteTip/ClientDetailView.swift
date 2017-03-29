@@ -71,7 +71,7 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
     func fillData() {
         
         labelName.text = client.clientName
-        labelPhone.text = client.clientId
+        labelPhone.text = client.clientPhone
         
         if client.profileImg.imageUrl != "" {
             imgView.sd_setImage(with: URL(string: client.profileImg.imageUrl))
@@ -116,7 +116,6 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
             self.performSegue(withIdentifier: "pictureTimeSegue", sender: self)
             
         }
-        
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -162,6 +161,8 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        
+        
         if segue.identifier == "editClientSegue" {
             
             // set the userId
@@ -183,7 +184,6 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
                 destination.delegate = self
             }
         }
-        
     }
     
 
@@ -193,12 +193,12 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
     // Child Delegate
     func dataChanged(client: Client) {
         
-        self.client.clientId = client.clientId
+        self.client.clientPhone = client.clientPhone
         self.client.clientName = client.clientName
         self.client.clientEmail = client.clientEmail
         
         self.labelName.text = client.clientName
-        self.labelPhone.text = client.clientId
+        self.labelPhone.text = client.clientPhone
         
     }
     

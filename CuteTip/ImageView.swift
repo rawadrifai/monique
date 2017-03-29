@@ -23,7 +23,6 @@ class ImageView: UIViewController, UIScrollViewDelegate {
     }
     
     
-    
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return self.imgView
     }
@@ -43,11 +42,7 @@ class ImageView: UIViewController, UIScrollViewDelegate {
     
     func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
-        
         self.dismiss(animated: false) {}
-        //let _ = self.navigationController?.popToRootViewController(animated: false)
-        //let _ = self.navigationController?.popViewController(animated: true)
-        
     }
     
 }

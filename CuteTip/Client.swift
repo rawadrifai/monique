@@ -14,34 +14,38 @@ class Client {
     var clientId:String
     var clientName:String
     var clientEmail:String
+    var clientPhone:String
     var profileImg:ImageObject
     
     var clientVisits:[ClientVisit]
     
     init() {
-        clientId = ""
-        clientName = ""
-        clientEmail = ""
-        profileImg = ImageObject()
-        
-        clientVisits = []
-    }
-    
-    init(clientId:String, clientName:String, clientEmail:String) {
-        self.clientId = clientId
-        self.clientName = clientName
-        self.clientEmail = clientEmail
+        self.clientId = ""
+        self.clientName = ""
+        self.clientEmail = ""
+        self.clientPhone = ""
         self.profileImg = ImageObject()
-        clientVisits = []
+        
+        self.clientVisits = []
     }
     
-    init(clientId:String, clientName:String, clientEmail:String, profileImg:ImageObject) {
+    init(clientId:String, clientName:String, clientEmail:String, clientPhone:String) {
         self.clientId = clientId
         self.clientName = clientName
         self.clientEmail = clientEmail
+        self.clientPhone = clientPhone
+        self.profileImg = ImageObject()
+        self.clientVisits = []
+    }
+    
+    init(clientId:String, clientName:String, clientEmail:String, clientPhone:String, profileImg:ImageObject) {
+        self.clientId = clientId
+        self.clientName = clientName
+        self.clientEmail = clientEmail
+        self.clientPhone = clientPhone
         self.profileImg = profileImg
         
-        clientVisits = []
+        self.clientVisits = []
     }
     
 }

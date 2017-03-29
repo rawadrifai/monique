@@ -58,7 +58,7 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
         image.delegate = self
         
         // set the source to photo library
-        image.sourceType = UIImagePickerControllerSourceType.camera
+        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
         
         self.present(image, animated: true)
     }
@@ -67,7 +67,7 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
     func fillData() {
         
         txfName.text = client.clientName
-        txfPhone.text = client.clientId
+        txfPhone.text = client.clientPhone
         txfEmail.text = client.clientEmail
         
         if client.profileImg.imageUrl != "" {
@@ -92,12 +92,13 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
         if (validateInput()) {
             
             self.client.clientName = txfName.text!
-            self.client.clientId = txfPhone.text!
+            self.client.clientPhone = txfPhone.text!
             self.client.clientEmail = txfEmail.text!
             
             // insert values
             self.ref.child(userId + "/clients/" + self.client.clientId + "/clientName").setValue(self.client.clientName)
             self.ref.child(userId + "/clients/" + self.client.clientId + "/clientEmail").setValue(self.client.clientEmail)
+            self.ref.child(userId + "/clients/" + self.client.clientId + "/clientPhone").setValue(self.client.clientPhone)
             
             if let del = self.delegate {
                 del.dataChanged(client: self.client)
@@ -165,9 +166,7 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
                 
                 self.ref.child(path + "/imageName").setValue(self.client.profileImg.imageName)
                 self.ref.child(path + "/imageUrl").setValue(self.client.profileImg.imageUrl)
-                
-                print(self.client.profileImg.imageUrl)
-                
+
                 if let del = self.delegate {
                     del.imageChanged(client:self.client)
                 }

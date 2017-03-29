@@ -13,25 +13,21 @@ import FirebaseDatabase
 class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     @IBOutlet weak var txvNotes: UITextView!
-
-    
-
     var selectedVisitIndex:Int!
     var userId:String!
     var client:Client!
     var ref: FIRDatabaseReference!
-    
     var delegate: PictureTimeDelegate?
     
+    
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         self.ref = FIRDatabase.database().reference()
 
-        
         loadVisit()
-        
-        
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -146,7 +142,7 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         image.delegate = self
         
         // set the source to photo library
-        image.sourceType = UIImagePickerControllerSourceType.camera
+        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
                 
         self.present(image, animated: true)
     }
@@ -193,28 +189,22 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
                 let imgobj = ImageObject()
                 imgobj.imageName = fileName
                 imgobj.imageUrl = (metadata?.downloadURL()?.absoluteString)!
+                imgobj.uploadDate = String(Date().timeIntervalSince1970)
                 
                 self.client.clientVisits[self.selectedVisitIndex].images.append(imgobj)
                 
-                // set pic url
-                self.ref.child(path + imgobj.imageName + "/imageUrl").setValue(imgobj.imageUrl)
                 
-                // set pic date
-//                let date = Date()
-//                let calendar = Calendar.current
-//                let year = calendar.component(.year, from: date)
-//                let month = calendar.component(.month, from: date)
-//                let day = calendar.component(.day, from: date)
-//                
-//                let pictureDate = String(year) + "-" + String(month) + "-" + String(day) + " " + String(day) + "-" + String(day) + "-" + String(day)
-                self.ref.child(path + imgobj.imageName + "/uploadDate").setValue(Date().timeIntervalSince1970)
+                self.ref.child(path + imgobj.imageName + "/imageUrl").setValue(imgobj.imageUrl)
+                self.ref.child(path + imgobj.imageName + "/uploadDate").setValue(imgobj.uploadDate)
+                    
+                self.client.clientVisits[self.selectedVisitIndex].images.sort { $0.uploadDate > $1.uploadDate }
                 self.tableView.reloadData()
                 
                 if let del = self.delegate {
                     del.historyChanged(client: self.client)
                 }
                 
-                print(self.client.profileImg.imageUrl)
+
             }
         }
     }
@@ -229,9 +219,7 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
             if err != nil {
                 print("received an error: \(err?.localizedDescription)")
             }
-            else {
-                print("image deleted")
-            }
+            
         }
     }
 }

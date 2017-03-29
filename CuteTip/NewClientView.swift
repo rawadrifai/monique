@@ -58,7 +58,7 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
         image.delegate = self
         
         // set the source to photo library
-        image.sourceType = UIImagePickerControllerSourceType.camera
+        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
         
         self.present(image, animated: true)
     }
@@ -119,13 +119,16 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
         
         if (validateInput()) {
             
+            self.client.clientId = UUID().uuidString
+            
             self.client.clientName = txfName.text!
-            self.client.clientId = txfPhone.text!
+            self.client.clientPhone = txfPhone.text!
             self.client.clientEmail = txfEmail.text!
             
             // insert values
             self.ref.child(userId + "/clients/" + self.client.clientId + "/clientName").setValue(self.client.clientName)
             self.ref.child(userId + "/clients/" + self.client.clientId + "/clientEmail").setValue(self.client.clientEmail)
+            self.ref.child(userId + "/clients/" + self.client.clientId + "/clientPhone").setValue(self.client.clientPhone)
             
             
             if imageChanged && self.imgView.image?.sd_imageData() != nil {

@@ -12,11 +12,11 @@ import GoogleSignIn
 import Firebase
 import FirebaseDatabase
 
-class ClientsView: UITableViewController, UISearchResultsUpdating, NewClientDelegate {
-
-
+class ClientsView: UITableViewController, UISearchResultsUpdating {
+    
+    
     var ref: FIRDatabaseReference!
-
+    
     // search bar stuff
     var searchController : UISearchController!
     var resultsController = UITableViewController()
@@ -31,7 +31,7 @@ class ClientsView: UITableViewController, UISearchResultsUpdating, NewClientDele
         super.viewDidAppear(animated)
         
         // get all the user related data
-        getUserData()
+          getUserData()
         
     }
     
@@ -56,7 +56,7 @@ class ClientsView: UITableViewController, UISearchResultsUpdating, NewClientDele
         
         // make the header = to the searchController
         self.tableView.tableHeaderView = self.searchController.searchBar
-
+        
         // eliminates white space between search bar and results
         definesPresentationContext = true
         
@@ -74,7 +74,7 @@ class ClientsView: UITableViewController, UISearchResultsUpdating, NewClientDele
             if data.clientName.lowercased().contains(self.searchController.searchBar.text!.lowercased()) ||
                 data.clientId.lowercased().contains(self.searchController.searchBar.text!.lowercased()) ||
                 data.clientName.lowercased().contains(self.searchController.searchBar.text!.lowercased()) {
-                    
+                
                 return true
             }
             else {
@@ -85,13 +85,12 @@ class ClientsView: UITableViewController, UISearchResultsUpdating, NewClientDele
         // update tableview
         self.resultsController.tableView.reloadData()
     }
-
-
+    
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         // check what's the tableview passed
         if tableView == self.tableView {
-            print(cellData.count)
             return cellData.count
         }
         else {
@@ -100,7 +99,7 @@ class ClientsView: UITableViewController, UISearchResultsUpdating, NewClientDele
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
+        
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cell")
         {
             // check what's the tableview passed
@@ -164,14 +163,14 @@ class ClientsView: UITableViewController, UISearchResultsUpdating, NewClientDele
         present(deleteAlert, animated: true, completion: nil)
         
     }
-
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "clientDetailsSegue" {
             
             if let destination = segue.destination as? ClientDetailView {
-  
+                
                 
                 // if there is text in the search bar
                 if ((searchController.searchBar.text) == "") {
@@ -181,7 +180,7 @@ class ClientsView: UITableViewController, UISearchResultsUpdating, NewClientDele
                     destination.client = cellData[selectedRow]
                     destination.userId = self.userId
                 }
-                // if no text is in the searchbar
+                    // if no text is in the searchbar
                 else {
                     
                     let selectedRow:Int = (resultsController.tableView.indexPathForSelectedRow?.row)!
@@ -190,11 +189,11 @@ class ClientsView: UITableViewController, UISearchResultsUpdating, NewClientDele
                 }
             }
         }
-        // set userId if we're going to add a client
+            // set userId if we're going to add a client
         else if segue.identifier == "newClientSegue" {
             if let destination = segue.destination as? NewClientView {
                 destination.userId = self.userId
-                destination.delegate = self
+            //    destination.delegate = self
             }
         }
     }
@@ -226,22 +225,21 @@ class ClientsView: UITableViewController, UISearchResultsUpdating, NewClientDele
         }
     }
     
+    
+    
+    
     func getUserData() {
         
-        var tempClientData = [Client]()
-        //self.cellData = [Client]()
-        
+        self.cellData = [Client]()
+
         if (userId=="no user id") {return}
         
         ref = FIRDatabase.database().reference()
-        
-        // get data from "email/clients" (async call)
-        ref.child(userId + "/clients").observeSingleEvent(of: .value, with: { (snapshot) in
+        self.ref.child(self.userId + "/clients").observeSingleEvent(of: .value, with: { (snapshot) in
             
             
             // Get a list of users, keys are client ids (or phone numbers)
             if let clientsDictionary = snapshot.value as? NSDictionary {
-                
                 
                 // loop through ids and get rest of the info
                 for clientItem in (clientsDictionary.allKeys) {
@@ -250,30 +248,31 @@ class ClientsView: UITableViewController, UISearchResultsUpdating, NewClientDele
                     let client = Client()
                     client.clientId = clientItem as! String
                     
-                    
                     // get rest of the client info
                     let clientInfo = (clientsDictionary.value(forKey: client.clientId) as? NSDictionary)!
                     client.clientName = clientInfo.value(forKey: "clientName") as? String ?? ""
                     client.clientEmail = clientInfo.value(forKey: "clientEmail") as? String ?? ""
+                    client.clientPhone = clientInfo.value(forKey: "clientPhone") as? String ?? ""
                     
                     // try to see if client has a profile image
                     if let profile = clientInfo.value(forKey: "profile") as? NSDictionary {
                         
                         client.profileImg.imageName = profile.value(forKey: "imageName") as? String ?? ""
                         client.profileImg.imageUrl = profile.value(forKey: "imageUrl") as? String ?? ""
-                        
                     }
                     
-                    // try to see if client has any visits already
+                    // Visits
                     if let clientVisits = clientInfo.value(forKey: "visits") as? NSDictionary {
                         
-                        // loop through the client visits
+                      //  var tempClientVisits = [ClientVisit]()
+                        
+                        // loop through visits
                         for visit in (clientVisits.allKeys) {
+
                             
                             // create a client visit object and set the id to the key (visit date)
                             let clientVisit = ClientVisit()
                             clientVisit.visitDate = visit as! String
-                            
                             
                             // get the rest of the info
                             let visitInfo = (clientVisits.value(forKey: clientVisit.visitDate) as? NSDictionary)!
@@ -282,31 +281,32 @@ class ClientsView: UITableViewController, UISearchResultsUpdating, NewClientDele
                             
                             // get the images for each visit
                             if let visitImages = (visitInfo.value(forKey: "images") as? NSDictionary) {
-                                
+                     
                                 for image in visitImages.allKeys {
                                     
-                                    // get image name and url and append to images array for that visit
-                                    
-                                    clientVisit.images.append(ImageObject(imageName: image as! String, imageUrl: visitImages.value(forKey: image as! String) as! String))
+                                    if let imgInfo = (visitImages.value(forKey: image as! String) as? NSDictionary) {
+                                        
+                                        let imgObj = ImageObject()
+                                        imgObj.imageName = image as! String
+                                        imgObj.imageUrl = imgInfo.value(forKey: "imageUrl") as! String
+                                        imgObj.uploadDate = imgInfo.value(forKey: "uploadDate") as! String
+                                        
+
+                                        clientVisit.images.append(imgObj)
+                                    }
                                 }
+                                clientVisit.images.sort { $0.uploadDate > $1.uploadDate }
                             }
                             client.clientVisits.append(clientVisit)
                         }
+                        client.clientVisits.sort{ $0.visitDate > $1.visitDate }
                     }
-                    
-                    tempClientData.append(client)
-                    
-                    // add client to array
                     self.cellData.append(client)
                 }
+                self.cellData.sort { $0.clientName < $1.clientName }
+                self.reloadTableDataFromUIThread()
             }
             
-            tempClientData.sort { $0.clientName < $1.clientName }
-            
-            self.cellData = tempClientData
-            self.reloadTableDataFromUIThread()
-            
-            // trailing error closure
         }) { (error) in
             print(error.localizedDescription)
         }
