@@ -58,7 +58,7 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
         image.delegate = self
         
         // set the source to photo library
-        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        image.sourceType = UIImagePickerControllerSourceType.camera
         
         self.present(image, animated: true)
     }

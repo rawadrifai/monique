@@ -12,7 +12,7 @@ import GoogleSignIn
 import Firebase
 import FirebaseDatabase
 
-class ClientsView: UITableViewController, UISearchResultsUpdating {
+class ClientsView: UITableViewController, UISearchResultsUpdating, NewClientDelegate {
     
     
     var ref: FIRDatabaseReference!
@@ -193,7 +193,7 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
         else if segue.identifier == "newClientSegue" {
             if let destination = segue.destination as? NewClientView {
                 destination.userId = self.userId
-            //    destination.delegate = self
+                destination.delegate = self
             }
         }
     }
@@ -208,10 +208,6 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
                 break
             }
         }
-        
-        getUserData()
-        tableView.reloadData()
-        
     }
     
     func reloadTableDataFromUIThread() {
@@ -311,4 +307,5 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
             print(error.localizedDescription)
         }
     }
+
 }

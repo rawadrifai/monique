@@ -22,7 +22,7 @@
 		9AD116621E5E7A9F00113753 /* ClientDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD116611E5E7A9F00113753 /* ClientDetailView.swift */; };
 		9AD116641E5E87C400113753 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD116631E5E87C400113753 /* Client.swift */; };
 		9AD2ABEC1E61148E00998BBB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AD2ABEB1E61148E00998BBB /* Assets.xcassets */; };
-		9AD2B3391E8A13D900DF308C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9AD2B3381E8A13D900DF308C /* GoogleService-Info.plist */; };
+		9AD2B3681E8C2F3800DF308C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9AD2B3671E8C2F3800DF308C /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,8 +82,8 @@
 		9AD116611E5E7A9F00113753 /* ClientDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientDetailView.swift; path = Prossimo/ClientDetailView.swift; sourceTree = SOURCE_ROOT; };
 		9AD116631E5E87C400113753 /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Client.swift; path = Prossimo/Client.swift; sourceTree = "<group>"; };
 		9AD2ABEB1E61148E00998BBB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Prossimo/Assets.xcassets; sourceTree = SOURCE_ROOT; };
-		9AD2B3381E8A13D900DF308C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Prossimo/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		9AD2B33A1E8AE50800DF308C /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
+		9AD2B3671E8C2F3800DF308C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Prossimo/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		A0F609DC844E3145CC67B243 /* Pods-Prossimo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Prossimo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Prossimo/Pods-Prossimo.release.xcconfig"; sourceTree = "<group>"; };
 		D89157497824667341AC8B22 /* Pods-Prossimo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Prossimo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Prossimo/Pods-Prossimo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -152,9 +152,9 @@
 			isa = PBXGroup;
 			children = (
 				9A3BC6451E5A9AA700E9CA71 /* AppDelegate.swift */,
-				9AD2B3381E8A13D900DF308C /* GoogleService-Info.plist */,
 				9A3BC6501E5A9AA700E9CA71 /* LaunchScreen.storyboard */,
 				9A3BC6531E5A9AA700E9CA71 /* Info.plist */,
+				9AD2B3671E8C2F3800DF308C /* GoogleService-Info.plist */,
 				9AD2ABEB1E61148E00998BBB /* Assets.xcassets */,
 			);
 			name = "New Group";
@@ -282,7 +282,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AD2ABEC1E61148E00998BBB /* Assets.xcassets in Resources */,
-				9AD2B3391E8A13D900DF308C /* GoogleService-Info.plist in Resources */,
+				9AD2B3681E8C2F3800DF308C /* GoogleService-Info.plist in Resources */,
 				9A3BC6521E5A9AA700E9CA71 /* LaunchScreen.storyboard in Resources */,
 				9A3BC64D1E5A9AA700E9CA71 /* Main.storyboard in Resources */,
 			);
