@@ -19,11 +19,15 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
     var ref: FIRDatabaseReference!
     var delegate: PictureTimeDelegate?
     
+    @IBOutlet weak var labelNotes: UILabel!
     
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        self.labelNotes.layer.cornerRadius = 98 / 10;
+        self.labelNotes.clipsToBounds = true;
         
         self.ref = FIRDatabase.database().reference()
 
@@ -43,8 +47,10 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
             let imgobj = self.client.clientVisits[selectedVisitIndex].images[indexPath.row]
             
             let image = cell.viewWithTag(1) as! UIImageView
-            image.sd_setImage(with: URL(string: imgobj.imageUrl))
-
+            image.sd_setImage(with: URL(string: imgobj.imageUrl), completed: { (img, err, ct, url) in
+                
+            }) //.sd_setImage(with: URL(string: imgobj.imageUrl))
+            
             return cell
         }
         
