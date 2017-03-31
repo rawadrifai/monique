@@ -96,9 +96,9 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
             self.client.clientEmail = txfEmail.text!
             
             // insert values
-            self.ref.child(userId + "/clients/" + self.client.clientId + "/clientName").setValue(self.client.clientName)
-            self.ref.child(userId + "/clients/" + self.client.clientId + "/clientEmail").setValue(self.client.clientEmail)
-            self.ref.child(userId + "/clients/" + self.client.clientId + "/clientPhone").setValue(self.client.clientPhone)
+            self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/clientName").setValue(self.client.clientName)
+            self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/clientEmail").setValue(self.client.clientEmail)
+            self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/clientPhone").setValue(self.client.clientPhone)
             
             if let del = self.delegate {
                 del.dataChanged(client: self.client)
@@ -108,7 +108,7 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
                 
                 let compressedImageData = UIImageJPEGRepresentation(self.imgView.image!, 0)
                 
-                uploadImageToFirebase(data: compressedImageData!, path: self.userId + "/clients/" + self.client.clientId + "/profile/", fileName: UUID().uuidString)
+                uploadImageToFirebase(data: compressedImageData!, path: "users/" + self.userId + "/clients/" + self.client.clientId + "/profile/", fileName: UUID().uuidString)
             }
             
             let _ = self.navigationController?.popViewController(animated: true)

@@ -58,7 +58,7 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
             }
         }
         
-        self.ref.child(userId + "/clients/" + self.client.clientId + "/visits/" + visitdate + "/notes").setValue("") { (err, ref) in
+        self.ref.child("users/" + userId + "/clients/" + self.client.clientId + "/visits/" + visitdate + "/notes").setValue("") { (err, ref) in
             
             self.client.clientVisits.append(ClientVisit(visitDate: visitdate, notes: ""))
             
@@ -132,7 +132,7 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
             
             // delete from firebase database, with completion block
             
-            self.ref.child(self.userId + "/clients/" + self.client.clientId + "/visits/" + visitToBeDeleted.visitDate).removeValue(completionBlock: { (err, ref) in
+            self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + visitToBeDeleted.visitDate).removeValue(completionBlock: { (err, ref) in
                 
                 self.client.clientVisits.remove(at: indexPath.row)
                 self.tableView.reloadData()

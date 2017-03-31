@@ -24,19 +24,19 @@ class SaveUserInfo: UIViewController {
         
         if validateInput() {
             
-            let defaults = UserDefaults.standard
+          //  let defaults = UserDefaults.standard
             
-            let userId = UIDevice.current.identifierForVendor!.uuidString
+           // let userId = UIDevice.current.identifierForVendor!.uuidString
             
             var user = [String:String]()
-            user["deviceId"] = userId
+            user["deviceId"] = self.userId
             user["name"] = txfName.text!
             user["phone"] = txfPhone.text!
             user["email"] = txfEmail.text!
             
-            self.ref.child(userId).setValue(user) { (err, ref) in
-                defaults.setValue("true", forKey: "loggedInBefore")
-                self.userId = userId
+            self.ref.child("users").child(self.userId).setValue(user) { (err, ref) in
+            //    defaults.setValue("true", forKey: "loggedInBefore")
+                //self.userId = userId
                 self.performSegue(withIdentifier: "loginSegue", sender: self)
             }
         }

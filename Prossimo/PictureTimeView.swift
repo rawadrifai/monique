@@ -69,7 +69,7 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
             
             // delete from firebase database, with completion block
         
-            self.ref.child(self.userId + "/clients/" + self.client.clientId + "/visits/" + self.client.clientVisits[selectedVisitIndex].visitDate + "/images/" + imageToBeDeleted.imageName).removeValue { (err, ref) in
+            self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.client.clientVisits[selectedVisitIndex].visitDate + "/images/" + imageToBeDeleted.imageName).removeValue { (err, ref) in
                 
                 self.client.clientVisits[self.selectedVisitIndex].images.remove(at: indexPath.row)
                 self.tableView.reloadData()
@@ -128,7 +128,7 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         let selectedVisit = self.client.clientVisits[selectedVisitIndex]
         
         self.client.clientVisits[selectedVisitIndex].notes = notes
-        self.ref.child(userId + "/clients/" + self.client.clientId + "/visits/" + selectedVisit.visitDate + "/notes").setValue(notes)
+        self.ref.child("users/" + userId + "/clients/" + self.client.clientId + "/visits/" + selectedVisit.visitDate + "/notes").setValue(notes)
             
             if let del = self.delegate {
                 del.historyChanged(client: self.client)
@@ -166,7 +166,7 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
             // compress the image
             let compressedImageData = UIImageJPEGRepresentation(image, 0)
             
-            uploadImageToFirebase(data: compressedImageData!, path: userId + "/clients/" + self.client.clientId + "/visits/" + visitdate + "/images/", fileName: UUID().uuidString)
+            uploadImageToFirebase(data: compressedImageData!, path: "users/" + userId + "/clients/" + self.client.clientId + "/visits/" + visitdate + "/images/", fileName: UUID().uuidString)
         }
         
         self.dismiss(animated: true, completion: nil)

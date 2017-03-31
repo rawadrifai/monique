@@ -46,8 +46,8 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
 
             self.userId = user.profile.email.replacingOccurrences(of: ".", with: "")
             
-            self.ref.child(self.userId + "/name").setValue(user.profile.name)
-            self.ref.child(self.userId + "/email").setValue(user.profile.email)
+            self.ref.child("users/" + self.userId + "/name").setValue(user.profile.name)
+            self.ref.child("users/" + self.userId + "/email").setValue(user.profile.email)
            
             self.performSegue(withIdentifier: "loginSegue", sender: self)
             
@@ -67,7 +67,7 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         
         self.userId = UIDevice.current.identifierForVendor!.uuidString
         
-        self.ref.child(userId + "/deviceId").observe(.value, with: {
+        self.ref.child("users/" + userId + "/deviceId").observe(.value, with: {
             
             if let value = $0.value {
                 if String(describing: value) == self.userId {
@@ -95,12 +95,18 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
                     }
                 }
             }
+        } else if segue.identifier == "saveUserInfoSegue" {
+            
+            // set the userId
+            if let destinationViewController = segue.destination as? UIViewController {
+                
+               
+                    if let destinationView = destinationViewController as? SaveUserInfo {
+                        destinationView.userId = self.userId
+                    }
+                
+            }
         }
-    }
-    
-    @IBAction func resetclicked(_ sender: UIButton) {
-        let defaults = UserDefaults.standard
-        defaults.setValue("false", forKey: "loggedInBefore")
-
+        
     }
 }

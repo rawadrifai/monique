@@ -139,7 +139,7 @@ class ClientsView: UITableViewController, UISearchResultsUpdating, NewClientDele
             
             // delete from firebase database, with completion block
             
-            self.ref.child(self.userId + "/clients/" + clientToBeDeleted.clientId).removeValue(completionBlock: { (err, ref) in
+            self.ref.child("users/" + self.userId + "/clients/" + clientToBeDeleted.clientId).removeValue(completionBlock: { (err, ref) in
                 
                 self.cellData.remove(at: indexPath.row)
                 self.tableView.reloadData()
@@ -231,7 +231,7 @@ class ClientsView: UITableViewController, UISearchResultsUpdating, NewClientDele
         if (userId=="no user id") {return}
         
         ref = FIRDatabase.database().reference()
-        self.ref.child(self.userId + "/clients").observeSingleEvent(of: .value, with: { (snapshot) in
+        self.ref.child("users/" + self.userId + "/clients").observeSingleEvent(of: .value, with: { (snapshot) in
             
             
             // Get a list of users, keys are client ids (or phone numbers)

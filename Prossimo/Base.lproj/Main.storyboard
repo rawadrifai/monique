@@ -88,16 +88,16 @@
                                     </constraints>
                                 </imageView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="p6Y-7R-3yE">
-                                    <rect key="frame" x="20" y="193" width="335" height="48"/>
+                                    <rect key="frame" x="20" y="193" width="335" height="47.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYU-JW-HtW">
-                                            <rect key="frame" x="0.0" y="0.0" width="335" height="27"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="335" height="26.5"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lnp-rq-Din">
-                                            <rect key="frame" x="0.0" y="30" width="335" height="18"/>
+                                            <rect key="frame" x="0.0" y="29.5" width="335" height="18"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                             <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -441,7 +441,7 @@ This Agreement was last modified on 03/20/2017</string>
                                                 <rect key="frame" x="60" y="0.0" width="275" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -461,7 +461,7 @@ This Agreement was last modified on 03/20/2017</string>
                                                 <rect key="frame" x="60" y="0.0" width="275" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="phonePad"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -481,7 +481,7 @@ This Agreement was last modified on 03/20/2017</string>
                                                 <rect key="frame" x="60" y="0.0" width="275" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -494,34 +494,38 @@ This Agreement was last modified on 03/20/2017</string>
                                     </view>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HxR-IE-7cx">
-                                <rect key="frame" x="323" y="24" width="52" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Za5-4W-sah"/>
-                                    <constraint firstAttribute="width" constant="52" id="wRQ-h6-mzb"/>
-                                </constraints>
-                                <state key="normal" title="Save"/>
-                                <connections>
-                                    <action selector="signInWithDeviceId:" destination="296-gp-6M8" eventType="touchUpInside" id="fE7-AT-CD0"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="86f-Ad-sPQ">
-                                <rect key="frame" x="0.0" y="24" width="59" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="86f-Ad-sPQ">
+                                <rect key="frame" x="16" y="24" width="67" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="bMa-3D-Smc"/>
-                                    <constraint firstAttribute="width" constant="59" id="lxp-7M-nsf"/>
+                                    <constraint firstAttribute="width" constant="67" id="lxp-7M-nsf"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                 <state key="normal" title="Cancel"/>
                                 <connections>
                                     <action selector="cancel:" destination="296-gp-6M8" eventType="touchUpInside" id="STX-Pr-Qa5"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HxR-IE-7cx">
+                                <rect key="frame" x="307" y="24" width="52" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Za5-4W-sah"/>
+                                    <constraint firstAttribute="width" constant="52" id="wRQ-h6-mzb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="signInWithDeviceId:" destination="296-gp-6M8" eventType="touchUpInside" id="fE7-AT-CD0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="86f-Ad-sPQ" firstAttribute="top" secondItem="mVH-EE-p2a" secondAttribute="bottom" constant="4" id="9Zm-mW-Bzo"/>
                             <constraint firstItem="ehX-fb-TW6" firstAttribute="top" secondItem="mVH-EE-p2a" secondAttribute="bottom" constant="58" id="BcL-wu-fKD"/>
-                            <constraint firstAttribute="trailing" secondItem="HxR-IE-7cx" secondAttribute="trailing" id="J0S-bG-bg4"/>
-                            <constraint firstItem="86f-Ad-sPQ" firstAttribute="leading" secondItem="4Qz-mo-ENe" secondAttribute="leading" id="S2d-yT-Cw4"/>
+                            <constraint firstItem="HxR-IE-7cx" firstAttribute="top" secondItem="mVH-EE-p2a" secondAttribute="bottom" constant="4" id="FpP-JA-nEe"/>
+                            <constraint firstAttribute="trailing" secondItem="HxR-IE-7cx" secondAttribute="trailing" constant="16" id="J0S-bG-bg4"/>
+                            <constraint firstItem="86f-Ad-sPQ" firstAttribute="leading" secondItem="4Qz-mo-ENe" secondAttribute="leading" constant="16" id="S2d-yT-Cw4"/>
                             <constraint firstItem="HxR-IE-7cx" firstAttribute="top" secondItem="mVH-EE-p2a" secondAttribute="bottom" constant="4" id="cpv-0g-5C4"/>
                             <constraint firstAttribute="leadingMargin" secondItem="ehX-fb-TW6" secondAttribute="leading" id="hNu-MG-Lfy"/>
                             <constraint firstItem="86f-Ad-sPQ" firstAttribute="top" secondItem="mVH-EE-p2a" secondAttribute="bottom" constant="4" id="hxR-o4-OyK"/>
@@ -537,7 +541,7 @@ This Agreement was last modified on 03/20/2017</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wU7-11-wtm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="68" y="-876"/>
+            <point key="canvasLocation" x="68" y="-876.61169415292363"/>
         </scene>
         <!--Login-->
         <scene sceneID="PMS-f1-u1c">
@@ -640,7 +644,7 @@ This Agreement was last modified on 03/20/2017</string>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9yR-0W-Xz0" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="contacts" id="rcm-6f-XcJ"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="AfO-F3-mUS">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="AfO-F3-mUS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -691,7 +695,7 @@ This Agreement was last modified on 03/20/2017</string>
                                                     <rect key="frame" x="60" y="0.0" width="275" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                                 </textField>
                                             </subviews>
                                         </stackView>
@@ -711,7 +715,7 @@ This Agreement was last modified on 03/20/2017</string>
                                                     <rect key="frame" x="60" y="0.0" width="275" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="phonePad"/>
                                                 </textField>
                                             </subviews>
                                         </stackView>
@@ -731,7 +735,7 @@ This Agreement was last modified on 03/20/2017</string>
                                                     <rect key="frame" x="60" y="0.0" width="275" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress"/>
                                                 </textField>
                                             </subviews>
                                         </stackView>
@@ -821,7 +825,7 @@ This Agreement was last modified on 03/20/2017</string>
                                                     <rect key="frame" x="60" y="0.0" width="275" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                                 </textField>
                                             </subviews>
                                         </stackView>
@@ -841,7 +845,7 @@ This Agreement was last modified on 03/20/2017</string>
                                                     <rect key="frame" x="60" y="0.0" width="275" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="phonePad"/>
                                                 </textField>
                                             </subviews>
                                         </stackView>
@@ -861,7 +865,7 @@ This Agreement was last modified on 03/20/2017</string>
                                                     <rect key="frame" x="60" y="0.0" width="275" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress"/>
                                                 </textField>
                                             </subviews>
                                         </stackView>
@@ -926,7 +930,7 @@ This Agreement was last modified on 03/20/2017</string>
                                     </constraints>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" spellCheckingType="no"/>
                                 </textView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7gn-yG-uSF">
                                     <rect key="frame" x="305" y="20" width="50" height="38"/>
@@ -1064,7 +1068,7 @@ This Agreement was last modified on 03/20/2017</string>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="m32-ze-ylf" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="more" id="ysb-Oa-uIw"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hdr-Ba-Po8">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="hdr-Ba-Po8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
