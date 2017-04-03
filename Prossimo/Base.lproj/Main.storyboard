@@ -76,7 +76,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="oKr-3Z-Cjl">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="313"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="307"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="qCe-To-KB4">
@@ -104,11 +104,13 @@
                                         </label>
                                     </subviews>
                                 </stackView>
-                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vmL-sm-0EM">
-                                    <rect key="frame" x="100" y="254" width="175" height="43"/>
-                                    <color key="backgroundColor" red="0.72227950507614214" green="0.56782347372537167" blue="0.42759025949354396" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vmL-sm-0EM">
+                                    <rect key="frame" x="100" y="254" width="175" height="53"/>
+                                    <color key="backgroundColor" red="0.83445034900000004" green="0.54423537767215591" blue="0.33108944987550248" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="175" id="VGT-8s-rQb"/>
+                                        <constraint firstAttribute="height" constant="53" id="rED-Wj-s57"/>
+                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="175" id="v1N-sd-yue"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                     <state key="normal" title="New Haircut">
@@ -131,7 +133,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" textLabel="WHL-s6-tts" rowHeight="63" style="IBUITableViewCellStyleDefault" id="4H3-HP-5zV">
-                                <rect key="frame" x="0.0" y="341" width="375" height="63"/>
+                                <rect key="frame" x="0.0" y="335" width="375" height="63"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4H3-HP-5zV" id="qAD-x3-NfC">
                                     <rect key="frame" x="0.0" y="0.0" width="342" height="62"/>
@@ -336,62 +338,62 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0Fj-kC-KI9">
                                 <rect key="frame" x="16" y="64" width="343" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Terms of Service
+                                <mutableString key="text">Terms of Service
 
-The following terms and conditions govern all use of the Tuuk website and the related mobile app (collectively, the “Service”). The Service is owned and operated by Tuuk LLC (“Tuuk”). The Website is offered subject to your acceptance without modification of all of the terms and conditions contained herein and all other operating rules, policies (including, without limitation, Tuuk’ Privacy Policy) and procedures that may be published from time to time on this Site by Tuuk (collectively, the “Agreement”).
+The following terms and conditions govern all use of the Prossimo website and the related mobile app (collectively, the “Service”). The Service is owned and operated by Prossimo (“Prossimo”). The Website is offered subject to your acceptance without modification of all of the terms and conditions contained herein and all other operating rules, policies (including, without limitation, Prossimo’ Privacy Policy) and procedures that may be published from time to time on this Site by Prossimo (collectively, the “Agreement”).
 
-Please read this Agreement carefully before accessing or using the Service. By accessing or using any part of the web site, you agree to become bound by the terms and conditions of this agreement. If you do not agree to all the terms and conditions of this agreement, then you may not access the Service or use any services. If these terms and conditions are considered an offer by Tuuk, acceptance is expressly limited to these terms. The Service is available only to individuals who are at least 13 years old.
+Please read this Agreement carefully before accessing or using the Service. By accessing or using any part of the web site, you agree to become bound by the terms and conditions of this agreement. If you do not agree to all the terms and conditions of this agreement, then you may not access the Service or use any services. If these terms and conditions are considered an offer by Prossimo, acceptance is expressly limited to these terms. The Service is available only to individuals who are at least 13 years old.
 
-Your Tuuk Account and Site
+Your Prossimo Account and Site
 
-If you create an Account on the Service, you are responsible for maintaining the security of your account, and you are fully responsible for all activities that occur under the account and any other actions taken in connection with the account. You must immediately notify Tuuk of any unauthorized uses of your account or any other breaches of security. Tuuk will not be liable for any acts or omissions by You, including any damages of any kind incurred as a result of such acts or omissions.
+If you create an Account on the Service, you are responsible for maintaining the security of your account, and you are fully responsible for all activities that occur under the account and any other actions taken in connection with the account. You must immediately notify Prossimo of any unauthorized uses of your account or any other breaches of security. Prossimo will not be liable for any acts or omissions by You, including any damages of any kind incurred as a result of such acts or omissions.
 
 Responsibility of Website Visitors
 
-Tuuk has not reviewed, and cannot review, all of the material, including computer software, posted to the Service, and cannot therefore be responsible for that material’s content, use or effects. By operating the Service, Tuuk does not represent or imply that it endorses the material there posted, or that it believes such material to be accurate, useful or non-harmful. You are responsible for taking precautions as necessary to protect yourself and your computer systems from viruses, worms, Trojan horses, and other harmful or destructive content. The Service may contain content that is offensive, indecent, or otherwise objectionable, as well as content containing technical inaccuracies, typographical mistakes, and other errors. The Service may also contain material that violates the privacy or publicity rights, or infringes the intellectual property and other proprietary rights, of third parties, or the downloading, copying or use of which is subject to additional terms and conditions, stated or unstated. Tuuk disclaims any responsibility for any harm resulting from the use by visitors of the Service, or from any downloading by those visitors of content there posted.
+Prossimo has not reviewed, and cannot review, all of the material, including computer software, posted to the Service, and cannot therefore be responsible for that material’s content, use or effects. By operating the Service, Prossimo does not represent or imply that it endorses the material there posted, or that it believes such material to be accurate, useful or non-harmful. You are responsible for taking precautions as necessary to protect yourself and your computer systems from viruses, worms, Trojan horses, and other harmful or destructive content. The Service may contain content that is offensive, indecent, or otherwise objectionable, as well as content containing technical inaccuracies, typographical mistakes, and other errors. The Service may also contain material that violates the privacy or publicity rights, or infringes the intellectual property and other proprietary rights, of third parties, or the downloading, copying or use of which is subject to additional terms and conditions, stated or unstated. Prossimo disclaims any responsibility for any harm resulting from the use by visitors of the Service, or from any downloading by those visitors of content there posted.
 
 Content Posted on Other Websites
 
-We have not reviewed, and cannot review, all of the material, including computer software, made available through the websites and webpages to which Tuuk links, and that link to Tuuk. Tuuk does not have any control over those non-Tuuk websites and webpages, and is not responsible for their contents or their use. By linking to a non-Tuuk website or webpage, Tuuk does not represent or imply that it endorses such website or webpage. You are responsible for taking precautions as necessary to protect yourself and your computer systems from viruses, worms, Trojan horses, and other harmful or destructive content. Tuuk disclaims any responsibility for any harm resulting from your use of non-Tuuk websites and webpages.
+We have not reviewed, and cannot review, all of the material, including computer software, made available through the websites and webpages to which Prossimo links, and that link to Prossimo. Prossimo does not have any control over those non-Prossimo websites and webpages, and is not responsible for their contents or their use. By linking to a non-Prossimo website or webpage, Prossimo does not represent or imply that it endorses such website or webpage. You are responsible for taking precautions as necessary to protect yourself and your computer systems from viruses, worms, Trojan horses, and other harmful or destructive content. Prossimo disclaims any responsibility for any harm resulting from your use of non-Prossimo websites and webpages.
 
 Intellectual Property
 
-This Agreement does not transfer from Tuuk to you any Tuuk or third party intellectual property, and all right, title and interest in and to such property will remain (as between the parties) solely with Tuuk. Tuuk, the Tuuk logo, and all other trademarks, service marks, graphics and logos used in connection with Tuuk, or the Service are trademarks or registered trademarks of Tuuk or Tuuk licensors. Other trademarks, service marks, graphics and logos used in connection with the Service may be the trademarks of other third parties. Your use of the Service grants you no right or license to reproduce or otherwise use any Tuuk or third-party trademarks.
+This Agreement does not transfer from Prossimo to you any Prossimo or third party intellectual property, and all right, title and interest in and to such property will remain (as between the parties) solely with Prossimo. Prossimo, the Prossimo logo, and all other trademarks, service marks, graphics and logos used in connection with Prossimo, or the Service are trademarks or registered trademarks of Prossimo or Prossimo licensors. Other trademarks, service marks, graphics and logos used in connection with the Service may be the trademarks of other third parties. Your use of the Service grants you no right or license to reproduce or otherwise use any Prossimo or third-party trademarks.
 
 Changes
 
-Tuuk reserves the right, at its sole discretion, to modify or replace any part of this Agreement. It is your responsibility to check this Agreement periodically for changes. Your continued use of or access to the Service following the posting of any changes to this Agreement constitutes acceptance of those changes. Tuuk may also, in the future, offer new services and/or features through the Service (including, the release of new tools and resources). Such new features and/or services shall be subject to the terms and conditions of this Agreement.
+Prossimo reserves the right, at its sole discretion, to modify or replace any part of this Agreement. It is your responsibility to check this Agreement periodically for changes. Your continued use of or access to the Service following the posting of any changes to this Agreement constitutes acceptance of those changes. Prossimo may also, in the future, offer new services and/or features through the Service (including, the release of new tools and resources). Such new features and/or services shall be subject to the terms and conditions of this Agreement.
 
 Termination
 
-Tuuk may terminate your access to all or any part of the Website at any time, with or without cause, with or without notice, effective immediately. If you wish to terminate this Agreement or your Tuuk account (if you have one), you may simply discontinue using the Service. All provisions of this Agreement which by their nature should survive termination shall survive termination, including, without limitation, ownership provisions, warranty disclaimers, indemnity and limitations of liability.
+Prossimo may terminate your access to all or any part of the Website at any time, with or without cause, with or without notice, effective immediately. If you wish to terminate this Agreement or your Prossimo account (if you have one), you may simply discontinue using the Service. All provisions of this Agreement which by their nature should survive termination shall survive termination, including, without limitation, ownership provisions, warranty disclaimers, indemnity and limitations of liability.
 
 Disclaimer of Warranties
 
-The Service is provided “as is”. Tuuk and its suppliers and licensors hereby disclaim all warranties of any kind, express or implied, including, without limitation, the warranties of merchantability, fitness for a particular purpose and non-infringement. Neither Tuuk nor its suppliers and licensors, makes any warranty that the Service will be error free or that access thereto will be continuous or uninterrupted. You understand that you download from, or otherwise obtain content or services through, the Service at your own discretion and risk.
+The Service is provided “as is”. Prossimo and its suppliers and licensors hereby disclaim all warranties of any kind, express or implied, including, without limitation, the warranties of merchantability, fitness for a particular purpose and non-infringement. Neither Prossimo nor its suppliers and licensors, makes any warranty that the Service will be error free or that access thereto will be continuous or uninterrupted. You understand that you download from, or otherwise obtain content or services through, the Service at your own discretion and risk.
 
 Limitation of Liability
 
-In no event will Tuuk, or its suppliers or licensors, be liable with respect to any subject matter of this agreement under any contract, negligence, strict liability or other legal or equitable theory for: (i) any special, incidental or consequential damages; (ii) the cost of procurement for substitute products or services; (iii) for interruption of use or loss or corruption of data; or (iv) for any amounts that exceed the fees paid by you to Tuuk under this agreement during the twelve (12) month period prior to the cause of action. Tuuk shall have no liability for any failure or delay due to matters beyond their reasonable control. The foregoing shall not apply to the extent prohibited by applicable law.
+In no event will Prossimo, or its suppliers or licensors, be liable with respect to any subject matter of this agreement under any contract, negligence, strict liability or other legal or equitable theory for: (i) any special, incidental or consequential damages; (ii) the cost of procurement for substitute products or services; (iii) for interruption of use or loss or corruption of data; or (iv) for any amounts that exceed the fees paid by you to Prossimo under this agreement during the twelve (12) month period prior to the cause of action. Prossimo shall have no liability for any failure or delay due to matters beyond their reasonable control. The foregoing shall not apply to the extent prohibited by applicable law.
 
 General Representation and Warranty
 
-You represent and warrant that (i) your use of the Service will be in strict accordance with the Tuuk Privacy Policy, with this Agreement and with all applicable laws and regulations (including without limitation any local laws or regulations in your country, state, city, or other governmental area, regarding online conduct and acceptable content, and including all applicable laws regarding the transmission of technical data exported from the United States or the country in which you reside) and (ii) your use of the Service will not infringe or misappropriate the intellectual property rights of any third party.
+You represent and warrant that (i) your use of the Service will be in strict accordance with the Prossimo Privacy Policy, with this Agreement and with all applicable laws and regulations (including without limitation any local laws or regulations in your country, state, city, or other governmental area, regarding online conduct and acceptable content, and including all applicable laws regarding the transmission of technical data exported from the United States or the country in which you reside) and (ii) your use of the Service will not infringe or misappropriate the intellectual property rights of any third party.
 
 Indemnification
 
-You agree to indemnify and hold harmless Tuuk, its contractors, and its licensors, and their respective directors, officers, employees and agents from and against any and all claims and expenses, including attorneys’ fees, arising out of your use of the Service, including but not limited to your violation of this Agreement.
+You agree to indemnify and hold harmless Prossimo, its contractors, and its licensors, and their respective directors, officers, employees and agents from and against any and all claims and expenses, including attorneys’ fees, arising out of your use of the Service, including but not limited to your violation of this Agreement.
 
 Refund Policy
 
 All of our digital products purchased directly on our web site, Google Play or Apple AppStore are non-refundable, and all sales are final.
 Miscellaneous
 
-This Agreement constitutes the entire agreement between Tuuk and you concerning the subject matter hereof, and they may only be modified by a written amendment signed by an authorized executive of Tuuk , or by the posting by Tuuk of a revised version. Except to the extent applicable law, if any, provides otherwise, this Agreement, any access to or use of the Service will be governed by the laws of the state of California, U.S.A., excluding its conflict of law provisions, and the proper venue for any disputes arising out of or relating to any of the same will be the state and federal courts located in Los Angeles County, California. Except for claims for injunctive or equitable relief or claims regarding intellectual property rights (which may be brought in any competent court without the posting of a bond), any dispute arising under this Agreement shall be finally settled in accordance with the Comprehensive Arbitration Rules of the Judicial Arbitration and Mediation Service, Inc. (“JAMS”) by three arbitrators appointed in accordance with such Rules. The arbitration shall take place in Los Angeles, California, in the English language and the arbitral decision may be enforced in any court. The prevailing party in any action or proceeding to enforce this Agreement shall be entitled to costs and attorneys’ fees. If any part of this Agreement is held invalid or unenforceable, that part will be construed to reflect the parties’ original intent, and the remaining portions will remain in full force and effect. A waiver by either party of any term or condition of this Agreement or any breach thereof, in any one instance, will not waive such term or condition or any subsequent breach thereof. You may assign your rights under this Agreement to any party that consents to, and agrees to be bound by, its terms and conditions; Tuuk may assign its rights under this Agreement without condition. This Agreement will be binding upon and will inure to the benefit of the parties, their successors and permitted assigns.
+This Agreement constitutes the entire agreement between Prossimo and you concerning the subject matter hereof, and they may only be modified by a written amendment signed by an authorized executive of Prossimo , or by the posting by Prossimo of a revised version. Except to the extent applicable law, if any, provides otherwise, this Agreement, any access to or use of the Service will be governed by the laws of the state of California, U.S.A., excluding its conflict of law provisions, and the proper venue for any disputes arising out of or relating to any of the same will be the state and federal courts located in Los Angeles County, California. Except for claims for injunctive or equitable relief or claims regarding intellectual property rights (which may be brought in any competent court without the posting of a bond), any dispute arising under this Agreement shall be finally settled in accordance with the Comprehensive Arbitration Rules of the Judicial Arbitration and Mediation Service, Inc. (“JAMS”) by three arbitrators appointed in accordance with such Rules. The arbitration shall take place in Los Angeles, California, in the English language and the arbitral decision may be enforced in any court. The prevailing party in any action or proceeding to enforce this Agreement shall be entitled to costs and attorneys’ fees. If any part of this Agreement is held invalid or unenforceable, that part will be construed to reflect the parties’ original intent, and the remaining portions will remain in full force and effect. A waiver by either party of any term or condition of this Agreement or any breach thereof, in any one instance, will not waive such term or condition or any subsequent breach thereof. You may assign your rights under this Agreement to any party that consents to, and agrees to be bound by, its terms and conditions; Prossimo may assign its rights under this Agreement without condition. This Agreement will be binding upon and will inure to the benefit of the parties, their successors and permitted assigns.
 
 Some portions of this document are borrowed—with permission—from here under a Creative Commons license.
 
-This Agreement was last modified on 03/20/2017</string>
+This Agreement was last modified on 03/20/2017</mutableString>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -913,7 +915,7 @@ This Agreement was last modified on 03/20/2017</string>
         <scene sceneID="A0a-IB-LWO">
             <objects>
                 <tableViewController id="o9q-rL-Ugv" customClass="PictureTimeView" customModule="Prossimo" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="374" sectionHeaderHeight="28" sectionFooterHeight="28" id="fBQ-oX-o4w">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="380" sectionHeaderHeight="28" sectionFooterHeight="28" id="fBQ-oX-o4w">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -968,11 +970,11 @@ This Agreement was last modified on 03/20/2017</string>
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="375" id="JWc-No-Xb5">
-                                <rect key="frame" x="0.0" y="185" width="375" height="375"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="377" id="JWc-No-Xb5">
+                                <rect key="frame" x="0.0" y="185" width="375" height="377"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JWc-No-Xb5" id="92J-OF-fGQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="374"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="376"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fNT-hU-8AK">
@@ -981,11 +983,10 @@ This Agreement was last modified on 03/20/2017</string>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="fNT-hU-8AK" firstAttribute="top" secondItem="92J-OF-fGQ" secondAttribute="topMargin" constant="-8" id="24S-JL-wc8"/>
-                                        <constraint firstItem="fNT-hU-8AK" firstAttribute="centerX" secondItem="92J-OF-fGQ" secondAttribute="centerX" id="TKr-Es-7s5"/>
+                                        <constraint firstItem="fNT-hU-8AK" firstAttribute="centerX" secondItem="92J-OF-fGQ" secondAttribute="centerX" id="GSX-IC-aL6"/>
                                         <constraint firstItem="fNT-hU-8AK" firstAttribute="leading" secondItem="92J-OF-fGQ" secondAttribute="leadingMargin" constant="-8" id="U4S-dv-jr9"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="fNT-hU-8AK" secondAttribute="bottom" constant="-9" id="fzg-FR-wrr"/>
+                                        <constraint firstItem="fNT-hU-8AK" firstAttribute="centerY" secondItem="92J-OF-fGQ" secondAttribute="centerY" id="Vkk-jn-p8E"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="fNT-hU-8AK" secondAttribute="trailing" constant="-8" id="lFI-ak-NxK"/>
-                                        <constraint firstItem="fNT-hU-8AK" firstAttribute="centerY" secondItem="92J-OF-fGQ" secondAttribute="centerY" id="us3-1e-dBL"/>
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -1011,7 +1012,7 @@ This Agreement was last modified on 03/20/2017</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pKT-I2-J0X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3168.8000000000002" y="280.20989505247377"/>
+            <point key="canvasLocation" x="3167.1999999999998" y="279.31034482758622"/>
         </scene>
         <!--Image View-->
         <scene sceneID="ypx-8c-9sT">
@@ -1096,39 +1097,39 @@ This Agreement was last modified on 03/20/2017</string>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4RT-Mg-PIu">
                                 <rect key="frame" x="16" y="64" width="343" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Privacy Policy
+                                <mutableString key="text">Privacy Policy
 
-This Privacy Policy describes all Tuuk apps policies and procedures on the collection, use and disclosure of your information. Tuuk receives your information through our various web sites, SMS, APIs, and other services (“Services”). When using any of our Services you consent to the collection, transfer, manipulation, storage, disclosure and other uses of your information as described in this Privacy Policy. Irrespective of which country that you reside in or create information from, your information may be used by Tuuk in the United States or any other country where Tuuk operates.
+This Privacy Policy describes all Prossimo apps policies and procedures on the collection, use and disclosure of your information. Prossimo receives your information through our various web sites, SMS, APIs, and other services (“Services”). When using any of our Services you consent to the collection, transfer, manipulation, storage, disclosure and other uses of your information as described in this Privacy Policy. Irrespective of which country that you reside in or create information from, your information may be used by Prossimo in the United States or any other country where Prossimo operates.
 
-If you have any questions or comments about this Privacy Policy, please contact us at tuukinfo@gmail.com
+If you have any questions or comments about this Privacy Policy, please contact us at Prossimoinfo@gmail.com
 
 Information Collection &amp; Use
 
 We collect and use your information to provide our Services and improve them over time.
 
-Information Collected Upon Registration or Login: When you create or reconfigure a Tuuk account, you provide some personal information, we may collect information such as your name, username, email address, location and contacts info through connecting to your Tuuk account (with your consent) This information is not displayed with the public nor is it ever shared without your explicit consent. We may use your contact information to send you information about our Services or alert you to important events. If you contact us via email or other electronic communication, we may keep your message, email address and contact information to respond to your request.
+Information Collected Upon Registration or Login: When you create or reconfigure a Prossimo account, you provide some personal information, we may collect information such as your name, username, email address, location and contacts info through connecting to your Prossimo account (with your consent) This information is not displayed with the public nor is it ever shared without your explicit consent. We may use your contact information to send you information about our Services or alert you to important events. If you contact us via email or other electronic communication, we may keep your message, email address and contact information to respond to your request.
 
 Text Messages: Our Services are primarily designed to help you share information privately with whom you choose. None of the information is ever made public, unless you explicitly opt-in for that.
 
 Log Data: Our servers automatically record information (“Log Data”) created by your use of the Services. Log Data may include information such as your IP address, browser type, phone type, the referring domain, pages visited. Other actions, such as interactions with advertisements, may also be included in Log Data.
 
-Links: Tuuk may keep track of how you interact with links in Updates by redirecting clicks or through other means. We do this to help improve our Services, including advertising, and to be able to share aggregate click statistics such as how many times a particular link was clicked on.
+Links: Prossimo may keep track of how you interact with links in Updates by redirecting clicks or through other means. We do this to help improve our Services, including advertising, and to be able to share aggregate click statistics such as how many times a particular link was clicked on.
 
-Cookies: Like many websites, we use “cookies” to collect additional website usage data and to improve our Services, and to authenticate users. A cookie is a small data file that is transferred to your computer’s hard disk. Tuuk may use both session cookies and persistent cookies to better understand how you interact with our Services, to monitor aggregate usage by our users and web traffic routing on our Services, and to improve our Services. Most Internet browsers automatically accept cookies. You can instruct your browser, by editing its options, to stop accepting cookies or to prompt you before accepting a cookie from the websites you visit.
+Cookies: Like many websites, we use “cookies” to collect additional website usage data and to improve our Services, and to authenticate users. A cookie is a small data file that is transferred to your computer’s hard disk. Prossimo may use both session cookies and persistent cookies to better understand how you interact with our Services, to monitor aggregate usage by our users and web traffic routing on our Services, and to improve our Services. Most Internet browsers automatically accept cookies. You can instruct your browser, by editing its options, to stop accepting cookies or to prompt you before accepting a cookie from the websites you visit.
 
-Third Party Services: Tuuk uses a variety of services hosted by third parties to help provide our Services and to help us understand the use of our Services, such as Google Analytics, CleverTap. These services may collect information sent by your browser or your phone, such as cookies, your email, IP Address or location.
+Third Party Services: Prossimo uses a variety of services hosted by third parties to help provide our Services and to help us understand the use of our Services, such as Google Analytics, CleverTap. These services may collect information sent by your browser or your phone, such as cookies, your email, IP Address or location.
 
 Information Sharing &amp; Disclosure
 
 We do not disclose your private information except in the limited circumstances described here.
 
-Your Consent: We may share or disclose your information with your consent, such as when you use a third party web client to access your Tuuk account.
+Your Consent: We may share or disclose your information with your consent, such as when you use a third party web client to access your Prossimo account.
 
 Service Providers: We engage certain trusted third parties to perform functions and provide services to us. We may share your personal information with these third parties, but only to the extent necessary to perform these functions and provide such services, and only pursuant to obligations mirroring the protections of this privacy policy.
 
-Law and Harm: We may disclose your information if we believe that it is reasonably necessary to comply with a law, regulation or legal request; to protect the safety of any person; to address fraud, security or technical issues; or to protect Tuuk’ rights or property.
+Law and Harm: We may disclose your information if we believe that it is reasonably necessary to comply with a law, regulation or legal request; to protect the safety of any person; to address fraud, security or technical issues; or to protect Prossimo’ rights or property.
 
-Business Transfers: In the event that Tuuk is involved in a bankruptcy, merger, acquisition, reorganization or sale of assets, your information may be sold or transferred as part of that transaction. The promises in this privacy policy will apply to your information as transferred to the new entity.
+Business Transfers: In the event that Prossimo is involved in a bankruptcy, merger, acquisition, reorganization or sale of assets, your information may be sold or transferred as part of that transaction. The promises in this privacy policy will apply to your information as transferred to the new entity.
 
 Non-Private or Non-Personal Information: We may share or disclose aggregated or otherwise non-personal information, such as usage patterns or link click statistics
 
@@ -1138,7 +1139,7 @@ If you are a registered user of our Services, we provide you with tools to acces
 
 Information Sharing &amp; Disclosure
 
-This Privacy Policy may be updated from time to time for any reason. We will notify you of any changes to our Privacy Policy by posting the new Privacy Policy here. You are advised to consult this Privacy Policy regularly for any changes, as continued use is deemed approval of all changes.</string>
+This Privacy Policy may be updated from time to time for any reason. We will notify you of any changes to our Privacy Policy by posting the new Privacy Policy here. You are advised to consult this Privacy Policy regularly for any changes, as continued use is deemed approval of all changes.</mutableString>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -1172,19 +1173,33 @@ This Privacy Policy may be updated from time to time for any reason. We will not
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eDX-f8-qA1">
                                 <rect key="frame" x="16" y="64" width="343" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">About The App
+                                <mutableString key="text">I was getting a haircut at Floyd's in Venice. Like usual chatting with my stylist, I asked her if I can develop something to help her with her daily job. Light bulb. Fast forward 4 months, we're writing this app description..
 
-Prossimo is an app made to assisnt hair stylists and barbers. Prossimo allows the stylist to maintain a portfolio for their clients. Using Tuuk, you, the stylist, will be able to provice special care for your clients and instantly access every haircut they have had with you.
+Prossimo is an app made to assist hair stylists and barbers do what they do best - making us better looking humans. Prossimo lets the stylist keep a personal portfolio for every one of their clients without interfering with personal contacts lists.
 
-Enjoy!</string>
+If you're a stylist, you have made the right choice downloading this app! Please feel free to contact us for any feedback.
+
+Cheers!</mutableString>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About The App" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fzo-JL-NZa">
+                                <rect key="frame" x="23" y="96" width="162" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="162" id="nQs-gj-Vpc"/>
+                                    <constraint firstAttribute="height" constant="21" id="sY1-4E-wKA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.72227950510000005" green="0.56782347369999997" blue="0.42759025950000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="eDX-f8-qA1" firstAttribute="top" secondItem="wOi-o1-F8d" secondAttribute="bottom" id="B0h-bQ-klq"/>
                             <constraint firstItem="tPb-hA-Dq5" firstAttribute="top" secondItem="eDX-f8-qA1" secondAttribute="bottom" id="To6-UO-qLm"/>
+                            <constraint firstItem="fzo-JL-NZa" firstAttribute="top" secondItem="wOi-o1-F8d" secondAttribute="bottom" constant="32" id="Wzn-EC-PCu"/>
+                            <constraint firstItem="fzo-JL-NZa" firstAttribute="leading" secondItem="O3T-tz-sbR" secondAttribute="leadingMargin" constant="7" id="aDK-MX-uzr"/>
                             <constraint firstItem="eDX-f8-qA1" firstAttribute="leading" secondItem="O3T-tz-sbR" secondAttribute="leadingMargin" id="kXV-CO-kOT"/>
                             <constraint firstItem="eDX-f8-qA1" firstAttribute="trailing" secondItem="O3T-tz-sbR" secondAttribute="trailingMargin" id="paQ-Sp-OqC"/>
                         </constraints>
@@ -1193,7 +1208,7 @@ Enjoy!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ktC-pg-dcm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="889" y="1993"/>
+            <point key="canvasLocation" x="888.79999999999995" y="1992.953523238381"/>
         </scene>
     </scenes>
     <resources>

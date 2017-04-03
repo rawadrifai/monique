@@ -46,8 +46,8 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
         // make the profile picture interactive
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         
-        imgView.isUserInteractionEnabled = true
-        imgView.addGestureRecognizer(tapGestureRecognizer)
+        self.imgView.isUserInteractionEnabled = true
+        self.imgView.addGestureRecognizer(tapGestureRecognizer)
         
     }
     
@@ -71,10 +71,10 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
         txfEmail.text = client.clientEmail
         
         if client.profileImg.imageUrl != "" {
-            imgView.sd_setImage(with: URL(string: client.profileImg.imageUrl))
+            self.imgView.sd_setImage(with: URL(string: client.profileImg.imageUrl))
         }
         else {
-            imgView.image = UIImage(imageLiteralResourceName: "user")
+            self.imgView.image = UIImage(imageLiteralResourceName: "user")
         }
     }
     
@@ -183,7 +183,7 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
         if let image = info[UIImagePickerControllerEditedImage] as? UIImage
         {
             
-            imgView.image = UIImage(data: image.sd_imageData()!,scale: 0)
+            self.imgView.image = UIImage(data: image.sd_imageData()!,scale: 0)
             imageChanged = true
             
         }

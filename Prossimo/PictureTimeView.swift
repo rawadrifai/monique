@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseStorage
 import FirebaseDatabase
+import Social
 
 class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
@@ -48,8 +49,9 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
             
             let image = cell.viewWithTag(1) as! UIImageView
             image.sd_setImage(with: URL(string: imgobj.imageUrl), completed: { (img, err, ct, url) in
-                
-            }) //.sd_setImage(with: URL(string: imgobj.imageUrl))
+            })
+            
+            
             
             return cell
         }
@@ -58,18 +60,33 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
     }
     
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
         
-        // get an instance of the image to be deleted
-        let imageToBeDeleted = self.client.clientVisits[selectedVisitIndex].images[indexPath.row] as ImageObject
+        let share = UITableViewRowAction(style: .default, title: "               ") { action, index in
+            print("share button tapped")
+        }
         
-       
+        
+        share.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "share"))
+        
+        
+        
+        
+        let delete = UITableViewRowAction(style: .default, title: "Delete") { action, index in
+            
+            
+            // get an instance of the image to be deleted
+            let imageToBeDeleted = self.client.clientVisits[self.selectedVisitIndex].images[indexPath.row] as ImageObject
+            
+            
             self.ref = FIRDatabase.database().reference()
             
             // delete from firebase database, with completion block
-        
-            self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.client.clientVisits[selectedVisitIndex].visitDate + "/images/" + imageToBeDeleted.imageName).removeValue { (err, ref) in
+            
+            self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.client.clientVisits[self.selectedVisitIndex].visitDate + "/images/" + imageToBeDeleted.imageName).removeValue { (err, ref) in
                 
                 self.client.clientVisits[self.selectedVisitIndex].images.remove(at: indexPath.row)
                 self.tableView.reloadData()
@@ -84,9 +101,17 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
                         print("received an error: \(err?.localizedDescription)")
                     }
                 }
+            }
         }
         
+        return [delete, share]
     }
+    
+    
+    // this function must be implemented in order for the swipe options to work
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) { }
+    
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -111,6 +136,9 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
             
         }
     }
+    
+
+    
     
     
     
@@ -148,7 +176,7 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         image.delegate = self
         
         // set the source to photo library
-        image.sourceType = UIImagePickerControllerSourceType.camera
+        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
                 
         self.present(image, animated: true)
     }

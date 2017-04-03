@@ -10,7 +10,7 @@ import UIKit
 import FirebaseDatabase
 import FirebaseStorage
 
-class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDelegate {
+class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     var userId = String()
     var client:Client!
@@ -37,6 +37,7 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
         self.btnNewHC.clipsToBounds = true;
         
         fillData()
+        makeProfilePicInteractive()
     }
     
 
@@ -74,10 +75,10 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
         labelPhone.text = client.clientPhone
         
         if client.profileImg.imageUrl != "" {
-            imgView.sd_setImage(with: URL(string: client.profileImg.imageUrl))
+            self.imgView.sd_setImage(with: URL(string: client.profileImg.imageUrl))
         }
         else {
-            imgView.image = UIImage(imageLiteralResourceName: "user")
+            self.imgView.image = UIImage(imageLiteralResourceName: "user")
         }
         
         
@@ -188,7 +189,72 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
     
 
 
+    func makeProfilePicInteractive() {
+        
+        // make the profile picture interactive
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        
+        self.imgView.isUserInteractionEnabled = true
+        self.imgView.addGestureRecognizer(tapGestureRecognizer)
+        
+    }
 
+    func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        let image = UIImagePickerController()
+        image.allowsEditing = true
+        image.delegate = self
+        
+        // set the source to photo library
+        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        
+        self.present(image, animated: true)
+    }
+    
+    
+    func uploadImageToFirebase(data: Data, path: String, fileName: String) {
+        
+        // get storage service reference
+        let storageRef = FIRStorage.storage().reference(withPath: path + fileName)
+        storageRef.put(data, metadata: nil) { (metadata, err) in
+            
+            if err != nil {
+                print("received an error: \(err?.localizedDescription)")
+            }
+            else {
+                guard metadata != nil else {
+                    print("error occurred")
+                    return
+                }
+                
+                self.client.profileImg.imageName = fileName
+                self.client.profileImg.imageUrl = (metadata?.downloadURL()?.absoluteString)!
+                
+                self.ref.child(path + "/imageName").setValue(self.client.profileImg.imageName)
+                self.ref.child(path + "/imageUrl").setValue(self.client.profileImg.imageUrl)
+                
+            }
+        }
+    }
+    
+    
+    
+    // execute after picking the image
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
+    {
+        
+        if let image = info[UIImagePickerControllerEditedImage] as? UIImage
+        {
+            self.imgView.image = UIImage(data: image.sd_imageData()!,scale: 0)
+            
+            let compressedImageData = UIImageJPEGRepresentation(self.imgView.image!, 0)
+            
+            uploadImageToFirebase(data: compressedImageData!, path: "users/" + self.userId + "/clients/" + self.client.clientId + "/profile/", fileName: UUID().uuidString)
+        }
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     
     // Child Delegate
     func dataChanged(client: Client) {
@@ -208,7 +274,7 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
     
     func imageChanged(client: Client) {
         self.client.profileImg = client.profileImg
-        imgView.sd_setImage(with: URL(string: client.profileImg.imageUrl))
+        self.imgView.sd_setImage(with: URL(string: self.client.profileImg.imageUrl))
 
     }
     

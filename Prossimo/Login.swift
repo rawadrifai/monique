@@ -4,7 +4,6 @@ import Firebase
 import GoogleSignIn
 import Google
 
-
 class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
 
     @IBOutlet weak var signInButton: GIDSignInButton!
@@ -29,7 +28,51 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         
         // get reference to database
         self.ref = FIRDatabase.database().reference()
+        
+        
+        checkForLatestVersion()
+        
+        
     
+    }
+    
+    func checkForLatestVersion() {
+        
+        self.ref.child("latestversion").observe(.value, with: {
+            
+            
+            if let value = $0.value {
+                
+                if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+                    
+                    print(version)
+                    print(value)
+                    if version != String(describing: value) {
+                        self.displayVersionAlert()
+                    }
+                }
+            }
+        })
+    }
+    
+    func displayVersionAlert() {
+        
+        let versionAlert = UIAlertController(title: "New Version Available", message: "Please download the latest version", preferredStyle: UIAlertControllerStyle.alert)
+        
+        versionAlert.addAction(UIAlertAction(title: "Download", style: .default, handler: { (action: UIAlertAction!) in
+            
+            UIApplication.shared.openURL(URL(string: "itms-apps://itunes.apple.com/us/app/prossimo-hair-stylist-assistant/id1220990527?ls=1&mt=8")!)
+
+        }))
+        
+        versionAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+            
+        }))
+        
+        present(versionAlert, animated: true, completion: nil)
+        
+        
+        
     }
     
     // what to do when you sign in
