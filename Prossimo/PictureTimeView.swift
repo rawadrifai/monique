@@ -64,9 +64,15 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
+        // share button
         
         let share = UITableViewRowAction(style: .default, title: "               ") { action, index in
-            print("share button tapped")
+            
+            let imageView = tableView.cellForRow(at: indexPath)?.viewWithTag(1) as! UIImageView
+            let image = imageView.image
+            
+            InstagramManager.sharedManager.postImageToInstagramWithCaption(imageInstagram: image!, instagramCaption: "Posted from Prossimo", view: self.view)
+            
         }
         
         
