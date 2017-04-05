@@ -274,6 +274,7 @@ class ClientsView: UITableViewController, UISearchResultsUpdating, NewClientDele
                             let visitInfo = (clientVisits.value(forKey: clientVisit.visitDate) as? NSDictionary)!
                             
                             clientVisit.notes = visitInfo.value(forKey: "notes") as? String ?? ""
+                            clientVisit.sortingDate = visitInfo.value(forKey: "sortingDate") as? String ?? ""
                             
                             // get the images for each visit
                             if let visitImages = (visitInfo.value(forKey: "images") as? NSDictionary) {
@@ -295,7 +296,7 @@ class ClientsView: UITableViewController, UISearchResultsUpdating, NewClientDele
                             }
                             client.clientVisits.append(clientVisit)
                         }
-                        client.clientVisits.sort{ $0.visitDate > $1.visitDate }
+                        client.clientVisits.sort{ $0.sortingDate > $1.sortingDate }
                     }
                     self.cellData.append(client)
                 }

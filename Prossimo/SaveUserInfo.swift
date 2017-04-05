@@ -19,14 +19,15 @@ class SaveUserInfo: UIViewController {
 
         self.ref = FIRDatabase.database().reference()
     }
-
-    @IBAction func signInWithDeviceId(_ sender: UIButton) {
+    
+    
+    @IBAction func signInWithDeviceId(_ sender: UIBarButtonItem) {
         
         if validateInput() {
             
-          //  let defaults = UserDefaults.standard
+            //  let defaults = UserDefaults.standard
             
-           // let userId = UIDevice.current.identifierForVendor!.uuidString
+            // let userId = UIDevice.current.identifierForVendor!.uuidString
             
             var user = [String:String]()
             user["deviceId"] = self.userId
@@ -35,13 +36,21 @@ class SaveUserInfo: UIViewController {
             user["email"] = txfEmail.text!
             
             self.ref.child("users").child(self.userId).setValue(user) { (err, ref) in
-            //    defaults.setValue("true", forKey: "loggedInBefore")
+                //    defaults.setValue("true", forKey: "loggedInBefore")
                 //self.userId = userId
                 self.performSegue(withIdentifier: "loginSegue", sender: self)
             }
         }
+        
     }
     
+    
+
+    @IBAction func cancel(_ sender: UIBarButtonItem) {
+        let _ = self.navigationController?.popViewController(animated: true)
+        
+        dismiss(animated: true, completion: nil)
+    }
 
     
     func validateInput() -> Bool {
@@ -90,15 +99,6 @@ class SaveUserInfo: UIViewController {
         }
     }
     
-    
- 
-    @IBAction func cancel(_ sender: UIButton) {
-        
-        let _ = self.navigationController?.popViewController(animated: true)
-        
-        dismiss(animated: true, completion: nil)
-
-    }
     
     
     func alert(message output:String) {

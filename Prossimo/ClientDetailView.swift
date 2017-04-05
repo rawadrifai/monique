@@ -21,11 +21,11 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
     @IBOutlet weak var btnNewHC: UIButton!
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var labelName: UILabel!
-    @IBOutlet weak var labelPhone: UILabel!
+    @IBOutlet weak var btnPhone: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.client.clientVisits.sort { $0.visitDate > $1.visitDate }
+        //self.client.clientVisits.sort { $0.visitDate > $1.visitDate }
         
         // get reference to database
         self.ref = FIRDatabase.database().reference()
@@ -40,6 +40,11 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
         makeProfilePicInteractive()
     }
     
+    
+    @IBAction func phoneClick(_ sender: UIButton) {
+        displayPhoneAlert()
+    }
+    
 
     @IBAction func newHaircut(_ sender: UIButton)
     {
@@ -49,7 +54,8 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
         let month = calendar.component(.month, from: date)
         let day = calendar.component(.day, from: date)
 
-        let visitdate = String(year) + "-" + String(month) + "-" + String(day)
+        let visitdate = String(month) + "-" + String(day) + "-" + String(year)
+        let sorteddate = String(year) + "-" + String(month) + "-" + String(day)
         
         
         // if visit date exists then don't add it
@@ -59,11 +65,13 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
             }
         }
         
+        self.ref.child("users/" + userId + "/clients/" + self.client.clientId + "/visits/" + visitdate + "/sortingDate").setValue(sorteddate)
+        
         self.ref.child("users/" + userId + "/clients/" + self.client.clientId + "/visits/" + visitdate + "/notes").setValue("") { (err, ref) in
             
-            self.client.clientVisits.append(ClientVisit(visitDate: visitdate, notes: ""))
+            self.client.clientVisits.append(ClientVisit(visitDate: visitdate, sortingDate: sorteddate, notes: ""))
             
-            self.client.clientVisits.sort { $0.visitDate > $1.visitDate }
+            self.client.clientVisits.sort { $0.sortingDate > $1.sortingDate }
             self.tableView.reloadData()
         }
         
@@ -72,7 +80,7 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
     func fillData() {
         
         labelName.text = client.clientName
-        labelPhone.text = client.clientPhone
+        btnPhone.setTitle(client.clientPhone, for: .normal)
         
         if client.profileImg.imageUrl != "" {
             self.imgView.sd_setImage(with: URL(string: client.profileImg.imageUrl))
@@ -256,6 +264,31 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
     }
     
     
+    func displayPhoneAlert() {
+        
+        let phoneAlert = UIAlertController(title: "", message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
+        
+        phoneAlert.addAction(UIAlertAction(title: "Call " + client.clientPhone, style: .default, handler: { (action: UIAlertAction!) in
+            
+            UIApplication.shared.openURL(URL(string: "tel://" + self.client.clientPhone)!)
+            
+        }))
+        
+        phoneAlert.addAction(UIAlertAction(title: "Text " + client.clientPhone, style: .default, handler: { (action: UIAlertAction!) in
+            
+            UIApplication.shared.openURL(URL(string: "sms://" + self.client.clientPhone)!)
+
+            
+        }))
+        
+        phoneAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+            
+        }))
+        
+        present(phoneAlert, animated: true, completion: nil)
+    }
+    
+    
     // Child Delegate
     func dataChanged(client: Client) {
         
@@ -264,8 +297,8 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
         self.client.clientEmail = client.clientEmail
         
         self.labelName.text = client.clientName
-        self.labelPhone.text = client.clientPhone
-        
+        btnPhone.setTitle(client.clientPhone, for: .normal)
+    
     }
     
     func dataDeleted() {
@@ -281,7 +314,7 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
     func historyChanged(client: Client) {
         
         self.client.clientVisits = client.clientVisits
-        self.client.clientVisits.sort { $0.visitDate > $1.visitDate }
+        self.client.clientVisits.sort { $0.sortingDate > $1.sortingDate }
         
         self.tableView.reloadData()
     }

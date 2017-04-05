@@ -5,10 +5,11 @@
 //  Created by Elrifai, Rawad on 2/19/17.
 //  Copyright © 2017 Elrifai, Rawad. All rights reserved.
 //
-import Firebase
+//import Firebase
 import UIKit
 import Google
 import GoogleSignIn
+import OAuthSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -26,6 +27,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // for redirecting after signing in back to the app
     func application(_ application: UIApplication,
                      open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        
+//        if url.host == "oauth-callback" {
+//            OAuthSwift.handle(url: url)
+//            return true
+//        }
+//        
         return GIDSignIn.sharedInstance().handle(url,
                                                  sourceApplication: sourceApplication,
                                                  annotation: annotation)
@@ -34,13 +41,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // open url for 9.0 and before
     @available(iOS 9.0, *)
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
+        
+//        if url.host == "oauth-callback" {
+//            OAuthSwift.handle(url: url)
+//            return true
+//        }
+//        
         return GIDSignIn.sharedInstance().handle(url,
                                                  sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
                                                  annotation: options[UIApplicationOpenURLOptionsKey.annotation])
     }
   
+    func application(_ application: UIApplication, handleOpen url: URL) -> Bool {
         
-    
+        let urlString = url.absoluteString
+        
+        if urlString == "https://rawadrifai.wixsite.com/prossimo" {
+            
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            let loginVC = storyBoard.instantiateViewController(withIdentifier: "loginViewController") as? UINavigationController
+            self.window?.rootViewController?.present(loginVC!, animated: true, completion: nil)
+        }
+        
+        return true
+    }
     
     
     

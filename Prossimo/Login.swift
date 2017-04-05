@@ -70,9 +70,6 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         }))
         
         present(versionAlert, animated: true, completion: nil)
-        
-        
-        
     }
     
     // what to do when you sign in

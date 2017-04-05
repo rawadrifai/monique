@@ -55,6 +55,7 @@ PODS:
   - GTMSessionFetcher/Core (1.1.8)
   - GTMSessionFetcher/Full (1.1.8):
     - GTMSessionFetcher/Core (= 1.1.8)
+  - OAuthSwift (1.1.1)
   - SDWebImage (4.0.0):
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
@@ -67,6 +68,7 @@ DEPENDENCIES:
   - Firebase/Storage
   - Google
   - GoogleSignIn
+  - OAuthSwift
   - SDWebImage
 
 SPEC CHECKSUMS:
@@ -82,8 +84,9 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
   GTMSessionFetcher: 6f8d8b28b7e345549ac471071608170b31cb4977
+  OAuthSwift: 6e3a103b3e5639411769cc7e199ec7e14bd1547f
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
 
-PODFILE CHECKSUM: 72910ecbb8e6f127d0b0e1204d35fa0c29c04f40
+PODFILE CHECKSUM: fdf4cc4af8f6d742aa281f8a972da94efc377d01
 
 COCOAPODS: 1.1.1

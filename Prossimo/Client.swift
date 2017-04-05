@@ -52,25 +52,22 @@ class Client {
 
 class ClientVisit {
     var visitDate:String
+    var sortingDate:String
     var notes:String
     var images:[ImageObject]
     
     init() {
         visitDate = ""
+        sortingDate = ""
         notes = ""
         images = [ImageObject]()
     }
     
-    init(visitDate:String, notes:String) {
+    init(visitDate:String, sortingDate:String, notes:String) {
         self.visitDate = visitDate
+        self.sortingDate = sortingDate
         self.notes = notes
         self.images = [ImageObject]()
-    }
-    
-    init(visitDate:String, notes:String, images:[ImageObject]) {
-        self.visitDate = visitDate
-        self.notes = notes
-        self.images = images
     }
 }
 
