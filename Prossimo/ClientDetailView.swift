@@ -30,10 +30,11 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
         // get reference to database
         self.ref = FIRDatabase.database().reference()
         
-        self.imgView.layer.cornerRadius = 175 / 4;
-        self.imgView.clipsToBounds = true;
         
-        self.btnNewHC.layer.cornerRadius = 175 / 10;
+        
+        self.btnNewHC.layer.cornerRadius = 5;
+        self.btnNewHC.layer.borderColor = UIColor.darkGray.cgColor
+        self.btnNewHC.layer.borderWidth = 1
         self.btnNewHC.clipsToBounds = true;
         
         fillData()

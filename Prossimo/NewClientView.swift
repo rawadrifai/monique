@@ -30,8 +30,8 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
         super.viewDidLoad()
         
         
-        self.imgView.layer.cornerRadius = 175 / 4;
-        self.imgView.clipsToBounds = true;
+//        self.imgView.layer.cornerRadius = 175 / 4;
+//        self.imgView.clipsToBounds = true;
         
         
         // get reference to database
@@ -58,7 +58,7 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
         image.delegate = self
         
         // set the source to photo library
-        image.sourceType = UIImagePickerControllerSourceType.camera
+        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
         
         self.present(image, animated: true)
     }
