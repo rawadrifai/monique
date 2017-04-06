@@ -29,10 +29,7 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.imgView.layer.cornerRadius = 175/4
-        self.imgView.clipsToBounds = true;
-        
+   
         // get reference to database
         self.ref = FIRDatabase.database().reference()
         
@@ -58,7 +55,7 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
         image.delegate = self
         
         // set the source to photo library
-        image.sourceType = UIImagePickerControllerSourceType.camera
+        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
         
         self.present(image, animated: true)
     }

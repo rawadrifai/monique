@@ -16,4 +16,5 @@ target 'Prossimo' do
   pod 'Firebase/Storage'
   pod 'SDWebImage'
   pod 'OAuthSwift'
+  pod 'FontAwesomeKit/FontAwesome'
   end

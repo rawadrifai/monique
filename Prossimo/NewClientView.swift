@@ -30,9 +30,6 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
         super.viewDidLoad()
         
         
-//        self.imgView.layer.cornerRadius = 175 / 4;
-//        self.imgView.clipsToBounds = true;
-        
         
         // get reference to database
         self.ref = FIRDatabase.database().reference()

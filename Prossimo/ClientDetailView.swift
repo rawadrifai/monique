@@ -9,8 +9,9 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseStorage
+import FontAwesomeKit
 
-class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class ClientDetailView: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     var userId = String()
     var client:Client!
@@ -21,29 +22,71 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
     @IBOutlet weak var btnNewHC: UIButton!
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var labelName: UILabel!
+
+    @IBOutlet weak var btnText: UIButton!
     @IBOutlet weak var btnPhone: UIButton!
+    
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        //self.client.clientVisits.sort { $0.visitDate > $1.visitDate }
         
         // get reference to database
         self.ref = FIRDatabase.database().reference()
         
-        
-        
-        self.btnNewHC.layer.cornerRadius = 5;
-        self.btnNewHC.layer.borderColor = UIColor.darkGray.cgColor
-        self.btnNewHC.layer.borderWidth = 1
-        self.btnNewHC.clipsToBounds = true;
-        
         fillData()
+        makeUIChanges()
+        
+    }
+    
+    func makeUIChanges() {
+        makeNewHCBtn()
+        setIcons()
         makeProfilePicInteractive()
     }
     
+    func makeNewHCBtn() {
+        
+        //self.btnNewHC.layer.cornerRadius = 5;
+        //self.btnNewHC.layer.borderColor = UIColor.lightGray.cgColor
+        //self.btnNewHC.layer.borderWidth = 0.7
+        //self.btnNewHC.clipsToBounds = true;
+    }
+    
+    func setIcons() {
+        
+        let phoneIconImage = FAKFontAwesome.mobileIcon(withSize: 35).image(with: CGSize(width: 30, height: 30))
+        btnPhone.setImage(phoneIconImage, for: .normal)
+        
+        let smsIconImage = FAKFontAwesome.commentOIcon(withSize: 25).image(with: CGSize(width: 30, height: 30))
+        
+        btnText.setImage(smsIconImage, for: .normal)
+    }
     
     @IBAction func phoneClick(_ sender: UIButton) {
-        displayPhoneAlert()
+        
+        let phoneAlert = UIAlertController(title: "", message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
+        
+        phoneAlert.addAction(UIAlertAction(title: "Call " + client.clientPhone, style: .default, handler: { (action: UIAlertAction!) in
+            
+            UIApplication.shared.openURL(URL(string: "tel://" + self.client.clientPhone)!)
+            
+        }))
+        
+        
+        phoneAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+            
+        }))
+        
+        present(phoneAlert, animated: true, completion: nil)
+        
+    }
+    
+    
+    @IBAction func messageClick(_ sender: UIButton) {
+        
+        UIApplication.shared.openURL(URL(string: "sms://" + self.client.clientPhone)!)
+
     }
     
 
@@ -290,6 +333,24 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
     }
     
     
+    
+
+}
+
+
+
+extension ClientDetailView: EditClientDelegate {
+    
+    func dataDeleted() {
+        let _ = self.navigationController?.popViewController(animated: true)
+    }
+    
+    func imageChanged(client: Client) {
+        self.client.profileImg = client.profileImg
+        self.imgView.sd_setImage(with: URL(string: self.client.profileImg.imageUrl))
+        
+    }
+    
     // Child Delegate
     func dataChanged(client: Client) {
         
@@ -299,18 +360,12 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
         
         self.labelName.text = client.clientName
         btnPhone.setTitle(client.clientPhone, for: .normal)
-    
+        
     }
     
-    func dataDeleted() {
-        let _ = self.navigationController?.popViewController(animated: true)
-    }
-    
-    func imageChanged(client: Client) {
-        self.client.profileImg = client.profileImg
-        self.imgView.sd_setImage(with: URL(string: self.client.profileImg.imageUrl))
+}
 
-    }
+extension ClientDetailView: PictureTimeDelegate {
     
     func historyChanged(client: Client) {
         
@@ -319,5 +374,5 @@ class ClientDetailView: UITableViewController, EditClientDelegate, PictureTimeDe
         
         self.tableView.reloadData()
     }
-
 }
+

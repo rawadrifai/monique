@@ -12,7 +12,7 @@ import GoogleSignIn
 import Firebase
 import FirebaseDatabase
 
-class ClientsView: UITableViewController, UISearchResultsUpdating, NewClientDelegate {
+class ClientsView: UITableViewController, UISearchResultsUpdating {
     
     
     var ref: FIRDatabaseReference!
@@ -199,16 +199,7 @@ class ClientsView: UITableViewController, UISearchResultsUpdating, NewClientDele
     }
     
     
-    // this is to modify 1 client, specifically to update their picture info
-    func dataChanged(client:Client) {
-        
-        for i in 0..<self.cellData.count {
-            if cellData[i].clientId == client.clientId {
-                cellData[i] = client
-                break
-            }
-        }
-    }
+    
     
     func reloadTableDataFromUIThread() {
         
@@ -310,3 +301,21 @@ class ClientsView: UITableViewController, UISearchResultsUpdating, NewClientDele
     }
 
 }
+
+
+
+extension ClientsView:NewClientDelegate {
+    
+    
+    func dataChanged(client:Client) {
+        
+        for i in 0..<self.cellData.count {
+            if cellData[i].clientId == client.clientId {
+                cellData[i] = client
+                break
+            }
+        }
+    }
+}
+
+

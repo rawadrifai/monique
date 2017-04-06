@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>FontAwesomeKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>GTMOAuth2.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -52,7 +57,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A8E61F622903A663E17E150B6321DB0D</key>
+		<key>6CA96E84F68686590593B5580C95D603</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>86832B91E801BCA93835CF7A9B3E1167</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,7 +72,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E1E16C37A55174082B0EDE7512913D59</key>
+		<key>E19017803FEA06C2E4FE065632CD7ED5</key>
 		<dict>
 			<key>primary</key>
 			<true/>

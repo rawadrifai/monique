@@ -7,3 +7,4 @@
 //
 
 #import "SDWebImage/UIImageView+WebCache.h"
+#import "FontAwesomeKit/FAKFontAwesome.h"
