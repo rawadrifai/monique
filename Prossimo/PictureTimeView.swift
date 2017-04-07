@@ -10,6 +10,7 @@ import UIKit
 import FirebaseStorage
 import FirebaseDatabase
 import Social
+import FontAwesomeKit
 
 class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
@@ -20,6 +21,7 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
     var ref: FIRDatabaseReference!
     var delegate: PictureTimeDelegate?
     
+    @IBOutlet weak var btnCamera: UIButton!
     @IBOutlet weak var labelNotes: UILabel!
     
     
@@ -33,6 +35,17 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         self.ref = FIRDatabase.database().reference()
 
         loadVisit()
+        
+        setIcons()
+    }
+    
+    func setIcons() {
+        
+        var cameraIconImage = FAKFontAwesome.cameraIcon(withSize: 35).image(with: CGSize(width: 35, height: 35))
+        cameraIconImage = cameraIconImage?.imageWithColor(color: UIColor.darkGray)
+        btnCamera.setImage(cameraIconImage, for: .normal)
+        
+       
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

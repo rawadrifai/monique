@@ -11,6 +11,19 @@ import FirebaseDatabase
 import FirebaseStorage
 import FontAwesomeKit
 
+extension UIImage {
+    func imageWithColor(color: UIColor) -> UIImage? {
+        var image = withRenderingMode(.alwaysTemplate)
+        UIGraphicsBeginImageContextWithOptions(size, false, scale)
+        color.set()
+        image.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+        image = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return image
+    }
+
+}
+
 class ClientDetailView: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     var userId = String()
@@ -40,26 +53,21 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
     }
     
     func makeUIChanges() {
-        makeNewHCBtn()
+
         setIcons()
         makeProfilePicInteractive()
     }
     
-    func makeNewHCBtn() {
-        
-        //self.btnNewHC.layer.cornerRadius = 5;
-        //self.btnNewHC.layer.borderColor = UIColor.lightGray.cgColor
-        //self.btnNewHC.layer.borderWidth = 0.7
-        //self.btnNewHC.clipsToBounds = true;
-    }
-    
+
     func setIcons() {
         
-        let phoneIconImage = FAKFontAwesome.mobileIcon(withSize: 35).image(with: CGSize(width: 30, height: 30))
+        var phoneIconImage = FAKFontAwesome.mobileIcon(withSize: 35).image(with: CGSize(width: 30, height: 30))
+        phoneIconImage = phoneIconImage?.imageWithColor(color: UIColor.darkGray)
         btnPhone.setImage(phoneIconImage, for: .normal)
         
-        let smsIconImage = FAKFontAwesome.commentOIcon(withSize: 25).image(with: CGSize(width: 30, height: 30))
         
+        var smsIconImage = FAKFontAwesome.commentOIcon(withSize: 25).image(with: CGSize(width: 30, height: 30))
+        smsIconImage = smsIconImage?.imageWithColor(color: UIColor.darkGray)
         btnText.setImage(smsIconImage, for: .normal)
     }
     
@@ -105,6 +113,11 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         // if visit date exists then don't add it
         for v in client.clientVisits {
             if v.visitDate == visitdate {
+                
+                self.selectedVisitIndex = 0
+                self.performSegue(withIdentifier: "pictureTimeSegue", sender: self)
+                
+                
                 return
             }
         }
@@ -117,6 +130,9 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
             
             self.client.clientVisits.sort { $0.sortingDate > $1.sortingDate }
             self.tableView.reloadData()
+         
+            self.selectedVisitIndex = 0
+            self.performSegue(withIdentifier: "pictureTimeSegue", sender: self)
         }
         
     }

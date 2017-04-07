@@ -29,26 +29,26 @@ class ImageView: UIViewController, UIScrollViewDelegate {
     
     func makeProfilePicInteractive() {
         
-//        self.scrollView.minimumZoomScale = 1.0
-//        self.scrollView.maximumZoomScale = 4.0
-//        
+        self.scrollView.minimumZoomScale = 1.0
+        self.scrollView.maximumZoomScale = 4.0
+        
 //        let x = UISwipeGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        
+        // make the profile picture interactive
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        
+          imgView.isUserInteractionEnabled = true
+          imgView.addGestureRecognizer(tapGestureRecognizer)
+        
+        
+        
+//        var swipeRight = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
+//        swipeRight.direction = UISwipeGestureRecognizerDirection.right
+//        self.view.addGestureRecognizer(swipeRight)
 //        
-//        // make the profile picture interactive
-//        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
-//        
-//          imgView.isUserInteractionEnabled = true
-//          imgView.addGestureRecognizer(x)
-        
-        
-        
-        var swipeRight = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
-        swipeRight.direction = UISwipeGestureRecognizerDirection.right
-        self.view.addGestureRecognizer(swipeRight)
-        
-        var swipeDown = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
-        swipeDown.direction = UISwipeGestureRecognizerDirection.down
-        self.view.addGestureRecognizer(swipeDown)
+//        var swipeDown = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
+//        swipeDown.direction = UISwipeGestureRecognizerDirection.down
+//        self.view.addGestureRecognizer(swipeDown)
         
     }
     

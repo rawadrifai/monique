@@ -5,7 +5,7 @@ import GoogleSignIn
 import Google
 
 class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
-
+    
     @IBOutlet weak var signInButton: GIDSignInButton!
     var userId:String!
     var ref: FIRDatabaseReference!
@@ -33,20 +33,18 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         checkForLatestVersion()
         
         
-    
+        
     }
     
     func checkForLatestVersion() {
         
-        self.ref.child("latestversion").observe(.value, with: {
+        self.ref.child("latestversion").observeSingleEvent(of: .value, with: {
             
             
             if let value = $0.value {
                 
-                if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
-                    
-                    print(version)
-                    print(value)
+                if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+                {
                     if version != String(describing: value) {
                         self.displayVersionAlert()
                     }
@@ -62,10 +60,26 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         versionAlert.addAction(UIAlertAction(title: "Download", style: .default, handler: { (action: UIAlertAction!) in
             
             UIApplication.shared.openURL(URL(string: "itms-apps://itunes.apple.com/us/app/prossimo-hair-stylist-assistant/id1220990527?ls=1&mt=8")!)
-
+            
         }))
         
         versionAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+            
+            
+            
+            self.ref.child("forceupdate").observeSingleEvent(of: .value, with: {
+                
+                
+                if let value = $0.value {
+                    
+                    if "1" == String(describing: value) {
+                        self.displayVersionAlert()
+                    }
+                    
+                }
+            })
+            
+            
             
         }))
         
@@ -83,12 +97,12 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
             
             // print logged in email
             print("signed in as: ", user.profile.email ?? "no email address")
-
+            
             self.userId = user.profile.email.replacingOccurrences(of: ".", with: "")
             
             self.ref.child("users/" + self.userId + "/name").setValue(user.profile.name)
             self.ref.child("users/" + self.userId + "/email").setValue(user.profile.email)
-           
+            
             self.performSegue(withIdentifier: "loginSegue", sender: self)
             
             
@@ -107,7 +121,7 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         
         self.userId = UIDevice.current.identifierForVendor!.uuidString
         
-        self.ref.child("users/" + userId + "/deviceId").observe(.value, with: {
+        self.ref.child("users/" + userId + "/deviceId").observeSingleEvent(of: .value, with: {
             
             if let value = $0.value {
                 if String(describing: value) == self.userId {
@@ -122,7 +136,7 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
             }
         })
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "loginSegue" {
             
@@ -131,7 +145,7 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
                 
                 if let destinationNavigation = destinationTabBar.viewControllers!.first as? UINavigationController {
                     if let destinationClientsView = destinationNavigation.topViewController as? ClientsView {
-                       destinationClientsView.userId = self.userId
+                        destinationClientsView.userId = self.userId
                     }
                 }
             }
@@ -140,10 +154,10 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
             // set the userId
             if let destinationViewController = segue.destination as? UIViewController {
                 
-               
-                    if let destinationView = destinationViewController as? SaveUserInfo {
-                        destinationView.userId = self.userId
-                    }
+                
+                if let destinationView = destinationViewController as? SaveUserInfo {
+                    destinationView.userId = self.userId
+                }
                 
             }
         }

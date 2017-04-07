@@ -35,6 +35,13 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
         self.ref = FIRDatabase.database().reference()
         
         makeProfilePicInteractive()
+        
+        //self.txfEmail.frame.size.height = 75
+        var rect = self.txfEmail.frame
+        rect.size.height = 75
+        self.txfEmail.frame = rect
+        
+        
     }
     
     func makeProfilePicInteractive() {

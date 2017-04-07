@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MoreView: UITableViewController {
+class InfoView: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

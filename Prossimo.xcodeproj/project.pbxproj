@@ -19,7 +19,8 @@
 		9AAF34C31E70F1A600CAFE44 /* EditClientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAF34C21E70F1A600CAFE44 /* EditClientView.swift */; };
 		9AAF34C51E70F1B500CAFE44 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAF34C41E70F1B500CAFE44 /* Login.swift */; };
 		9AAF34C71E713A0B00CAFE44 /* PictureTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAF34C61E713A0B00CAFE44 /* PictureTimeView.swift */; };
-		9AB6B8E11E84F869009231B0 /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB6B8E01E84F869009231B0 /* MoreView.swift */; };
+		9AAFE6261E96FFA1007185A0 /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAFE6251E96FFA1007185A0 /* MoreView.swift */; };
+		9AB6B8E11E84F869009231B0 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB6B8E01E84F869009231B0 /* InfoView.swift */; };
 		9AB6B8EA1E84F9CA009231B0 /* SaveUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB6B8E91E84F9CA009231B0 /* SaveUserInfo.swift */; };
 		9AD116621E5E7A9F00113753 /* ClientDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD116611E5E7A9F00113753 /* ClientDetailView.swift */; };
 		9AD116641E5E87C400113753 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD116631E5E87C400113753 /* Client.swift */; };
@@ -63,6 +64,13 @@
 			remoteGlobalIDString = 685FE423BD5B3BB7A2815291A305C794;
 			remoteInfo = SDWebImage;
 		};
+		9AAFE62E1E96FFA2007185A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9AD2B33A1E8AE50800DF308C /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C1C3A1F3151E2A6B9195EE4A64EEE7F8;
+			remoteInfo = FontAwesomeKit;
+		};
 		9AD2B35D1E8B51BC00DF308C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9AD2B33A1E8AE50800DF308C /* Pods.xcodeproj */;
@@ -88,7 +96,8 @@
 		9AAF34C21E70F1A600CAFE44 /* EditClientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditClientView.swift; path = Prossimo/EditClientView.swift; sourceTree = SOURCE_ROOT; };
 		9AAF34C41E70F1B500CAFE44 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Login.swift; path = Prossimo/Login.swift; sourceTree = SOURCE_ROOT; };
 		9AAF34C61E713A0B00CAFE44 /* PictureTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PictureTimeView.swift; path = Prossimo/PictureTimeView.swift; sourceTree = SOURCE_ROOT; };
-		9AB6B8E01E84F869009231B0 /* MoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MoreView.swift; path = Prossimo/MoreView.swift; sourceTree = SOURCE_ROOT; };
+		9AAFE6251E96FFA1007185A0 /* MoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; };
+		9AB6B8E01E84F869009231B0 /* InfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InfoView.swift; path = Prossimo/InfoView.swift; sourceTree = SOURCE_ROOT; };
 		9AB6B8E91E84F9CA009231B0 /* SaveUserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SaveUserInfo.swift; path = Prossimo/SaveUserInfo.swift; sourceTree = SOURCE_ROOT; };
 		9AD116611E5E7A9F00113753 /* ClientDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientDetailView.swift; path = Prossimo/ClientDetailView.swift; sourceTree = SOURCE_ROOT; };
 		9AD116631E5E87C400113753 /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Client.swift; path = Prossimo/Client.swift; sourceTree = "<group>"; };
@@ -134,6 +143,7 @@
 			children = (
 				9A63D3151E94502900F67805 /* BridgingHeader.h */,
 				9A3BC64B1E5A9AA700E9CA71 /* Main.storyboard */,
+				9AAFE6251E96FFA1007185A0 /* MoreView.swift */,
 				9A63D3011E94232000F67805 /* ViewController.swift */,
 				9A1856E21E84FCFE00C2EA2F /* ImageView.swift */,
 				9AAF34C61E713A0B00CAFE44 /* PictureTimeView.swift */,
@@ -141,7 +151,7 @@
 				9A3BC65B1E5AA5C300E9CA71 /* ClientsView.swift */,
 				9AD116611E5E7A9F00113753 /* ClientDetailView.swift */,
 				9AAF34C21E70F1A600CAFE44 /* EditClientView.swift */,
-				9AB6B8E01E84F869009231B0 /* MoreView.swift */,
+				9AB6B8E01E84F869009231B0 /* InfoView.swift */,
 				9AB6B8E91E84F9CA009231B0 /* SaveUserInfo.swift */,
 				9A36296B1E5D3CDA003CFAF8 /* NewClientView.swift */,
 				9A84AB571E92C7C200EF91C2 /* InstagramManager.swift */,
@@ -177,6 +187,7 @@
 		9AD2B33B1E8AE50800DF308C /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				9AAFE62F1E96FFA2007185A0 /* FontAwesomeKit.framework */,
 				9A63D3281E945AF200F67805 /* GoogleToolboxForMac.framework */,
 				9A63D32A1E945AF200F67805 /* GTMOAuth2.framework */,
 				9A63D32C1E945AF200F67805 /* GTMSessionFetcher.framework */,
@@ -288,6 +299,13 @@
 			remoteRef = 9A63D32F1E945AF200F67805 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		9AAFE62F1E96FFA2007185A0 /* FontAwesomeKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = FontAwesomeKit.framework;
+			remoteRef = 9AAFE62E1E96FFA2007185A0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		9AD2B35E1E8B51BC00DF308C /* Pods_Prossimo.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -371,12 +389,13 @@
 				9A1856E31E84FCFE00C2EA2F /* ImageView.swift in Sources */,
 				9A3BC65C1E5AA5C300E9CA71 /* ClientsView.swift in Sources */,
 				9AAF34C31E70F1A600CAFE44 /* EditClientView.swift in Sources */,
+				9AAFE6261E96FFA1007185A0 /* MoreView.swift in Sources */,
 				9AB6B8EA1E84F9CA009231B0 /* SaveUserInfo.swift in Sources */,
 				9A63D3021E94232000F67805 /* ViewController.swift in Sources */,
 				9AAF34C71E713A0B00CAFE44 /* PictureTimeView.swift in Sources */,
 				9AAF34C51E70F1B500CAFE44 /* Login.swift in Sources */,
 				9A84AB581E92C7C200EF91C2 /* InstagramManager.swift in Sources */,
-				9AB6B8E11E84F869009231B0 /* MoreView.swift in Sources */,
+				9AB6B8E11E84F869009231B0 /* InfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
