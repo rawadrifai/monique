@@ -267,6 +267,11 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
                             clientVisit.notes = visitInfo.value(forKey: "notes") as? String ?? ""
                             clientVisit.sortingDate = visitInfo.value(forKey: "sortingDate") as? String ?? ""
                             
+                            if let options = visitInfo.value(forKey: "options") as? [String : String]
+                            {
+                                clientVisit.options = options as [String:String]
+                            }
+                            
                             // get the images for each visit
                             if let visitImages = (visitInfo.value(forKey: "images") as? NSDictionary) {
                      

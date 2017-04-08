@@ -193,7 +193,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="RNq-Nc-4zr">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="Sal-wN-lPi">
+                        <barButtonItem key="rightBarButtonItem" title="Change" style="done" id="Sal-wN-lPi">
                             <connections>
                                 <segue destination="JZf-he-PWa" kind="show" identifier="editClientSegue" id="6Rt-4H-Exa"/>
                             </connections>
@@ -800,9 +800,9 @@ This Agreement was last modified on 03/20/2017</string>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Edit Client" id="3yu-Ra-eMW">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="1cb-FI-t2i">
+                        <barButtonItem key="leftBarButtonItem" title="&lt; Done" style="done" id="1cb-FI-t2i">
                             <connections>
-                                <action selector="save:" destination="JZf-he-PWa" id="ba8-wI-2RT"/>
+                                <action selector="save:" destination="JZf-he-PWa" id="cYk-nY-qaZ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -854,7 +854,7 @@ This Agreement was last modified on 03/20/2017</string>
                                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <segue destination="GpK-c8-QkJ" kind="show" id="RXd-fV-cNt"/>
+                                                        <segue destination="GpK-c8-QkJ" kind="show" identifier="moreSegue1" id="RXd-fV-cNt"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e57-vc-fAr">
@@ -868,7 +868,7 @@ This Agreement was last modified on 03/20/2017</string>
                                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <segue destination="GpK-c8-QkJ" kind="show" id="2wQ-E2-d5V"/>
+                                                        <segue destination="GpK-c8-QkJ" kind="show" identifier="moreSegue2" id="2wQ-E2-d5V"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -938,13 +938,15 @@ This Agreement was last modified on 03/20/2017</string>
                             <outlet property="delegate" destination="o9q-rL-Ugv" id="ExM-Ig-bP3"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="G74-vR-hE1">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="CB9-Ya-pnb">
+                        <barButtonItem key="leftBarButtonItem" title="&lt; Done" style="done" id="CB9-Ya-pnb">
                             <connections>
                                 <action selector="save:" destination="o9q-rL-Ugv" id="knc-LB-0vp"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="btnCamera" destination="7gn-yG-uSF" id="ViZ-JF-YGI"/>
                         <outlet property="labelNotes" destination="Kcr-Wf-CGE" id="fov-Xh-pSs"/>
@@ -1005,10 +1007,10 @@ This Agreement was last modified on 03/20/2017</string>
             </objects>
             <point key="canvasLocation" x="4046" y="-63"/>
         </scene>
-        <!--Choose Haircut Options-->
+        <!--Tap Haircut Options-->
         <scene sceneID="YUe-HC-Jue">
             <objects>
-                <viewController id="GpK-c8-QkJ" customClass="MoreView" customModule="Prossimo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="GpK-c8-QkJ" customClass="OptionsView" customModule="Prossimo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bf2-rr-uAZ"/>
                         <viewControllerLayoutGuide type="bottom" id="yyg-Zz-ZaK"/>
@@ -1319,13 +1321,7 @@ This Agreement was last modified on 03/20/2017</string>
                             <constraint firstItem="uUT-WU-zyZ" firstAttribute="top" secondItem="bf2-rr-uAZ" secondAttribute="bottom" constant="20" id="rqH-HE-YJy"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Choose Haircut Options" id="hfC-oe-8GS">
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="ytN-Se-7s4">
-                            <connections>
-                                <action selector="btnDoneClick:" destination="GpK-c8-QkJ" id="E6o-uB-evm"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Tap Haircut Options" id="hfC-oe-8GS"/>
                     <connections>
                         <outlet property="btn0" destination="Nwx-dd-Hcz" id="iZO-yi-JnW"/>
                         <outlet property="btn1" destination="AcR-y1-uR3" id="7po-6b-igB"/>

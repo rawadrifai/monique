@@ -189,6 +189,8 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
     }
     
     @IBAction func closeView(_ sender: UIBarButtonItem) {
+        
+        
         let _ = self.navigationController?.popViewController(animated: true)
     }
     

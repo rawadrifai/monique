@@ -19,7 +19,7 @@
 		9AAF34C31E70F1A600CAFE44 /* EditClientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAF34C21E70F1A600CAFE44 /* EditClientView.swift */; };
 		9AAF34C51E70F1B500CAFE44 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAF34C41E70F1B500CAFE44 /* Login.swift */; };
 		9AAF34C71E713A0B00CAFE44 /* PictureTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAF34C61E713A0B00CAFE44 /* PictureTimeView.swift */; };
-		9AAFE6261E96FFA1007185A0 /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAFE6251E96FFA1007185A0 /* MoreView.swift */; };
+		9AAFE6261E96FFA1007185A0 /* OptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAFE6251E96FFA1007185A0 /* OptionsView.swift */; };
 		9AB6B8E11E84F869009231B0 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB6B8E01E84F869009231B0 /* InfoView.swift */; };
 		9AB6B8EA1E84F9CA009231B0 /* SaveUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB6B8E91E84F9CA009231B0 /* SaveUserInfo.swift */; };
 		9AD116621E5E7A9F00113753 /* ClientDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD116611E5E7A9F00113753 /* ClientDetailView.swift */; };
@@ -96,7 +96,7 @@
 		9AAF34C21E70F1A600CAFE44 /* EditClientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditClientView.swift; path = Prossimo/EditClientView.swift; sourceTree = SOURCE_ROOT; };
 		9AAF34C41E70F1B500CAFE44 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Login.swift; path = Prossimo/Login.swift; sourceTree = SOURCE_ROOT; };
 		9AAF34C61E713A0B00CAFE44 /* PictureTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PictureTimeView.swift; path = Prossimo/PictureTimeView.swift; sourceTree = SOURCE_ROOT; };
-		9AAFE6251E96FFA1007185A0 /* MoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; };
+		9AAFE6251E96FFA1007185A0 /* OptionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsView.swift; sourceTree = "<group>"; };
 		9AB6B8E01E84F869009231B0 /* InfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InfoView.swift; path = Prossimo/InfoView.swift; sourceTree = SOURCE_ROOT; };
 		9AB6B8E91E84F9CA009231B0 /* SaveUserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SaveUserInfo.swift; path = Prossimo/SaveUserInfo.swift; sourceTree = SOURCE_ROOT; };
 		9AD116611E5E7A9F00113753 /* ClientDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientDetailView.swift; path = Prossimo/ClientDetailView.swift; sourceTree = SOURCE_ROOT; };
@@ -143,7 +143,7 @@
 			children = (
 				9A63D3151E94502900F67805 /* BridgingHeader.h */,
 				9A3BC64B1E5A9AA700E9CA71 /* Main.storyboard */,
-				9AAFE6251E96FFA1007185A0 /* MoreView.swift */,
+				9AAFE6251E96FFA1007185A0 /* OptionsView.swift */,
 				9A63D3011E94232000F67805 /* ViewController.swift */,
 				9A1856E21E84FCFE00C2EA2F /* ImageView.swift */,
 				9AAF34C61E713A0B00CAFE44 /* PictureTimeView.swift */,
@@ -389,7 +389,7 @@
 				9A1856E31E84FCFE00C2EA2F /* ImageView.swift in Sources */,
 				9A3BC65C1E5AA5C300E9CA71 /* ClientsView.swift in Sources */,
 				9AAF34C31E70F1A600CAFE44 /* EditClientView.swift in Sources */,
-				9AAFE6261E96FFA1007185A0 /* MoreView.swift in Sources */,
+				9AAFE6261E96FFA1007185A0 /* OptionsView.swift in Sources */,
 				9AB6B8EA1E84F9CA009231B0 /* SaveUserInfo.swift in Sources */,
 				9A63D3021E94232000F67805 /* ViewController.swift in Sources */,
 				9AAF34C71E713A0B00CAFE44 /* PictureTimeView.swift in Sources */,

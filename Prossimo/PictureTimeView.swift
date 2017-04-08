@@ -139,10 +139,22 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
             if let destination = segue.destination as? ImageView {
             
                 destination.image = self.client.clientVisits[selectedVisitIndex].images[tappedImageIndex] as ImageObject
-                //destination.image = self.cli
+            }
+        }
+        else if segue.identifier == "moreSegue1" || segue.identifier == "moreSegue2" {
+            
+            // set the userId
+            if let destination = segue.destination as? OptionsView {
+                
+                destination.userId = self.userId
+                destination.client = self.client
+                destination.selectedVisitIndex = self.selectedVisitIndex
+
             }
         }
     }
+    
+
     
     var tappedImageIndex:Int!
     
@@ -155,10 +167,6 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
             
         }
     }
-    
-
-    
-    
     
     
     func loadVisit() {
@@ -270,12 +278,13 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         storageRef.delete { (err) in
             
             if err != nil {
-                print("received an error: \(err?.localizedDescription)")
+                print("received an error: \(String(describing: err?.localizedDescription))")
             }
             
         }
     }
 }
+
 
 protocol PictureTimeDelegate {
     func historyChanged(client: Client)

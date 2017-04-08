@@ -55,12 +55,14 @@ class ClientVisit {
     var sortingDate:String
     var notes:String
     var images:[ImageObject]
+    var options:[String:String]
     
     init() {
         visitDate = ""
         sortingDate = ""
         notes = ""
         images = [ImageObject]()
+        options = [String:String]()
     }
     
     init(visitDate:String, sortingDate:String, notes:String) {
@@ -68,6 +70,7 @@ class ClientVisit {
         self.sortingDate = sortingDate
         self.notes = notes
         self.images = [ImageObject]()
+        options = [String:String]()
     }
 }
 
