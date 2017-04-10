@@ -11,6 +11,17 @@ import Firebase
 import FirebaseDatabase
 import FirebaseStorage
 
+extension EditClientView: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        guard let text = textField.text else { return true }
+        
+        let newLength = text.utf16.count + string.utf16.count - range.length
+        return newLength <= 12 // Bool
+    }
+}
+
 class EditClientView: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     var delegate: EditClientDelegate?
@@ -23,6 +34,7 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
     @IBOutlet weak var txfName: UITextField!
     @IBOutlet weak var txfPhone: UITextField!
     @IBOutlet weak var txfEmail: UITextField!
+    @IBOutlet weak var labelChangePicture: UILabel!
     
     var imageChanged = false
     
@@ -32,10 +44,35 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
    
         // get reference to database
         self.ref = FIRDatabase.database().reference()
-        
+        self.txfPhone.delegate = self
         fillData()
         
         makeProfilePicInteractive()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        save()
+    }
+    
+    var tmpPhone=String()
+    
+    @IBAction func txfPhoneEditingChanged(_ sender: UITextField) {
+        
+        if let phone = txfPhone.text {
+            
+            if (phone.characters.count > tmpPhone.characters.count) {
+                
+                if (phone.characters.count) == 3 {
+                    
+                    txfPhone.text = phone + "-"
+                } else
+                    if (phone.characters.count) == 7 {
+                        
+                        txfPhone.text = phone + "-"
+                }
+            }
+            tmpPhone = txfPhone.text!
+        }
     }
     
     func makeProfilePicInteractive() {
@@ -55,7 +92,7 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
         image.delegate = self
         
         // set the source to photo library
-        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        image.sourceType = UIImagePickerControllerSourceType.camera
         
         self.present(image, animated: true)
     }
@@ -69,9 +106,11 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
         
         if client.profileImg.imageUrl != "" {
             self.imgView.sd_setImage(with: URL(string: client.profileImg.imageUrl))
+            self.labelChangePicture.isHidden = true
         }
         else {
             self.imgView.image = UIImage(imageLiteralResourceName: "user")
+            
         }
     }
     
@@ -84,7 +123,7 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
     }
     
     
-    @IBAction func save(_ sender: UIBarButtonItem) {
+    func save() {
         
         if (validateInput()) {
             
@@ -108,7 +147,6 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
                 uploadImageToFirebase(data: compressedImageData!, path: "users/" + self.userId + "/clients/" + self.client.clientId + "/profile/", fileName: UUID().uuidString)
             }
             
-            let _ = self.navigationController?.popViewController(animated: true)
         }
     }
     
@@ -150,7 +188,7 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
         storageRef.put(data, metadata: nil) { (metadata, err) in
             
             if err != nil {
-                print("received an error: \(err?.localizedDescription)")
+                print("received an error: \(String(describing: err?.localizedDescription))")
             }
             else {
                 guard metadata != nil else {
@@ -182,6 +220,7 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
             
             self.imgView.image = UIImage(data: image.sd_imageData()!,scale: 0)
             imageChanged = true
+            self.labelChangePicture.isHidden = true
             
         }
         

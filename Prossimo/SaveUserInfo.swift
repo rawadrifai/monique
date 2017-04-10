@@ -3,6 +3,17 @@ import Firebase
 import Google
 
 
+extension SaveUserInfo: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        guard let text = textField.text else { return true }
+        
+        let newLength = text.utf16.count + string.utf16.count - range.length
+        return newLength <= 12 // Bool
+    }
+}
+
 class SaveUserInfo: UIViewController {
 
     var ref: FIRDatabaseReference!
@@ -15,11 +26,31 @@ class SaveUserInfo: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-
         self.ref = FIRDatabase.database().reference()
+        self.txfPhone.delegate = self
     }
     
+    var tmpPhone=String()
+    
+    @IBAction func txfPhoneEditingChanged(_ sender: UITextField) {
+        
+        if let phone = txfPhone.text {
+            
+            if (phone.characters.count > tmpPhone.characters.count) {
+                
+                if (phone.characters.count) == 3 {
+                    
+                    txfPhone.text = phone + "-"
+                } else
+                    if (phone.characters.count) == 7 {
+                        
+                        txfPhone.text = phone + "-"
+                }
+            }
+            tmpPhone = txfPhone.text!
+        }
+        
+    }
     
     @IBAction func signInWithDeviceId(_ sender: UIBarButtonItem) {
         

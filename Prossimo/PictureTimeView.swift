@@ -21,7 +21,6 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
     var ref: FIRDatabaseReference!
     var delegate: PictureTimeDelegate?
     
-    @IBOutlet weak var btnCamera: UIButton!
     @IBOutlet weak var labelNotes: UILabel!
     
     
@@ -29,25 +28,19 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         
         super.viewDidLoad()
         
-        self.labelNotes.layer.cornerRadius = 98 / 10;
-        self.labelNotes.clipsToBounds = true;
-        
         self.ref = FIRDatabase.database().reference()
 
         loadVisit()
-        
-        setIcons()
+
     }
     
-    func setIcons() {
+    override func viewWillDisappear(_ animated: Bool) {
         
-        var cameraIconImage = FAKFontAwesome.cameraIcon(withSize: 35).image(with: CGSize(width: 35, height: 35))
-        cameraIconImage = cameraIconImage?.imageWithColor(color: UIColor.darkGray)
-        btnCamera.setImage(cameraIconImage, for: .normal)
-        
-       
+        save()
     }
+
     
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return self.client.clientVisits[selectedVisitIndex].images.count
@@ -117,7 +110,7 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
                 storageRef.delete { (err) in
                     
                     if err != nil {
-                        print("received an error: \(err?.localizedDescription)")
+                        print("received an error: \(String(describing: err?.localizedDescription))")
                     }
                 }
             }
@@ -176,7 +169,7 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
     }
     
     
-    @IBAction func save(_ sender: UIBarButtonItem) {
+    func save() {
         
         let notes = txvNotes.text ?? ""
         
@@ -188,24 +181,20 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
             if let del = self.delegate {
                 del.historyChanged(client: self.client)
             }
-        
-        
-        // close window
-        let _ = self.navigationController?.popViewController(animated: true)
-                
     }
     
     
-    @IBAction func addImage(_ sender: UIButton) {
+    @IBAction func cameraClick(_ sender: UIBarButtonItem) {
         
         let image = UIImagePickerController()
         image.allowsEditing = true
         image.delegate = self
         
         // set the source to photo library
-        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
-                
+        image.sourceType = UIImagePickerControllerSourceType.camera
+        
         self.present(image, animated: true)
+        
     }
     
 

@@ -38,6 +38,7 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
 
     @IBOutlet weak var btnText: UIButton!
     @IBOutlet weak var btnPhone: UIButton!
+    @IBOutlet weak var labelChangePicture: UILabel!
     
 
     override func viewDidLoad() {
@@ -115,8 +116,8 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
             if v.visitDate == visitdate {
                 
                 self.selectedVisitIndex = 0
-                self.performSegue(withIdentifier: "pictureTimeSegue", sender: self)
                 
+                displayNewHCAlert()
                 
                 return
             }
@@ -144,6 +145,8 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         
         if client.profileImg.imageUrl != "" {
             self.imgView.sd_setImage(with: URL(string: client.profileImg.imageUrl))
+            self.labelChangePicture.isHidden = true
+
         }
         else {
             self.imgView.image = UIImage(imageLiteralResourceName: "user")
@@ -273,9 +276,8 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         image.allowsEditing = true
         image.delegate = self
         
-        // set the source to photo library
-        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
-        
+        image.sourceType = UIImagePickerControllerSourceType.camera
+
         self.present(image, animated: true)
     }
     
@@ -287,7 +289,7 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         storageRef.put(data, metadata: nil) { (metadata, err) in
             
             if err != nil {
-                print("received an error: \(err?.localizedDescription)")
+                print("received an error: \(String(describing: err?.localizedDescription))")
             }
             else {
                 guard metadata != nil else {
@@ -337,7 +339,7 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         phoneAlert.addAction(UIAlertAction(title: "Text " + client.clientPhone, style: .default, handler: { (action: UIAlertAction!) in
             
             UIApplication.shared.openURL(URL(string: "sms://" + self.client.clientPhone)!)
-
+            
             
         }))
         
@@ -346,6 +348,17 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         }))
         
         present(phoneAlert, animated: true, completion: nil)
+    }
+    
+    func displayNewHCAlert() {
+        
+        let alert = UIAlertController(title: "", message: "Haircut Exists", preferredStyle: UIAlertControllerStyle.alert)
+        
+        alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (action: UIAlertAction!) in
+            
+        }))
+        
+        present(alert, animated: true, completion: nil)
     }
     
     
@@ -364,6 +377,7 @@ extension ClientDetailView: EditClientDelegate {
     func imageChanged(client: Client) {
         self.client.profileImg = client.profileImg
         self.imgView.sd_setImage(with: URL(string: self.client.profileImg.imageUrl))
+        self.labelChangePicture.isHidden=true
         
     }
     

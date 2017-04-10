@@ -30,8 +30,11 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        
         // get all the user related data
           getUserData()
+        
+        
         
     }
     
@@ -41,7 +44,7 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
         // needed things for the search to work
         self.resultsController.tableView.dataSource = self
         self.resultsController.tableView.delegate = self
-        self.resultsController.tableView.rowHeight = 69
+        self.resultsController.tableView.rowHeight = 78
         
         customizeSearchController()
     }

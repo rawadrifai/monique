@@ -11,6 +11,17 @@ import Firebase
 import FirebaseDatabase
 import FirebaseStorage
 
+extension NewClientView: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        guard let text = textField.text else { return true }
+        
+        let newLength = text.utf16.count + string.utf16.count - range.length
+        return newLength <= 12 // Bool
+    }
+}
+
 class NewClientView: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     var delegate: NewClientDelegate?
@@ -23,6 +34,7 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
     @IBOutlet weak var txfName: UITextField!
     @IBOutlet weak var txfPhone: UITextField!
     @IBOutlet weak var txfEmail: UITextField!
+    @IBOutlet weak var labelChangePicture: UILabel!
     
     var imageChanged = false
     
@@ -30,19 +42,37 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
         super.viewDidLoad()
         
         
-        
         // get reference to database
         self.ref = FIRDatabase.database().reference()
         
         makeProfilePicInteractive()
         
-        //self.txfEmail.frame.size.height = 75
-        var rect = self.txfEmail.frame
-        rect.size.height = 75
-        self.txfEmail.frame = rect
-        
+        self.txfPhone.delegate = self
         
     }
+    
+    var tmpPhone=String()
+    
+    @IBAction func txfPhoneEditingChanged(_ sender: Any) {
+        
+        if let phone = txfPhone.text {
+            
+            if (phone.characters.count > tmpPhone.characters.count) {
+                
+                if (phone.characters.count) == 3 {
+                    
+                    txfPhone.text = phone + "-"
+                } else
+                    if (phone.characters.count) == 7 {
+                    
+                    txfPhone.text = phone + "-"
+                }
+            }
+            tmpPhone = txfPhone.text!
+        }
+    }
+    
+    
     
     func makeProfilePicInteractive() {
         
@@ -62,7 +92,7 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
         image.delegate = self
         
         // set the source to photo library
-        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        image.sourceType = UIImagePickerControllerSourceType.camera
         
         self.present(image, animated: true)
     }
@@ -72,7 +102,7 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
-
+    
     // execute after picking the image
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
     {
@@ -80,6 +110,7 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
         if let image = info[UIImagePickerControllerEditedImage] as? UIImage
         {
             imgView.image = image
+            self.labelChangePicture.isHidden = true
         }
         
         imageChanged = true
