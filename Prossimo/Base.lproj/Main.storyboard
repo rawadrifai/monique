@@ -86,7 +86,7 @@
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vmL-sm-0EM">
                                     <rect key="frame" x="0.0" y="435" width="337" height="70"/>
-                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                    <color key="backgroundColor" white="0.88802083333333337" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="337" id="bgy-ar-saI"/>
                                         <constraint firstAttribute="height" constant="70" id="tZ0-Yu-yV1"/>
@@ -132,7 +132,7 @@
                                 </stackView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Fc-Bd-z5v">
                                     <rect key="frame" x="335" y="435" width="40" height="70"/>
-                                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" white="0.88802083333333337" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="70" id="JB2-MJ-fcJ"/>
                                         <constraint firstAttribute="width" constant="40" id="JpS-js-XWg"/>
@@ -638,7 +638,7 @@ This Agreement was last modified on 03/20/2017</string>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9yR-0W-Xz0" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" image="search-7" id="rcm-6f-XcJ"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="AfO-F3-mUS">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="AfO-F3-mUS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.20000000000000001" green="0.59999999999999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1370,7 +1370,7 @@ This Agreement was last modified on 03/20/2017</string>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="m32-ze-ylf" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" image="info" id="ysb-Oa-uIw"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hdr-Ba-Po8">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="hdr-Ba-Po8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1474,13 +1474,13 @@ This Privacy Policy may be updated from time to time for any reason. We will not
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eDX-f8-qA1">
                                 <rect key="frame" x="16" y="64" width="343" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">I was getting a haircut at Floyd's in Venice. Like usual chatting with my stylist, I asked her if I can develop something to help her with her daily job. Light bulb. Fast forward 4 months, we're writing this app description..
+                                <mutableString key="text">I was getting a haircut at Floyd's in Venice, CA. Like usual chatting with my stylist, I asked her if I can develop something to help her with her daily job. Light bulb. Fast forward 4 months, we're writing this app description..
 
 Prossimo is an app made to assist hair stylists and barbers do what they do best - making us better looking humans. Prossimo lets the stylist keep a personal portfolio for every one of their clients without interfering with personal contacts lists.
 
 If you're a stylist, you have made the right choice downloading this app! Please feel free to contact us for any feedback.
 
-Cheers!</string>
+Cheers!</mutableString>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>

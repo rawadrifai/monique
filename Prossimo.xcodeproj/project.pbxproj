@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		712C1A8D6E507F7AC790634F /* Pods_Prossimo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C5810A9DE4136D869B270F /* Pods_Prossimo.framework */; };
+		9A0E86441E9B4EA400F02BA6 /* InstagramManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E86431E9B4EA400F02BA6 /* InstagramManager.swift */; };
 		9A1856E31E84FCFE00C2EA2F /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1856E21E84FCFE00C2EA2F /* ImageView.swift */; };
 		9A36296C1E5D3CDA003CFAF8 /* NewClientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A36296B1E5D3CDA003CFAF8 /* NewClientView.swift */; };
 		9A3BC6461E5A9AA700E9CA71 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3BC6451E5A9AA700E9CA71 /* AppDelegate.swift */; };
 		9A3BC64D1E5A9AA700E9CA71 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A3BC64B1E5A9AA700E9CA71 /* Main.storyboard */; };
 		9A3BC6521E5A9AA700E9CA71 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A3BC6501E5A9AA700E9CA71 /* LaunchScreen.storyboard */; };
 		9A3BC65C1E5AA5C300E9CA71 /* ClientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3BC65B1E5AA5C300E9CA71 /* ClientsView.swift */; };
-		9A84AB581E92C7C200EF91C2 /* InstagramManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A84AB571E92C7C200EF91C2 /* InstagramManager.swift */; };
 		9AAF34C31E70F1A600CAFE44 /* EditClientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAF34C21E70F1A600CAFE44 /* EditClientView.swift */; };
 		9AAF34C51E70F1B500CAFE44 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAF34C41E70F1B500CAFE44 /* Login.swift */; };
 		9AAF34C71E713A0B00CAFE44 /* PictureTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAF34C61E713A0B00CAFE44 /* PictureTimeView.swift */; };
@@ -81,6 +81,7 @@
 
 /* Begin PBXFileReference section */
 		24C5810A9DE4136D869B270F /* Pods_Prossimo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Prossimo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A0E86431E9B4EA400F02BA6 /* InstagramManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InstagramManager.swift; path = Prossimo/InstagramManager.swift; sourceTree = "<group>"; };
 		9A1856E21E84FCFE00C2EA2F /* ImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageView.swift; path = Prossimo/ImageView.swift; sourceTree = SOURCE_ROOT; };
 		9A36296B1E5D3CDA003CFAF8 /* NewClientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewClientView.swift; path = Prossimo/NewClientView.swift; sourceTree = SOURCE_ROOT; };
 		9A3BC6421E5A9AA700E9CA71 /* Prossimo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Prossimo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,7 +91,6 @@
 		9A3BC6531E5A9AA700E9CA71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = Prossimo/Info.plist; sourceTree = "<group>"; };
 		9A3BC65B1E5AA5C300E9CA71 /* ClientsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientsView.swift; path = Prossimo/ClientsView.swift; sourceTree = SOURCE_ROOT; };
 		9A63D3151E94502900F67805 /* BridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
-		9A84AB571E92C7C200EF91C2 /* InstagramManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InstagramManager.swift; path = Prossimo/InstagramManager.swift; sourceTree = "<group>"; };
 		9AAF34C21E70F1A600CAFE44 /* EditClientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditClientView.swift; path = Prossimo/EditClientView.swift; sourceTree = SOURCE_ROOT; };
 		9AAF34C41E70F1B500CAFE44 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Login.swift; path = Prossimo/Login.swift; sourceTree = SOURCE_ROOT; };
 		9AAF34C61E713A0B00CAFE44 /* PictureTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PictureTimeView.swift; path = Prossimo/PictureTimeView.swift; sourceTree = SOURCE_ROOT; };
@@ -146,12 +146,12 @@
 				9AAF34C61E713A0B00CAFE44 /* PictureTimeView.swift */,
 				9AAF34C41E70F1B500CAFE44 /* Login.swift */,
 				9A3BC65B1E5AA5C300E9CA71 /* ClientsView.swift */,
+				9A0E86431E9B4EA400F02BA6 /* InstagramManager.swift */,
 				9AD116611E5E7A9F00113753 /* ClientDetailView.swift */,
 				9AAF34C21E70F1A600CAFE44 /* EditClientView.swift */,
 				9AB6B8E01E84F869009231B0 /* InfoView.swift */,
 				9AB6B8E91E84F9CA009231B0 /* SaveUserInfo.swift */,
 				9A36296B1E5D3CDA003CFAF8 /* NewClientView.swift */,
-				9A84AB571E92C7C200EF91C2 /* InstagramManager.swift */,
 				9AD116631E5E87C400113753 /* Client.swift */,
 				9A3BC65D1E5C194800E9CA71 /* New Group */,
 				9A3BC6431E5A9AA700E9CA71 /* Products */,
@@ -384,13 +384,13 @@
 				9AD116621E5E7A9F00113753 /* ClientDetailView.swift in Sources */,
 				9AD116641E5E87C400113753 /* Client.swift in Sources */,
 				9A1856E31E84FCFE00C2EA2F /* ImageView.swift in Sources */,
+				9A0E86441E9B4EA400F02BA6 /* InstagramManager.swift in Sources */,
 				9A3BC65C1E5AA5C300E9CA71 /* ClientsView.swift in Sources */,
 				9AAF34C31E70F1A600CAFE44 /* EditClientView.swift in Sources */,
 				9AAFE6261E96FFA1007185A0 /* OptionsView.swift in Sources */,
 				9AB6B8EA1E84F9CA009231B0 /* SaveUserInfo.swift in Sources */,
 				9AAF34C71E713A0B00CAFE44 /* PictureTimeView.swift in Sources */,
 				9AAF34C51E70F1B500CAFE44 /* Login.swift in Sources */,
-				9A84AB581E92C7C200EF91C2 /* InstagramManager.swift in Sources */,
 				9AB6B8E11E84F869009231B0 /* InfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -24,11 +24,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>OAuthSwift.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-Prossimo.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,7 +42,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4E9CB5FA53E7C59108A3E80AA40371DE</key>
+		<key>2861F6D272B108EDD5AB7776206CE898</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -57,22 +52,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6CA96E84F68686590593B5580C95D603</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>86832B91E801BCA93835CF7A9B3E1167</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B1C4AAFAF49036C7007633DAA3C806AD</key>
+		<key>A296CC4125196B3FFBD7E118528B8C44</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E19017803FEA06C2E4FE065632CD7ED5</key>
+		<key>B1C4AAFAF49036C7007633DAA3C806AD</key>
 		<dict>
 			<key>primary</key>
 			<true/>

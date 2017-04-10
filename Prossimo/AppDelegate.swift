@@ -9,7 +9,6 @@
 import UIKit
 import Google
 import GoogleSignIn
-import OAuthSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
