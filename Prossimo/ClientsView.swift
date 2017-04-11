@@ -11,6 +11,8 @@ import UIKit
 import GoogleSignIn
 import Firebase
 import FirebaseDatabase
+import Fabric
+import Crashlytics
 
 class ClientsView: UITableViewController, UISearchResultsUpdating {
     
@@ -31,12 +33,13 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
         super.viewDidAppear(animated)
         
         
+        
         // get all the user related data
           getUserData()
         
         
-        
     }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -153,7 +156,7 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
                 storageRef.delete { (err) in
                     
                     if err != nil {
-                        print("received an error: \(err?.localizedDescription)")
+                        //print("received an error: " + (err?.localizedDescription)!)
                     }
                 }
             })
@@ -304,7 +307,7 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
             }
             
         }) { (error) in
-            print(error.localizedDescription)
+            //print(error.localizedDescription)
         }
     }
 

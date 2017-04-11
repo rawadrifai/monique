@@ -188,7 +188,7 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
         storageRef.put(data, metadata: nil) { (metadata, err) in
             
             if err != nil {
-                print("received an error: \(String(describing: err?.localizedDescription))")
+               // print("received an error: " + (err?.localizedDescription)!)
             }
             else {
                 guard metadata != nil else {

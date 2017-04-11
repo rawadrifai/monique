@@ -110,7 +110,7 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
                 storageRef.delete { (err) in
                     
                     if err != nil {
-                        print("received an error: \(String(describing: err?.localizedDescription))")
+                        print("received an error: " + (err?.localizedDescription)!)
                     }
                 }
             }
@@ -228,7 +228,8 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         storageRef.put(data, metadata: nil) { (metadata, err) in
             
             if err != nil {
-                print("received an error: \(err?.localizedDescription)")
+                print("received an error: " + (err?.localizedDescription)!)
+
             }
             else {
                 guard metadata != nil else {
@@ -267,7 +268,7 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         storageRef.delete { (err) in
             
             if err != nil {
-                print("received an error: \(String(describing: err?.localizedDescription))")
+                print("received an error: " + (err?.localizedDescription)!)
             }
             
         }

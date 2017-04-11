@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		712C1A8D6E507F7AC790634F /* Pods_Prossimo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C5810A9DE4136D869B270F /* Pods_Prossimo.framework */; };
 		9A0E86441E9B4EA400F02BA6 /* InstagramManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E86431E9B4EA400F02BA6 /* InstagramManager.swift */; };
+		9A0E86501E9BF85C00F02BA6 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0E864E1E9BF85C00F02BA6 /* Fabric.framework */; };
+		9A0E86511E9BF85C00F02BA6 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0E864F1E9BF85C00F02BA6 /* Crashlytics.framework */; };
+		9A0E86531E9BFC2D00F02BA6 /* CrashController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E86521E9BFC2D00F02BA6 /* CrashController.swift */; };
 		9A1856E31E84FCFE00C2EA2F /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1856E21E84FCFE00C2EA2F /* ImageView.swift */; };
 		9A36296C1E5D3CDA003CFAF8 /* NewClientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A36296B1E5D3CDA003CFAF8 /* NewClientView.swift */; };
 		9A3BC6461E5A9AA700E9CA71 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3BC6451E5A9AA700E9CA71 /* AppDelegate.swift */; };
@@ -49,13 +52,6 @@
 			remoteGlobalIDString = 58902FFEB46AA0AC1B2A04D6779BDF37;
 			remoteInfo = GTMSessionFetcher;
 		};
-		9A63D32D1E945AF200F67805 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9AD2B33A1E8AE50800DF308C /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 7EBBCDF8441B5D1CC9569F15995D4E88;
-			remoteInfo = OAuthSwift;
-		};
 		9A63D32F1E945AF200F67805 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9AD2B33A1E8AE50800DF308C /* Pods.xcodeproj */;
@@ -82,6 +78,9 @@
 /* Begin PBXFileReference section */
 		24C5810A9DE4136D869B270F /* Pods_Prossimo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Prossimo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A0E86431E9B4EA400F02BA6 /* InstagramManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InstagramManager.swift; path = Prossimo/InstagramManager.swift; sourceTree = "<group>"; };
+		9A0E864E1E9BF85C00F02BA6 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		9A0E864F1E9BF85C00F02BA6 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		9A0E86521E9BFC2D00F02BA6 /* CrashController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrashController.swift; sourceTree = "<group>"; };
 		9A1856E21E84FCFE00C2EA2F /* ImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageView.swift; path = Prossimo/ImageView.swift; sourceTree = SOURCE_ROOT; };
 		9A36296B1E5D3CDA003CFAF8 /* NewClientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewClientView.swift; path = Prossimo/NewClientView.swift; sourceTree = SOURCE_ROOT; };
 		9A3BC6421E5A9AA700E9CA71 /* Prossimo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Prossimo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,6 +111,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				712C1A8D6E507F7AC790634F /* Pods_Prossimo.framework in Frameworks */,
+				9A0E86511E9BF85C00F02BA6 /* Crashlytics.framework in Frameworks */,
+				9A0E86501E9BF85C00F02BA6 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +131,8 @@
 		68FF385C1A846D0140FD2222 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9A0E864E1E9BF85C00F02BA6 /* Fabric.framework */,
+				9A0E864F1E9BF85C00F02BA6 /* Crashlytics.framework */,
 				9AD2B33A1E8AE50800DF308C /* Pods.xcodeproj */,
 				24C5810A9DE4136D869B270F /* Pods_Prossimo.framework */,
 			);
@@ -141,6 +144,7 @@
 			children = (
 				9A63D3151E94502900F67805 /* BridgingHeader.h */,
 				9A3BC64B1E5A9AA700E9CA71 /* Main.storyboard */,
+				9A0E86521E9BFC2D00F02BA6 /* CrashController.swift */,
 				9AAFE6251E96FFA1007185A0 /* OptionsView.swift */,
 				9A1856E21E84FCFE00C2EA2F /* ImageView.swift */,
 				9AAF34C61E713A0B00CAFE44 /* PictureTimeView.swift */,
@@ -188,7 +192,6 @@
 				9A63D3281E945AF200F67805 /* GoogleToolboxForMac.framework */,
 				9A63D32A1E945AF200F67805 /* GTMOAuth2.framework */,
 				9A63D32C1E945AF200F67805 /* GTMSessionFetcher.framework */,
-				9A63D32E1E945AF200F67805 /* OAuthSwift.framework */,
 				9AD2B35E1E8B51BC00DF308C /* Pods_Prossimo.framework */,
 				9A63D3301E945AF200F67805 /* SDWebImage.framework */,
 			);
@@ -208,6 +211,7 @@
 				9A3BC6401E5A9AA700E9CA71 /* Resources */,
 				F0DD158469BA70BB44D73A26 /* [CP] Embed Pods Frameworks */,
 				07A7ACBE9281BCD1705299A5 /* [CP] Copy Pods Resources */,
+				9A0E86471E9BF7EE00F02BA6 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -282,13 +286,6 @@
 			remoteRef = 9A63D32B1E945AF200F67805 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		9A63D32E1E945AF200F67805 /* OAuthSwift.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = OAuthSwift.framework;
-			remoteRef = 9A63D32D1E945AF200F67805 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		9A63D3301E945AF200F67805 /* SDWebImage.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -342,6 +339,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Prossimo/Pods-Prossimo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		9A0E86471E9BF7EE00F02BA6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run b91612714e90f10d6907120588141ada865b4251 13f7cc41a67a25ffab18c46bb066307bd0bfe2b1fe39d987580f9af668b6a82a";
+		};
 		C8BAFA780779A159E8D8102C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -382,6 +392,7 @@
 				9A3BC6461E5A9AA700E9CA71 /* AppDelegate.swift in Sources */,
 				9A36296C1E5D3CDA003CFAF8 /* NewClientView.swift in Sources */,
 				9AD116621E5E7A9F00113753 /* ClientDetailView.swift in Sources */,
+				9A0E86531E9BFC2D00F02BA6 /* CrashController.swift in Sources */,
 				9AD116641E5E87C400113753 /* Client.swift in Sources */,
 				9A1856E31E84FCFE00C2EA2F /* ImageView.swift in Sources */,
 				9A0E86441E9B4EA400F02BA6 /* InstagramManager.swift in Sources */,
@@ -442,7 +453,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -517,6 +528,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 8WVDFQN9GC;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Prossimo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -535,6 +550,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 8WVDFQN9GC;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Prossimo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -39,6 +39,20 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1.2</string>
+	<key>Fabric</key>
+	<dict>
+		<key>APIKey</key>
+		<string>b91612714e90f10d6907120588141ada865b4251</string>
+		<key>Kits</key>
+		<array>
+			<dict>
+				<key>KitInfo</key>
+				<dict/>
+				<key>KitName</key>
+				<string>Crashlytics</string>
+			</dict>
+		</array>
+	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>

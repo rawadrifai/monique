@@ -486,7 +486,7 @@ This Agreement was last modified on 03/20/2017</string>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ehX-fb-TW6">
                                 <rect key="frame" x="16" y="92" width="343" height="170"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RQm-6Y-eMy">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="RQm-6Y-eMy">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="w0I-8O-gEK"/>
@@ -495,7 +495,7 @@ This Agreement was last modified on 03/20/2017</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yJj-c1-uB4">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="yJj-c1-uB4">
                                         <rect key="frame" x="0.0" y="60" width="343" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="PNk-Hk-cOi"/>
@@ -504,10 +504,10 @@ This Agreement was last modified on 03/20/2017</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="phonePad"/>
                                         <connections>
-                                            <action selector="txfPhoneEditingChanged:" destination="296-gp-6M8" eventType="editingDidEnd" id="IdZ-UJ-Y2E"/>
+                                            <action selector="txfPhoneEditingChanged:" destination="296-gp-6M8" eventType="editingChanged" id="ptK-Rd-iD9"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rxc-Ji-Dz2">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="rxc-Ji-Dz2">
                                         <rect key="frame" x="0.0" y="120" width="343" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="wwO-6L-Ws0"/>
@@ -673,7 +673,7 @@ This Agreement was last modified on 03/20/2017</string>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="kp5-7n-Zo4">
                                     <rect key="frame" x="25" y="374" width="325" height="160"/>
                                     <subviews>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iGV-Lb-D6e">
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="iGV-Lb-D6e">
                                             <rect key="frame" x="0.0" y="0.0" width="325" height="50"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="50" id="yuf-bq-9d1"/>
@@ -694,7 +694,7 @@ This Agreement was last modified on 03/20/2017</string>
                                                 <action selector="txfPhoneEditingChanged:" destination="JU3-Xh-DcQ" eventType="editingChanged" id="Hdy-Ew-NdZ"/>
                                             </connections>
                                         </textField>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="199-OC-QHz">
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="199-OC-QHz">
                                             <rect key="frame" x="0.0" y="110" width="325" height="50"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="50" id="C5C-YI-Feu"/>
@@ -772,7 +772,7 @@ This Agreement was last modified on 03/20/2017</string>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="4UM-JQ-wDa">
                                     <rect key="frame" x="20" y="374" width="335" height="160"/>
                                     <subviews>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FMi-ux-fWc">
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="FMi-ux-fWc">
                                             <rect key="frame" x="0.0" y="0.0" width="335" height="50"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="50" id="Wp0-3Z-Pdz"/>
@@ -781,7 +781,7 @@ This Agreement was last modified on 03/20/2017</string>
                                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
                                         </textField>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XxK-0U-XSP">
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="XxK-0U-XSP">
                                             <rect key="frame" x="0.0" y="55" width="335" height="50"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="50" id="YNf-e1-4P0"/>
@@ -793,7 +793,7 @@ This Agreement was last modified on 03/20/2017</string>
                                                 <action selector="txfPhoneEditingChanged:" destination="JZf-he-PWa" eventType="editingChanged" id="quQ-xk-WCC"/>
                                             </connections>
                                         </textField>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k3f-qk-Syh">
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="k3f-qk-Syh">
                                             <rect key="frame" x="0.0" y="110" width="335" height="50"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="50" id="0EN-We-Nwj"/>
@@ -1474,13 +1474,13 @@ This Privacy Policy may be updated from time to time for any reason. We will not
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eDX-f8-qA1">
                                 <rect key="frame" x="16" y="64" width="343" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <mutableString key="text">I was getting a haircut at Floyd's in Venice, CA. Like usual chatting with my stylist, I asked her if I can develop something to help her with her daily job. Light bulb. Fast forward 4 months, we're writing this app description..
+                                <string key="text">I was getting a haircut at Floyd's in Venice, CA. Like usual chatting with my stylist, I asked her if I can develop something to help her with her daily job. Light bulb. Fast forward 4 months, we're writing this app description..
 
 Prossimo is an app made to assist hair stylists and barbers do what they do best - making us better looking humans. Prossimo lets the stylist keep a personal portfolio for every one of their clients without interfering with personal contacts lists.
 
 If you're a stylist, you have made the right choice downloading this app! Please feel free to contact us for any feedback.
 
-Cheers!</mutableString>
+Cheers!</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -1519,7 +1519,7 @@ Cheers!</mutableString>
         <image name="user" width="450" height="450"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kDg-HA-5R9"/>
+        <segue reference="O2Z-Jn-XOB"/>
         <segue reference="2wQ-E2-d5V"/>
     </inferredMetricsTieBreakers>
 </document>

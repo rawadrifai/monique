@@ -9,6 +9,8 @@
 import UIKit
 import Google
 import GoogleSignIn
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        Fabric.with([Crashlytics.self])
+
         UITabBar.appearance().tintColor = UIColor(red:0.20, green:0.60, blue:0.00, alpha:1.0)
         return true
     }
@@ -27,13 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // for redirecting after signing in back to the app
     func application(_ application: UIApplication,
                      open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        
-//        if url.host == "oauth-callback" {
-//            OAuthSwift.handle(url: url)
-//            return true
-//        }
-//        
-        return GIDSignIn.sharedInstance().handle(url,
+
+                return GIDSignIn.sharedInstance().handle(url,
                                                  sourceApplication: sourceApplication,
                                                  annotation: annotation)
     }
@@ -42,11 +41,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     @available(iOS 9.0, *)
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
         
-//        if url.host == "oauth-callback" {
-//            OAuthSwift.handle(url: url)
-//            return true
-//        }
-//        
         return GIDSignIn.sharedInstance().handle(url,
                                                  sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
                                                  annotation: options[UIApplicationOpenURLOptionsKey.annotation])

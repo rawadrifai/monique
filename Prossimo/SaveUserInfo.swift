@@ -1,7 +1,8 @@
 import UIKit
 import Firebase
 import Google
-
+import Fabric
+import Crashlytics
 
 extension SaveUserInfo: UITextFieldDelegate {
     
@@ -67,8 +68,13 @@ class SaveUserInfo: UIViewController {
             user["email"] = txfEmail.text!
             
             self.ref.child("users").child(self.userId).setValue(user) { (err, ref) in
-                //    defaults.setValue("true", forKey: "loggedInBefore")
-                //self.userId = userId
+
+                // store crashlytics user info before signing in
+                
+                Crashlytics.sharedInstance().setUserIdentifier(user["deviceId"])
+                Crashlytics.sharedInstance().setUserName(user["name"])
+                Crashlytics.sharedInstance().setUserEmail(user["email"])
+
                 self.performSegue(withIdentifier: "loginSegue", sender: self)
             }
         }

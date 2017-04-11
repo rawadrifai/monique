@@ -3,6 +3,8 @@ import UIKit
 import Firebase
 import GoogleSignIn
 import Google
+import Fabric
+import Crashlytics
 
 class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     
@@ -10,6 +12,13 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     var userId:String!
     var ref: FIRDatabaseReference!
     
+    func logUser(userEmail:String, userIdentifier:String, userName:String) {
+
+        Crashlytics.sharedInstance().setUserEmail(userEmail)
+        Crashlytics.sharedInstance().setUserIdentifier(userIdentifier)
+        Crashlytics.sharedInstance().setUserName(userName)
+    }
+
     
     override func viewDidLoad() {
         
@@ -91,7 +100,7 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
               withError error: Error!) {
         
         if let error = error {
-            print("\(error.localizedDescription)")
+            //print("\(error.localizedDescription)")
             
         } else {
             
@@ -102,6 +111,9 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
             
             self.ref.child("users/" + self.userId + "/name").setValue(user.profile.name)
             self.ref.child("users/" + self.userId + "/email").setValue(user.profile.email)
+            
+            // log crashlytics users
+            self.logUser(userEmail: user.profile.email, userIdentifier: self.userId, userName: user.profile.name)
             
             self.performSegue(withIdentifier: "loginSegue", sender: self)
             
@@ -120,12 +132,27 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     @IBAction func signInUsignDeviceId(_ sender: UIButton) {
         
         self.userId = UIDevice.current.identifierForVendor!.uuidString
+        Crashlytics.sharedInstance().setUserIdentifier(self.userId)
         
         self.ref.child("users/" + userId + "/deviceId").observeSingleEvent(of: .value, with: {
             
             if let value = $0.value {
                 if String(describing: value) == self.userId {
+                    
+                    // store crashlytics user before signing in
+                    
+                    self.ref.child("users/" + self.userId + "/email").observeSingleEvent(of: .value, with: {
+                        Crashlytics.sharedInstance().setUserEmail($0.value as? String)
+                    })
+                    
+                    self.ref.child("users/" + self.userId + "/name").observeSingleEvent(of: .value, with: {
+                        Crashlytics.sharedInstance().setUserName($0.value as? String)
+                    })
+                    
                     self.performSegue(withIdentifier: "loginSegue", sender: self)
+
+                    
+
                 }
                 else {
                     self.performSegue(withIdentifier: "saveUserInfoSegue", sender: self)
@@ -135,6 +162,12 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
                 self.performSegue(withIdentifier: "saveUserInfoSegue", sender: self)
             }
         })
+        
+        
+
+        
+        
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

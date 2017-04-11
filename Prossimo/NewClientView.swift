@@ -38,6 +38,8 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
     
     var imageChanged = false
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -184,7 +186,7 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
         storageRef.put(data, metadata: nil) { (metadata, err) in
             
             if err != nil {
-                print("received an error: \(err?.localizedDescription)")
+                //print("received an error: " + (err?.localizedDescription)!)
             }
             else {
                 guard metadata != nil else {
