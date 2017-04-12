@@ -303,6 +303,8 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
                 self.ref.child(path + "/imageName").setValue(self.client.profileImg.imageName)
                 self.ref.child(path + "/imageUrl").setValue(self.client.profileImg.imageUrl)
                 
+                self.labelChangePicture.isHidden = true
+                
             }
         }
     }

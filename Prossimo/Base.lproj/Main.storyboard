@@ -86,7 +86,7 @@
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vmL-sm-0EM">
                                     <rect key="frame" x="0.0" y="435" width="337" height="70"/>
-                                    <color key="backgroundColor" white="0.88802083333333337" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" red="0.78823529410000004" green="0.93244534729999995" blue="0.77519649270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="337" id="bgy-ar-saI"/>
                                         <constraint firstAttribute="height" constant="70" id="tZ0-Yu-yV1"/>
@@ -94,7 +94,7 @@
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                     <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <state key="normal" title="New Haircut">
-                                        <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <connections>
                                         <action selector="newHaircut:" destination="cdu-h2-G3J" eventType="touchUpInside" id="Iq3-Cu-wcb"/>
@@ -132,14 +132,14 @@
                                 </stackView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Fc-Bd-z5v">
                                     <rect key="frame" x="335" y="435" width="40" height="70"/>
-                                    <color key="backgroundColor" white="0.88802083333333337" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" red="0.78823529410000004" green="0.93244534729999995" blue="0.77519649270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="70" id="JB2-MJ-fcJ"/>
                                         <constraint firstAttribute="width" constant="40" id="JpS-js-XWg"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                     <state key="normal" title="&gt;">
-                                        <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Picture" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RZP-8p-khW">
@@ -232,7 +232,7 @@
             </objects>
             <point key="canvasLocation" x="69" y="-62"/>
         </scene>
-        <!--Info View-->
+        <!--Prossimo-->
         <scene sceneID="2PM-Iq-KXg">
             <objects>
                 <tableViewController id="KZI-Y6-GH1" customClass="InfoView" customModule="Prossimo" customModuleProvider="target" sceneMemberID="viewController">
@@ -326,16 +326,19 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection id="Y8W-V4-JWz">
+                                <cells/>
+                            </tableViewSection>
                             <tableViewSection id="o6K-N0-672">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="NMM-Lg-8Nu" rowHeight="70" style="IBUITableViewCellStyleDefault" id="Xke-KO-hxS">
-                                        <rect key="frame" x="0.0" y="427.5" width="375" height="70"/>
+                                        <rect key="frame" x="0.0" y="463.5" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xke-KO-hxS" id="uZO-bk-T8j">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Sign Out" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NMM-Lg-8Nu">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Sign Out" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NMM-Lg-8Nu">
                                                     <rect key="frame" x="15" y="0.0" width="345" height="69.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -356,7 +359,7 @@
                             <outlet property="delegate" destination="KZI-Y6-GH1" id="WnD-U5-Zpr"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Zkh-Pj-LFL"/>
+                    <navigationItem key="navigationItem" title="Prossimo" id="Zkh-Pj-LFL"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SFc-b3-ofD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -638,10 +641,11 @@ This Agreement was last modified on 03/20/2017</string>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9yR-0W-Xz0" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" image="search-7" id="rcm-6f-XcJ"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="AfO-F3-mUS">
+                    <navigationBar key="navigationBar" alpha="0.0" contentMode="scaleToFill" id="AfO-F3-mUS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="0.20000000000000001" green="0.59999999999999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.20000000000000001" green="0.59999999999999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1370,9 +1374,11 @@ This Agreement was last modified on 03/20/2017</string>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="m32-ze-ylf" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" image="info" id="ysb-Oa-uIw"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="hdr-Ba-Po8">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hdr-Ba-Po8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.20000000000000001" green="0.59999999999999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

@@ -7,17 +7,118 @@
 //
 
 import UIKit
+import StoreKit
 
-class InfoView: UITableViewController {
+class InfoView: UITableViewController, SKProductsRequestDelegate, SKPaymentTransactionObserver  {
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        if(SKPaymentQueue.canMakePayments()) {
+            
+            print("IAP is enabled, loading")
+            let productID: NSSet = NSSet(objects: "rifai.prossimo.ios.pro")
+            let request: SKProductsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>)
+            request.delegate = self
+            request.start()
+            
+        } else {
+            print("please enable IAPS")
+        }
+        
+        
+    }
+    
+    
+    
+    
+    var list = [SKProduct]()
+    var p = SKProduct()
+    
+    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+        
+        print("product request")
+        
+        let myProduct = response.products
+        
+        for product in myProduct {
+            
+            print("product added")
+            print(product.productIdentifier)
+            print(product.localizedTitle)
+            print(product.localizedDescription)
+            print(product.price)
+            
+            list.append(product)
+        }
+        
+        
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
+        
+        print("transactions restored")
+        
+        for transaction in queue.transactions {
+            
+            let t: SKPaymentTransaction = transaction
+            let prodID = t.payment.productIdentifier as String
+            
+            switch prodID {
+
+            case "rifai.prossimo.ios.pro":
+                print("add coins to account")
+                addPro()
+                
+            default:
+                print("IAP not found")
+            }
+        }
+    }
+    
+    
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        
+        print("add payment")
+        
+        for transaction: AnyObject in transactions {
+            
+            let trans = transaction as! SKPaymentTransaction
+            print(trans.error ?? "default")
+            
+            switch trans.transactionState {
+            case .purchased:
+                print("buy ok, unlock IAP HERE")
+                print(p.productIdentifier)
+                
+                let prodID = p.productIdentifier
+                switch prodID {
+
+                case "rifai.prossimo.ios.pro":
+                    print("add coins to account")
+                    addPro()
+                default:
+                    print("IAP not found")
+                }
+                
+                queue.finishTransaction(trans)
+                
+            case .failed:
+                print("buy error")
+                queue.finishTransaction(trans)
+                break
+                
+            default:
+                print("Default")
+                break
+            }
+        }
+    }
+    
+    func addPro() {
+        print("adding pro")
     }
 
   
@@ -37,7 +138,27 @@ class InfoView: UITableViewController {
                         // Fallback on earlier versions
                     }
                 }
+            } else if cellText == "Upgrade to Pro!" {
+                
+                print("prossimo pro")
+                for product in list {
+                    let prodID = product.productIdentifier
+                    if(prodID == "rifai.prossimo.ios.pro") {
+                        p = product
+                        buyPro()
+                    }
+                }
+                
             }
         }
+    }
+    
+    func buyPro() {
+        
+        print("buy " + p.productIdentifier)
+        
+        let pay = SKPayment(product: p)
+        SKPaymentQueue.default().add(self)
+        SKPaymentQueue.default().add(pay as SKPayment)
     }
 }

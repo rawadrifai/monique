@@ -18,6 +18,8 @@
 		9A3BC64D1E5A9AA700E9CA71 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A3BC64B1E5A9AA700E9CA71 /* Main.storyboard */; };
 		9A3BC6521E5A9AA700E9CA71 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A3BC6501E5A9AA700E9CA71 /* LaunchScreen.storyboard */; };
 		9A3BC65C1E5AA5C300E9CA71 /* ClientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3BC65B1E5AA5C300E9CA71 /* ClientsView.swift */; };
+		9A969D881E9D4C8D004127CE /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A969D871E9D4C8D004127CE /* StoreKit.framework */; };
+		9A969D8B1E9D5963004127CE /* NetworkActivityIndicatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A969D8A1E9D5963004127CE /* NetworkActivityIndicatorManager.swift */; };
 		9AAF34C31E70F1A600CAFE44 /* EditClientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAF34C21E70F1A600CAFE44 /* EditClientView.swift */; };
 		9AAF34C51E70F1B500CAFE44 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAF34C41E70F1B500CAFE44 /* Login.swift */; };
 		9AAF34C71E713A0B00CAFE44 /* PictureTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAF34C61E713A0B00CAFE44 /* PictureTimeView.swift */; };
@@ -59,6 +61,13 @@
 			remoteGlobalIDString = 685FE423BD5B3BB7A2815291A305C794;
 			remoteInfo = SDWebImage;
 		};
+		9A969D931E9D5963004127CE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9AD2B33A1E8AE50800DF308C /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D69FE3D13F85C0066622CDCAA6A21B19;
+			remoteInfo = SwiftyStoreKit;
+		};
 		9AAFE62E1E96FFA2007185A0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9AD2B33A1E8AE50800DF308C /* Pods.xcodeproj */;
@@ -90,6 +99,8 @@
 		9A3BC6531E5A9AA700E9CA71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = Prossimo/Info.plist; sourceTree = "<group>"; };
 		9A3BC65B1E5AA5C300E9CA71 /* ClientsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientsView.swift; path = Prossimo/ClientsView.swift; sourceTree = SOURCE_ROOT; };
 		9A63D3151E94502900F67805 /* BridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
+		9A969D871E9D4C8D004127CE /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		9A969D8A1E9D5963004127CE /* NetworkActivityIndicatorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkActivityIndicatorManager.swift; path = Prossimo/NetworkActivityIndicatorManager.swift; sourceTree = "<group>"; };
 		9AAF34C21E70F1A600CAFE44 /* EditClientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditClientView.swift; path = Prossimo/EditClientView.swift; sourceTree = SOURCE_ROOT; };
 		9AAF34C41E70F1B500CAFE44 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Login.swift; path = Prossimo/Login.swift; sourceTree = SOURCE_ROOT; };
 		9AAF34C61E713A0B00CAFE44 /* PictureTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PictureTimeView.swift; path = Prossimo/PictureTimeView.swift; sourceTree = SOURCE_ROOT; };
@@ -113,6 +124,7 @@
 				712C1A8D6E507F7AC790634F /* Pods_Prossimo.framework in Frameworks */,
 				9A0E86511E9BF85C00F02BA6 /* Crashlytics.framework in Frameworks */,
 				9A0E86501E9BF85C00F02BA6 /* Fabric.framework in Frameworks */,
+				9A969D881E9D4C8D004127CE /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,6 +143,7 @@
 		68FF385C1A846D0140FD2222 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9A969D871E9D4C8D004127CE /* StoreKit.framework */,
 				9A0E864E1E9BF85C00F02BA6 /* Fabric.framework */,
 				9A0E864F1E9BF85C00F02BA6 /* Crashlytics.framework */,
 				9AD2B33A1E8AE50800DF308C /* Pods.xcodeproj */,
@@ -142,6 +155,7 @@
 		9A3BC6391E5A9AA700E9CA71 = {
 			isa = PBXGroup;
 			children = (
+				9A969D8A1E9D5963004127CE /* NetworkActivityIndicatorManager.swift */,
 				9A63D3151E94502900F67805 /* BridgingHeader.h */,
 				9A3BC64B1E5A9AA700E9CA71 /* Main.storyboard */,
 				9A0E86521E9BFC2D00F02BA6 /* CrashController.swift */,
@@ -194,6 +208,7 @@
 				9A63D32C1E945AF200F67805 /* GTMSessionFetcher.framework */,
 				9AD2B35E1E8B51BC00DF308C /* Pods_Prossimo.framework */,
 				9A63D3301E945AF200F67805 /* SDWebImage.framework */,
+				9A969D941E9D5963004127CE /* SwiftyStoreKit.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -237,6 +252,11 @@
 						DevelopmentTeam = 8WVDFQN9GC;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -291,6 +311,13 @@
 			fileType = wrapper.framework;
 			path = SDWebImage.framework;
 			remoteRef = 9A63D32F1E945AF200F67805 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A969D941E9D5963004127CE /* SwiftyStoreKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftyStoreKit.framework;
+			remoteRef = 9A969D931E9D5963004127CE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		9AAFE62F1E96FFA2007185A0 /* FontAwesomeKit.framework */ = {
@@ -403,6 +430,7 @@
 				9AAF34C71E713A0B00CAFE44 /* PictureTimeView.swift in Sources */,
 				9AAF34C51E70F1B500CAFE44 /* Login.swift in Sources */,
 				9AB6B8E11E84F869009231B0 /* InfoView.swift in Sources */,
+				9A969D8B1E9D5963004127CE /* NetworkActivityIndicatorManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
