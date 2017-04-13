@@ -24,6 +24,7 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
     var resultsController = UITableViewController()
     
     var userId = String()
+    var subscription = String()
     var cellData = [Client]()
     var filteredData = [Client]()
     

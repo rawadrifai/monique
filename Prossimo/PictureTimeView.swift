@@ -27,19 +27,15 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
+    
         self.ref = FIRDatabase.database().reference()
-
         loadVisit()
-
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         
         save()
     }
-
-    
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -56,23 +52,18 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
             let image = cell.viewWithTag(1) as! UIImageView
             image.sd_setImage(with: URL(string: imgobj.imageUrl), completed: { (img, err, ct, url) in
             })
-            
-            
-            
+
             return cell
         }
         
         return UITableViewCell(style: .default, reuseIdentifier: "cell")
     }
     
-    
-    
-    
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
         // share button
         
-        let share = UITableViewRowAction(style: .default, title: "               ") { action, index in
+        let share = UITableViewRowAction(style: .normal, title: "Share") { action, index in
             
             let imageView = tableView.cellForRow(at: indexPath)?.viewWithTag(1) as! UIImageView
             let image = imageView.image
@@ -82,7 +73,8 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         }
         
         
-        share.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "share"))
+        
+        
         
         
         

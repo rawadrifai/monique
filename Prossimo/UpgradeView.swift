@@ -1,8 +1,8 @@
 //
-//  MoreView.swift
-//  Monique
+//  UpgradeView.swift
+//  Prossimo
 //
-//  Created by Elrifai, Rawad on 3/20/17.
+//  Created by Elrifai, Rawad on 4/12/17.
 //  Copyright © 2017 Elrifai, Rawad. All rights reserved.
 //
 
@@ -11,8 +11,7 @@ import StoreKit
 import Firebase
 import FirebaseDatabase
 
-class InfoView: UITableViewController, SKProductsRequestDelegate, SKPaymentTransactionObserver  {
-
+class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransactionObserver {
 
     var ref: FIRDatabaseReference!
     var userId = String()
@@ -61,7 +60,7 @@ class InfoView: UITableViewController, SKProductsRequestDelegate, SKPaymentTrans
         }
         
         
-
+        
     }
     
     func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
@@ -74,7 +73,7 @@ class InfoView: UITableViewController, SKProductsRequestDelegate, SKPaymentTrans
             let prodID = t.payment.productIdentifier as String
             
             switch prodID {
-
+                
             case "rifai.prossimo.ios.pp":
                 print("add coins to account")
                 addPro()
@@ -102,7 +101,7 @@ class InfoView: UITableViewController, SKProductsRequestDelegate, SKPaymentTrans
                 
                 let prodID = p.productIdentifier
                 switch prodID {
-
+                    
                 case "rifai.prossimo.ios.pp":
                     print("add coins to account")
                     addPro()
@@ -128,40 +127,9 @@ class InfoView: UITableViewController, SKProductsRequestDelegate, SKPaymentTrans
         print("adding pro")
         self.ref.child("users/" + self.userId + "/subscription").setValue("pro")
     }
+    
+    
 
-  
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        _ = tableView.indexPathForSelectedRow!
-        if let cellText = tableView.cellForRow(at: indexPath)?.textLabel?.text {
-            
-            if cellText == "Contact Us" {
-                
-                let email = "tuukinfo@gmail.com"
-                if let url = URL(string: "mailto:\(email)") {
-                    if #available(iOS 10.0, *) {
-                        UIApplication.shared.open(url)
-                    } else {
-                        UIApplication.shared.openURL(url)
-                        // Fallback on earlier versions
-                    }
-                }
-            } else if cellText == "Upgrade to Pro!" {
-                
-
-                print("prossimo pro")
-                for product in list {
-                    let prodID = product.productIdentifier
-                    if(prodID == "rifai.prossimo.ios.pp") {
-                        p = product
-                        buyPro()
-                    }
-                }
-            }
-
-            self.tableView.deselectRow(at: indexPath, animated: true)
-        }
-    }
     
     func buyPro() {
         
@@ -171,4 +139,7 @@ class InfoView: UITableViewController, SKProductsRequestDelegate, SKPaymentTrans
         SKPaymentQueue.default().add(self)
         SKPaymentQueue.default().add(pay as SKPayment)
     }
+
+
+
 }

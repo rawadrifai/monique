@@ -57,19 +57,27 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
 
         setIcons()
         makeProfilePicInteractive()
+        
+        
+        
     }
     
 
     func setIcons() {
         
+        // phone icon
         var phoneIconImage = FAKFontAwesome.mobileIcon(withSize: 35).image(with: CGSize(width: 30, height: 30))
-        phoneIconImage = phoneIconImage?.imageWithColor(color: UIColor.darkGray)
+        phoneIconImage = phoneIconImage?.imageWithColor(color: UIColor.black)
         btnPhone.setImage(phoneIconImage, for: .normal)
         
         
+        // sms icon
+        
         var smsIconImage = FAKFontAwesome.commentOIcon(withSize: 25).image(with: CGSize(width: 30, height: 30))
-        smsIconImage = smsIconImage?.imageWithColor(color: UIColor.darkGray)
+        smsIconImage = smsIconImage?.imageWithColor(color: UIColor.black)
         btnText.setImage(smsIconImage, for: .normal)
+        
+        
     }
     
     @IBAction func phoneClick(_ sender: UIButton) {

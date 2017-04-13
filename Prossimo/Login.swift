@@ -129,6 +129,8 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         
     }
     
+    var subscription=String()
+    
     @IBAction func signInUsignDeviceId(_ sender: UIButton) {
         
         self.userId = UIDevice.current.identifierForVendor!.uuidString
@@ -140,6 +142,19 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
                 if String(describing: value) == self.userId {
                     
                     // store crashlytics user before signing in
+                    
+                    self.ref.child("users/" + self.userId + "/subscription").observeSingleEvent(of: .value, with: {
+          
+                        if let val = $0.value as? String {
+                            
+                            print("something")
+                            self.subscription = val
+                            
+                        }
+                        else {
+                            print("nothing")
+                        }
+                    })
                     
                     self.ref.child("users/" + self.userId + "/email").observeSingleEvent(of: .value, with: {
                         Crashlytics.sharedInstance().setUserEmail($0.value as? String)
@@ -179,6 +194,7 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
                 if let destinationNavigation = destinationTabBar.viewControllers!.first as? UINavigationController {
                     if let destinationClientsView = destinationNavigation.topViewController as? ClientsView {
                         destinationClientsView.userId = self.userId
+                        destinationClientsView.subscription = self.subscription
                     }
                 }
             }
