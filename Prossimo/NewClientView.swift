@@ -156,6 +156,7 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
         
         if (validateInput()) {
             
+
             self.client.clientId = UUID().uuidString
             
             self.client.clientName = txfName.text!

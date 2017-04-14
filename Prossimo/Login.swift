@@ -134,6 +134,7 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     @IBAction func signInUsignDeviceId(_ sender: UIButton) {
         
         self.userId = UIDevice.current.identifierForVendor!.uuidString
+        
         Crashlytics.sharedInstance().setUserIdentifier(self.userId)
         
         self.ref.child("users/" + userId + "/deviceId").observeSingleEvent(of: .value, with: {

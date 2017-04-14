@@ -15,49 +15,82 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
 
     var ref: FIRDatabaseReference!
     var userId = String()
-    var list = [SKProduct]()
-    var p = SKProduct()
+    var allSKProducts = [SKProduct]()
+    var sKproductToBuy = SKProduct()
+    var productsInFirebase = Set<String>()
+    var promoCodeToUse = PromoCode()
+    var promoCodesInFirebase = [PromoCode]()
     
     
+    @IBOutlet weak var txfPromo: UITextField!
+    @IBOutlet weak var labelDiscountApplied: UILabel!
+    @IBOutlet weak var btnUpgrade: UIButton!
     
+
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
         self.ref = FIRDatabase.database().reference()
+        getProductsFromFirebase()
+        getPromoCodesFromFirebase()
+        
+        
+    }
+    
+    func getProductsFromFirebase() {
+        
+        self.ref.child("products").observeSingleEvent(of: .value, with: {
+            
+            if let val = $0.value as? NSDictionary {
+                
+                //var tmpSet = Set<String>()
+                self.productsInFirebase = Set<String>()
+                
+                for v in val.allValues {
+                    //  tmpSet.insert(String(describing: v))
+                    self.productsInFirebase.insert(String(describing: v))
+                }
+                
+                //   self.productsInFirebase = NSSet(set: tmpSet, copyItems: true)
+                print(self.productsInFirebase)
+                
+                self.requestProductsFromAppStore()
+            }
+        })
+        
+    }
+    
+    func requestProductsFromAppStore() {
         
         // connect to the app store
         if(SKPaymentQueue.canMakePayments()) {
             
             print("IAP is enabled, loading")
-            let productID: NSSet = NSSet(objects: "rifai.prossimo.ios.pp")
-            let request: SKProductsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>)
+
+            let request: SKProductsRequest = SKProductsRequest(productIdentifiers: productsInFirebase)
+
             request.delegate = self
             request.start()
             
         } else {
             print("please enable IAPS")
         }
+        
     }
-    
-    
     
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         
-        print("product request")
         
         let myProduct = response.products
         
         for product in myProduct {
-            
-            print("product added")
+
             print(product.productIdentifier)
-            print(product.localizedTitle)
-            print(product.localizedDescription)
-            print(product.price)
-            
-            list.append(product)
+            allSKProducts.append(product)
         }
+        
+        btnUpgrade.isEnabled = true
         
         
         
@@ -76,12 +109,14 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
                 
             case "rifai.prossimo.ios.pp":
                 print("add coins to account")
-                addPro()
+                registerProInFirebase()
                 
             default:
                 print("IAP not found")
             }
         }
+        
+        
     }
     
     
@@ -95,16 +130,31 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
             print(trans.error ?? "default")
             
             switch trans.transactionState {
-            case .purchased:
-                print("buy ok, unlock IAP HERE")
-                print(p.productIdentifier)
                 
-                let prodID = p.productIdentifier
+            case .purchased:
+                
+                print("BUY OK:")
+                print(sKproductToBuy.productIdentifier)
+                
+                let prodID = sKproductToBuy.productIdentifier
                 switch prodID {
                     
                 case "rifai.prossimo.ios.pp":
-                    print("add coins to account")
-                    addPro()
+                    
+                    registerProInFirebase()
+                    
+                case "rifai.prossimo.ios.pp00":
+                    
+                    registerProInFirebase()
+                    
+                case "rifai.prossimo.ios.pp50":
+                    
+                    registerProInFirebase()
+                    
+                case "rifai.prossimo.ios.pp70":
+                    
+                    registerProInFirebase()
+                    
                 default:
                     print("IAP not found")
                 }
@@ -123,23 +173,103 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
         }
     }
     
-    func addPro() {
-        print("adding pro")
-        self.ref.child("users/" + self.userId + "/subscription").setValue("pro")
-    }
+    
     
     
 
+    @IBAction func upgradeClick(_ sender: UIButton) {
+        
+        
+        
+        for product in allSKProducts {
+            let prodID = product.productIdentifier
+            if(prodID == "rifai.prossimo.ios.pp") {
+                sKproductToBuy = product
+                buyPro()
+            }
+        }
+    }
+    
+    var applyPromo = false
+    
+    @IBAction func promoTextChanged(_ sender: UITextField) {
+        
+        if let enteredPromo = txfPromo.text {
+            
+
+            if enteredPromo.characters.count == 6 {
+                
+                for p in self.promoCodesInFirebase {
+                    
+                    if p.code == enteredPromo {
+                        labelDiscountApplied.isHidden = false
+                        self.applyPromo = true
+                        promoCodeToUse.code = p.code
+                        promoCodeToUse.product = p.product
+                        break
+                    }
+                    else {
+                        labelDiscountApplied.isHidden = true
+                        self.applyPromo = false
+                    }
+                    
+                }
+            }
+            else {
+                labelDiscountApplied.isHidden = true
+                self.applyPromo = false
+            }
+        }
+        
+    }
+    
+    
+    func getPromoCodesFromFirebase() {
+        
+        self.ref.child("promocodes").observeSingleEvent(of: .value, with: {
+            
+            if let tmpPromos = $0.value as? NSDictionary {
+                
+                self.promoCodesInFirebase = [PromoCode]()
+                
+                for p in tmpPromos.allValues {
+                    
+                    if let v = p as? NSDictionary {
+                        
+                        let promo = PromoCode()
+                        promo.code = v.value(forKey: "code") as! String
+                        promo.product = v.value(forKey: "product") as! String
+                        
+                        self.promoCodesInFirebase.append(promo)
+                    }
+                }
+                
+            }
+        })
+    }
+    
     
     func buyPro() {
+        print("buy " + sKproductToBuy.productIdentifier)
         
-        print("buy " + p.productIdentifier)
-        
-        let pay = SKPayment(product: p)
+        let pay = SKPayment(product: sKproductToBuy)
         SKPaymentQueue.default().add(self)
         SKPaymentQueue.default().add(pay as SKPayment)
+        
+        SKPaymentQueue.default().restoreCompletedTransactions()
     }
+    
+    func registerProInFirebase() {
+        print("adding pro")
+        self.ref.child("products").setValue("pro")
+        // self.ref.child("users/" + self.userId + "/subscription/promo").setValue("pro")
+        
+    }
+    
+    
+}
 
-
-
+class PromoCode {
+    var code=String()
+    var product=String()
 }
