@@ -83,12 +83,15 @@ class InfoView: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         var height:CGFloat = 70.0;
-        
-        if indexPath.section == self.upgradeSectionIndex && indexPath.row == upgradeRowIndex
-        {
-            height = 0.0;
-        } else {
-            height = 70.0;
+
+        if self.subscription == "pro" {
+            
+            if indexPath.section == self.upgradeSectionIndex && indexPath.row == upgradeRowIndex
+            {
+                height = 0.0;
+            } else {
+                height = 70.0;
+            }
         }
         
         return height

@@ -48,11 +48,21 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
         fillData()
         
         makeProfilePicInteractive()
+        setBorders()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         save()
     }
+    
+    func setBorders() {
+        self.imgView.layer.borderWidth = 1
+        self.imgView.layer.borderColor = UIColor.gray.cgColor
+        
+        self.imgView.layer.cornerRadius = 7
+        self.imgView.clipsToBounds = true
+    }
+
     
     var tmpPhone=String()
     

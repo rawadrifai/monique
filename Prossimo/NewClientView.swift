@@ -53,9 +53,18 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
         self.ref = FIRDatabase.database().reference()
         
         makeProfilePicInteractive()
+        setBorders()
         
         self.txfPhone.delegate = self
         
+    }
+    
+    func setBorders() {
+        self.imgView.layer.borderWidth = 1
+        self.imgView.layer.borderColor = UIColor.gray.cgColor
+        
+        self.imgView.layer.cornerRadius = 7
+        self.imgView.clipsToBounds = true
     }
     
     func getTrialClientsLimitFromFirebase() {

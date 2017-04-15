@@ -40,6 +40,7 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
     @IBOutlet weak var btnPhone: UIButton!
     @IBOutlet weak var labelChangePicture: UILabel!
     
+    @IBOutlet weak var labelHistory: UILabel!
 
     override func viewDidLoad() {
         
@@ -55,13 +56,25 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
     
     func makeUIChanges() {
 
+        if self.client.clientVisits.count == 0 {
+            self.labelHistory.text = ""
+        }
         setIcons()
         makeProfilePicInteractive()
-        
+        setBorders()
         
         
     }
     
+    func setBorders() {
+        self.imgView.layer.borderWidth = 1
+        self.btnNewHC.layer.borderWidth = 0.5
+        self.imgView.layer.borderColor = UIColor.gray.cgColor
+        self.btnNewHC.layer.borderColor = UIColor.lightGray.cgColor
+        
+        self.imgView.layer.cornerRadius = 7
+        self.imgView.clipsToBounds = true
+    }
 
     func setIcons() {
         
@@ -82,9 +95,9 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
     
     @IBAction func phoneClick(_ sender: UIButton) {
         
-        let phoneAlert = UIAlertController(title: "", message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
+        let phoneAlert = UIAlertController(title: client.clientPhone, message: "", preferredStyle: UIAlertControllerStyle.alert)
         
-        phoneAlert.addAction(UIAlertAction(title: "Call " + client.clientPhone, style: .default, handler: { (action: UIAlertAction!) in
+        phoneAlert.addAction(UIAlertAction(title: "Call", style: .default, handler: { (action: UIAlertAction!) in
             
             UIApplication.shared.openURL(URL(string: "tel://" + self.client.clientPhone)!)
             
@@ -135,6 +148,7 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         
         self.ref.child("users/" + userId + "/clients/" + self.client.clientId + "/visits/" + visitdate + "/notes").setValue("") { (err, ref) in
             
+            self.labelHistory.text = "VISITS"
             self.client.clientVisits.append(ClientVisit(visitDate: visitdate, sortingDate: sorteddate, notes: ""))
             
             self.client.clientVisits.sort { $0.sortingDate > $1.sortingDate }
@@ -311,8 +325,6 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
                 self.ref.child(path + "/imageName").setValue(self.client.profileImg.imageName)
                 self.ref.child(path + "/imageUrl").setValue(self.client.profileImg.imageUrl)
                 
-                self.labelChangePicture.isHidden = true
-                
             }
         }
     }
@@ -326,7 +338,8 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         if let image = info[UIImagePickerControllerEditedImage] as? UIImage
         {
             self.imgView.image = UIImage(data: image.sd_imageData()!,scale: 0)
-            
+            self.labelChangePicture.isHidden = true
+
             let compressedImageData = UIImageJPEGRepresentation(self.imgView.image!, 0)
             
             uploadImageToFirebase(data: compressedImageData!, path: "users/" + self.userId + "/clients/" + self.client.clientId + "/profile/", fileName: UUID().uuidString)
@@ -338,7 +351,7 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
     
     func displayPhoneAlert() {
         
-        let phoneAlert = UIAlertController(title: "", message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
+        let phoneAlert = UIAlertController(title: "", message: "", preferredStyle: UIAlertControllerStyle.alert)
         
         phoneAlert.addAction(UIAlertAction(title: "Call " + client.clientPhone, style: .default, handler: { (action: UIAlertAction!) in
             
@@ -346,12 +359,7 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
             
         }))
         
-        phoneAlert.addAction(UIAlertAction(title: "Text " + client.clientPhone, style: .default, handler: { (action: UIAlertAction!) in
-            
-            UIApplication.shared.openURL(URL(string: "sms://" + self.client.clientPhone)!)
-            
-            
-        }))
+  
         
         phoneAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
             
@@ -362,7 +370,7 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
     
     func displayNewHCAlert() {
         
-        let alert = UIAlertController(title: "", message: "Haircut Exists", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Haircut Exists", message: "", preferredStyle: UIAlertControllerStyle.alert)
         
         alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (action: UIAlertAction!) in
             

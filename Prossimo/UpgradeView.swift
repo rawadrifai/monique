@@ -89,7 +89,7 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
             // pick the default product
             if product.productIdentifier == "rifai.prossimo.ios.pp" {
                 sKproductToBuy = product
-                promoCodeToUse.code = "NO"
+                promoCodeToUse.code = "none"
                 promoCodeToUse.product = product.productIdentifier
             }
         }
