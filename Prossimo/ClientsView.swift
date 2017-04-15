@@ -200,6 +200,8 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
         else if segue.identifier == "newClientSegue" {
             if let destination = segue.destination as? NewClientView {
                 destination.userId = self.userId
+                destination.subscription = subscription
+                destination.numberOfClients = self.tableView.numberOfRows(inSection: 0)
                 destination.delegate = self
             }
         }
@@ -329,5 +331,6 @@ extension ClientsView:NewClientDelegate {
         }
     }
 }
+
 
 

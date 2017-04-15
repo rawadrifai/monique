@@ -5,13 +5,15 @@ import GoogleSignIn
 import Google
 import Fabric
 import Crashlytics
+import LocalAuthentication
 
 class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     
     @IBOutlet weak var signInButton: GIDSignInButton!
     var userId:String!
     var ref: FIRDatabaseReference!
-    
+
+
     func logUser(userEmail:String, userIdentifier:String, userName:String) {
 
         Crashlytics.sharedInstance().setUserEmail(userEmail)
@@ -133,7 +135,9 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     
     @IBAction func signInUsignDeviceId(_ sender: UIButton) {
         
-        self.userId = UIDevice.current.identifierForVendor!.uuidString
+        
+        //self.userId = UIDevice.current.identifierForVendor!.uuidString
+        self.userId = KeychainManager.sharedInstance.getDeviceIdentifierFromKeychain()
         
         Crashlytics.sharedInstance().setUserIdentifier(self.userId)
         
@@ -144,17 +148,15 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
                     
                     // store crashlytics user before signing in
                     
-                    self.ref.child("users/" + self.userId + "/subscription").observeSingleEvent(of: .value, with: {
+                    self.ref.child("users/" + self.userId + "/subscription/type").observeSingleEvent(of: .value, with: {
           
                         if let val = $0.value as? String {
                             
-                            print("something")
+                            print("subcription: " + val)
                             self.subscription = val
                             
                         }
-                        else {
-                            print("nothing")
-                        }
+                        
                     })
                     
                     self.ref.child("users/" + self.userId + "/email").observeSingleEvent(of: .value, with: {

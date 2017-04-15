@@ -299,7 +299,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="About The App" id="RDm-6c-q0j">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="GL6-Zt-S2i" rowHeight="70" style="IBUITableViewCellStyleDefault" id="wAE-Vs-pds">
+                                    <tableViewCell clipsSubviews="YES" tag="1" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="GL6-Zt-S2i" rowHeight="70" style="IBUITableViewCellStyleDefault" id="wAE-Vs-pds">
                                         <rect key="frame" x="0.0" y="251.5" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wAE-Vs-pds" id="5wy-jd-zHS">
@@ -668,7 +668,7 @@ This Agreement was last modified on 03/20/2017</mutableString>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9yR-0W-Xz0" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" image="search-7" id="rcm-6f-XcJ"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" alpha="0.5" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="AfO-F3-mUS">
+                    <navigationBar key="navigationBar" alpha="0.5" contentMode="scaleToFill" barStyle="black" id="AfO-F3-mUS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -777,6 +777,7 @@ This Agreement was last modified on 03/20/2017</mutableString>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="btnSave" destination="QYj-xh-uiw" id="gt9-se-WVo"/>
                         <outlet property="imgView" destination="Nqo-Ot-wzh" id="CUD-lP-ZHK"/>
                         <outlet property="labelChangePicture" destination="L5y-0e-by7" id="kGH-m2-gXx"/>
                         <outlet property="txfEmail" destination="199-OC-QHz" id="zfB-05-jvb"/>
@@ -1401,7 +1402,7 @@ This Agreement was last modified on 03/20/2017</mutableString>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="m32-ze-ylf" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" image="info" id="ysb-Oa-uIw"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" alpha="0.5" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="hdr-Ba-Po8">
+                    <navigationBar key="navigationBar" alpha="0.5" contentMode="scaleToFill" barStyle="black" id="hdr-Ba-Po8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -1552,6 +1553,9 @@ This Privacy Policy may be updated from time to time for any reason. We will not
                                         <state key="normal" title="Restore Upgrade">
                                             <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="restoreClicked:" destination="hZa-Pe-Vyq" eventType="touchUpInside" id="SZN-cN-4iX"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>

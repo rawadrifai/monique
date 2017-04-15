@@ -29,12 +29,17 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
     var userId = String()
     var ref: FIRDatabaseReference!
     var client = Client()
+    var subscription = String()
+    var numberOfClients = 0
+    var trialClientsLimit = 0
     
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var txfName: UITextField!
     @IBOutlet weak var txfPhone: UITextField!
     @IBOutlet weak var txfEmail: UITextField!
     @IBOutlet weak var labelChangePicture: UILabel!
+    @IBOutlet weak var btnSave: UIBarButtonItem!
+    
     
     var imageChanged = false
     
@@ -50,6 +55,27 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
         makeProfilePicInteractive()
         
         self.txfPhone.delegate = self
+        
+    }
+    
+    func getTrialClientsLimitFromFirebase() {
+        
+        if self.subscription != "pro" {
+            
+            self.ref.child("triallimit").observeSingleEvent(of: .value, with: {
+                
+                if let val = $0.value as? Int {
+                    
+                    if self.numberOfClients >= val {
+                        self.btnSave.isEnabled = false
+                        self.alert(title: "Upgrade Required", message: "Please upgrade to Pro to add more clients")
+                    }
+                    else {
+                        self.btnSave.isEnabled = true
+                    }
+                }
+            })
+        }
         
     }
     
@@ -129,15 +155,15 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
         
         // validate input
         if (clientName.trimmingCharacters(in: .whitespacesAndNewlines) == "") {
-            alert(message: "Invalid Name")
+            alert(title: "Invalid Input", message: "Invalid Name")
             return false
         }
         if (!isValidEmail(testStr: clientEmail)) {
-            alert(message: "Invalid Email")
+            alert(title: "Invalid Input", message: "Invalid Email")
             return false
         }
         if (clientPhone.trimmingCharacters(in: .whitespacesAndNewlines) == "") {
-            alert(message: "Invalid Phone")
+            alert(title: "Invalid Input", message: "Invalid Phone")
             return false
         }
         
@@ -209,8 +235,8 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
         }
     }
     
-    func alert(message output:String) {
-        let alert = UIAlertController(title: "Invalid Input", message: output, preferredStyle: UIAlertControllerStyle.alert)
+    func alert(title:String, message output:String) {
+        let alert = UIAlertController(title: title, message: output, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }

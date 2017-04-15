@@ -20,6 +20,7 @@
 		9A3BC65C1E5AA5C300E9CA71 /* ClientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3BC65B1E5AA5C300E9CA71 /* ClientsView.swift */; };
 		9A969D881E9D4C8D004127CE /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A969D871E9D4C8D004127CE /* StoreKit.framework */; };
 		9A969DA01E9EEC9E004127CE /* UpgradeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A969D9F1E9EEC9E004127CE /* UpgradeView.swift */; };
+		9A969DA21EA1B6EA004127CE /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A969DA11EA1B6EA004127CE /* KeychainManager.swift */; };
 		9AAF34C31E70F1A600CAFE44 /* EditClientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAF34C21E70F1A600CAFE44 /* EditClientView.swift */; };
 		9AAF34C51E70F1B500CAFE44 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAF34C41E70F1B500CAFE44 /* Login.swift */; };
 		9AAF34C71E713A0B00CAFE44 /* PictureTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAF34C61E713A0B00CAFE44 /* PictureTimeView.swift */; };
@@ -94,6 +95,7 @@
 		9A63D3151E94502900F67805 /* BridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		9A969D871E9D4C8D004127CE /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		9A969D9F1E9EEC9E004127CE /* UpgradeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UpgradeView.swift; path = Prossimo/UpgradeView.swift; sourceTree = "<group>"; };
+		9A969DA11EA1B6EA004127CE /* KeychainManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainManager.swift; path = Prossimo/KeychainManager.swift; sourceTree = "<group>"; };
 		9AAF34C21E70F1A600CAFE44 /* EditClientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditClientView.swift; path = Prossimo/EditClientView.swift; sourceTree = SOURCE_ROOT; };
 		9AAF34C41E70F1B500CAFE44 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Login.swift; path = Prossimo/Login.swift; sourceTree = SOURCE_ROOT; };
 		9AAF34C61E713A0B00CAFE44 /* PictureTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PictureTimeView.swift; path = Prossimo/PictureTimeView.swift; sourceTree = SOURCE_ROOT; };
@@ -148,6 +150,7 @@
 		9A3BC6391E5A9AA700E9CA71 = {
 			isa = PBXGroup;
 			children = (
+				9A969DA11EA1B6EA004127CE /* KeychainManager.swift */,
 				9A63D3151E94502900F67805 /* BridgingHeader.h */,
 				9A3BC64B1E5A9AA700E9CA71 /* Main.storyboard */,
 				9A0E86521E9BFC2D00F02BA6 /* CrashController.swift */,
@@ -406,6 +409,7 @@
 				9AD116621E5E7A9F00113753 /* ClientDetailView.swift in Sources */,
 				9A0E86531E9BFC2D00F02BA6 /* CrashController.swift in Sources */,
 				9AD116641E5E87C400113753 /* Client.swift in Sources */,
+				9A969DA21EA1B6EA004127CE /* KeychainManager.swift in Sources */,
 				9A1856E31E84FCFE00C2EA2F /* ImageView.swift in Sources */,
 				9A0E86441E9B4EA400F02BA6 /* InstagramManager.swift in Sources */,
 				9A969DA01E9EEC9E004127CE /* UpgradeView.swift in Sources */,

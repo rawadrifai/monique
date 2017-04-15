@@ -19,8 +19,7 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
     var sKproductToBuy = SKProduct()
     var productsInFirebase = Set<String>()
     var promoCodeToUse = PromoCode()
-    var promoCodesInFirebase = [PromoCode]()
-    
+    var promoCodesInFirebase = Dictionary<String, String>()
     
     @IBOutlet weak var txfPromo: UITextField!
     @IBOutlet weak var labelDiscountApplied: UILabel!
@@ -44,15 +43,13 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
             
             if let val = $0.value as? NSDictionary {
                 
-                //var tmpSet = Set<String>()
                 self.productsInFirebase = Set<String>()
                 
                 for v in val.allValues {
-                    //  tmpSet.insert(String(describing: v))
                     self.productsInFirebase.insert(String(describing: v))
+                    
                 }
                 
-                //   self.productsInFirebase = NSSet(set: tmpSet, copyItems: true)
                 print(self.productsInFirebase)
                 
                 self.requestProductsFromAppStore()
@@ -88,6 +85,13 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
 
             print(product.productIdentifier)
             allSKProducts.append(product)
+            
+            // pick the default product
+            if product.productIdentifier == "rifai.prossimo.ios.pp" {
+                sKproductToBuy = product
+                promoCodeToUse.code = "NO"
+                promoCodeToUse.product = product.productIdentifier
+            }
         }
         
         btnUpgrade.isEnabled = true
@@ -105,15 +109,8 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
             let t: SKPaymentTransaction = transaction
             let prodID = t.payment.productIdentifier as String
             
-            switch prodID {
-                
-            case "rifai.prossimo.ios.pp":
-                print("add coins to account")
-                registerProInFirebase()
-                
-            default:
-                print("IAP not found")
-            }
+            registerProInFirebase(prodID: prodID, promoCode: promoCodeToUse)
+            
         }
         
         
@@ -127,37 +124,19 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
         for transaction: AnyObject in transactions {
             
             let trans = transaction as! SKPaymentTransaction
-            print(trans.error ?? "default")
+            print(trans.error ?? "default error")
             
             switch trans.transactionState {
+                
+            case .restored:
+                print("RESTORED")
                 
             case .purchased:
                 
                 print("BUY OK:")
                 print(sKproductToBuy.productIdentifier)
                 
-                let prodID = sKproductToBuy.productIdentifier
-                switch prodID {
-                    
-                case "rifai.prossimo.ios.pp":
-                    
-                    registerProInFirebase()
-                    
-                case "rifai.prossimo.ios.pp00":
-                    
-                    registerProInFirebase()
-                    
-                case "rifai.prossimo.ios.pp50":
-                    
-                    registerProInFirebase()
-                    
-                case "rifai.prossimo.ios.pp70":
-                    
-                    registerProInFirebase()
-                    
-                default:
-                    print("IAP not found")
-                }
+                registerProInFirebase(prodID: sKproductToBuy.productIdentifier, promoCode: self.promoCodeToUse)
                 
                 queue.finishTransaction(trans)
                 
@@ -179,15 +158,39 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
 
     @IBAction func upgradeClick(_ sender: UIButton) {
         
-        
-        
+       
         for product in allSKProducts {
+            
             let prodID = product.productIdentifier
-            if(prodID == "rifai.prossimo.ios.pp") {
+            
+            if(prodID == promoCodeToUse.product) {
                 sKproductToBuy = product
                 buyPro()
+                break
             }
         }
+    }
+    
+    func buyPro() {
+        
+        print("buy " + sKproductToBuy.productIdentifier)
+        
+        let pay = SKPayment(product: sKproductToBuy)
+        SKPaymentQueue.default().add(self)
+        SKPaymentQueue.default().add(pay as SKPayment)
+        
+        SKPaymentQueue.default().restoreCompletedTransactions()
+    }
+    
+    func registerProInFirebase(prodID:String, promoCode:PromoCode) {
+        print("adding pro")
+        self.ref.child("users/" + self.userId + "/subscription/type").setValue("pro")
+        self.ref.child("users/" + self.userId + "/subscription/promocode").setValue(promoCode.code)
+        self.ref.child("users/" + self.userId + "/subscription/product").setValue(promoCode.product)
+        
+        
+        let _ = self.navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
     }
     
     var applyPromo = false
@@ -199,20 +202,19 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
 
             if enteredPromo.characters.count == 6 {
                 
-                for p in self.promoCodesInFirebase {
+                
+                if let c = self.promoCodesInFirebase[enteredPromo] {
                     
-                    if p.code == enteredPromo {
-                        labelDiscountApplied.isHidden = false
-                        self.applyPromo = true
-                        promoCodeToUse.code = p.code
-                        promoCodeToUse.product = p.product
-                        break
-                    }
-                    else {
-                        labelDiscountApplied.isHidden = true
-                        self.applyPromo = false
-                    }
+                    labelDiscountApplied.isHidden = false
+                    self.applyPromo = true
                     
+                    self.promoCodeToUse.code = enteredPromo
+                    self.promoCodeToUse.product = c
+                    
+                }
+                else {
+                    labelDiscountApplied.isHidden = true
+                    self.applyPromo = false
                 }
             }
             else {
@@ -230,7 +232,7 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
             
             if let tmpPromos = $0.value as? NSDictionary {
                 
-                self.promoCodesInFirebase = [PromoCode]()
+                self.promoCodesInFirebase = Dictionary<String,String>()
                 
                 for p in tmpPromos.allValues {
                     
@@ -240,7 +242,7 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
                         promo.code = v.value(forKey: "code") as! String
                         promo.product = v.value(forKey: "product") as! String
                         
-                        self.promoCodesInFirebase.append(promo)
+                        self.promoCodesInFirebase[promo.code] = promo.product
                     }
                 }
                 
@@ -249,21 +251,13 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
     }
     
     
-    func buyPro() {
-        print("buy " + sKproductToBuy.productIdentifier)
-        
-        let pay = SKPayment(product: sKproductToBuy)
-        SKPaymentQueue.default().add(self)
-        SKPaymentQueue.default().add(pay as SKPayment)
-        
-        SKPaymentQueue.default().restoreCompletedTransactions()
-    }
     
-    func registerProInFirebase() {
-        print("adding pro")
-        self.ref.child("products").setValue("pro")
-        // self.ref.child("users/" + self.userId + "/subscription/promo").setValue("pro")
+    
+    
+    @IBAction func restoreClicked(_ sender: UIButton) {
         
+        SKPaymentQueue.default().add(self)
+        SKPaymentQueue.default().restoreCompletedTransactions()
     }
     
     

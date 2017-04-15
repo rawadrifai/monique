@@ -24,6 +24,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>JNKeychain.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Prossimo.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,11 +47,6 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2861F6D272B108EDD5AB7776206CE898</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>681BE6E3D02A43F9BA63777AC435C8FD</key>
 		<dict>
 			<key>primary</key>
@@ -57,12 +57,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A296CC4125196B3FFBD7E118528B8C44</key>
+		<key>A08902AD8F47A860FFC624677A13D3C2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>B1C4AAFAF49036C7007633DAA3C806AD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BF0DC4B6DB91497E65DE1449561FE51F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E100789C6D82BAD122E8FB02AEDD599F</key>
 		<dict>
 			<key>primary</key>
 			<true/>

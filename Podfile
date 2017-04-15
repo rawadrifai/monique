@@ -16,5 +16,6 @@ target 'Prossimo' do
   pod 'Firebase/Storage'
   pod 'SDWebImage'
   pod 'FontAwesomeKit/FontAwesome'
+  pod 'JNKeychain'
 
   end
