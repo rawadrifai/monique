@@ -75,6 +75,8 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
                 
                 if let val = $0.value as? Int {
                     
+                    self.trialClientsLimit = val
+                    
                     if self.numberOfClients >= val {
                         self.btnSave.isEnabled = false
                         self.alert(title: "Upgrade Required", message: "Please upgrade to Pro to add more clients")
@@ -209,6 +211,11 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
                 let compressedImageData = UIImageJPEGRepresentation(self.imgView.image!, 0)
                 
                 uploadImageToFirebase(data: compressedImageData!, path: "users/" + self.userId + "/clients/" + self.client.clientId + "/profile/", fileName: UUID().uuidString)
+            }
+            
+            if self.subscription != "pro" {
+                let clientsLeft = self.trialClientsLimit - numberOfClients - 1
+                self.alert(title: "You have" + String(clientsLeft) + " clients left", message: "Upgrade to Pro for unlimited access!")
             }
             
             let _ = self.navigationController?.popViewController(animated: true)

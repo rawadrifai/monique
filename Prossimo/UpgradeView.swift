@@ -130,6 +130,10 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
                 
             case .restored:
                 print("RESTORED")
+                let p = PromoCode.init()
+                p.product = "rifai.prossimo.ios.pp"
+                p.code = "restored"
+                registerProInFirebase(prodID: transaction.productIdentifier, promoCode: p)
                 
             case .purchased:
                 
