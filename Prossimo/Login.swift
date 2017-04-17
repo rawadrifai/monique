@@ -131,7 +131,7 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         
     }
     
-    var subscription=String()
+    var subscription:String!
     
     @IBAction func signInUsignDeviceId(_ sender: UIButton) {
         
@@ -148,16 +148,7 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
                     
                     // store crashlytics user before signing in
                     
-                    self.ref.child("users/" + self.userId + "/subscription/type").observeSingleEvent(of: .value, with: {
-          
-                        if let val = $0.value as? String {
-                            
-                            print("subcription: " + val)
-                            self.subscription = val
-                            
-                        }
-                        
-                    })
+                    
                     
                     self.ref.child("users/" + self.userId + "/email").observeSingleEvent(of: .value, with: {
                         Crashlytics.sharedInstance().setUserEmail($0.value as? String)
@@ -167,7 +158,22 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
                         Crashlytics.sharedInstance().setUserName($0.value as? String)
                     })
                     
-                    self.performSegue(withIdentifier: "loginSegue", sender: self)
+                    self.ref.child("users/" + self.userId + "/subscription/type").observeSingleEvent(of: .value, with: {
+                        
+                        if let val = $0.value as? String {
+                            
+                            print("subscription: " + val)
+                            self.subscription = val
+                            self.performSegue(withIdentifier: "loginSegue", sender: self)
+
+                        }
+                        else {
+                            self.subscription="trial"
+                            self.performSegue(withIdentifier: "loginSegue", sender: self)
+                        }
+                        
+                    })
+                    
 
                     
 
@@ -198,6 +204,13 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
                     if let destinationClientsView = destinationNavigation.topViewController as? ClientsView {
                         destinationClientsView.userId = self.userId
                         destinationClientsView.subscription = self.subscription
+                    }
+                }
+                
+                if let d = destinationTabBar.viewControllers![1] as? UINavigationController {
+                    if let infoView = d.topViewController as? InfoView {
+                        infoView.userId = self.userId
+                        infoView.subscription = self.subscription
                     }
                 }
             }

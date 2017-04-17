@@ -26,12 +26,12 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
     
     var delegate: NewClientDelegate?
     
-    var userId = String()
+    var userId:String!
     var ref: FIRDatabaseReference!
     var client = Client()
-    var subscription = String()
-    var numberOfClients = 0
-    var trialClientsLimit = 0
+    var subscription:String!
+    var numberOfClients:Int!
+    var trialClientsLimit:Int!
     
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var txfName: UITextField!
@@ -49,11 +49,14 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
         super.viewDidLoad()
         
         
+        
         // get reference to database
         self.ref = FIRDatabase.database().reference()
         
+        getTrialClientsLimitFromFirebase()
         makeProfilePicInteractive()
         setBorders()
+        
         
         self.txfPhone.delegate = self
         
@@ -79,7 +82,7 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
                     
                     if self.numberOfClients >= val {
                         self.btnSave.isEnabled = false
-                        self.alert(title: "Upgrade Required", message: "Please upgrade to Pro to add more clients")
+                        self.alertAboutClients(title: "Upgrade Required", message: "Upgrade to Pro for UNLIMITED storage!")
                     }
                     else {
                         self.btnSave.isEnabled = true
@@ -90,7 +93,7 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
         
     }
     
-    var tmpPhone=String()
+    var tmpPhone=""
     
     @IBAction func txfPhoneEditingChanged(_ sender: Any) {
         
@@ -215,10 +218,12 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
             
             if self.subscription != "pro" {
                 let clientsLeft = self.trialClientsLimit - numberOfClients - 1
-                self.alert(title: "You have" + String(clientsLeft) + " clients left", message: "Upgrade to Pro for unlimited access!")
+                self.alertAboutClients(title: "You have " + String(clientsLeft) + " free client(s)", message: "Upgrade to Pro for UNLIMITED storage! Keep your clients backed up everywhere you go.")
             }
-            
-            let _ = self.navigationController?.popViewController(animated: true)
+                // if subsc is pro
+            else {
+                let _ = self.navigationController?.popViewController(animated: true)
+            }
         }
     }
     
@@ -249,6 +254,16 @@ class NewClientView: UITableViewController, UINavigationControllerDelegate, UIIm
                 }
             }
         }
+    }
+    
+    func alertAboutClients(title:String, message output:String) {
+        let alert = UIAlertController(title: title, message: output, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in
+            
+            let _ = self.navigationController?.popViewController(animated: true)
+            
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
     
     func alert(title:String, message output:String) {

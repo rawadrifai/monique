@@ -26,7 +26,7 @@ extension UIImage {
 
 class ClientDetailView: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
-    var userId = String()
+    var userId:String!
     var client:Client!
     var selectedVisitIndex:Int!
     var ref: FIRDatabaseReference!

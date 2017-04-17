@@ -26,7 +26,7 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
     
     var delegate: EditClientDelegate?
     
-    var userId = String()
+    var userId:String!
     var client:Client!
     var ref: FIRDatabaseReference!
     
@@ -64,7 +64,7 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
     }
 
     
-    var tmpPhone=String()
+    var tmpPhone=""
     
     @IBAction func txfPhoneEditingChanged(_ sender: UITextField) {
         

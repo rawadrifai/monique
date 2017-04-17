@@ -31,7 +31,7 @@ class SaveUserInfo: UIViewController {
         self.txfPhone.delegate = self
     }
     
-    var tmpPhone=String()
+    var tmpPhone=""
     
     @IBAction func txfPhoneEditingChanged(_ sender: UITextField) {
         

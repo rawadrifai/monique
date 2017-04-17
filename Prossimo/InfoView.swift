@@ -10,11 +10,12 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
+
 class InfoView: UITableViewController {
 
     var ref: FIRDatabaseReference!
-    var userId = String()
-    var subscription = String()
+    var userId:String!
+    var subscription:String!
     
    // @IBOutlet weak var upgradeCell: UITableViewCell!
     
@@ -22,6 +23,7 @@ class InfoView: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
+        print("user id is " + self.userId)
         self.ref = FIRDatabase.database().reference()
         self.ref.child("users/" + self.userId + "/subscription/type").observeSingleEvent(of: .value, with: {
             
@@ -29,17 +31,7 @@ class InfoView: UITableViewController {
                 
                 print("subcription: " + val)
                 self.subscription = val
-                
-                if val == "pro" {
-                    
-                    //self.upgradeCell.isHidden = true
-                    //self.tableView.reloadData()
 
-                }
-                else {
-                   // self.upgradeCell.isHidden = false
-                }
-                
             }
             
         })
@@ -55,6 +47,20 @@ class InfoView: UITableViewController {
 
     }
     
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "upgradeSegue" {
+            
+            // set the userId
+            if let destination = segue.destination as? UpgradeView {
+                
+                destination.userId = self.userId
+                destination.delegate = self
+            }
+        }
+        
+    }
+
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -101,3 +107,11 @@ class InfoView: UITableViewController {
 }
 
 
+extension InfoView: UpgradeDelegate {
+    
+    func subscriptionChanged(subscription: String) {
+        
+        self.subscription = subscription
+        self.tableView.reloadData()
+    }
+}

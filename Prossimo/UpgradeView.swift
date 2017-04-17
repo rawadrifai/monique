@@ -13,8 +13,10 @@ import FirebaseDatabase
 
 class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransactionObserver {
 
+    var delegate: UpgradeDelegate?
+    
     var ref: FIRDatabaseReference!
-    var userId = String()
+    var userId:String!
     var allSKProducts = [SKProduct]()
     var sKproductToBuy = SKProduct()
     var productsInFirebase = Set<String>()
@@ -100,21 +102,21 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
         
     }
     
-    func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
+ //   func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
         
-        print("transactions restored")
+ //       print("transactions restored")
         
-        for transaction in queue.transactions {
+ //       for transaction in queue.transactions {
             
-            let t: SKPaymentTransaction = transaction
-            let prodID = t.payment.productIdentifier as String
+ //           let t: SKPaymentTransaction = transaction
+ //           let prodID = t.payment.productIdentifier as String
             
-            registerProInFirebase(prodID: prodID, promoCode: promoCodeToUse)
             
-        }
+            
+ //       }
         
         
-    }
+ //   }
     
     
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
@@ -138,9 +140,16 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
             case .purchased:
                 
                 print("BUY OK:")
+                
+                if let del = self.delegate {
+                    del.subscriptionChanged(subscription: "pro")
+                }
                 print(sKproductToBuy.productIdentifier)
                 
                 registerProInFirebase(prodID: sKproductToBuy.productIdentifier, promoCode: self.promoCodeToUse)
+                
+                let _ = self.navigationController?.popViewController(animated: true)
+                dismiss(animated: true, completion: nil)
                 
                 queue.finishTransaction(trans)
                 
@@ -183,18 +192,23 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
         SKPaymentQueue.default().add(self)
         SKPaymentQueue.default().add(pay as SKPayment)
         
-        SKPaymentQueue.default().restoreCompletedTransactions()
     }
     
+    var registeredInFirebase = false
+    
     func registerProInFirebase(prodID:String, promoCode:PromoCode) {
-        print("adding pro")
-        self.ref.child("users/" + self.userId + "/subscription/type").setValue("pro")
-        self.ref.child("users/" + self.userId + "/subscription/promocode").setValue(promoCode.code)
-        self.ref.child("users/" + self.userId + "/subscription/product").setValue(promoCode.product)
-        
-        
-        let _ = self.navigationController?.popViewController(animated: true)
-        dismiss(animated: true, completion: nil)
+        if !registeredInFirebase {
+            print("adding pro")
+            
+            self.ref = FIRDatabase.database().reference()
+            self.ref.child("users/" + self.userId + "/subscription/type").setValue("pro")
+            self.ref.child("users/" + self.userId + "/subscription/promocode").setValue(promoCode.code)
+            self.ref.child("users/" + self.userId + "/subscription/product").setValue(promoCode.product)
+            
+            registeredInFirebase = true
+            
+            
+        }
     }
     
     var applyPromo = false
@@ -267,7 +281,16 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
     
 }
 
+protocol UpgradeDelegate {
+    func subscriptionChanged(subscription: String)
+}
+
 class PromoCode {
-    var code=String()
-    var product=String()
+    var code:String!
+    var product:String!
+    
+    init() {
+        code = ""
+        product = ""
+    }
 }

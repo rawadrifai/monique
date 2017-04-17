@@ -23,8 +23,8 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
     var searchController : UISearchController!
     var resultsController = UITableViewController()
     
-    var userId = String()
-    var subscription = String()
+    var userId:String!
+    var subscription:String!
     var cellData = [Client]()
     var filteredData = [Client]()
     
