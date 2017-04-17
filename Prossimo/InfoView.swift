@@ -16,9 +16,7 @@ class InfoView: UITableViewController {
     var ref: FIRDatabaseReference!
     var userId:String!
     var subscription:String!
-    
-   // @IBOutlet weak var upgradeCell: UITableViewCell!
-    
+
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)

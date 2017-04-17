@@ -135,18 +135,30 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
                 let p = PromoCode.init()
                 p.product = "rifai.prossimo.ios.pp"
                 p.code = "restored"
-                registerProInFirebase(prodID: transaction.productIdentifier, promoCode: p)
+                registerProInFirebase(prodID: p.product, promoCode: p)
+                
+                
+                if let del = self.delegate {
+                    del.subscriptionChanged(subscription: "pro")
+                }
+                
+                let _ = self.navigationController?.popViewController(animated: true)
+                dismiss(animated: true, completion: nil)
+                
+                queue.finishTransaction(trans)
                 
             case .purchased:
                 
                 print("BUY OK:")
                 
-                if let del = self.delegate {
-                    del.subscriptionChanged(subscription: "pro")
-                }
+                
                 print(sKproductToBuy.productIdentifier)
                 
                 registerProInFirebase(prodID: sKproductToBuy.productIdentifier, promoCode: self.promoCodeToUse)
+                
+                if let del = self.delegate {
+                    del.subscriptionChanged(subscription: "pro")
+                }
                 
                 let _ = self.navigationController?.popViewController(animated: true)
                 dismiss(animated: true, completion: nil)
