@@ -26,6 +26,7 @@ extension UIImage {
 
 class ClientDetailView: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
+    
     var userId:String!
     var client:Client!
     var selectedVisitIndex:Int!
@@ -68,15 +69,19 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
     
     func setBorders() {
         self.imgView.layer.borderWidth = 1
+        self.imgView.layer.borderColor = UIColor(red:0.20, green:0.60, blue:0.00, alpha:1.0).cgColor
+        
+        self.imgView.layer.cornerRadius = 10
+        self.imgView.clipsToBounds = true
+        
         self.btnNewHC.layer.borderWidth = 0.5
-        self.imgView.layer.borderColor = UIColor.gray.cgColor
         self.btnNewHC.layer.borderColor = UIColor.lightGray.cgColor
         
-        self.imgView.layer.cornerRadius = 7
-        self.imgView.clipsToBounds = true
+        
     }
 
     func setIcons() {
+        
         
         // phone icon
         var phoneIconImage = FAKFontAwesome.mobileIcon(withSize: 35).image(with: CGSize(width: 30, height: 30))
@@ -168,13 +173,11 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         if client.profileImg.imageUrl != "" {
             self.imgView.sd_setImage(with: URL(string: client.profileImg.imageUrl))
             self.labelChangePicture.isHidden = true
-
         }
         else {
             self.imgView.image = UIImage(imageLiteralResourceName: "user")
+            self.labelChangePicture.isHidden = false
         }
-        
-        
     }
     
     
@@ -298,7 +301,7 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         image.allowsEditing = true
         image.delegate = self
         
-        image.sourceType = UIImagePickerControllerSourceType.camera
+        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
 
         self.present(image, animated: true)
     }

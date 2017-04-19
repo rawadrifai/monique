@@ -18,6 +18,7 @@
 		9A3BC64D1E5A9AA700E9CA71 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A3BC64B1E5A9AA700E9CA71 /* Main.storyboard */; };
 		9A3BC6521E5A9AA700E9CA71 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A3BC6501E5A9AA700E9CA71 /* LaunchScreen.storyboard */; };
 		9A3BC65C1E5AA5C300E9CA71 /* ClientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3BC65B1E5AA5C300E9CA71 /* ClientsView.swift */; };
+		9A911F1A1EA5E969004D221C /* PageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A911F191EA5E969004D221C /* PageVC.swift */; };
 		9A969D881E9D4C8D004127CE /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A969D871E9D4C8D004127CE /* StoreKit.framework */; };
 		9A969DA01E9EEC9E004127CE /* UpgradeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A969D9F1E9EEC9E004127CE /* UpgradeView.swift */; };
 		9A969DA21EA1B6EA004127CE /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A969DA11EA1B6EA004127CE /* KeychainManager.swift */; };
@@ -62,6 +63,13 @@
 			remoteGlobalIDString = 685FE423BD5B3BB7A2815291A305C794;
 			remoteInfo = SDWebImage;
 		};
+		9A911F221EA5E969004D221C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9AD2B33A1E8AE50800DF308C /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 270067C20222032BD3F19C39F998732E;
+			remoteInfo = JNKeychain;
+		};
 		9AAFE62E1E96FFA2007185A0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9AD2B33A1E8AE50800DF308C /* Pods.xcodeproj */;
@@ -93,6 +101,7 @@
 		9A3BC6531E5A9AA700E9CA71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = Prossimo/Info.plist; sourceTree = "<group>"; };
 		9A3BC65B1E5AA5C300E9CA71 /* ClientsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientsView.swift; path = Prossimo/ClientsView.swift; sourceTree = SOURCE_ROOT; };
 		9A63D3151E94502900F67805 /* BridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
+		9A911F191EA5E969004D221C /* PageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageVC.swift; sourceTree = "<group>"; };
 		9A969D871E9D4C8D004127CE /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		9A969D9F1E9EEC9E004127CE /* UpgradeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UpgradeView.swift; path = Prossimo/UpgradeView.swift; sourceTree = "<group>"; };
 		9A969DA11EA1B6EA004127CE /* KeychainManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainManager.swift; path = Prossimo/KeychainManager.swift; sourceTree = "<group>"; };
@@ -160,6 +169,7 @@
 				9AAF34C41E70F1B500CAFE44 /* Login.swift */,
 				9A3BC65B1E5AA5C300E9CA71 /* ClientsView.swift */,
 				9A0E86431E9B4EA400F02BA6 /* InstagramManager.swift */,
+				9A911F191EA5E969004D221C /* PageVC.swift */,
 				9AD116611E5E7A9F00113753 /* ClientDetailView.swift */,
 				9AAF34C21E70F1A600CAFE44 /* EditClientView.swift */,
 				9AB6B8E01E84F869009231B0 /* InfoView.swift */,
@@ -202,6 +212,7 @@
 				9A63D3281E945AF200F67805 /* GoogleToolboxForMac.framework */,
 				9A63D32A1E945AF200F67805 /* GTMOAuth2.framework */,
 				9A63D32C1E945AF200F67805 /* GTMSessionFetcher.framework */,
+				9A911F231EA5E969004D221C /* JNKeychain.framework */,
 				9AD2B35E1E8B51BC00DF308C /* Pods_Prossimo.framework */,
 				9A63D3301E945AF200F67805 /* SDWebImage.framework */,
 			);
@@ -308,6 +319,13 @@
 			remoteRef = 9A63D32F1E945AF200F67805 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		9A911F231EA5E969004D221C /* JNKeychain.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = JNKeychain.framework;
+			remoteRef = 9A911F221EA5E969004D221C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		9AAFE62F1E96FFA2007185A0 /* FontAwesomeKit.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -408,6 +426,7 @@
 				9A36296C1E5D3CDA003CFAF8 /* NewClientView.swift in Sources */,
 				9AD116621E5E7A9F00113753 /* ClientDetailView.swift in Sources */,
 				9A0E86531E9BFC2D00F02BA6 /* CrashController.swift in Sources */,
+				9A911F1A1EA5E969004D221C /* PageVC.swift in Sources */,
 				9AD116641E5E87C400113753 /* Client.swift in Sources */,
 				9A969DA21EA1B6EA004127CE /* KeychainManager.swift in Sources */,
 				9A1856E31E84FCFE00C2EA2F /* ImageView.swift in Sources */,

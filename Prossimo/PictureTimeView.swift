@@ -14,6 +14,7 @@ import FontAwesomeKit
 
 class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
+    @IBOutlet weak var btnHaircutDetails: UIButton!
     @IBOutlet weak var txvNotes: UITextView!
     var selectedVisitIndex:Int!
     var userId:String!
@@ -30,11 +31,23 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
     
         self.ref = FIRDatabase.database().reference()
         loadVisit()
+        setBorders()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         
         save()
+    }
+    
+    func setBorders() {
+        
+        self.btnHaircutDetails.layer.borderWidth = 0.5
+        self.btnHaircutDetails.layer.borderColor = UIColor.lightGray.cgColor
+        
+        self.txvNotes.layer.borderWidth = 0.5
+        self.txvNotes.layer.borderColor = UIColor.gray.cgColor
+        self.txvNotes.layer.cornerRadius = 10
+        self.txvNotes.clipsToBounds = true
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -183,7 +196,7 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         image.delegate = self
         
         // set the source to photo library
-        image.sourceType = UIImagePickerControllerSourceType.camera
+        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
         
         self.present(image, animated: true)
         

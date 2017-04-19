@@ -11,10 +11,11 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     
     @IBOutlet weak var signInButton: GIDSignInButton!
     var userId:String!
+    var subscription:String!
     var ref: FIRDatabaseReference!
 
 
-    func logUser(userEmail:String, userIdentifier:String, userName:String) {
+    func logUserInCrashlytics(userEmail:String, userIdentifier:String, userName:String) {
 
         Crashlytics.sharedInstance().setUserEmail(userEmail)
         Crashlytics.sharedInstance().setUserIdentifier(userIdentifier)
@@ -25,6 +26,8 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        
         
         // Initialize sign-in
         var configureError: NSError?
@@ -39,13 +42,39 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         
         // get reference to database
         self.ref = FIRDatabase.database().reference()
-        
-        
+
         checkForLatestVersion()
+
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(false)
+        checkIfFirstTimeUse()
+    }
+    
+    // display tutorial if first time use
+    
+    func checkIfFirstTimeUse() {
         
+        guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else { return }
+
+        guard let lastVersionUsed = UserDefaults.standard.string(forKey: "prossimoLastVersionUsed")
+            else {
+                UserDefaults.standard.set(version, forKey: "prossimoLastVersionUsed")
+                self.performSegue(withIdentifier: "tutorialSegue", sender: self)
+                return
+        }
         
+        if version != lastVersionUsed {
+            
+            UserDefaults.standard.set(version, forKey: "prossimoLastVersionUsed")
+            self.performSegue(withIdentifier: "tutorialSegue", sender: self)
+        }
         
     }
+
+    
+    // check for latest version and prompt for upgrade if necessary
     
     func checkForLatestVersion() {
         
@@ -90,8 +119,6 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
                 }
             })
             
-            
-            
         }))
         
         present(versionAlert, animated: true, completion: nil)
@@ -102,7 +129,7 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
               withError error: Error!) {
         
         if let error = error {
-            //print("\(error.localizedDescription)")
+            print("\(error.localizedDescription)")
             
         } else {
             
@@ -115,11 +142,23 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
             self.ref.child("users/" + self.userId + "/email").setValue(user.profile.email)
             
             // log crashlytics users
-            self.logUser(userEmail: user.profile.email, userIdentifier: self.userId, userName: user.profile.name)
+            self.logUserInCrashlytics(userEmail: user.profile.email, userIdentifier: self.userId, userName: user.profile.name)
+  
             
-            self.performSegue(withIdentifier: "loginSegue", sender: self)
-            
-            
+            // get subscription
+            self.ref.child("users/" + self.userId + "/subscription/type").observeSingleEvent(of: .value, with: {
+                
+                guard let val = $0.value as? String else {
+                    
+                    self.subscription="trial"
+                    self.performSegue(withIdentifier: "loginSegue", sender: self)
+                    return
+                }
+
+                print("subscription from google: " + val)
+                self.subscription = val
+                self.performSegue(withIdentifier: "loginSegue", sender: self)
+            })
         }
     }
     
@@ -131,12 +170,10 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         
     }
     
-    var subscription:String!
     
     @IBAction func signInUsignDeviceId(_ sender: UIButton) {
         
         
-        //self.userId = UIDevice.current.identifierForVendor!.uuidString
         self.userId = KeychainManager.sharedInstance.getDeviceIdentifierFromKeychain()
         
         Crashlytics.sharedInstance().setUserIdentifier(self.userId)
@@ -158,25 +195,25 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
                         Crashlytics.sharedInstance().setUserName($0.value as? String)
                     })
                     
+                    
+                    // get subscription type
+                    
                     self.ref.child("users/" + self.userId + "/subscription/type").observeSingleEvent(of: .value, with: {
                         
-                        if let val = $0.value as? String {
+                        guard let val = $0.value as? String else {
                             
-                            print("subscription: " + val)
-                            self.subscription = val
-                            self.performSegue(withIdentifier: "loginSegue", sender: self)
-
-                        }
-                        else {
                             self.subscription="trial"
                             self.performSegue(withIdentifier: "loginSegue", sender: self)
+                            return
                         }
+                        
+                        print("subscription: " + val)
+                        self.subscription = val
+                        self.performSegue(withIdentifier: "loginSegue", sender: self)
+
                         
                     })
                     
-
-                    
-
                 }
                 else {
                     self.performSegue(withIdentifier: "saveUserInfoSegue", sender: self)
@@ -186,16 +223,12 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
                 self.performSegue(withIdentifier: "saveUserInfoSegue", sender: self)
             }
         })
-        
-        
 
-        
-        
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "loginSegue" {
+            
             
             // set the userId
             if let destinationTabBar = segue.destination as? UITabBarController {

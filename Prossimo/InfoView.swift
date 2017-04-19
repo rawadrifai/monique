@@ -77,7 +77,11 @@ class InfoView: UITableViewController {
                         // Fallback on earlier versions
                     }
                 }
+                
+                self.tableView.deselectRow(at: indexPath, animated: true)
+
             }
+            
         }
     }
     
