@@ -69,13 +69,13 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
     
     func setBorders() {
         self.imgView.layer.borderWidth = 1
-        self.imgView.layer.borderColor = UIColor(red:0.20, green:0.60, blue:0.00, alpha:1.0).cgColor
+        self.imgView.layer.borderColor = UIColor(red:0.204, green:0.255, blue:0.204, alpha:1.0).cgColor
         
-        self.imgView.layer.cornerRadius = 10
+        self.imgView.layer.cornerRadius = 20
         self.imgView.clipsToBounds = true
         
         self.btnNewHC.layer.borderWidth = 0.5
-        self.btnNewHC.layer.borderColor = UIColor.lightGray.cgColor
+        self.btnNewHC.layer.borderColor = UIColor(red:0.204, green:0.255, blue:0.204, alpha:1.0).cgColor
         
         
     }
@@ -301,7 +301,7 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         image.allowsEditing = true
         image.delegate = self
         
-        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        image.sourceType = UIImagePickerControllerSourceType.camera
 
         self.present(image, animated: true)
     }

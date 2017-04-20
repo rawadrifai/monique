@@ -83,7 +83,7 @@ class OptionsView: UIViewController {
             if state == "1" {
                 
                 btnScissor.backgroundColor = UIColor.darkGray
-                btnScissor.setTitleColor(UIColor.green, for: .normal)
+                btnScissor.setTitleColor(self.myGreen, for: .normal)
             }
         }
         
@@ -93,7 +93,7 @@ class OptionsView: UIViewController {
             if state == "1" {
                 
                 btnClipper.backgroundColor = UIColor.darkGray
-                btnClipper.setTitleColor(UIColor.green, for: .normal)
+                btnClipper.setTitleColor(self.myGreen, for: .normal)
             }
         }
         
@@ -103,7 +103,7 @@ class OptionsView: UIViewController {
             if state == "1" {
                 
                 btnTexturize.backgroundColor = UIColor.darkGray
-                btnTexturize.setTitleColor(UIColor.green, for: .normal)
+                btnTexturize.setTitleColor(self.myGreen, for: .normal)
             }
         }
         
@@ -113,7 +113,7 @@ class OptionsView: UIViewController {
             if state == "1" {
                 
                 btnSkin.backgroundColor = UIColor.darkGray
-                btnSkin.setTitleColor(UIColor.green, for: .normal)
+                btnSkin.setTitleColor(self.myGreen, for: .normal)
             }
         }
         
@@ -123,7 +123,7 @@ class OptionsView: UIViewController {
             if state == "1" {
                 
                 btn0.backgroundColor = UIColor.darkGray
-                btn0.setTitleColor(UIColor.green, for: .normal)
+                btn0.setTitleColor(self.myGreen, for: .normal)
             }
         }
         
@@ -133,7 +133,7 @@ class OptionsView: UIViewController {
             if state == "1" {
                 
                 btn12.backgroundColor = UIColor.darkGray
-                btn12.setTitleColor(UIColor.green, for: .normal)
+                btn12.setTitleColor(self.myGreen, for: .normal)
             }
         }
         
@@ -143,7 +143,7 @@ class OptionsView: UIViewController {
             if state == "1" {
                 
                 btn1.backgroundColor = UIColor.darkGray
-                btn1.setTitleColor(UIColor.green, for: .normal)
+                btn1.setTitleColor(self.myGreen, for: .normal)
             }
         }
         
@@ -153,7 +153,7 @@ class OptionsView: UIViewController {
             if state == "1" {
                 
                 btn2.backgroundColor = UIColor.darkGray
-                btn2.setTitleColor(UIColor.green, for: .normal)
+                btn2.setTitleColor(self.myGreen, for: .normal)
             }
         }
         
@@ -163,7 +163,7 @@ class OptionsView: UIViewController {
             if state == "1" {
                 
                 btn3.backgroundColor = UIColor.darkGray
-                btn3.setTitleColor(UIColor.green, for: .normal)
+                btn3.setTitleColor(self.myGreen, for: .normal)
             }
         }
         
@@ -173,7 +173,7 @@ class OptionsView: UIViewController {
             if state == "1" {
                 
                 btn4.backgroundColor = UIColor.darkGray
-                btn4.setTitleColor(UIColor.green, for: .normal)
+                btn4.setTitleColor(self.myGreen, for: .normal)
             }
         }
         
@@ -183,7 +183,7 @@ class OptionsView: UIViewController {
             if state == "1" {
                 
                 btn5.backgroundColor = UIColor.darkGray
-                btn5.setTitleColor(UIColor.green, for: .normal)
+                btn5.setTitleColor(self.myGreen, for: .normal)
             }
         }
         
@@ -193,7 +193,7 @@ class OptionsView: UIViewController {
             if state == "1" {
                 
                 btnHigh.backgroundColor = UIColor.darkGray
-                btnHigh.setTitleColor(UIColor.green, for: .normal)
+                btnHigh.setTitleColor(self.myGreen, for: .normal)
             }
         }
         
@@ -203,7 +203,7 @@ class OptionsView: UIViewController {
             if state == "1" {
                 
                 btnLow.backgroundColor = UIColor.darkGray
-                btnLow.setTitleColor(UIColor.green, for: .normal)
+                btnLow.setTitleColor(self.myGreen, for: .normal)
             }
         }
         
@@ -213,7 +213,7 @@ class OptionsView: UIViewController {
             if state == "1" {
                 
                 btnTaper.backgroundColor = UIColor.darkGray
-                btnTaper.setTitleColor(UIColor.green, for: .normal)
+                btnTaper.setTitleColor(self.myGreen, for: .normal)
             }
         }
         
@@ -223,7 +223,7 @@ class OptionsView: UIViewController {
             if state == "1" {
                 
                 btnNatural.backgroundColor = UIColor.darkGray
-                btnNatural.setTitleColor(UIColor.green, for: .normal)
+                btnNatural.setTitleColor(self.myGreen, for: .normal)
             }
         }
         
@@ -233,7 +233,7 @@ class OptionsView: UIViewController {
             if state == "1" {
                 
                 btnRound.backgroundColor = UIColor.darkGray
-                btnRound.setTitleColor(UIColor.green, for: .normal)
+                btnRound.setTitleColor(self.myGreen, for: .normal)
             }
         }
         
@@ -243,7 +243,7 @@ class OptionsView: UIViewController {
             if state == "1" {
                 
                 btnSquare.backgroundColor = UIColor.darkGray
-                btnSquare.setTitleColor(UIColor.green, for: .normal)
+                btnSquare.setTitleColor(self.myGreen, for: .normal)
             }
         }
         
@@ -253,431 +253,115 @@ class OptionsView: UIViewController {
             if state == "1" {
                 
                 btnRoundedEdges.backgroundColor = UIColor.darkGray
-                btnRoundedEdges.setTitleColor(UIColor.green, for: .normal)
+                btnRoundedEdges.setTitleColor(self.myGreen, for: .normal)
             }
         }
         
     }
     
+    let myGreen = UIColor(red:0.80, green:1.00, blue:0.80, alpha:1.0)
     
-    
-    @IBAction func btnScissorClick(_ sender: UIButton) {
-        
-        
-        let btnText = sender.titleLabel?.text?.lowercased()
-        
-        
-        if let state = self.client.clientVisits[selectedVisitIndex].options[btnText!] {
-            
-            if state == "0" {
-                
-                self.client.clientVisits[selectedVisitIndex].options[btnText!] = "1"
-                btnScissor.backgroundColor = UIColor.darkGray
-                btnScissor.setTitleColor(UIColor.green, for: .normal)
-                
-                self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.selectedVisit.visitDate + "/options/" + btnText!).setValue("1")
-            }
-            else {
-                self.client.clientVisits[selectedVisitIndex].options[btnText!] = "0"
-                btnScissor.backgroundColor = UIColor.groupTableViewBackground
-                btnScissor.setTitleColor(UIColor.lightGray, for: .normal)
-                
-                self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.selectedVisit.visitDate + "/options/" + btnText!).setValue("0")
-            }
-
-        }
-    }
-    
-    @IBAction func btnClipperClick(_ sender: UIButton) {
-        
-        let btnText = sender.titleLabel?.text?.lowercased()
-        
-        
-        if let state = self.client.clientVisits[selectedVisitIndex].options[btnText!] {
-            if state == "0" {
-                self.client.clientVisits[selectedVisitIndex].options[btnText!] = "1"
-                btnClipper.backgroundColor = UIColor.darkGray
-                btnClipper.setTitleColor(UIColor.green, for: .normal)
-                
-                self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.selectedVisit.visitDate + "/options/" + btnText!).setValue("1")
-            }
-            else {
-                self.client.clientVisits[selectedVisitIndex].options[btnText!] = "0"
-                btnClipper.backgroundColor = UIColor.groupTableViewBackground
-                btnClipper.setTitleColor(UIColor.lightGray, for: .normal)
-                
-                self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.selectedVisit.visitDate + "/options/" + btnText!).setValue("0")
-            }
-
-        }
-    }
-    
-    @IBAction func btnTexturizeClick(_ sender: UIButton) {
-        
-        let btnText = sender.titleLabel?.text?.lowercased()
-        
-        
-        if let state = self.client.clientVisits[selectedVisitIndex].options[btnText!] {
-            if state == "0" {
-                self.client.clientVisits[selectedVisitIndex].options[btnText!] = "1"
-                btnTexturize.backgroundColor = UIColor.darkGray
-                btnTexturize.setTitleColor(UIColor.green, for: .normal)
-                
-                self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.selectedVisit.visitDate + "/options/" + btnText!).setValue("1")
-            }
-            else {
-                self.client.clientVisits[selectedVisitIndex].options[btnText!] = "0"
-                btnTexturize.backgroundColor = UIColor.groupTableViewBackground
-                btnTexturize.setTitleColor(UIColor.lightGray, for: .normal)
-                
-                self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.selectedVisit.visitDate + "/options/" + btnText!).setValue("0")
-            }
-        }
-    }
-    
-    @IBAction func btnSkinClick(_ sender: UIButton) {
-        
-        let btnText = sender.titleLabel?.text?.lowercased()
-        
-        
-        if let state = self.client.clientVisits[selectedVisitIndex].options[btnText!] {
-            if state == "0" {
-                self.client.clientVisits[selectedVisitIndex].options[btnText!] = "1"//.setValue("1", forKey: btnText!)
-                btnSkin.backgroundColor = UIColor.darkGray
-                btnSkin.setTitleColor(UIColor.green, for: .normal)
-                
-                self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.selectedVisit.visitDate + "/options/" + btnText!).setValue("1")
-            }
-            else {
-                self.client.clientVisits[selectedVisitIndex].options[btnText!] = "0"
-                btnSkin.backgroundColor = UIColor.groupTableViewBackground
-                btnSkin.setTitleColor(UIColor.lightGray, for: .normal)
-                
-                self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.selectedVisit.visitDate + "/options/" + btnText!).setValue("0")
-            }
-        }
-    }
-    
-    @IBAction func btn0Click(_ sender: UIButton) {
-        
-        let btnText = sender.titleLabel?.text?.lowercased()
-        
-        
-        if let state = self.client.clientVisits[selectedVisitIndex].options[btnText!] {
-            if state == "0" {
-                self.client.clientVisits[selectedVisitIndex].options[btnText!] = "1"
-                btn0.backgroundColor = UIColor.darkGray
-                btn0.setTitleColor(UIColor.green, for: .normal)
-                
-                self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.selectedVisit.visitDate + "/options/" + btnText!).setValue("1")
-            }
-            else {
-                self.client.clientVisits[selectedVisitIndex].options[btnText!] = "0"
-                btn0.backgroundColor = UIColor.groupTableViewBackground
-                btn0.setTitleColor(UIColor.lightGray, for: .normal)
-                
-                self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.selectedVisit.visitDate + "/options/" + btnText!).setValue("0")
-            }
-        }
-    }
-    
-    @IBAction func btn12Click(_ sender: UIButton) {
-        
+    func saveOption(_ sender: UIButton) {
         
         let btnText = sender.titleLabel?.text?.lowercased().replacingOccurrences(of: "/", with: "")
         
         
-        if let state = self.client.clientVisits[selectedVisitIndex].options[btnText!] {
-            if state == "0" {
-                self.client.clientVisits[selectedVisitIndex].options[btnText!] = "1"
-                btn12.backgroundColor = UIColor.darkGray
-                btn12.setTitleColor(UIColor.green, for: .normal)
-                
-                self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.selectedVisit.visitDate + "/options/" + btnText!).setValue("1")
-            }
-            else {
-                self.client.clientVisits[selectedVisitIndex].options[btnText!] = "0"
-                btn12.backgroundColor = UIColor.groupTableViewBackground
-                btn12.setTitleColor(UIColor.lightGray, for: .normal)
-                
-                self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.selectedVisit.visitDate + "/options/" + btnText!).setValue("0")
-            }
+        guard let state = self.client.clientVisits[selectedVisitIndex].options[btnText!] else {
+            
+            self.client.clientVisits[selectedVisitIndex].options[btnText!] = "1"
+            sender.backgroundColor = UIColor.darkGray
+            sender.setTitleColor(self.myGreen, for: .normal)
+            
+            self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.selectedVisit.visitDate + "/options/" + btnText!).setValue("1")
+            
+            return
         }
+        if state == "0" {
+            self.client.clientVisits[selectedVisitIndex].options[btnText!] = "1"
+            sender.backgroundColor = UIColor.darkGray
+            sender.setTitleColor(self.myGreen, for: .normal)
+            
+            self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.selectedVisit.visitDate + "/options/" + btnText!).setValue("1")
+        }
+        else {
+            self.client.clientVisits[selectedVisitIndex].options[btnText!] = "0"
+            sender.backgroundColor = UIColor.groupTableViewBackground
+            sender.setTitleColor(UIColor.lightGray, for: .normal)
+            
+            self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.selectedVisit.visitDate + "/options/" + btnText!).setValue("0")
+        }
+        
+    }
+
+    
+    @IBAction func btnScissorClick(_ sender: UIButton) {
+        saveOption(sender)
+    }
+    
+    @IBAction func btnClipperClick(_ sender: UIButton) {
+        saveOption(sender)
+    }
+    
+    @IBAction func btnTexturizeClick(_ sender: UIButton) {
+        saveOption(sender)
+    }
+    
+    @IBAction func btnSkinClick(_ sender: UIButton) {
+        saveOption(sender)
+    }
+    
+    @IBAction func btn0Click(_ sender: UIButton) {
+        saveOption(sender)
+    }
+    
+    @IBAction func btn12Click(_ sender: UIButton) {
+        saveOption(sender)
     }
     
     @IBAction func btn1Click(_ sender: UIButton) {
-        
-        let btnText = sender.titleLabel?.text?.lowercased()
-        
-        
-        if let state = self.client.clientVisits[selectedVisitIndex].options[btnText!] {
-            if state == "0" {
-                self.client.clientVisits[selectedVisitIndex].options[btnText!] = "1"
-                btn1.backgroundColor = UIColor.darkGray
-                btn1.setTitleColor(UIColor.green, for: .normal)
-                
-                self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.selectedVisit.visitDate + "/options/" + btnText!).setValue("1")
-            }
-            else {
-                self.client.clientVisits[selectedVisitIndex].options[btnText!] = "0"
-                btn1.backgroundColor = UIColor.groupTableViewBackground
-                btn1.setTitleColor(UIColor.lightGray, for: .normal)
-                
-                self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.selectedVisit.visitDate + "/options/" + btnText!).setValue("0")
-            }
-        }
+        saveOption(sender)
     }
     
     @IBAction func btn2Click(_ sender: UIButton) {
-        
-        let btnText = sender.titleLabel?.text?.lowercased()
-        
-        
-        if let state = self.client.clientVisits[selectedVisitIndex].options[btnText!] {
-            if state == "0" {
-                self.client.clientVisits[selectedVisitIndex].options[btnText!] = "1"
-                btn2.backgroundColor = UIColor.darkGray
-                btn2.setTitleColor(UIColor.green, for: .normal)
-                
-                self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.selectedVisit.visitDate + "/options/" + btnText!).setValue("1")
-            }
-            else {
-                self.client.clientVisits[selectedVisitIndex].options[btnText!] = "0"
-                btn2.backgroundColor = UIColor.groupTableViewBackground
-                btn2.setTitleColor(UIColor.lightGray, for: .normal)
-                
-                self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.selectedVisit.visitDate + "/options/" + btnText!).setValue("0")
-            }
-        }
+        saveOption(sender)
     }
     
     @IBAction func btn3Click(_ sender: UIButton) {
-        
-        let btnText = sender.titleLabel?.text?.lowercased()
-        
-        
-        if let state = self.client.clientVisits[selectedVisitIndex].options[btnText!] {
-            if state == "0" {
-                self.client.clientVisits[selectedVisitIndex].options[btnText!] = "1"
-                btn3.backgroundColor = UIColor.darkGray
-                btn3.setTitleColor(UIColor.green, for: .normal)
-                
-                self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.selectedVisit.visitDate + "/options/" + btnText!).setValue("1")
-            }
-            else {
-                self.client.clientVisits[selectedVisitIndex].options[btnText!] = "0"
-                btn3.backgroundColor = UIColor.groupTableViewBackground
-                btn3.setTitleColor(UIColor.lightGray, for: .normal)
-                
-                self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.selectedVisit.visitDate + "/options/" + btnText!).setValue("0")
-            }
-        }
+        saveOption(sender)
     }
     
     @IBAction func btn4Click(_ sender: UIButton) {
-        
-        let btnText = sender.titleLabel?.text?.lowercased()
-        
-        
-        if let state = self.client.clientVisits[selectedVisitIndex].options[btnText!] {
-            if state == "0" {
-                self.client.clientVisits[selectedVisitIndex].options[btnText!] = "1"
-                btn4.backgroundColor = UIColor.darkGray
-                btn4.setTitleColor(UIColor.green, for: .normal)
-                
-                self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.selectedVisit.visitDate + "/options/" + btnText!).setValue("1")
-            }
-            else {
-                self.client.clientVisits[selectedVisitIndex].options[btnText!] = "0"
-                btn4.backgroundColor = UIColor.groupTableViewBackground
-                btn4.setTitleColor(UIColor.lightGray, for: .normal)
-                
-                self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.selectedVisit.visitDate + "/options/" + btnText!).setValue("0")
-            }
-        }
+        saveOption(sender)
     }
     
     @IBAction func btn5Click(_ sender: UIButton) {
-        
-        let btnText = sender.titleLabel?.text?.lowercased()
-        
-        
-        if let state = self.client.clientVisits[selectedVisitIndex].options[btnText!] {
-            if state == "0" {
-                self.client.clientVisits[selectedVisitIndex].options[btnText!] = "1"
-                btn5.backgroundColor = UIColor.darkGray
-                btn5.setTitleColor(UIColor.green, for: .normal)
-                
-                self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.selectedVisit.visitDate + "/options/" + btnText!).setValue("1")
-            }
-            else {
-                self.client.clientVisits[selectedVisitIndex].options[btnText!] = "0"
-                btn5.backgroundColor = UIColor.groupTableViewBackground
-                btn5.setTitleColor(UIColor.lightGray, for: .normal)
-                
-                self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.selectedVisit.visitDate + "/options/" + btnText!).setValue("0")
-            }
-        }
+        saveOption(sender)
     }
     
     @IBAction func btnHighClick(_ sender: UIButton) {
-        
-        let btnText = sender.titleLabel?.text?.lowercased()
-        
-        
-        if let state = self.client.clientVisits[selectedVisitIndex].options[btnText!] {
-            if state == "0" {
-                self.client.clientVisits[selectedVisitIndex].options[btnText!] = "1"
-                btnHigh.backgroundColor = UIColor.darkGray
-                btnHigh.setTitleColor(UIColor.green, for: .normal)
-                
-                self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.selectedVisit.visitDate + "/options/" + btnText!).setValue("1")
-            }
-            else {
-                self.client.clientVisits[selectedVisitIndex].options[btnText!] = "0"
-                btnHigh.backgroundColor = UIColor.groupTableViewBackground
-                btnHigh.setTitleColor(UIColor.lightGray, for: .normal)
-                
-                self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.selectedVisit.visitDate + "/options/" + btnText!).setValue("0")
-            }
-        }
+        saveOption(sender)
     }
     
     @IBAction func btnLowClick(_ sender: UIButton) {
-        
-        let btnText = sender.titleLabel?.text?.lowercased()
-        
-        
-        if let state = self.client.clientVisits[selectedVisitIndex].options[btnText!] {
-            if state == "0" {
-                self.client.clientVisits[selectedVisitIndex].options[btnText!] = "1"
-                btnLow.backgroundColor = UIColor.darkGray
-                btnLow.setTitleColor(UIColor.green, for: .normal)
-                
-                self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.selectedVisit.visitDate + "/options/" + btnText!).setValue("1")
-            }
-            else {
-                self.client.clientVisits[selectedVisitIndex].options[btnText!] = "0"
-                btnLow.backgroundColor = UIColor.groupTableViewBackground
-                btnLow.setTitleColor(UIColor.lightGray, for: .normal)
-                
-                self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.selectedVisit.visitDate + "/options/" + btnText!).setValue("0")
-            }
-        }
+        saveOption(sender)
     }
     
     @IBAction func btnTaperClick(_ sender: UIButton) {
-        
-        let btnText = sender.titleLabel?.text?.lowercased()
-        
-        
-        if let state = self.client.clientVisits[selectedVisitIndex].options[btnText!] {
-            if state == "0" {
-                self.client.clientVisits[selectedVisitIndex].options[btnText!] = "1"
-                btnTaper.backgroundColor = UIColor.darkGray
-                btnTaper.setTitleColor(UIColor.green, for: .normal)
-                
-                self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.selectedVisit.visitDate + "/options/" + btnText!).setValue("1")
-            }
-            else {
-                self.client.clientVisits[selectedVisitIndex].options[btnText!] = "0"
-                btnTaper.backgroundColor = UIColor.groupTableViewBackground
-                btnTaper.setTitleColor(UIColor.lightGray, for: .normal)
-                
-                self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.selectedVisit.visitDate + "/options/" + btnText!).setValue("0")
-            }
-        }
+        saveOption(sender)
     }
     
     @IBAction func btnNaturalClick(_ sender: UIButton) {
-        
-        let btnText = sender.titleLabel?.text?.lowercased()
-        
-        
-        if let state = self.client.clientVisits[selectedVisitIndex].options[btnText!] {
-            if state == "0" {
-                self.client.clientVisits[selectedVisitIndex].options[btnText!] = "1"
-                btnNatural.backgroundColor = UIColor.darkGray
-                btnNatural.setTitleColor(UIColor.green, for: .normal)
-                
-                self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.selectedVisit.visitDate + "/options/" + btnText!).setValue("1")
-            }
-            else {
-                self.client.clientVisits[selectedVisitIndex].options[btnText!] = "0"
-                btnNatural.backgroundColor = UIColor.groupTableViewBackground
-                btnNatural.setTitleColor(UIColor.lightGray, for: .normal)
-                
-                self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.selectedVisit.visitDate + "/options/" + btnText!).setValue("0")
-            }
-        }
+        saveOption(sender)
     }
     
     @IBAction func btnRoundClick(_ sender: UIButton) {
-        
-        let btnText = sender.titleLabel?.text?.lowercased()
-        
-        
-        if let state = self.client.clientVisits[selectedVisitIndex].options[btnText!] {
-            if state == "0" {
-                self.client.clientVisits[selectedVisitIndex].options[btnText!] = "1"
-                btnRound.backgroundColor = UIColor.darkGray
-                btnRound.setTitleColor(UIColor.green, for: .normal)
-                
-                self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.selectedVisit.visitDate + "/options/" + btnText!).setValue("1")
-            }
-            else {
-                self.client.clientVisits[selectedVisitIndex].options[btnText!] = "0"
-                btnRound.backgroundColor = UIColor.groupTableViewBackground
-                btnRound.setTitleColor(UIColor.lightGray, for: .normal)
-                
-                self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.selectedVisit.visitDate + "/options/" + btnText!).setValue("0")
-            }
-        }
+        saveOption(sender)
     }
     
     @IBAction func btnSquareClick(_ sender: UIButton) {
-        
-        let btnText = sender.titleLabel?.text?.lowercased()
-        
-        
-        if let state = self.client.clientVisits[selectedVisitIndex].options[btnText!] {
-            if state == "0" {
-                self.client.clientVisits[selectedVisitIndex].options[btnText!] = "1"
-                btnSquare.backgroundColor = UIColor.darkGray
-                btnSquare.setTitleColor(UIColor.green, for: .normal)
-                
-                self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.selectedVisit.visitDate + "/options/" + btnText!).setValue("1")
-            }
-            else {
-                self.client.clientVisits[selectedVisitIndex].options[btnText!] = "0"
-                btnSquare.backgroundColor = UIColor.groupTableViewBackground
-                btnSquare.setTitleColor(UIColor.lightGray, for: .normal)
-                
-                self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.selectedVisit.visitDate + "/options/" + btnText!).setValue("0")
-            }
-        }
+        saveOption(sender)
     }
     
     @IBAction func btnRoundedEdgesClick(_ sender: UIButton) {
-        
-        let btnText = sender.titleLabel?.text?.lowercased()
-        
-        
-        if let state = self.client.clientVisits[selectedVisitIndex].options[btnText!] {
-            if state == "0" {
-                self.client.clientVisits[selectedVisitIndex].options[btnText!] = "1"
-                btnRoundedEdges.backgroundColor = UIColor.darkGray
-                btnRoundedEdges.setTitleColor(UIColor.green, for: .normal)
-                
-                self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.selectedVisit.visitDate + "/options/" + btnText!).setValue("1")
-            }
-            else {
-                self.client.clientVisits[selectedVisitIndex].options[btnText!] = "0"
-                btnRoundedEdges.backgroundColor = UIColor.groupTableViewBackground
-                btnRoundedEdges.setTitleColor(UIColor.lightGray, for: .normal)
-                
-                self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.selectedVisit.visitDate + "/options/" + btnText!).setValue("0")
-            }
-        }
-    }
+        saveOption(sender)    }
 }

@@ -76,7 +76,7 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         
         // share button
         
-        let share = UITableViewRowAction(style: .normal, title: "Share") { action, index in
+        let share = UITableViewRowAction(style: UITableViewRowActionStyle.normal, title: "Share") { action, index in
             
             let imageView = tableView.cellForRow(at: indexPath)?.viewWithTag(1) as! UIImageView
             let image = imageView.image
@@ -196,7 +196,7 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         image.delegate = self
         
         // set the source to photo library
-        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        image.sourceType = UIImagePickerControllerSourceType.camera
         
         self.present(image, animated: true)
         

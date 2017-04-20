@@ -14,7 +14,9 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     var subscription:String!
     var ref: FIRDatabaseReference!
 
-
+    @IBOutlet weak var btnSignIn: UIButton!
+    
+    
     func logUserInCrashlytics(userEmail:String, userIdentifier:String, userName:String) {
 
         Crashlytics.sharedInstance().setUserEmail(userEmail)
@@ -44,6 +46,13 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         self.ref = FIRDatabase.database().reference()
 
         checkForLatestVersion()
+        
+        btnSignIn.layer.cornerRadius = 10
+        btnSignIn.layer.borderColor = UIColor.black.cgColor
+        btnSignIn.layer.borderWidth = 2
+        btnSignIn.clipsToBounds = true
+        
+
 
     }
     
@@ -56,7 +65,11 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     
     func checkIfFirstTimeUse() {
         
+       // UserDefaults.standard.removeObject(forKey: "prossimoLastVersionUsed")
+        
         guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else { return }
+        
+        
 
         guard let lastVersionUsed = UserDefaults.standard.string(forKey: "prossimoLastVersionUsed")
             else {
@@ -85,6 +98,7 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
                 
                 if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
                 {
+                    
                     if version != String(describing: value) {
                         self.displayVersionAlert()
                     }

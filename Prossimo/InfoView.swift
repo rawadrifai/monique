@@ -68,7 +68,7 @@ class InfoView: UITableViewController {
             
             if cellText == "Contact Us" {
                 
-                let email = "tuukinfo@gmail.com"
+                let email = "info.prossimo@gmail.com"
                 if let url = URL(string: "mailto:\(email)") {
                     if #available(iOS 10.0, *) {
                         UIApplication.shared.open(url)

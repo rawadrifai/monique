@@ -29,6 +29,13 @@ class SaveUserInfo: UIViewController {
         
         self.ref = FIRDatabase.database().reference()
         self.txfPhone.delegate = self
+        setBorders()
+    }
+    
+    func setBorders() {
+        self.txfName.layer.cornerRadius = 20
+        self.txfPhone.layer.cornerRadius = 20
+        self.txfEmail.layer.cornerRadius = 20
     }
     
     var tmpPhone=""
@@ -130,6 +137,14 @@ class SaveUserInfo: UIViewController {
                 if let destinationNavigation = destinationTabBar.viewControllers!.first as? UINavigationController {
                     if let destinationClientsView = destinationNavigation.topViewController as? ClientsView {
                         destinationClientsView.userId = self.userId
+                        destinationClientsView.subscription = "trial"
+                    }
+                }
+                
+                if let d = destinationTabBar.viewControllers![1] as? UINavigationController {
+                    if let infoView = d.topViewController as? InfoView {
+                        infoView.userId = self.userId
+                        infoView.subscription = "trial"
                     }
                 }
             }

@@ -59,8 +59,15 @@ class EditClientView: UITableViewController, UINavigationControllerDelegate, UII
         self.imgView.layer.borderWidth = 1
         self.imgView.layer.borderColor = UIColor.gray.cgColor
         
-        self.imgView.layer.cornerRadius = 7
+        self.imgView.layer.cornerRadius = 10
         self.imgView.clipsToBounds = true
+        
+        self.txfName.layer.cornerRadius = 20
+        self.txfPhone.layer.cornerRadius = 20
+        self.txfEmail.layer.cornerRadius = 20
+        
+        
+        
     }
 
     
