@@ -16,8 +16,8 @@ class FifthVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        imageView.layer.cornerRadius = 20
-        imageView.clipsToBounds = true
+       // imageView.layer.cornerRadius = 20
+       // imageView.clipsToBounds = true
     }
 
 

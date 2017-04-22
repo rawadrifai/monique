@@ -18,6 +18,7 @@
 		9A3BC64D1E5A9AA700E9CA71 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A3BC64B1E5A9AA700E9CA71 /* Main.storyboard */; };
 		9A3BC6521E5A9AA700E9CA71 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A3BC6501E5A9AA700E9CA71 /* LaunchScreen.storyboard */; };
 		9A3BC65C1E5AA5C300E9CA71 /* ClientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3BC65B1E5AA5C300E9CA71 /* ClientsView.swift */; };
+		9A40F5881EAB62C900092723 /* SixthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A40F5871EAB62C900092723 /* SixthVC.swift */; };
 		9A6875051EA8007A00996B76 /* FirstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6875041EA8007A00996B76 /* FirstVC.swift */; };
 		9A68750E1EA8044800996B76 /* SecondVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A68750D1EA8044800996B76 /* SecondVC.swift */; };
 		9A6875121EA8048000996B76 /* FourthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6875111EA8048000996B76 /* FourthVC.swift */; };
@@ -104,6 +105,7 @@
 		9A3BC6511E5A9AA700E9CA71 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9A3BC6531E5A9AA700E9CA71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = Prossimo/Info.plist; sourceTree = "<group>"; };
 		9A3BC65B1E5AA5C300E9CA71 /* ClientsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientsView.swift; path = Prossimo/ClientsView.swift; sourceTree = SOURCE_ROOT; };
+		9A40F5871EAB62C900092723 /* SixthVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SixthVC.swift; path = Prossimo/SixthVC.swift; sourceTree = "<group>"; };
 		9A63D3151E94502900F67805 /* BridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		9A6875041EA8007A00996B76 /* FirstVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirstVC.swift; path = Prossimo/FirstVC.swift; sourceTree = "<group>"; };
 		9A68750D1EA8044800996B76 /* SecondVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SecondVC.swift; path = Prossimo/SecondVC.swift; sourceTree = "<group>"; };
@@ -167,13 +169,14 @@
 		9A3BC6391E5A9AA700E9CA71 = {
 			isa = PBXGroup;
 			children = (
+				9A3BC64B1E5A9AA700E9CA71 /* Main.storyboard */,
 				9A969DA11EA1B6EA004127CE /* KeychainManager.swift */,
 				9A63D3151E94502900F67805 /* BridgingHeader.h */,
-				9A3BC64B1E5A9AA700E9CA71 /* Main.storyboard */,
 				9A6875041EA8007A00996B76 /* FirstVC.swift */,
 				9A68750D1EA8044800996B76 /* SecondVC.swift */,
 				9A6875111EA8048000996B76 /* FourthVC.swift */,
 				9A6875131EA8048C00996B76 /* FifthVC.swift */,
+				9A40F5871EAB62C900092723 /* SixthVC.swift */,
 				9A0E86521E9BFC2D00F02BA6 /* CrashController.swift */,
 				9AAFE6251E96FFA1007185A0 /* OptionsView.swift */,
 				9A1856E21E84FCFE00C2EA2F /* ImageView.swift */,
@@ -437,6 +440,7 @@
 				9A3BC6461E5A9AA700E9CA71 /* AppDelegate.swift in Sources */,
 				9A36296C1E5D3CDA003CFAF8 /* NewClientView.swift in Sources */,
 				9AD116621E5E7A9F00113753 /* ClientDetailView.swift in Sources */,
+				9A40F5881EAB62C900092723 /* SixthVC.swift in Sources */,
 				9A0E86531E9BFC2D00F02BA6 /* CrashController.swift in Sources */,
 				9A911F1A1EA5E969004D221C /* PageVC.swift in Sources */,
 				9AD116641E5E87C400113753 /* Client.swift in Sources */,

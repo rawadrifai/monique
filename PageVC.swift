@@ -55,7 +55,7 @@ class PageVC: UIPageViewController, UIPageViewControllerDataSource, UIPageViewCo
         let previousIndex = viewControllerIndex - 1
         
         guard previousIndex >= 0 else {
-            return VCArr.last
+            return nil//VCArr.first
         }
         
         guard VCArr.count > previousIndex else {
@@ -73,7 +73,8 @@ class PageVC: UIPageViewController, UIPageViewControllerDataSource, UIPageViewCo
         let nextIndex = viewControllerIndex + 1
         
         guard nextIndex < VCArr.count else {
-            return VCArr.first
+            
+            return nil//VCArr.first
         }
         
         guard VCArr.count > nextIndex else {
