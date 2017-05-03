@@ -50,8 +50,9 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         // get reference to database
         self.ref = FIRDatabase.database().reference()
         
-        fillData()
         makeUIChanges()
+        fillData()
+        resizeProfilePic()
         
     }
     
@@ -60,38 +61,64 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         if self.client.clientVisits.count == 0 {
             self.labelHistory.text = ""
         }
+        
         setIcons()
         makeProfilePicInteractive()
         setBorders()
+    }
+    
+    func makeProfilePicInteractive() {
         
+        // make the profile picture interactive
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         
+        self.imgView.isUserInteractionEnabled = true
+        self.imgView.addGestureRecognizer(tapGestureRecognizer)
+
+    }
+
+    func resizeProfilePic() {
+        
+        let screenSize: CGRect = UIScreen.main.bounds
+        
+        self.imgView.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.width * 0.66)
+        
+        // if there's an image
+        if (self.client.profileImg.imageUrl != nil && self.client.profileImg.imageUrl != "") {
+            self.imgView.contentMode = .scaleAspectFill
+        }
+            // if there's no image (small camera icon, we want it to be center)
+        else {
+            self.imgView.contentMode = .center
+        }
+        self.imgView.clipsToBounds = true
     }
     
     func setBorders() {
-        self.imgView.layer.borderWidth = 1
-        self.imgView.layer.borderColor = UIColor(red:0.204, green:0.255, blue:0.204, alpha:1.0).cgColor
-        
-        self.imgView.layer.cornerRadius = 20
-        self.imgView.clipsToBounds = true
-        
-        self.btnNewHC.layer.borderWidth = 0.5
-        self.btnNewHC.layer.borderColor = UIColor(red:0.204, green:0.255, blue:0.204, alpha:1.0).cgColor
-        
-        
+
+       // self.btnNewHC.layer.borderWidth = 0.5
+       // self.btnNewHC.layer.borderColor = UIColor(red:0.204, green:0.255, blue:0.204, alpha:1.0).cgColor
     }
 
     func setIcons() {
         
         
         // phone icon
-        var phoneIconImage = FAKFontAwesome.mobileIcon(withSize: 35).image(with: CGSize(width: 30, height: 30))
+        var cameraIconImage = FAKFontAwesome.cameraIcon(withSize: 60).image(with: CGSize(width: 60, height: 60))
+        cameraIconImage = cameraIconImage?.imageWithColor(color: UIColor.black)
+        imgView.image = cameraIconImage
+        //btnPhone.setImage(phoneIconImage, for: .normal)
+        
+        
+        // phone icon
+        var phoneIconImage = FAKFontAwesome.phoneIcon(withSize: 25).image(with: CGSize(width: 30, height: 30))
         phoneIconImage = phoneIconImage?.imageWithColor(color: UIColor.black)
         btnPhone.setImage(phoneIconImage, for: .normal)
         
         
         // sms icon
         
-        var smsIconImage = FAKFontAwesome.commentOIcon(withSize: 25).image(with: CGSize(width: 30, height: 30))
+        var smsIconImage = FAKFontAwesome.commentingIcon(withSize: 25).image(with: CGSize(width: 30, height: 30))
         smsIconImage = smsIconImage?.imageWithColor(color: UIColor.black)
         btnText.setImage(smsIconImage, for: .normal)
         
@@ -171,11 +198,13 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         btnPhone.setTitle(client.clientPhone, for: .normal)
         
         if client.profileImg.imageUrl != "" {
+            self.imgView.sd_setShowActivityIndicatorView(true)
+            self.imgView.sd_setIndicatorStyle(.gray)
             self.imgView.sd_setImage(with: URL(string: client.profileImg.imageUrl))
             self.labelChangePicture.isHidden = true
         }
         else {
-            self.imgView.image = UIImage(imageLiteralResourceName: "user")
+            self.imgView.image = UIImage(imageLiteralResourceName: "icon-camera-32")
             self.labelChangePicture.isHidden = false
         }
     }
@@ -263,7 +292,7 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         if segue.identifier == "editClientSegue" {
             
             // set the userId
-            if let destination = segue.destination as? EditClientView {
+            if let destination = segue.destination as? EditClientVC {
                 
                 destination.userId = self.userId
                 destination.client = self.client
@@ -285,16 +314,7 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
     
 
 
-    func makeProfilePicInteractive() {
-        
-        // make the profile picture interactive
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
-        
-        self.imgView.isUserInteractionEnabled = true
-        self.imgView.addGestureRecognizer(tapGestureRecognizer)
-        
-    }
-
+    
     func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
         let image = UIImagePickerController()
@@ -397,6 +417,8 @@ extension ClientDetailView: EditClientDelegate {
     
     func imageChanged(client: Client) {
         self.client.profileImg = client.profileImg
+        self.imgView.sd_setShowActivityIndicatorView(true)
+        self.imgView.sd_setIndicatorStyle(.gray)
         self.imgView.sd_setImage(with: URL(string: self.client.profileImg.imageUrl))
         self.labelChangePicture.isHidden=true
         

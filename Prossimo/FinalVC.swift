@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SixthVC: UIViewController {
+class FinalVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

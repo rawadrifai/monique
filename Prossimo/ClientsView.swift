@@ -198,7 +198,7 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
         }
             // set userId if we're going to add a client
         else if segue.identifier == "newClientSegue" {
-            if let destination = segue.destination as? NewClientView {
+            if let destination = segue.destination as? NewClientVC {
                 destination.userId = self.userId
                 destination.subscription = subscription
                 destination.numberOfClients = self.tableView.numberOfRows(inSection: 0)

@@ -17,5 +17,6 @@ target 'Prossimo' do
   pod 'SDWebImage'
   pod 'FontAwesomeKit/FontAwesome'
   pod 'JNKeychain'
-
+  pod 'IQKeyboardManagerSwift'
+  pod 'NYTPhotoViewer', '~> 1.1.0'
   end

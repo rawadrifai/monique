@@ -259,7 +259,7 @@ class OptionsView: UIViewController {
         
     }
     
-    let myGreen = UIColor(red:0.80, green:1.00, blue:0.80, alpha:1.0)
+    let myGreen = UIColor(red:0.38, green:1.00, blue:0.84, alpha:1.0)
     
     func saveOption(_ sender: UIButton) {
         

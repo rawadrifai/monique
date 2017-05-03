@@ -18,6 +18,7 @@ class FirstVC: UIViewController {
         
         imageView.layer.cornerRadius = 20
         imageView.clipsToBounds = true
+        
     }
 
 

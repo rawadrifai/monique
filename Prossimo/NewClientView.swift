@@ -22,7 +22,7 @@ extension NewClientView: UITextFieldDelegate {
     }
 }
 
-class NewClientView: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class NewClientView: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     var delegate: NewClientDelegate?
     

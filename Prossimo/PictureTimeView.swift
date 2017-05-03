@@ -11,6 +11,8 @@ import FirebaseStorage
 import FirebaseDatabase
 import Social
 import FontAwesomeKit
+import NYTPhotoViewer
+
 
 class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
@@ -63,6 +65,8 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
             let imgobj = self.client.clientVisits[selectedVisitIndex].images[indexPath.row]
             
             let image = cell.viewWithTag(1) as! UIImageView
+            image.sd_setShowActivityIndicatorView(true)
+            image.sd_setIndicatorStyle(.gray)
             image.sd_setImage(with: URL(string: imgobj.imageUrl), completed: { (img, err, ct, url) in
             })
 
@@ -106,6 +110,8 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
             self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.client.clientVisits[self.selectedVisitIndex].visitDate + "/images/" + imageToBeDeleted.imageName).removeValue { (err, ref) in
                 
                 self.client.clientVisits[self.selectedVisitIndex].images.remove(at: indexPath.row)
+                
+                
                 self.tableView.reloadData()
                 
                 // delete from firebase
@@ -154,6 +160,9 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
     
 
     
+    var photos = [ExamplePhoto]()
+    var images = [UIImage]()
+    
     var tappedImageIndex:Int!
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -161,11 +170,59 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         if let _ = tableView.cellForRow(at: indexPath) {
             
             self.tappedImageIndex = indexPath.row
-            self.performSegue(withIdentifier: "imageViewSegue", sender: self)
+    
+            
+            // empty and refill the images array
+            self.images = [UIImage]()
+            
+            for i in self.client.clientVisits[selectedVisitIndex].images {
+                
+                let imgView = UIImageView()
+                
+                imgView.sd_setImage(with: URL(string: i.imageUrl))
+                self.images.append(imgView.image!)
+            }
+            
+            
+            // create a photo provider, it will give us an array of ExamplePhoto
+            let photosProvider = PhotosProvider(images: self.images)
+            self.photos = photosProvider.getPhotos()
+            
+            
+            // create a photos view controller, and set the initial photo to the tapped one
+            let photosViewController = NYTPhotosViewController(photos: self.photos, initialPhoto: self.photos[indexPath.row])
+            
+            
+            present(photosViewController, animated: true, completion: nil)
+            
+            updateImagesOnPhotosViewController(photosViewController: photosViewController, afterDelayWithPhotos: photos)
+            
             
         }
     }
     
+    var count = 0
+    func updateImagesOnPhotosViewController(photosViewController: NYTPhotosViewController, afterDelayWithPhotos: [ExamplePhoto]) {
+        
+        count = 0
+        let deadlineTime = DispatchTime.now() + .seconds(0)
+        DispatchQueue.main.asyncAfter(deadline: deadlineTime) {
+            
+            for photo in self.photos {
+                
+                print(String(self.count))
+                
+                
+                if photo.image == nil {
+                    print("^nil")
+                    photo.image = self.images[self.count]
+                    photosViewController.updateImage(for: photo)
+                }
+                
+                self.count = self.count + 1
+            }
+        }
+    }
     
     func loadVisit() {
         
@@ -254,6 +311,8 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
                 self.ref.child(path + imgobj.imageName + "/uploadDate").setValue(imgobj.uploadDate)
                     
                 self.client.clientVisits[self.selectedVisitIndex].images.sort { $0.uploadDate > $1.uploadDate }
+                
+                
                 self.tableView.reloadData()
                 
                 if let del = self.delegate {
@@ -278,6 +337,8 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
             
         }
     }
+
+    
 }
 
 

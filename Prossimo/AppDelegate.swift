@@ -11,6 +11,7 @@ import Google
 import GoogleSignIn
 import Fabric
 import Crashlytics
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,8 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Fabric.with([Crashlytics.self])
 
+        IQKeyboardManager.sharedManager().enable = true
+        
         UITabBar.appearance().tintColor = UIColor(red:0.20, green:0.60, blue:0.00, alpha:1.0)
 
+        
         return true
     }
     

@@ -13,6 +13,7 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     var userId:String!
     var subscription:String!
     var ref: FIRDatabaseReference!
+    var signoutClicked: Bool!
 
     @IBOutlet weak var btnSignIn: UIButton!
     
@@ -26,10 +27,26 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
 
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
+     
+        customizeSignInBtns()
+
         
+        self.ref = FIRDatabase.database().reference()
+
+        checkForLatestVersion()
+        checkIfAlreadySignedIn()
+
         
+
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(false)
+        checkIfFirstTimeUse()
+    }
+    
+    func customizeSignInBtns() {
         
         // Initialize sign-in
         var configureError: NSError?
@@ -41,31 +58,65 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         GIDSignIn.sharedInstance().uiDelegate = self
         
         signInButton.style = .iconOnly
-        
-        // get reference to database
-        self.ref = FIRDatabase.database().reference()
-
-        checkForLatestVersion()
-        
+    
         btnSignIn.layer.cornerRadius = 10
         btnSignIn.layer.borderColor = UIColor.black.cgColor
         btnSignIn.layer.borderWidth = 2
         btnSignIn.clipsToBounds = true
-        
-
-
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(false)
-        checkIfFirstTimeUse()
+    
+    func checkIfAlreadySignedIn() {
+    
+        // signout was clicked then don't try to automatically sign in again
+        //if self.signoutClicked != nil && self.signoutClicked {
+        //    return
+        //}
+        
+        
+        // get last logged in user
+        guard let loggedInUser = UserDefaults.standard.string(forKey: "loggedInUser")
+            else {
+                return
+        }
+        
+        self.userId = loggedInUser
+        
+        // store crashlytics user before signing in
+        
+        self.ref.child("users/" + self.userId + "/email").observeSingleEvent(of: .value, with: {
+            Crashlytics.sharedInstance().setUserEmail($0.value as? String)
+        })
+        
+        self.ref.child("users/" + self.userId + "/name").observeSingleEvent(of: .value, with: {
+            Crashlytics.sharedInstance().setUserName($0.value as? String)
+        })
+        
+        
+        // get subscription type
+        
+        self.ref.child("users/" + self.userId + "/subscription/type").observeSingleEvent(of: .value, with: {
+            
+            guard let val = $0.value as? String else {
+                
+                self.subscription="trial"
+                self.performSegue(withIdentifier: "loginSegue", sender: self)
+                return
+            }
+            
+            print("subscription: " + val)
+            self.subscription = val
+            self.performSegue(withIdentifier: "loginSegue", sender: self)
+            
+        })
+
     }
     
     // display tutorial if first time use
     
     func checkIfFirstTimeUse() {
         
-        UserDefaults.standard.removeObject(forKey: "prossimoLastVersionUsed")
+        //UserDefaults.standard.removeObject(forKey: "prossimoLastVersionUsed")
         
         guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else { return }
         
@@ -199,8 +250,6 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
                     
                     // store crashlytics user before signing in
                     
-                    
-                    
                     self.ref.child("users/" + self.userId + "/email").observeSingleEvent(of: .value, with: {
                         Crashlytics.sharedInstance().setUserEmail($0.value as? String)
                     })
@@ -225,7 +274,6 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
                         self.subscription = val
                         self.performSegue(withIdentifier: "loginSegue", sender: self)
 
-                        
                     })
                     
                 }
@@ -241,8 +289,8 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if segue.identifier == "loginSegue" {
-            
             
             // set the userId
             if let destinationTabBar = segue.destination as? UITabBarController {
@@ -261,6 +309,10 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
                     }
                 }
             }
+            
+            // log the user to the device, so that next time no log in will be required
+            UserDefaults.standard.set(self.userId, forKey: "loggedInUser")
+            
         } else if segue.identifier == "saveUserInfoSegue" {
             
             // set the userId
