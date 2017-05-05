@@ -26,8 +26,35 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
     @IBOutlet weak var txfPromo: UITextField!
     @IBOutlet weak var labelDiscountApplied: UILabel!
     @IBOutlet weak var btnUpgrade: UIButton!
-    
 
+    @IBOutlet weak var btnRestore: UIButton!
+    @IBOutlet weak var productSC: UISegmentedControl!
+    
+    @IBAction func productChanged(_ sender: UISegmentedControl) {
+        
+        // change the product when selection changes
+        changeProduct(productName: self.availableProducts[productSC.selectedSegmentIndex])
+        
+    }
+    
+    // changes the selected products
+    func changeProduct(productName:String) {
+    
+        for product in allSKProducts {
+            
+            let prodID = product.productIdentifier
+            
+            if(prodID == productName) {
+                sKproductToBuy = product
+                break
+            }
+        }
+        
+        txfPromo.text = ""
+        promoCodeToUse = PromoCode()
+    }
+
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -35,6 +62,17 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
         self.ref = FIRDatabase.database().reference()
         getProductsFromFirebase()
         getPromoCodesFromFirebase()
+        
+        setBorders()
+        
+    }
+    
+    func setBorders() {
+        self.btnUpgrade.layer.cornerRadius = 5
+        self.btnUpgrade.clipsToBounds = true
+        
+        self.btnRestore.layer.cornerRadius = 5
+        self.btnRestore.clipsToBounds = true
         
         
     }
@@ -78,6 +116,9 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
         
     }
     
+    let availableProducts:[String] = ["rifai.prossimo.ios.pp","rifai.prossimo.ios.pponeyear"]
+        
+    
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         
         
@@ -88,8 +129,9 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
             print(product.productIdentifier)
             allSKProducts.append(product)
             
+            
             // pick the default product
-            if product.productIdentifier == "rifai.prossimo.ios.pp" {
+            if product.productIdentifier == "rifai.prossimo.ios.pponeyear" {
                 sKproductToBuy = product
                 promoCodeToUse.code = "none"
                 promoCodeToUse.product = product.productIdentifier
@@ -97,7 +139,6 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
         }
         
         btnUpgrade.isEnabled = true
-        
         
         
     }
@@ -275,7 +316,6 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
                         self.promoCodesInFirebase[promo.code] = promo.product
                     }
                 }
-                
             }
         })
     }

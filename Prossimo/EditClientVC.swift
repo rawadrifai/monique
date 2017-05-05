@@ -63,10 +63,6 @@ class EditClientVC: UIViewController, UINavigationControllerDelegate, UIImagePic
     
     func resizeProfilePic() {
         
-        let screenSize: CGRect = UIScreen.main.bounds
-        
-        self.imgView.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.width * 0.66)
-        
         // if there's an image
         if (self.client.profileImg.imageUrl != nil && self.client.profileImg.imageUrl != "") {
             self.imgView.contentMode = .scaleAspectFill
@@ -75,14 +71,21 @@ class EditClientVC: UIViewController, UINavigationControllerDelegate, UIImagePic
         else {
             self.imgView.contentMode = .center
         }
+        
+        self.imgView.layer.cornerRadius = 100
         self.imgView.clipsToBounds = true
     }
     
     func setBorders() {
         
+        self.imgView.layer.cornerRadius = 100
+        self.imgView.clipsToBounds = true
+        
         self.txfName.layer.cornerRadius = 20
         self.txfPhone.layer.cornerRadius = 20
         self.txfEmail.layer.cornerRadius = 20
+        
+        
         
     }
     

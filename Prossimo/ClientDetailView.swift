@@ -54,6 +54,13 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         fillData()
         resizeProfilePic()
         
+        self.btnText.layer.cornerRadius = 20
+        self.btnText.contentMode = .scaleAspectFill
+        
+        
+        self.btnPhone.layer.cornerRadius = 20
+        self.btnPhone.contentMode = .scaleAspectFill
+        
     }
     
     func makeUIChanges() {
@@ -76,30 +83,37 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         self.imgView.addGestureRecognizer(tapGestureRecognizer)
 
     }
-
+    
     func resizeProfilePic() {
         
         let screenSize: CGRect = UIScreen.main.bounds
         
-        self.imgView.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.width * 0.66)
+        //self.imgView.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.width * 0.66)
+        
+        self.imgView.frame = CGRect(x: screenSize.width/2, y: 30, width: screenSize.width/2, height: screenSize.width/2)
+        
+        self.imgView.layer.cornerRadius = 100
+        self.imgView.contentMode = .scaleAspectFill
         
         // if there's an image
-        if (self.client.profileImg.imageUrl != nil && self.client.profileImg.imageUrl != "") {
-            self.imgView.contentMode = .scaleAspectFill
-        }
+    //    if (self.client.profileImg.imageUrl != nil && self.client.profileImg.imageUrl != "") {
+    //        self.imgView.contentMode = .scaleAspectFill
+    //    }
             // if there's no image (small camera icon, we want it to be center)
-        else {
-            self.imgView.contentMode = .center
-        }
+   //     else {
+   //         self.imgView.contentMode = .center
+    //    }
         self.imgView.clipsToBounds = true
     }
     
     func setBorders() {
 
-       // self.btnNewHC.layer.borderWidth = 0.5
-       // self.btnNewHC.layer.borderColor = UIColor(red:0.204, green:0.255, blue:0.204, alpha:1.0).cgColor
+        self.btnNewHC.layer.cornerRadius = 5
+        self.btnNewHC.clipsToBounds = true
     }
 
+    let myColor = UIColor(red:0.51, green:1.00, blue:0.86, alpha:1.0)
+    
     func setIcons() {
         
         
@@ -111,15 +125,15 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         
         
         // phone icon
-        var phoneIconImage = FAKFontAwesome.phoneIcon(withSize: 25).image(with: CGSize(width: 30, height: 30))
-        phoneIconImage = phoneIconImage?.imageWithColor(color: UIColor.black)
+        var phoneIconImage = FAKFontAwesome.phoneIcon(withSize: 25).image(with: CGSize(width: 40, height: 40))
+        phoneIconImage = phoneIconImage?.imageWithColor(color: myColor)
         btnPhone.setImage(phoneIconImage, for: .normal)
         
         
         // sms icon
         
-        var smsIconImage = FAKFontAwesome.commentingIcon(withSize: 25).image(with: CGSize(width: 30, height: 30))
-        smsIconImage = smsIconImage?.imageWithColor(color: UIColor.black)
+        var smsIconImage = FAKFontAwesome.commentingIcon(withSize: 25).image(with: CGSize(width: 40, height: 40))
+        smsIconImage = smsIconImage?.imageWithColor(color: myColor)
         btnText.setImage(smsIconImage, for: .normal)
         
         

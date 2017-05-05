@@ -56,20 +56,15 @@ class NewClientVC: UIViewController, UINavigationControllerDelegate, UIImagePick
         getTrialClientsLimitFromFirebase()
         makeProfilePicInteractive()
         setBorders()
+        resizeProfilePic()
         
         
-        self.txfPhone.delegate = self
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(NewClientVC.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(NewClientVC.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
     }
     
     func resizeProfilePic() {
         
-        let screenSize: CGRect = UIScreen.main.bounds
         
-        self.imgView.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.width * 0.66)
         
         // if there's an image
         if (self.client.profileImg.imageUrl != nil && self.client.profileImg.imageUrl != "") {
@@ -79,6 +74,8 @@ class NewClientVC: UIViewController, UINavigationControllerDelegate, UIImagePick
         else {
             self.imgView.contentMode = .center
         }
+        
+        self.imgView.layer.cornerRadius = 100
         self.imgView.clipsToBounds = true
     }
     
@@ -300,24 +297,6 @@ class NewClientVC: UIViewController, UINavigationControllerDelegate, UIImagePick
     }
     
     
-    
-
-    
-    func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0{
-                self.view.frame.origin.y -= 100
-            }
-        }
-    }
-    
-    func keyboardWillHide(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y != 0{
-                self.view.frame.origin.y += 100//keyboardSize.height
-            }
-        }
-    }
 }
 
 protocol NewClientDelegate {

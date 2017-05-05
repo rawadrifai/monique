@@ -57,6 +57,15 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         return self.client.clientVisits[selectedVisitIndex].images.count
     }
     
+    let upgradeSectionIndex = 1
+    let upgradeRowIndex = 0
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return UIScreen.main.bounds.width * 0.66
+        
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
