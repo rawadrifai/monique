@@ -39,6 +39,8 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
 
     @IBOutlet weak var btnText: UIButton!
     @IBOutlet weak var btnPhone: UIButton!
+    @IBOutlet weak var btnEmail: UIButton!
+    
     @IBOutlet weak var labelChangePicture: UILabel!
     
     @IBOutlet weak var labelHistory: UILabel!
@@ -54,12 +56,7 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         fillData()
         resizeProfilePic()
         
-        self.btnText.layer.cornerRadius = 20
-        self.btnText.contentMode = .scaleAspectFill
         
-        
-        self.btnPhone.layer.cornerRadius = 20
-        self.btnPhone.contentMode = .scaleAspectFill
         
     }
     
@@ -86,24 +83,25 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
     
     func resizeProfilePic() {
         
-        let screenSize: CGRect = UIScreen.main.bounds
+     //   let screenSize: CGRect = UIScreen.main.bounds
         
         //self.imgView.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.width * 0.66)
         
-        self.imgView.frame = CGRect(x: screenSize.width/2, y: 30, width: screenSize.width/2, height: screenSize.width/2)
+//        self.imgView.frame = CGRect(x: screenSize.width/2, y: 30, width: screenSize.width/2, height: screenSize.width/2)
         
-        self.imgView.layer.cornerRadius = 100
-        self.imgView.contentMode = .scaleAspectFill
+        self.imgView.layer.cornerRadius = 64
+        self.imgView.clipsToBounds = true
         
         // if there's an image
-    //    if (self.client.profileImg.imageUrl != nil && self.client.profileImg.imageUrl != "") {
-    //        self.imgView.contentMode = .scaleAspectFill
-    //    }
+        if (self.client.profileImg.imageUrl != nil && self.client.profileImg.imageUrl != "") {
+            self.imgView.contentMode = .scaleAspectFill
+        }
             // if there's no image (small camera icon, we want it to be center)
-   //     else {
-   //         self.imgView.contentMode = .center
-    //    }
-        self.imgView.clipsToBounds = true
+        else {
+            self.imgView.contentMode = .center
+        }
+        
+        
     }
     
     func setBorders() {
@@ -121,7 +119,6 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         var cameraIconImage = FAKFontAwesome.cameraIcon(withSize: 60).image(with: CGSize(width: 60, height: 60))
         cameraIconImage = cameraIconImage?.imageWithColor(color: UIColor.black)
         imgView.image = cameraIconImage
-        //btnPhone.setImage(phoneIconImage, for: .normal)
         
         
         // phone icon
@@ -131,10 +128,26 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         
         
         // sms icon
-        
-        var smsIconImage = FAKFontAwesome.commentingIcon(withSize: 25).image(with: CGSize(width: 40, height: 40))
+        var smsIconImage = FAKFontAwesome.commentingOIcon(withSize: 25).image(with: CGSize(width: 40, height: 40))
         smsIconImage = smsIconImage?.imageWithColor(color: myColor)
         btnText.setImage(smsIconImage, for: .normal)
+        
+        
+        // email icon
+        var emailIconImage = FAKFontAwesome.envelopeOIcon(withSize: 25).image(with: CGSize(width: 40, height: 40))
+        emailIconImage = emailIconImage?.imageWithColor(color: myColor)
+        btnEmail.setImage(emailIconImage, for: .normal)
+        
+        
+        self.btnText.layer.cornerRadius = 20
+        self.btnText.contentMode = .scaleAspectFill
+        
+        self.btnEmail.layer.cornerRadius = 20
+        self.btnEmail.contentMode = .scaleAspectFill
+        
+        
+        self.btnPhone.layer.cornerRadius = 20
+        self.btnPhone.contentMode = .scaleAspectFill
         
         
     }

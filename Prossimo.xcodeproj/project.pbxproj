@@ -27,6 +27,7 @@
 		9A40F5921EADE19500092723 /* ThirdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A40F5911EADE19500092723 /* ThirdVC.swift */; };
 		9A6875051EA8007A00996B76 /* FirstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6875041EA8007A00996B76 /* FirstVC.swift */; };
 		9A6875121EA8048000996B76 /* FourthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6875111EA8048000996B76 /* FourthVC.swift */; };
+		9A85BC521EBD3B910077C9D7 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9A371A2D1EB822E500A52DDD /* FontAwesome.otf */; };
 		9A969D881E9D4C8D004127CE /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A969D871E9D4C8D004127CE /* StoreKit.framework */; };
 		9A969DA01E9EEC9E004127CE /* UpgradeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A969D9F1E9EEC9E004127CE /* UpgradeView.swift */; };
 		9A969DA21EA1B6EA004127CE /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A969DA11EA1B6EA004127CE /* KeychainManager.swift */; };
@@ -434,6 +435,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AD2B3681E8C2F3800DF308C /* GoogleService-Info.plist in Resources */,
+				9A85BC521EBD3B910077C9D7 /* FontAwesome.otf in Resources */,
 				9A3BC6521E5A9AA700E9CA71 /* LaunchScreen.storyboard in Resources */,
 				9AD676501E94A0FD00F8BBFB /* Assets.xcassets in Resources */,
 				9A3BC64D1E5A9AA700E9CA71 /* Main.storyboard in Resources */,
