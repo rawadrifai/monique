@@ -37,13 +37,22 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var labelName: UILabel!
 
+    
+    @IBOutlet weak var labelLastVisit: UILabel!
+    
     @IBOutlet weak var btnText: UIButton!
     @IBOutlet weak var btnPhone: UIButton!
     @IBOutlet weak var btnEmail: UIButton!
     
+    @IBOutlet weak var labelCalendar: UILabel!
+    
     @IBOutlet weak var labelChangePicture: UILabel!
     
     @IBOutlet weak var labelHistory: UILabel!
+    
+    
+    @IBOutlet weak var barLine: NSLayoutConstraint!
+    
 
     override func viewDidLoad() {
         
@@ -82,12 +91,6 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
     }
     
     func resizeProfilePic() {
-        
-     //   let screenSize: CGRect = UIScreen.main.bounds
-        
-        //self.imgView.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.width * 0.66)
-        
-//        self.imgView.frame = CGRect(x: screenSize.width/2, y: 30, width: screenSize.width/2, height: screenSize.width/2)
         
         self.imgView.layer.cornerRadius = 64
         self.imgView.clipsToBounds = true
@@ -150,6 +153,12 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         self.btnPhone.contentMode = .scaleAspectFill
         
         
+        
+        var calendarIconImage = FAKFontAwesome.calendarIcon(withSize: 13).image(with: CGSize(width: 13, height: 13))
+//        emailIconImage = emailIconImage?.imageWithColor(color: myColor)
+      //  labelCalendar.text "
+       // btnEmail.setImage(emailIconImage, for: .normal)
+        
     }
     
     @IBAction func phoneClick(_ sender: UIButton) {
@@ -178,9 +187,16 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
 
     }
     
+    @IBAction func emailClick(_ sender: UIButton) {
+        
+        UIApplication.shared.openURL(URL(string: "mailto://" + self.client.clientEmail)!)
+    }
 
     @IBAction func newHaircut(_ sender: UIButton)
     {
+        barLine.constant = 200
+        return
+        
         let date = Date()
         let calendar = Calendar.current
         let year = calendar.component(.year, from: date)
@@ -207,22 +223,38 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         
         self.ref.child("users/" + userId + "/clients/" + self.client.clientId + "/visits/" + visitdate + "/notes").setValue("") { (err, ref) in
             
-            self.labelHistory.text = "VISITS"
+            self.labelHistory.text = "PREVIOUS VISITS"
             self.client.clientVisits.append(ClientVisit(visitDate: visitdate, sortingDate: sorteddate, notes: ""))
             
             self.client.clientVisits.sort { $0.sortingDate > $1.sortingDate }
             self.tableView.reloadData()
-         
+            self.setLastVisit()
+            
             self.selectedVisitIndex = 0
             self.performSegue(withIdentifier: "pictureTimeSegue", sender: self)
         }
         
     }
 
+    func setLastVisit() {
+        
+        let stringLastVisit = client.clientVisits[0].visitDate
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        let dateLastVisit = dateFormatter.date(from:stringLastVisit)!
+        
+        let sinceLastVisit = Date().days(from: dateLastVisit).description
+        
+        labelLastVisit.text = sinceLastVisit + " days ago"
+
+    }
+    
     func fillData() {
         
         labelName.text = client.clientName
-        btnPhone.setTitle(client.clientPhone, for: .normal)
+
+        setLastVisit()
         
         if client.profileImg.imageUrl != "" {
             self.imgView.sd_setShowActivityIndicatorView(true)
@@ -289,6 +321,7 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
                 
                 self.client.clientVisits.remove(at: indexPath.row)
                 self.tableView.reloadData()
+                self.setLastVisit()
                 
                 // delete from firebase
                 let storageRef = FIRStorage.storage().reference().child(self.userId + "/clients/" + self.client.clientId + "/visits/" + visitToBeDeleted.visitDate)
@@ -473,6 +506,49 @@ extension ClientDetailView: PictureTimeDelegate {
         self.client.clientVisits.sort { $0.sortingDate > $1.sortingDate }
         
         self.tableView.reloadData()
+        setLastVisit()
+    }
+}
+
+extension Date {
+    /// Returns the amount of years from another date
+    func years(from date: Date) -> Int {
+        return Calendar.current.dateComponents([.year], from: date, to: self).year ?? 0
+    }
+    /// Returns the amount of months from another date
+    func months(from date: Date) -> Int {
+        return Calendar.current.dateComponents([.month], from: date, to: self).month ?? 0
+    }
+    /// Returns the amount of weeks from another date
+    func weeks(from date: Date) -> Int {
+        return Calendar.current.dateComponents([.weekOfMonth], from: date, to: self).weekOfMonth ?? 0
+    }
+    /// Returns the amount of days from another date
+    func days(from date: Date) -> Int {
+        return Calendar.current.dateComponents([.day], from: date, to: self).day ?? 0
+    }
+    /// Returns the amount of hours from another date
+    func hours(from date: Date) -> Int {
+        return Calendar.current.dateComponents([.hour], from: date, to: self).hour ?? 0
+    }
+    /// Returns the amount of minutes from another date
+    func minutes(from date: Date) -> Int {
+        return Calendar.current.dateComponents([.minute], from: date, to: self).minute ?? 0
+    }
+    /// Returns the amount of seconds from another date
+    func seconds(from date: Date) -> Int {
+        return Calendar.current.dateComponents([.second], from: date, to: self).second ?? 0
+    }
+    /// Returns the a custom time interval description from another date
+    func offset(from date: Date) -> String {
+        if years(from: date)   > 0 { return "\(years(from: date))y"   }
+        if months(from: date)  > 0 { return "\(months(from: date))M"  }
+        if weeks(from: date)   > 0 { return "\(weeks(from: date))w"   }
+        if days(from: date)    > 0 { return "\(days(from: date))d"    }
+        if hours(from: date)   > 0 { return "\(hours(from: date))h"   }
+        if minutes(from: date) > 0 { return "\(minutes(from: date))m" }
+        if seconds(from: date) > 0 { return "\(seconds(from: date))s" }
+        return ""
     }
 }
 
