@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		712C1A8D6E507F7AC790634F /* Pods_Prossimo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C5810A9DE4136D869B270F /* Pods_Prossimo.framework */; };
+		7905A68E1EC3D88B0008D2ED /* ClientsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7905A68D1EC3D88B0008D2ED /* ClientsTableViewCell.swift */; };
+		7905A69B1EC3FF260008D2ED /* ClientDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7905A69A1EC3FF260008D2ED /* ClientDetailsTableViewCell.swift */; };
 		9A0E86441E9B4EA400F02BA6 /* InstagramManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E86431E9B4EA400F02BA6 /* InstagramManager.swift */; };
 		9A0E86501E9BF85C00F02BA6 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0E864E1E9BF85C00F02BA6 /* Fabric.framework */; };
 		9A0E86511E9BF85C00F02BA6 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0E864F1E9BF85C00F02BA6 /* Crashlytics.framework */; };
@@ -125,6 +127,8 @@
 
 /* Begin PBXFileReference section */
 		24C5810A9DE4136D869B270F /* Pods_Prossimo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Prossimo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7905A68D1EC3D88B0008D2ED /* ClientsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientsTableViewCell.swift; path = Prossimo/ClientsTableViewCell.swift; sourceTree = "<group>"; };
+		7905A69A1EC3FF260008D2ED /* ClientDetailsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientDetailsTableViewCell.swift; path = Prossimo/ClientDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		9A0E86431E9B4EA400F02BA6 /* InstagramManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InstagramManager.swift; path = Prossimo/InstagramManager.swift; sourceTree = "<group>"; };
 		9A0E864E1E9BF85C00F02BA6 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		9A0E864F1E9BF85C00F02BA6 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -208,6 +212,8 @@
 				9AD6764F1E94A0FD00F8BBFB /* Assets.xcassets */,
 				9A3BC6451E5A9AA700E9CA71 /* AppDelegate.swift */,
 				9A3BC64B1E5A9AA700E9CA71 /* Main.storyboard */,
+				7905A69A1EC3FF260008D2ED /* ClientDetailsTableViewCell.swift */,
+				7905A68D1EC3D88B0008D2ED /* ClientsTableViewCell.swift */,
 				9A3BC6501E5A9AA700E9CA71 /* LaunchScreen.storyboard */,
 				9AE7A1BE1EB4336A0004FCC2 /* NewClientVC.swift */,
 				9A40F5911EADE19500092723 /* ThirdVC.swift */,
@@ -309,7 +315,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Elrifai, Rawad";
 				TargetAttributes = {
 					9A3BC6411E5A9AA700E9CA71 = {
@@ -485,7 +491,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		F0DD158469BA70BB44D73A26 /* [CP] Embed Pods Frameworks */ = {
@@ -512,12 +518,14 @@
 			files = (
 				9A371A251EB8003F00A52DDD /* FifthVC.swift in Sources */,
 				9A3BC6461E5A9AA700E9CA71 /* AppDelegate.swift in Sources */,
+				7905A69B1EC3FF260008D2ED /* ClientDetailsTableViewCell.swift in Sources */,
 				9AD116621E5E7A9F00113753 /* ClientDetailView.swift in Sources */,
 				9A40F5881EAB62C900092723 /* FinalVC.swift in Sources */,
 				9AE7A1C81EB5A5080004FCC2 /* EditClientVC.swift in Sources */,
 				9AE7A1BF1EB4336A0004FCC2 /* NewClientVC.swift in Sources */,
 				9A40F5921EADE19500092723 /* ThirdVC.swift in Sources */,
 				9AD116641E5E87C400113753 /* Client.swift in Sources */,
+				7905A68E1EC3D88B0008D2ED /* ClientsTableViewCell.swift in Sources */,
 				9A969DA21EA1B6EA004127CE /* KeychainManager.swift in Sources */,
 				9A371A261EB8003F00A52DDD /* SecondVC.swift in Sources */,
 				9A6875051EA8007A00996B76 /* FirstVC.swift in Sources */,
@@ -659,6 +667,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D89157497824667341AC8B22 /* Pods-Prossimo.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 8WVDFQN9GC;
@@ -681,6 +690,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A0F609DC844E3145CC67B243 /* Pods-Prossimo.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 8WVDFQN9GC;

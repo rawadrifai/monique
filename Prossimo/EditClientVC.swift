@@ -64,7 +64,7 @@ class EditClientVC: UIViewController, UINavigationControllerDelegate, UIImagePic
     func resizeProfilePic() {
         
         // if there's an image
-        if (self.client.profileImg.imageUrl != nil && self.client.profileImg.imageUrl != "") {
+        if (self.client.profileImg.imageUrl != "") {
             self.imgView.contentMode = .scaleAspectFill
         }
             // if there's no image (small camera icon, we want it to be center)

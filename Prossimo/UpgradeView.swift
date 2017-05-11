@@ -192,6 +192,15 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
                 
                 print("BUY OK:")
                 
+                // send event to clever tap
+                
+                let props = [
+                    "Product name": "Casio Chronograph Watch",
+                    "Price": sKproductToBuy.price,
+                    "Date": NSDate()
+                ] as [String : Any]
+                
+                CleverTap.sharedInstance()?.recordEvent("Product purchase", withProps: props)
                 
                 print(sKproductToBuy.productIdentifier)
                 

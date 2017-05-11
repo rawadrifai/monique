@@ -96,7 +96,7 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         self.imgView.clipsToBounds = true
         
         // if there's an image
-        if (self.client.profileImg.imageUrl != nil && self.client.profileImg.imageUrl != "") {
+        if (self.client.profileImg.imageUrl != "") {
             self.imgView.contentMode = .scaleAspectFill
         }
             // if there's no image (small camera icon, we want it to be center)
@@ -154,11 +154,6 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         
         
         
-        var calendarIconImage = FAKFontAwesome.calendarIcon(withSize: 13).image(with: CGSize(width: 13, height: 13))
-//        emailIconImage = emailIconImage?.imageWithColor(color: myColor)
-      //  labelCalendar.text "
-       // btnEmail.setImage(emailIconImage, for: .normal)
-        
     }
     
     @IBAction func phoneClick(_ sender: UIButton) {
@@ -192,9 +187,21 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         UIApplication.shared.openURL(URL(string: "mailto://" + self.client.clientEmail)!)
     }
 
+    @IBOutlet weak var line: UIView!
     @IBAction func newHaircut(_ sender: UIButton)
     {
-        barLine.constant = 200
+        
+        UIView.animate(withDuration: 0.5) {
+            
+            self.line.frame = CGRect(
+                x: self.line.frame.minX + self.line.frame.width,
+                y: self.line.frame.minY,
+                width: self.line.frame.width,
+                height: self.line.frame.height)
+            
+            
+        }
+        
         return
         
         let date = Date()
@@ -235,6 +242,18 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         }
         
     }
+    
+  
+    @IBOutlet weak var btnVisits: UIButton!
+    
+    @IBOutlet weak var btnFavorites: UIButton!
+    
+    
+    @IBAction func visitsClicked(_ sender: UIButton) {
+    }
+    
+    @IBOutlet weak var favoritesClicked: UIButton!
+    
 
     func setLastVisit() {
         
@@ -279,10 +298,9 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "cell")
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? ClientDetailsTableViewCell
         {
-        
-            cell.textLabel?.text = self.client.clientVisits[indexPath.row].visitDate
+            cell.labelVisitDate.text = self.client.clientVisits[indexPath.row].visitDate
             return cell
         }
         

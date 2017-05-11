@@ -1,4 +1,7 @@
 PODS:
+  - CleverTap-iOS-SDK (3.1.2):
+    - CleverTap-iOS-SDK/Main (= 3.1.2)
+  - CleverTap-iOS-SDK/Main (3.1.2)
   - Firebase (3.14.0):
     - Firebase/Core (= 3.14.0)
   - Firebase/Auth (3.14.0):
@@ -73,6 +76,7 @@ PODS:
   - SDWebImage/Core (4.0.0)
 
 DEPENDENCIES:
+  - CleverTap-iOS-SDK
   - Firebase
   - Firebase/Auth
   - Firebase/Core
@@ -87,6 +91,7 @@ DEPENDENCIES:
   - SDWebImage
 
 SPEC CHECKSUMS:
+  CleverTap-iOS-SDK: c054bb514fd8efafc92180acf234711097ad6773
   Firebase: 85a581fb04e44f63ae9f4fbc8d6dabf4a4c18653
   FirebaseAnalytics: 0d1b7d81d5021155be37702a94ba1ec16d45365d
   FirebaseAuth: cc8a1824170adbd351edb7f994490a3fb5c18be6
@@ -106,6 +111,6 @@ SPEC CHECKSUMS:
   NYTPhotoViewer: e80e8767f3780d2df37c6f72cbab15d6c7232911
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
 
-PODFILE CHECKSUM: 1da84e20e8f48c5dd1672f2f5d7a53c564e1f064
+PODFILE CHECKSUM: 3246da2d95c8a6323a1be4518d00aea842193766
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.1

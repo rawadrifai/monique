@@ -19,4 +19,5 @@ target 'Prossimo' do
   pod 'JNKeychain'
   pod 'IQKeyboardManagerSwift'
   pod 'NYTPhotoViewer', '~> 1.1.0'
+  pod 'CleverTap-iOS-SDK'
   end

@@ -67,7 +67,7 @@ class NewClientVC: UIViewController, UINavigationControllerDelegate, UIImagePick
         
         
         // if there's an image
-        if (self.client.profileImg.imageUrl != nil && self.client.profileImg.imageUrl != "") {
+        if (self.client.profileImg.imageUrl != "") {
             self.imgView.contentMode = .scaleAspectFill
         }
             // if there's no image (small camera icon, we want it to be center)
@@ -236,6 +236,10 @@ class NewClientVC: UIViewController, UINavigationControllerDelegate, UIImagePick
                 uploadImageToFirebase(data: compressedImageData!, path: "users/" + self.userId + "/clients/" + self.client.clientId + "/profile/", fileName: UUID().uuidString)
             }
             
+            // record clever tap event
+            CleverTap.sharedInstance()?.recordEvent("Client added")
+            
+            
             if self.subscription != "pro" {
                 let clientsLeft = self.trialClientsLimit - numberOfClients - 1
                 self.alertAboutClients(title: "You have " + String(clientsLeft) + " free client(s)", message: "Upgrade to Pro for UNLIMITED storage! Keep your clients backed up everywhere you go.")
@@ -244,6 +248,7 @@ class NewClientVC: UIViewController, UINavigationControllerDelegate, UIImagePick
             else {
                 let _ = self.navigationController?.popViewController(animated: true)
             }
+            
         }
     }
     

@@ -81,6 +81,21 @@ class SaveUserInfo: UIViewController {
                 Crashlytics.sharedInstance().setUserIdentifier(user["deviceId"])
                 Crashlytics.sharedInstance().setUserName(user["name"])
                 Crashlytics.sharedInstance().setUserEmail(user["email"])
+                
+                // store clevertap info
+                
+                let profile: Dictionary<String, AnyObject> = [
+                    "Name": user["name"] as AnyObject,                 // String
+                    "Identity": self.userId as AnyObject,                   // String or number
+                    "Email": user["email"] as AnyObject,              // Email address of the user
+                    "Phone": user["phone"] as AnyObject,                // Phone (with the country code, starting with +)
+                                       // optional fields. controls whether the user will be sent email, push etc.
+                    
+                    "MSG-push": true as AnyObject,                       // Enable push notifications
+                    "MSG-sms": true as AnyObject                        // Disable SMS notifications
+                ]
+                
+                CleverTap.sharedInstance()?.profilePush(profile)
 
                 self.performSegue(withIdentifier: "loginSegue", sender: self)
             }

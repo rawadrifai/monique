@@ -58,11 +58,10 @@ class InfoView: UITableViewController {
         }
         else if segue.identifier == "signoutSegue" {
             
-            if let destination = segue.destination as? Login {
+            if let _ = segue.destination as? Login {
                 
                 UserDefaults.standard.removeObject(forKey: "loggedInUser")
                 
-               // destination.signoutClicked = true
             }
         }
         

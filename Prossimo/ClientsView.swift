@@ -107,15 +107,40 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "cell")
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ClientsTableViewCell
+
+        
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ClientsTableViewCell
         {
+            let c = Client()
+            
             // check what's the tableview passed
             if tableView == self.tableView {
-                cell.textLabel?.text = cellData[indexPath.row].clientName
+                c.clientName = cellData[indexPath.row].clientName
+                c.profileImg = cellData[indexPath.row].profileImg
+                
+               
             }
             else {
-                cell.textLabel?.text = filteredData[indexPath.row].clientName
+                c.clientName = filteredData[indexPath.row].clientName
+                c.profileImg = filteredData[indexPath.row].profileImg
             }
+            
+            cell.labelClientName.text = c.clientName
+            
+            if c.profileImg.imageUrl != "" {
+                cell.clientImageView.sd_setImage(with: URL(string: c.profileImg.imageUrl))
+            }
+            else {
+                cell.clientImageView.image = UIImage(imageLiteralResourceName: "user-icon")
+                cell.clientImageView.layer.borderWidth = 1
+            }
+            
+            // make image round
+            cell.clientImageView.layer.cornerRadius = 25
+            cell.clientImageView.clipsToBounds = true
+            
+            
             return cell
         }
         

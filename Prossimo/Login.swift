@@ -316,14 +316,14 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         } else if segue.identifier == "saveUserInfoSegue" {
             
             // set the userId
-            if let destinationViewController = segue.destination as? UIViewController {
+            let destinationViewController = segue.destination
                 
                 
                 if let destinationView = destinationViewController as? SaveUserInfo {
                     destinationView.userId = self.userId
                 }
                 
-            }
+            
         }
         
     }
