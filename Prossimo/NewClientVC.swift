@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 import FirebaseStorage
+import Contacts
 
 extension NewClientVC: UITextFieldDelegate {
     
@@ -32,6 +33,8 @@ class NewClientVC: UIViewController, UINavigationControllerDelegate, UIImagePick
     var subscription:String!
     var numberOfClients:Int!
     var trialClientsLimit:Int!
+    
+    var contact:CNContact?
     
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var txfName: UITextField!
@@ -58,8 +61,47 @@ class NewClientVC: UIViewController, UINavigationControllerDelegate, UIImagePick
         setBorders()
         resizeProfilePic()
         
+        populateContact()
+    }
+    
+    
+    
+    func populateContact() {
         
-        
+        if self.contact != nil {
+            
+            var fullName = ""
+            if contact?.givenName != nil {
+                fullName += (contact?.givenName)!
+            }
+            
+            if contact?.familyName != nil {
+                if fullName != "" {
+                    fullName += " "
+                }
+                fullName += (contact?.familyName)!
+            }
+            
+            
+            var emailAddresses = ""
+            if !(contact?.emailAddresses.isEmpty)! {
+                let emailString = (((contact?.emailAddresses[0] as AnyObject).value(forKey: "labelValuePair") as AnyObject).value(forKey: "value"))
+                
+                emailAddresses = emailString as! String
+            }
+            
+            var phoneNumbers = ""
+            if !(contact?.emailAddresses.isEmpty)! {
+                let phoneString = (((contact?.phoneNumbers[0] as AnyObject).value(forKey: "labelValuePair") as AnyObject).value(forKey: "value"))
+                
+                phoneNumbers = phoneString as! String
+            }
+            
+            
+            txfName.text = fullName
+            txfPhone.text = phoneNumbers
+            txfEmail.text = emailAddresses
+        }
     }
     
     func resizeProfilePic() {

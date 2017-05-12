@@ -69,7 +69,14 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Clients" id="y7h-ar-T1R">
+                        <barButtonItem key="leftBarButtonItem" title="Import" id="2FV-pB-QDe">
+                            <color key="tintColor" red="0.38039215686274508" green="1" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="importClick:" destination="ziU-oG-owb" id="Zl3-0G-BZS"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="9sU-GN-Vq4">
+                            <color key="tintColor" red="0.38039215686274508" green="1" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="Bpa-6O-VMt" kind="show" identifier="newClientSegue" id="si4-HL-2bY"/>
                             </connections>

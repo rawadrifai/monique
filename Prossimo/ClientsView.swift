@@ -13,6 +13,8 @@ import Firebase
 import FirebaseDatabase
 import Fabric
 import Crashlytics
+import Contacts
+import ContactsUI
 
 class ClientsView: UITableViewController, UISearchResultsUpdating {
     
@@ -196,6 +198,7 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
         
     }
     
+    var contactToImport:CNContact?
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -228,6 +231,12 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
                 destination.subscription = subscription
                 destination.numberOfClients = self.tableView.numberOfRows(inSection: 0)
                 destination.delegate = self
+                
+                if let s = sender as? UIBarButtonItem {
+                    if s.title == "Import" {
+                        destination.contact = contactToImport
+                    }
+                }
             }
         }
     }
@@ -338,13 +347,37 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
             //print(error.localizedDescription)
         }
     }
+    
+    @IBAction func importClick(_ sender: UIBarButtonItem) {
+        
+        let entityType = CNEntityType.contacts
+        let authStatus = CNContactStore.authorizationStatus(for: entityType)
+        
+        if authStatus == .notDetermined {
+            let contactStore = CNContactStore.init()
+            contactStore.requestAccess(for: entityType, completionHandler: { (success, nil) in
+                if (success) {
+                    self.openContacts()
+                }
+
+            })
+        }
+        else if authStatus == .authorized {
+            self.openContacts()
+        }
+    }
+    
+    func openContacts() {
+        let contactPicker = CNContactPickerViewController.init()
+        contactPicker.delegate = self
+        self.present(contactPicker, animated: true) {}
+    }
 
 }
 
 
 
 extension ClientsView:NewClientDelegate {
-    
     
     func dataChanged(client:Client) {
         
@@ -358,4 +391,15 @@ extension ClientsView:NewClientDelegate {
 }
 
 
+extension ClientsView:CNContactPickerDelegate {
+    
+    func contactPickerDidCancel(_ picker: CNContactPickerViewController) {
+        picker.dismiss(animated: true) {}
+    }
+    
+    func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
+        self.contactToImport = contact
+        self.performSegue(withIdentifier: "newClientSegue", sender: self)
+    }
+}
 
