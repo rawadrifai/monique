@@ -68,8 +68,9 @@
                             <outlet property="delegate" destination="ziU-oG-owb" id="Jt7-K5-I81"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Clients" id="y7h-ar-T1R">
-                        <barButtonItem key="leftBarButtonItem" title="Import" id="2FV-pB-QDe">
+                        <barButtonItem key="leftBarButtonItem" title="" id="2FV-pB-QDe">
                             <color key="tintColor" red="0.38039215686274508" green="1" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="importClick:" destination="ziU-oG-owb" id="Zl3-0G-BZS"/>
@@ -82,7 +83,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="btnImport" destination="2FV-pB-QDe" id="D2M-Qf-fQr"/>
                         <outlet property="searchDisplayController" destination="Gic-RT-EUo" id="r2P-iJ-0AT"/>
                         <outlet property="tableView" destination="wtp-iS-dcW" id="OsO-XC-mEq"/>
                         <segue destination="cdu-h2-G3J" kind="show" identifier="clientDetailsSegue" id="TVX-aX-8z0"/>
@@ -293,10 +296,17 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GPi-Jz-OOj">
-                                    <rect key="frame" x="20" y="182" width="335" height="1"/>
+                                    <rect key="frame" x="20" y="182" width="335" height="0.5"/>
                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="1" id="7RZ-eI-biS"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="caz-wU-yD9">
+                                    <rect key="frame" x="0.0" y="302" width="375" height="15"/>
+                                    <color key="backgroundColor" red="0.88747239428142166" green="0.89380019296322366" blue="0.91278358900862944" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="15" id="VYE-fK-bIj"/>
                                     </constraints>
                                 </view>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ZB7-MD-LbL">
@@ -335,12 +345,15 @@
                             <constraints>
                                 <constraint firstItem="vmL-sm-0EM" firstAttribute="centerX" secondItem="oKr-3Z-Cjl" secondAttribute="centerX" id="4EV-Kb-qnC"/>
                                 <constraint firstItem="vmL-sm-0EM" firstAttribute="top" secondItem="GPi-Jz-OOj" secondAttribute="bottom" constant="30" id="4nG-pU-4jp"/>
+                                <constraint firstAttribute="trailing" secondItem="caz-wU-yD9" secondAttribute="trailing" id="8nz-YG-xHj"/>
                                 <constraint firstItem="ZB7-MD-LbL" firstAttribute="top" secondItem="vmL-sm-0EM" secondAttribute="bottom" constant="42" id="9NF-m3-6la"/>
+                                <constraint firstItem="caz-wU-yD9" firstAttribute="leading" secondItem="oKr-3Z-Cjl" secondAttribute="leading" id="9qN-43-EM2"/>
                                 <constraint firstItem="QRP-1U-dFh" firstAttribute="centerX" secondItem="oKr-3Z-Cjl" secondAttribute="centerX" id="GOY-Bm-MYQ"/>
                                 <constraint firstItem="GPi-Jz-OOj" firstAttribute="leading" secondItem="oKr-3Z-Cjl" secondAttribute="leading" constant="20" id="JDf-tp-hCN"/>
                                 <constraint firstItem="QRP-1U-dFh" firstAttribute="top" secondItem="oKr-3Z-Cjl" secondAttribute="top" constant="20" id="RaN-vb-Ebn"/>
                                 <constraint firstItem="31A-Ud-7kU" firstAttribute="leading" secondItem="oKr-3Z-Cjl" secondAttribute="leading" constant="20" id="SRh-hY-p5v"/>
                                 <constraint firstItem="GPi-Jz-OOj" firstAttribute="top" secondItem="QRP-1U-dFh" secondAttribute="bottom" constant="34" id="Sya-xW-Mze"/>
+                                <constraint firstItem="caz-wU-yD9" firstAttribute="top" secondItem="vmL-sm-0EM" secondAttribute="bottom" constant="19" id="WLk-Uc-LXf"/>
                                 <constraint firstAttribute="trailing" secondItem="GPi-Jz-OOj" secondAttribute="trailing" constant="20" id="dbe-cW-i4f"/>
                                 <constraint firstItem="31A-Ud-7kU" firstAttribute="top" secondItem="vmL-sm-0EM" secondAttribute="bottom" constant="74" id="kP6-Rb-1K7"/>
                                 <constraint firstItem="ZB7-MD-LbL" firstAttribute="leading" secondItem="oKr-3Z-Cjl" secondAttribute="leading" constant="20" id="w3j-TN-Qz6"/>
@@ -1252,12 +1265,15 @@ This Agreement was last modified on 03/20/2017</string>
                                     <action selector="cameraClick:" destination="o9q-rL-Ugv" id="6sF-zi-8xe"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem systemItem="action" id="O9Y-Ph-nIP"/>
+                            <barButtonItem title="" id="O9Y-Ph-nIP">
+                                <color key="tintColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="btnHaircutDetails" destination="rag-x9-7eB" id="oxZ-Pb-ewu"/>
+                        <outlet property="btnStar" destination="O9Y-Ph-nIP" id="Kzv-dK-J2A"/>
                         <outlet property="labelNotes" destination="Kcr-Wf-CGE" id="fov-Xh-pSs"/>
                         <outlet property="txvNotes" destination="VZp-ys-fOQ" id="riv-zn-yHF"/>
                     </connections>

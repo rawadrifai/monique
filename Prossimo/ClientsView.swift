@@ -15,6 +15,7 @@ import Fabric
 import Crashlytics
 import Contacts
 import ContactsUI
+import FontAwesomeKit
 
 class ClientsView: UITableViewController, UISearchResultsUpdating {
     
@@ -29,7 +30,9 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
     var subscription:String!
     var cellData = [Client]()
     var filteredData = [Client]()
+    var importClicked:Bool!
     
+    @IBOutlet weak var btnImport: UIBarButtonItem!
     
     // every time the page shows (including when going back to it from the nav)
     override func viewDidAppear(_ animated: Bool) {
@@ -38,11 +41,20 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
         
         
         // get all the user related data
-          getUserData()
+        getUserData()
         
         
+        importClicked = false
+        
+        setIcons()
     }
 
+    func setIcons() {
+        var contactsIconImage = FAKFontAwesome.userPlusIcon(withSize: 25).image(with: CGSize(width: 35, height: 25))
+        contactsIconImage = contactsIconImage?.imageWithColor(color: Constants.myColor)
+        btnImport.image = contactsIconImage
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -232,10 +244,9 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
                 destination.numberOfClients = self.tableView.numberOfRows(inSection: 0)
                 destination.delegate = self
                 
-                if let s = sender as? UIBarButtonItem {
-                    if s.title == "Import" {
-                        destination.contact = contactToImport
-                    }
+                if importClicked {
+                    
+                    destination.contact = contactToImport
                 }
             }
         }
@@ -368,6 +379,7 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
     }
     
     func openContacts() {
+        self.importClicked = true
         let contactPicker = CNContactPickerViewController.init()
         contactPicker.delegate = self
         self.present(contactPicker, animated: true) {}
@@ -394,7 +406,9 @@ extension ClientsView:NewClientDelegate {
 extension ClientsView:CNContactPickerDelegate {
     
     func contactPickerDidCancel(_ picker: CNContactPickerViewController) {
+        self.importClicked = false
         picker.dismiss(animated: true) {}
+        
     }
     
     func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {

@@ -2,8 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>FontAwesome.otf</string>
+	</array>
 	<key>NSContactsUsageDescription</key>
-	<string>Prossimo needs to acces your contacts</string>
+	<string></string>
 	<key>CleverTapAccountID</key>
 	<string>8R5-W74-494Z</string>
 	<key>CleverTapToken</key>

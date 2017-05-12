@@ -113,32 +113,31 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         self.btnNewHC.clipsToBounds = true
     }
 
-    let myColor = UIColor(red:0.51, green:1.00, blue:0.86, alpha:1.0)
     
     func setIcons() {
         
         
-        // phone icon
+        // camera icon
         var cameraIconImage = FAKFontAwesome.cameraIcon(withSize: 60).image(with: CGSize(width: 60, height: 60))
-        cameraIconImage = cameraIconImage?.imageWithColor(color: UIColor.black)
+        cameraIconImage = cameraIconImage?.imageWithColor(color: Constants.myColor)
         imgView.image = cameraIconImage
         
         
         // phone icon
         var phoneIconImage = FAKFontAwesome.phoneIcon(withSize: 25).image(with: CGSize(width: 40, height: 40))
-        phoneIconImage = phoneIconImage?.imageWithColor(color: myColor)
+        phoneIconImage = phoneIconImage?.imageWithColor(color: Constants.myColor)
         btnPhone.setImage(phoneIconImage, for: .normal)
         
         
         // sms icon
         var smsIconImage = FAKFontAwesome.commentingOIcon(withSize: 25).image(with: CGSize(width: 40, height: 40))
-        smsIconImage = smsIconImage?.imageWithColor(color: myColor)
+        smsIconImage = smsIconImage?.imageWithColor(color: Constants.myColor)
         btnText.setImage(smsIconImage, for: .normal)
         
         
         // email icon
         var emailIconImage = FAKFontAwesome.envelopeOIcon(withSize: 25).image(with: CGSize(width: 40, height: 40))
-        emailIconImage = emailIconImage?.imageWithColor(color: myColor)
+        emailIconImage = emailIconImage?.imageWithColor(color: Constants.myColor)
         btnEmail.setImage(emailIconImage, for: .normal)
         
         
@@ -219,7 +218,7 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
             if v.visitDate == visitdate {
                 
                 self.selectedVisitIndex = 0
-                
+            
                 displayNewHCAlert()
                 
                 return
@@ -395,13 +394,42 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
     
     func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
+        displayProfileImageAlert()
+        
+        
+    }
+    
+    func displayProfileImageAlert() {
+        
         let image = UIImagePickerController()
         image.allowsEditing = true
         image.delegate = self
         
-        image.sourceType = UIImagePickerControllerSourceType.camera
-
-        self.present(image, animated: true)
+        
+        
+        let profileImageAlert = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        
+        profileImageAlert.addAction(UIAlertAction(title: "Take a New Photo", style: .default, handler: { (action: UIAlertAction!) in
+            
+            image.sourceType = UIImagePickerControllerSourceType.camera
+            self.present(image, animated: true)
+            
+        }))
+        
+        profileImageAlert.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (action: UIAlertAction!) in
+            
+            image.sourceType = UIImagePickerControllerSourceType.photoLibrary
+            self.present(image, animated: true)
+            
+        }))
+        
+        
+        
+        profileImageAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+            
+        }))
+        
+        present(profileImageAlert, animated: true, completion: nil)
     }
     
     

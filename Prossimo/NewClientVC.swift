@@ -68,39 +68,39 @@ class NewClientVC: UIViewController, UINavigationControllerDelegate, UIImagePick
     
     func populateContact() {
         
-        if self.contact != nil {
+        if let c = self.contact {
             
-            var fullName = ""
-            if contact?.givenName != nil {
-                fullName += (contact?.givenName)!
-            }
             
-            if contact?.familyName != nil {
-                if fullName != "" {
-                    fullName += " "
-                }
-                fullName += (contact?.familyName)!
-            }
+            var fullName = c.givenName + " " + c.familyName
+            fullName = fullName.trimmingCharacters(in: .whitespaces)
+            
+
             
             
             var emailAddresses = ""
-            if !(contact?.emailAddresses.isEmpty)! {
-                let emailString = (((contact?.emailAddresses[0] as AnyObject).value(forKey: "labelValuePair") as AnyObject).value(forKey: "value"))
+            if !c.emailAddresses.isEmpty {
+                let emailString = (((c.emailAddresses[0] as AnyObject).value(forKey: "labelValuePair") as AnyObject).value(forKey: "value"))
                 
                 emailAddresses = emailString as! String
             }
             
             var phoneNumbers = ""
-            if !(contact?.emailAddresses.isEmpty)! {
-                let phoneString = (((contact?.phoneNumbers[0] as AnyObject).value(forKey: "labelValuePair") as AnyObject).value(forKey: "value"))
+            if !c.phoneNumbers.isEmpty {
+                let phoneString = ((((c.phoneNumbers[0] as AnyObject).value(forKey: "labelValuePair") as AnyObject).value(forKey: "value") as AnyObject).value(forKey: "stringValue"))
                 
                 phoneNumbers = phoneString as! String
             }
-            
+
+            var imageData = UIImage()
+            if c.imageDataAvailable {
+                imageData = UIImage(data: c.imageData!)!
+                self.imgView.image = imageData
+            }
             
             txfName.text = fullName
             txfPhone.text = phoneNumbers
             txfEmail.text = emailAddresses
+            
         }
     }
     

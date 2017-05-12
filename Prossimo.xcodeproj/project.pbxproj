@@ -10,6 +10,8 @@
 		712C1A8D6E507F7AC790634F /* Pods_Prossimo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C5810A9DE4136D869B270F /* Pods_Prossimo.framework */; };
 		7905A68E1EC3D88B0008D2ED /* ClientsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7905A68D1EC3D88B0008D2ED /* ClientsTableViewCell.swift */; };
 		7905A69B1EC3FF260008D2ED /* ClientDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7905A69A1EC3FF260008D2ED /* ClientDetailsTableViewCell.swift */; };
+		7905A6AA1EC655D10008D2ED /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7905A6A91EC655D10008D2ED /* Constants.swift */; };
+		7905A6B71EC663AE0008D2ED /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7905A6B61EC663AE0008D2ED /* FontAwesome.otf */; };
 		9A0E86441E9B4EA400F02BA6 /* InstagramManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E86431E9B4EA400F02BA6 /* InstagramManager.swift */; };
 		9A0E86501E9BF85C00F02BA6 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0E864E1E9BF85C00F02BA6 /* Fabric.framework */; };
 		9A0E86511E9BF85C00F02BA6 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0E864F1E9BF85C00F02BA6 /* Crashlytics.framework */; };
@@ -29,7 +31,6 @@
 		9A40F5921EADE19500092723 /* ThirdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A40F5911EADE19500092723 /* ThirdVC.swift */; };
 		9A6875051EA8007A00996B76 /* FirstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6875041EA8007A00996B76 /* FirstVC.swift */; };
 		9A6875121EA8048000996B76 /* FourthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6875111EA8048000996B76 /* FourthVC.swift */; };
-		9A85BC521EBD3B910077C9D7 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9A371A2D1EB822E500A52DDD /* FontAwesome.otf */; };
 		9A969D881E9D4C8D004127CE /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A969D871E9D4C8D004127CE /* StoreKit.framework */; };
 		9A969DA01E9EEC9E004127CE /* UpgradeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A969D9F1E9EEC9E004127CE /* UpgradeView.swift */; };
 		9A969DA21EA1B6EA004127CE /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A969DA11EA1B6EA004127CE /* KeychainManager.swift */; };
@@ -129,6 +130,8 @@
 		24C5810A9DE4136D869B270F /* Pods_Prossimo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Prossimo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7905A68D1EC3D88B0008D2ED /* ClientsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientsTableViewCell.swift; path = Prossimo/ClientsTableViewCell.swift; sourceTree = "<group>"; };
 		7905A69A1EC3FF260008D2ED /* ClientDetailsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientDetailsTableViewCell.swift; path = Prossimo/ClientDetailsTableViewCell.swift; sourceTree = "<group>"; };
+		7905A6A91EC655D10008D2ED /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Prossimo/Constants.swift; sourceTree = "<group>"; };
+		7905A6B61EC663AE0008D2ED /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
 		9A0E86431E9B4EA400F02BA6 /* InstagramManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InstagramManager.swift; path = Prossimo/InstagramManager.swift; sourceTree = "<group>"; };
 		9A0E864E1E9BF85C00F02BA6 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		9A0E864F1E9BF85C00F02BA6 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -138,7 +141,6 @@
 		9A371A271EB8007000A52DDD /* CrashController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CrashController.swift; path = Prossimo/CrashController.swift; sourceTree = "<group>"; };
 		9A371A281EB8007000A52DDD /* OptionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OptionsView.swift; path = Prossimo/OptionsView.swift; sourceTree = "<group>"; };
 		9A371A2B1EB8008A00A52DDD /* PageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PageVC.swift; path = Prossimo/PageVC.swift; sourceTree = "<group>"; };
-		9A371A2D1EB822E500A52DDD /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.otf; path = Pods/FontAwesomeKit/FontAwesomeKit/FontAwesome.otf; sourceTree = "<group>"; };
 		9A371A311EB9A84B00A52DDD /* ExamplePhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamplePhoto.swift; sourceTree = "<group>"; };
 		9A371A321EB9A84B00A52DDD /* PhotosProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosProvider.swift; sourceTree = "<group>"; };
 		9A3BC6421E5A9AA700E9CA71 /* Prossimo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Prossimo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -210,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				9AD6764F1E94A0FD00F8BBFB /* Assets.xcassets */,
+				7905A6A91EC655D10008D2ED /* Constants.swift */,
 				9A3BC6451E5A9AA700E9CA71 /* AppDelegate.swift */,
 				9A3BC64B1E5A9AA700E9CA71 /* Main.storyboard */,
 				7905A69A1EC3FF260008D2ED /* ClientDetailsTableViewCell.swift */,
@@ -218,13 +221,13 @@
 				9AE7A1BE1EB4336A0004FCC2 /* NewClientVC.swift */,
 				9A40F5911EADE19500092723 /* ThirdVC.swift */,
 				9A969DA11EA1B6EA004127CE /* KeychainManager.swift */,
+				7905A6B61EC663AE0008D2ED /* FontAwesome.otf */,
 				9A63D3151E94502900F67805 /* BridgingHeader.h */,
 				9A6875041EA8007A00996B76 /* FirstVC.swift */,
 				9A371A231EB8003F00A52DDD /* FifthVC.swift */,
 				9A371A241EB8003F00A52DDD /* SecondVC.swift */,
 				9A371A271EB8007000A52DDD /* CrashController.swift */,
 				9A371A281EB8007000A52DDD /* OptionsView.swift */,
-				9A371A2D1EB822E500A52DDD /* FontAwesome.otf */,
 				9A371A311EB9A84B00A52DDD /* ExamplePhoto.swift */,
 				9A371A321EB9A84B00A52DDD /* PhotosProvider.swift */,
 				9A6875111EA8048000996B76 /* FourthVC.swift */,
@@ -441,7 +444,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AD2B3681E8C2F3800DF308C /* GoogleService-Info.plist in Resources */,
-				9A85BC521EBD3B910077C9D7 /* FontAwesome.otf in Resources */,
+				7905A6B71EC663AE0008D2ED /* FontAwesome.otf in Resources */,
 				9A3BC6521E5A9AA700E9CA71 /* LaunchScreen.storyboard in Resources */,
 				9AD676501E94A0FD00F8BBFB /* Assets.xcassets in Resources */,
 				9A3BC64D1E5A9AA700E9CA71 /* Main.storyboard in Resources */,
@@ -527,6 +530,7 @@
 				9AD116641E5E87C400113753 /* Client.swift in Sources */,
 				7905A68E1EC3D88B0008D2ED /* ClientsTableViewCell.swift in Sources */,
 				9A969DA21EA1B6EA004127CE /* KeychainManager.swift in Sources */,
+				7905A6AA1EC655D10008D2ED /* Constants.swift in Sources */,
 				9A371A261EB8003F00A52DDD /* SecondVC.swift in Sources */,
 				9A6875051EA8007A00996B76 /* FirstVC.swift in Sources */,
 				9A1856E31E84FCFE00C2EA2F /* ImageView.swift in Sources */,

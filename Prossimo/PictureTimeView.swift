@@ -24,6 +24,7 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
     var ref: FIRDatabaseReference!
     var delegate: PictureTimeDelegate?
     
+    @IBOutlet weak var btnStar: UIBarButtonItem!
     @IBOutlet weak var labelNotes: UILabel!
     
     
@@ -34,11 +35,27 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         self.ref = FIRDatabase.database().reference()
         loadVisit()
         setBorders()
+        setStarIcon(selected: false)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        
+    override func viewWillDisappear(_ animated: Bool)
+    {
         save()
+    }
+    
+    func setStarIcon(selected:Bool) {
+        var starIconImage = UIImage()
+        
+        if selected {
+            starIconImage = FAKFontAwesome.starIcon(withSize: 25).image(with: CGSize(width: 35, height: 25))
+
+        } else {
+            starIconImage = FAKFontAwesome.starOIcon(withSize: 25).image(with: CGSize(width: 35, height: 25))
+        }
+        
+        starIconImage = starIconImage.imageWithColor(color: Constants.myColor)!
+        btnStar.image = starIconImage
+        
     }
     
     func setBorders() {
