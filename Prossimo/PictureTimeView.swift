@@ -35,7 +35,7 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         self.ref = FIRDatabase.database().reference()
         loadVisit()
         setBorders()
-        setStarIcon(selected: false)
+        
     }
     
     override func viewWillDisappear(_ animated: Bool)
@@ -253,7 +253,7 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
     func loadVisit() {
         
         self.txvNotes.text = self.client.clientVisits[selectedVisitIndex].notes
-        
+        setStarIcon(selected: self.client.clientVisits[selectedVisitIndex].starred)
     }
     
     
@@ -266,9 +266,9 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         self.client.clientVisits[selectedVisitIndex].notes = notes
         self.ref.child("users/" + userId + "/clients/" + self.client.clientId + "/visits/" + selectedVisit.visitDate + "/notes").setValue(notes)
             
-            if let del = self.delegate {
-                del.historyChanged(client: self.client)
-            }
+        if let del = self.delegate {
+            del.historyChanged(client: self.client)
+        }
     }
     
     
@@ -308,6 +308,23 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
+    
+    
+    @IBAction func starClicked(_ sender: UIBarButtonItem) {
+        
+        //flip it
+        self.client.clientVisits[selectedVisitIndex].starred = !self.client.clientVisits[selectedVisitIndex].starred
+        setStarIcon(selected: self.client.clientVisits[selectedVisitIndex].starred)
+        
+        let selectedVisit = self.client.clientVisits[selectedVisitIndex]
+
+        self.ref.child("users/" + userId + "/clients/" + self.client.clientId + "/visits/" + selectedVisit.visitDate + "/starred").setValue(self.client.clientVisits[selectedVisitIndex].starred)
+        
+        if let del = self.delegate {
+            del.historyChanged(client: self.client)
+        }
+    }
+    
     
     func uploadImageToFirebase(data: Data, path: String, fileName: String) {
         

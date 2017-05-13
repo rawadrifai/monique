@@ -56,6 +56,7 @@ class ClientVisit {
     var notes:String
     var images:[ImageObject]
     var options:[String:String]
+    var starred:Bool
     
     init() {
         visitDate = ""
@@ -63,6 +64,7 @@ class ClientVisit {
         notes = ""
         images = [ImageObject]()
         options = [String:String]()
+        starred=false
     }
     
     init(visitDate:String, sortingDate:String, notes:String) {
@@ -71,6 +73,7 @@ class ClientVisit {
         self.notes = notes
         self.images = [ImageObject]()
         options = [String:String]()
+        starred=false
     }
 }
 

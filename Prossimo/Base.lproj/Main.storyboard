@@ -1147,7 +1147,7 @@ This Agreement was last modified on 03/20/2017</string>
             </objects>
             <point key="canvasLocation" x="3167" y="-521"/>
         </scene>
-        <!--Picture Time View-->
+        <!--Haircut Description-->
         <scene sceneID="A0a-IB-LWO">
             <objects>
                 <tableViewController id="o9q-rL-Ugv" customClass="PictureTimeView" customModule="Prossimo" customModuleProvider="target" sceneMemberID="viewController">
@@ -1257,7 +1257,7 @@ This Agreement was last modified on 03/20/2017</string>
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="G74-vR-hE1">
+                    <navigationItem key="navigationItem" title="Haircut Description" id="G74-vR-hE1">
                         <rightBarButtonItems>
                             <barButtonItem systemItem="camera" id="Nih-Wo-aEo">
                                 <color key="tintColor" red="0.37996858960000002" green="1" blue="0.83935681090000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1265,8 +1265,11 @@ This Agreement was last modified on 03/20/2017</string>
                                     <action selector="cameraClick:" destination="o9q-rL-Ugv" id="6sF-zi-8xe"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="" id="O9Y-Ph-nIP">
+                            <barButtonItem id="O9Y-Ph-nIP">
                                 <color key="tintColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="starClicked:" destination="o9q-rL-Ugv" id="eiZ-YB-nyk"/>
+                                </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>

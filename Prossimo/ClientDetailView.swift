@@ -271,7 +271,7 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
     func fillData() {
         
         labelName.text = client.clientName
-
+        
         setLastVisit()
         
         if client.profileImg.imageUrl != "" {
