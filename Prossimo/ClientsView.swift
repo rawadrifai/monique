@@ -34,6 +34,9 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
     
     @IBOutlet weak var btnImport: UIBarButtonItem!
     
+    @IBOutlet weak var labelClientCount: UILabel!
+    
+    
     // every time the page shows (including when going back to it from the nav)
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -73,7 +76,7 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
         self.searchController = UISearchController(searchResultsController: self.resultsController)
         self.searchController.searchResultsUpdater = self
         self.searchController.searchBar.autocapitalizationType = .none
-        self.searchController.dimsBackgroundDuringPresentation = false
+        self.searchController.dimsBackgroundDuringPresentation = true
         
         // make the header = to the searchController
         self.tableView.tableHeaderView = self.searchController.searchBar
@@ -93,8 +96,8 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
             {return true}
             
             if data.clientName.lowercased().contains(self.searchController.searchBar.text!.lowercased()) ||
-                data.clientId.lowercased().contains(self.searchController.searchBar.text!.lowercased()) ||
-                data.clientName.lowercased().contains(self.searchController.searchBar.text!.lowercased()) {
+                data.clientPhone.lowercased().contains(self.searchController.searchBar.text!.lowercased()) ||
+                data.clientEmail.lowercased().contains(self.searchController.searchBar.text!.lowercased()) {
                 
                 return true
             }
@@ -353,11 +356,14 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
                 }
                 self.cellData.sort { $0.clientName < $1.clientName }
                 self.reloadTableDataFromUIThread()
+                self.labelClientCount.text = String(self.cellData.count) + " CLIENTS"
+
             }
             
         }) { (error) in
             //print(error.localizedDescription)
         }
+        
     }
     
     @IBAction func importClick(_ sender: UIBarButtonItem) {

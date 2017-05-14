@@ -48,12 +48,12 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
     
     @IBOutlet weak var labelChangePicture: UILabel!
     
-    @IBOutlet weak var labelHistory: UILabel!
-    
-    
-    @IBOutlet weak var barLine: NSLayoutConstraint!
-    
+    @IBOutlet weak var btnAllVisits: UIButton!
+    @IBOutlet weak var btnStarred: UIButton!
 
+    @IBOutlet weak var line: UIView!
+    
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -71,10 +71,6 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
     
     func makeUIChanges() {
 
-        if self.client.clientVisits.count == 0 {
-            self.labelHistory.text = ""
-        }
-        
         setIcons()
         makeProfilePicInteractive()
         setBorders()
@@ -111,6 +107,16 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
 
         self.btnNewHC.layer.cornerRadius = 5
         self.btnNewHC.clipsToBounds = true
+        
+        self.btnText.layer.cornerRadius = 20
+        self.btnText.contentMode = .scaleAspectFill
+        
+        self.btnEmail.layer.cornerRadius = 20
+        self.btnEmail.contentMode = .scaleAspectFill
+        
+        
+        self.btnPhone.layer.cornerRadius = 20
+        self.btnPhone.contentMode = .scaleAspectFill
     }
 
     
@@ -141,15 +147,18 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         btnEmail.setImage(emailIconImage, for: .normal)
         
         
-        self.btnText.layer.cornerRadius = 20
-        self.btnText.contentMode = .scaleAspectFill
+        // all visits icon
+        var allVisitsIconImage = FAKFontAwesome.listUlIcon(withSize: 10).image(with: CGSize(width: 10, height: 10))
+        allVisitsIconImage = allVisitsIconImage?.imageWithColor(color: Constants.myColor)
+        btnAllVisits.setImage(allVisitsIconImage, for: .normal)
         
-        self.btnEmail.layer.cornerRadius = 20
-        self.btnEmail.contentMode = .scaleAspectFill
+        // starred visits icon
+        var starredIconImage = FAKFontAwesome.starOIcon(withSize: 10).image(with: CGSize(width: 10, height: 10))
+        starredIconImage = starredIconImage?.imageWithColor(color: Constants.myColor)
+        btnStarred.setImage(starredIconImage, for: .normal)
         
         
-        self.btnPhone.layer.cornerRadius = 20
-        self.btnPhone.contentMode = .scaleAspectFill
+        
         
         
         
@@ -186,7 +195,7 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         UIApplication.shared.openURL(URL(string: "mailto://" + self.client.clientEmail)!)
     }
 
-    @IBOutlet weak var line: UIView!
+    
     @IBAction func newHaircut(_ sender: UIButton)
     {
         
@@ -229,7 +238,6 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         
         self.ref.child("users/" + userId + "/clients/" + self.client.clientId + "/visits/" + visitdate + "/notes").setValue("") { (err, ref) in
             
-            self.labelHistory.text = "PREVIOUS VISITS"
             self.client.clientVisits.append(ClientVisit(visitDate: visitdate, sortingDate: sorteddate, notes: ""))
             
             self.client.clientVisits.sort { $0.sortingDate > $1.sortingDate }
@@ -299,9 +307,15 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? ClientDetailsTableViewCell
         {
-            cell.labelVisitDate.text = self.client.clientVisits[indexPath.row].visitDate
+            let humanReadableDate = getHumanReadableDate(dateString: self.client.clientVisits[indexPath.row].visitDate)
+            
+            cell.labelVisitDate.text = humanReadableDate
+
+           // print(getHumanReadableDate(dateString: self.client.clientVisits[indexPath.row].visitDate))
+           // print(getDayOfWeek(dateString: self.client.clientVisits[indexPath.row].visitDate))
             return cell
         }
+        
         
         return UITableViewCell(style: .default, reuseIdentifier: "cell")
         
@@ -542,6 +556,23 @@ extension ClientDetailView: EditClientDelegate {
         
     }
     
+    
+    
+    func getHumanReadableDate(dateString:String) -> String {
+        
+        let df = DateFormatter()
+        df.dateFormat = "MM/dd/yyyy"
+        let date = df.date(from: dateString)
+        
+        let formatter = DateFormatter()
+        formatter.dateStyle = DateFormatter.Style.medium
+        
+        
+        let dateString = formatter.string(from: date!)
+        return dateString.uppercased()
+        
+    }
+    
 }
 
 extension ClientDetailView: PictureTimeDelegate {
@@ -596,5 +627,7 @@ extension Date {
         if seconds(from: date) > 0 { return "\(seconds(from: date))s" }
         return ""
     }
+    
+    
 }
 
