@@ -53,6 +53,11 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
 
     @IBOutlet weak var line: UIView!
     
+    var starredVisits = [ClientVisit]()
+    
+    var originalLinePosition:CGRect?
+    var isStarredSelected = false
+   
     
     override func viewDidLoad() {
         
@@ -65,8 +70,23 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         fillData()
         resizeProfilePic()
         
+        // get the original CGRect for the line
+        originalLinePosition = line.frame
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         
+        // get the starred visits
+        self.starredVisits = [ClientVisit]()
+        
+        for visit in self.client.clientVisits {
+            if visit.starred {
+                self.starredVisits.append(visit)
+            }
+        }
+        
+        self.tableView.reloadData()
     }
     
     func makeUIChanges() {
@@ -125,36 +145,36 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         
         // camera icon
         var cameraIconImage = FAKFontAwesome.cameraIcon(withSize: 60).image(with: CGSize(width: 60, height: 60))
-        cameraIconImage = cameraIconImage?.imageWithColor(color: Constants.myColor)
+        cameraIconImage = cameraIconImage?.imageWithColor(color: Commons.myColor)
         imgView.image = cameraIconImage
         
         
         // phone icon
         var phoneIconImage = FAKFontAwesome.phoneIcon(withSize: 25).image(with: CGSize(width: 40, height: 40))
-        phoneIconImage = phoneIconImage?.imageWithColor(color: Constants.myColor)
+        phoneIconImage = phoneIconImage?.imageWithColor(color: Commons.myColor)
         btnPhone.setImage(phoneIconImage, for: .normal)
         
         
         // sms icon
         var smsIconImage = FAKFontAwesome.commentingOIcon(withSize: 25).image(with: CGSize(width: 40, height: 40))
-        smsIconImage = smsIconImage?.imageWithColor(color: Constants.myColor)
+        smsIconImage = smsIconImage?.imageWithColor(color: Commons.myColor)
         btnText.setImage(smsIconImage, for: .normal)
         
         
         // email icon
         var emailIconImage = FAKFontAwesome.envelopeOIcon(withSize: 25).image(with: CGSize(width: 40, height: 40))
-        emailIconImage = emailIconImage?.imageWithColor(color: Constants.myColor)
+        emailIconImage = emailIconImage?.imageWithColor(color: Commons.myColor)
         btnEmail.setImage(emailIconImage, for: .normal)
         
         
         // all visits icon
         var allVisitsIconImage = FAKFontAwesome.listUlIcon(withSize: 10).image(with: CGSize(width: 10, height: 10))
-        allVisitsIconImage = allVisitsIconImage?.imageWithColor(color: Constants.myColor)
+        allVisitsIconImage = allVisitsIconImage?.imageWithColor(color: Commons.myColor)
         btnAllVisits.setImage(allVisitsIconImage, for: .normal)
         
         // starred visits icon
         var starredIconImage = FAKFontAwesome.starOIcon(withSize: 10).image(with: CGSize(width: 10, height: 10))
-        starredIconImage = starredIconImage?.imageWithColor(color: Constants.myColor)
+        starredIconImage = starredIconImage?.imageWithColor(color: Commons.myColor)
         btnStarred.setImage(starredIconImage, for: .normal)
         
         
@@ -199,18 +219,7 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
     @IBAction func newHaircut(_ sender: UIButton)
     {
         
-        UIView.animate(withDuration: 0.5) {
-            
-            self.line.frame = CGRect(
-                x: self.line.frame.minX + self.line.frame.width,
-                y: self.line.frame.minY,
-                width: self.line.frame.width,
-                height: self.line.frame.height)
-            
-            
-        }
-        
-        return
+
         
         let date = Date()
         let calendar = Calendar.current
@@ -251,16 +260,38 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
     }
     
   
-    @IBOutlet weak var btnVisits: UIButton!
-    
-    @IBOutlet weak var btnFavorites: UIButton!
-    
-    
-    @IBAction func visitsClicked(_ sender: UIButton) {
+    func moveLine(position:Int) {
+        
+        
+                UIView.animate(withDuration: 0.25) {
+        
+                    self.line.frame = CGRect(
+                        x: self.originalLinePosition!.minX + (CGFloat(position) * self.line.frame.width),
+                        y: self.line.frame.minY,
+                        width: self.line.frame.width,
+                        height: self.line.frame.height)
+        
+                    
+                }
+        
     }
     
-    @IBOutlet weak var favoritesClicked: UIButton!
+    @IBAction func visitsClicked(_ sender: UIButton) {
+        moveLine(position: 0)
+        isStarredSelected = false
+        btnAllVisits.setTitleColor(UIColor.white, for: .normal)
+        btnStarred.setTitleColor(UIColor.lightGray, for: .normal)
+        self.tableView.reloadData()
+    }
     
+    
+    @IBAction func starClicked(_ sender: UIButton) {
+        moveLine(position: 1)
+        isStarredSelected = true
+        btnAllVisits.setTitleColor(UIColor.lightGray, for: .normal)
+        btnStarred.setTitleColor(UIColor.white, for: .normal)
+        self.tableView.reloadData()
+    }
 
     func setLastVisit() {
         
@@ -298,7 +329,11 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
     // must exist: returns number of rows
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return self.client.clientVisits.count
+        if isStarredSelected {
+            return self.starredVisits.count
+        } else {
+            return self.client.clientVisits.count
+        }
     }
     
     // must exist: customize each cell
@@ -307,12 +342,20 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? ClientDetailsTableViewCell
         {
-            let humanReadableDate = getHumanReadableDate(dateString: self.client.clientVisits[indexPath.row].visitDate)
+            var humanReadableDate = ""
+            
+            // get date from starred visits
+            if isStarredSelected {
+                
+                humanReadableDate = Commons.getHumanReadableDate(dateString: self.starredVisits[indexPath.row].visitDate)
+                
+            } else { // get date from all visits
+            
+                humanReadableDate = Commons.getHumanReadableDate(dateString: self.client.clientVisits[indexPath.row].visitDate)
+            }
             
             cell.labelVisitDate.text = humanReadableDate
 
-           // print(getHumanReadableDate(dateString: self.client.clientVisits[indexPath.row].visitDate))
-           // print(getDayOfWeek(dateString: self.client.clientVisits[indexPath.row].visitDate))
             return cell
         }
         
@@ -325,10 +368,26 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         _ = tableView.indexPathForSelectedRow!
-        if let _ = tableView.cellForRow(at: indexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) {
+            
+            let selectedLabel = cell.viewWithTag(1) as? UILabel
             
             // set date to selected row
-            self.selectedVisitIndex = indexPath.row
+            if isStarredSelected {
+                
+                for i in 0..<self.client.clientVisits.count {
+                    
+                    let v = self.client.clientVisits[i]
+                    
+                    if Commons.getHumanReadableDate(dateString: v.visitDate) == selectedLabel?.text {
+                        self.selectedVisitIndex = i
+                        break
+                    }
+                }
+                
+            } else {
+                self.selectedVisitIndex = indexPath.row
+            }
             self.performSegue(withIdentifier: "pictureTimeSegue", sender: self)
             
         }
@@ -558,20 +617,7 @@ extension ClientDetailView: EditClientDelegate {
     
     
     
-    func getHumanReadableDate(dateString:String) -> String {
-        
-        let df = DateFormatter()
-        df.dateFormat = "MM/dd/yyyy"
-        let date = df.date(from: dateString)
-        
-        let formatter = DateFormatter()
-        formatter.dateStyle = DateFormatter.Style.medium
-        
-        
-        let dateString = formatter.string(from: date!)
-        return dateString.uppercased()
-        
-    }
+    
     
 }
 

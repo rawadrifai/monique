@@ -53,7 +53,7 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
             starIconImage = FAKFontAwesome.starOIcon(withSize: 25).image(with: CGSize(width: 35, height: 25))
         }
         
-        starIconImage = starIconImage.imageWithColor(color: Constants.myColor)!
+        starIconImage = starIconImage.imageWithColor(color: Commons.myColor)!
         btnStar.image = starIconImage
         
     }
@@ -164,14 +164,8 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "imageViewSegue" {
-            
-            if let destination = segue.destination as? ImageView {
-            
-                destination.image = self.client.clientVisits[selectedVisitIndex].images[tappedImageIndex] as ImageObject
-            }
-        }
-        else if segue.identifier == "moreSegue1" || segue.identifier == "moreSegue2" {
+        
+         if segue.identifier == "moreSegue1" {
             
             // set the userId
             if let destination = segue.destination as? OptionsView {
@@ -240,7 +234,7 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
                 
                 
                 if photo.image == nil {
-                    print("^nil")
+                    
                     photo.image = self.images[self.count]
                     photosViewController.updateImage(for: photo)
                 }
@@ -251,9 +245,10 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
     }
     
     func loadVisit() {
-        
+        // set notes, star and title
         self.txvNotes.text = self.client.clientVisits[selectedVisitIndex].notes
         setStarIcon(selected: self.client.clientVisits[selectedVisitIndex].starred)
+        self.title = Commons.getHumanReadableDate(dateString: self.client.clientVisits[selectedVisitIndex].visitDate)
     }
     
     
