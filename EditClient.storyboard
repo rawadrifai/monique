@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="TNJ-vv-ANl">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Edit Client-->
+        <scene sceneID="SgK-i6-mEM">
+            <objects>
+                <viewController id="TNJ-vv-ANl" customClass="EditClientVC" customModule="Prossimo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XPT-Kq-j73"/>
+                        <viewControllerLayoutGuide type="bottom" id="Lpd-CI-wWv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8ew-aK-a13">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CBF-Bf-Uel">
+                                <rect key="frame" x="0.0" y="64" width="375" height="120"/>
+                                <color key="backgroundColor" red="0.1764705882352941" green="0.1764705882352941" blue="0.20392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="3FI-bC-HoD"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="JW0-Ng-TYX">
+                                <rect key="frame" x="36" y="324" width="303" height="160"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="R8o-Ez-4ib">
+                                        <rect key="frame" x="0.0" y="0.0" width="303" height="50"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="gau-vt-dD8"/>
+                                        </constraints>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="dif-tM-ZTC">
+                                        <rect key="frame" x="0.0" y="55" width="303" height="50"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="IvM-co-TIv"/>
+                                        </constraints>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="phonePad"/>
+                                        <connections>
+                                            <action selector="txfPhoneEditingChanged:" destination="TNJ-vv-ANl" eventType="editingChanged" id="sfU-ba-G5z"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="zvj-uL-Onc">
+                                        <rect key="frame" x="0.0" y="110" width="303" height="50"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="lnI-gV-2E9"/>
+                                        </constraints>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-camera-32" translatesAutoresizingMaskIntoConstraints="NO" id="GHG-Jg-di8">
+                                <rect key="frame" x="87.5" y="84" width="200" height="200"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="9yq-fL-XfQ"/>
+                                    <constraint firstAttribute="height" constant="200" id="IUQ-va-s9j"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Picture" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aaP-Ux-xei">
+                                <rect key="frame" x="120" y="202" width="135" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="135" id="17M-Sx-GKC"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="135" id="eCR-kW-u7j"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="k46-UK-VUn"/>
+                                    <constraint firstAttribute="height" constant="25" id="wJl-Ml-P4y"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="CBF-Bf-Uel" secondAttribute="trailing" id="48J-wZ-gtV"/>
+                            <constraint firstItem="GHG-Jg-di8" firstAttribute="centerX" secondItem="8ew-aK-a13" secondAttribute="centerX" id="GF1-uh-F4t"/>
+                            <constraint firstItem="CBF-Bf-Uel" firstAttribute="top" secondItem="XPT-Kq-j73" secondAttribute="bottom" id="HjX-JE-nVr"/>
+                            <constraint firstItem="GHG-Jg-di8" firstAttribute="top" secondItem="XPT-Kq-j73" secondAttribute="bottom" constant="20" id="VqF-b7-r0K"/>
+                            <constraint firstItem="CBF-Bf-Uel" firstAttribute="leading" secondItem="8ew-aK-a13" secondAttribute="leading" id="dLi-F3-ndT"/>
+                            <constraint firstItem="aaP-Ux-xei" firstAttribute="centerX" secondItem="8ew-aK-a13" secondAttribute="centerX" id="eWM-mN-O9l"/>
+                            <constraint firstItem="JW0-Ng-TYX" firstAttribute="leading" secondItem="8ew-aK-a13" secondAttribute="leadingMargin" constant="20" id="hgP-SK-zIL"/>
+                            <constraint firstItem="JW0-Ng-TYX" firstAttribute="top" secondItem="GHG-Jg-di8" secondAttribute="bottom" constant="40" id="mpO-2I-vIc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="JW0-Ng-TYX" secondAttribute="trailing" constant="20" id="pvk-z1-EFt"/>
+                            <constraint firstItem="aaP-Ux-xei" firstAttribute="top" secondItem="XPT-Kq-j73" secondAttribute="bottom" constant="138" id="w8Z-yE-H8A"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Edit Client" id="iXh-yo-EvI"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO">
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </simulatedNavigationBarMetrics>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4_7.fullscreen"/>
+                    <connections>
+                        <outlet property="imgView" destination="GHG-Jg-di8" id="Zgl-wF-sIP"/>
+                        <outlet property="labelChangePicture" destination="aaP-Ux-xei" id="Vf8-iF-sGU"/>
+                        <outlet property="txfEmail" destination="zvj-uL-Onc" id="u72-H7-EwG"/>
+                        <outlet property="txfName" destination="R8o-Ez-4ib" id="vmE-f8-VGg"/>
+                        <outlet property="txfPhone" destination="dif-tM-ZTC" id="7Ya-zK-llg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R1t-pf-RuJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3167" y="-521"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icon-camera-32" width="32" height="32"/>
+    </resources>
+</document>

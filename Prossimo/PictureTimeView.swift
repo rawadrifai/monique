@@ -26,6 +26,14 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
     
     @IBOutlet weak var btnStar: UIBarButtonItem!
     @IBOutlet weak var labelNotes: UILabel!
+    @IBOutlet weak var txfPrice: UITextField!
+    @IBOutlet weak var btnPrice1: UIButton!
+    @IBOutlet weak var btnPrice2: UIButton!
+    @IBOutlet weak var btnPrice3: UIButton!
+    
+    var price1Selected = false
+    var price2Selected = false
+    var price3Selected = false
     
     
     override func viewDidLoad() {
@@ -68,6 +76,108 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         self.txvNotes.layer.cornerRadius = 10
         self.txvNotes.clipsToBounds = true
     }
+    
+    func selectBtn(_ sender:UIButton, status:Bool) {
+        
+        if status {
+            sender.backgroundColor = UIColor.darkGray
+            sender.setTitleColor(Commons.myColor, for: .normal)
+        } else {
+            sender.backgroundColor = UIColor.groupTableViewBackground
+            sender.setTitleColor(UIColor.lightGray, for: .normal)
+        }
+        
+    }
+    
+    func savePrice(price:Double) {
+        
+        self.client.clientVisits[selectedVisitIndex].price = price
+        
+        let selectedVisit = self.client.clientVisits[selectedVisitIndex]
+
+        self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + selectedVisit.visitDate + "/price").setValue(price)
+        
+    }
+    
+    
+    
+    @IBAction func btnPrice1Clicked(_ sender: UIButton) {
+        
+        
+        let btnText = sender.titleLabel?.text?.lowercased().replacingOccurrences(of: "$", with: "")
+        
+        
+        if price1Selected {
+            
+            price1Selected = false
+            selectBtn(btnPrice1, status: false)
+            savePrice(price: Double(btnText!)!)
+            
+        } else {
+            
+            price1Selected = true
+            price2Selected = false
+            price3Selected = false
+            
+            selectBtn(btnPrice1, status: true)
+            selectBtn(btnPrice2, status: false)
+            selectBtn(btnPrice3, status: false)
+            
+            savePrice(price: 0)
+        }
+        
+    }
+    
+    @IBAction func btnPrice2Clicked(_ sender: UIButton) {
+        
+        let btnText = sender.titleLabel?.text?.lowercased().replacingOccurrences(of: "$", with: "")
+        
+        
+        if price2Selected {
+            
+            price2Selected = false
+            selectBtn(btnPrice2, status: false)
+            savePrice(price: Double(btnText!)!)
+            
+        } else {
+            
+            price1Selected = false
+            price2Selected = true
+            price3Selected = false
+            
+            selectBtn(btnPrice1, status: false)
+            selectBtn(btnPrice2, status: true)
+            selectBtn(btnPrice3, status: false)
+            
+            savePrice(price: 0)
+        }
+    }
+    
+    
+    @IBAction func btnPrice3Clicked(_ sender: UIButton) {
+        
+        let btnText = sender.titleLabel?.text?.lowercased().replacingOccurrences(of: "$", with: "")
+        
+        
+        if price3Selected {
+            
+            price3Selected = false
+            selectBtn(btnPrice3, status: false)
+            savePrice(price: Double(btnText!)!)
+            
+        } else {
+            
+            price1Selected = false
+            price2Selected = false
+            price3Selected = true
+            
+            selectBtn(btnPrice1, status: false)
+            selectBtn(btnPrice2, status: false)
+            selectBtn(btnPrice3, status: true)
+            
+            savePrice(price: 0)
+        }
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -90,11 +200,14 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         {
             let imgobj = self.client.clientVisits[selectedVisitIndex].images[indexPath.row]
             
-            let image = cell.viewWithTag(1) as! UIImageView
-            image.sd_setShowActivityIndicatorView(true)
-            image.sd_setIndicatorStyle(.gray)
-            image.sd_setImage(with: URL(string: imgobj.imageUrl), completed: { (img, err, ct, url) in
+            let imageView = cell.viewWithTag(1) as! UIImageView
+            imageView.sd_setShowActivityIndicatorView(true)
+            imageView.sd_setIndicatorStyle(.gray)
+            imageView.sd_setImage(with: URL(string: imgobj.imageUrl), completed: { (img, err, ct, url) in
+                
+                
             })
+            
 
             return cell
         }

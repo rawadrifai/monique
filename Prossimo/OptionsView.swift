@@ -83,7 +83,7 @@ class OptionsView: UIViewController {
             if state == "1" {
                 
                 btnScissor.backgroundColor = UIColor.darkGray
-                btnScissor.setTitleColor(self.myGreen, for: .normal)
+                btnScissor.setTitleColor(Commons.myColor, for: .normal)
             }
         }
         
@@ -93,7 +93,7 @@ class OptionsView: UIViewController {
             if state == "1" {
                 
                 btnClipper.backgroundColor = UIColor.darkGray
-                btnClipper.setTitleColor(self.myGreen, for: .normal)
+                btnClipper.setTitleColor(Commons.myColor, for: .normal)
             }
         }
         
@@ -103,7 +103,7 @@ class OptionsView: UIViewController {
             if state == "1" {
                 
                 btnTexturize.backgroundColor = UIColor.darkGray
-                btnTexturize.setTitleColor(self.myGreen, for: .normal)
+                btnTexturize.setTitleColor(Commons.myColor, for: .normal)
             }
         }
         
@@ -113,7 +113,7 @@ class OptionsView: UIViewController {
             if state == "1" {
                 
                 btnSkin.backgroundColor = UIColor.darkGray
-                btnSkin.setTitleColor(self.myGreen, for: .normal)
+                btnSkin.setTitleColor(Commons.myColor, for: .normal)
             }
         }
         
@@ -123,7 +123,7 @@ class OptionsView: UIViewController {
             if state == "1" {
                 
                 btn0.backgroundColor = UIColor.darkGray
-                btn0.setTitleColor(self.myGreen, for: .normal)
+                btn0.setTitleColor(Commons.myColor, for: .normal)
             }
         }
         
@@ -133,7 +133,7 @@ class OptionsView: UIViewController {
             if state == "1" {
                 
                 btn12.backgroundColor = UIColor.darkGray
-                btn12.setTitleColor(self.myGreen, for: .normal)
+                btn12.setTitleColor(Commons.myColor, for: .normal)
             }
         }
         
@@ -143,7 +143,7 @@ class OptionsView: UIViewController {
             if state == "1" {
                 
                 btn1.backgroundColor = UIColor.darkGray
-                btn1.setTitleColor(self.myGreen, for: .normal)
+                btn1.setTitleColor(Commons.myColor, for: .normal)
             }
         }
         
@@ -153,7 +153,7 @@ class OptionsView: UIViewController {
             if state == "1" {
                 
                 btn2.backgroundColor = UIColor.darkGray
-                btn2.setTitleColor(self.myGreen, for: .normal)
+                btn2.setTitleColor(Commons.myColor, for: .normal)
             }
         }
         
@@ -163,7 +163,7 @@ class OptionsView: UIViewController {
             if state == "1" {
                 
                 btn3.backgroundColor = UIColor.darkGray
-                btn3.setTitleColor(self.myGreen, for: .normal)
+                btn3.setTitleColor(Commons.myColor, for: .normal)
             }
         }
         
@@ -173,7 +173,7 @@ class OptionsView: UIViewController {
             if state == "1" {
                 
                 btn4.backgroundColor = UIColor.darkGray
-                btn4.setTitleColor(self.myGreen, for: .normal)
+                btn4.setTitleColor(Commons.myColor, for: .normal)
             }
         }
         
@@ -183,7 +183,7 @@ class OptionsView: UIViewController {
             if state == "1" {
                 
                 btn5.backgroundColor = UIColor.darkGray
-                btn5.setTitleColor(self.myGreen, for: .normal)
+                btn5.setTitleColor(Commons.myColor, for: .normal)
             }
         }
         
@@ -193,7 +193,7 @@ class OptionsView: UIViewController {
             if state == "1" {
                 
                 btnHigh.backgroundColor = UIColor.darkGray
-                btnHigh.setTitleColor(self.myGreen, for: .normal)
+                btnHigh.setTitleColor(Commons.myColor, for: .normal)
             }
         }
         
@@ -203,7 +203,7 @@ class OptionsView: UIViewController {
             if state == "1" {
                 
                 btnLow.backgroundColor = UIColor.darkGray
-                btnLow.setTitleColor(self.myGreen, for: .normal)
+                btnLow.setTitleColor(Commons.myColor, for: .normal)
             }
         }
         
@@ -213,7 +213,7 @@ class OptionsView: UIViewController {
             if state == "1" {
                 
                 btnTaper.backgroundColor = UIColor.darkGray
-                btnTaper.setTitleColor(self.myGreen, for: .normal)
+                btnTaper.setTitleColor(Commons.myColor, for: .normal)
             }
         }
         
@@ -223,7 +223,7 @@ class OptionsView: UIViewController {
             if state == "1" {
                 
                 btnNatural.backgroundColor = UIColor.darkGray
-                btnNatural.setTitleColor(self.myGreen, for: .normal)
+                btnNatural.setTitleColor(Commons.myColor, for: .normal)
             }
         }
         
@@ -233,7 +233,7 @@ class OptionsView: UIViewController {
             if state == "1" {
                 
                 btnRound.backgroundColor = UIColor.darkGray
-                btnRound.setTitleColor(self.myGreen, for: .normal)
+                btnRound.setTitleColor(Commons.myColor, for: .normal)
             }
         }
         
@@ -243,7 +243,7 @@ class OptionsView: UIViewController {
             if state == "1" {
                 
                 btnSquare.backgroundColor = UIColor.darkGray
-                btnSquare.setTitleColor(self.myGreen, for: .normal)
+                btnSquare.setTitleColor(Commons.myColor, for: .normal)
             }
         }
         
@@ -253,13 +253,13 @@ class OptionsView: UIViewController {
             if state == "1" {
                 
                 btnRoundedEdges.backgroundColor = UIColor.darkGray
-                btnRoundedEdges.setTitleColor(self.myGreen, for: .normal)
+                btnRoundedEdges.setTitleColor(Commons.myColor, for: .normal)
             }
         }
         
     }
     
-    let myGreen = UIColor(red:0.38, green:1.00, blue:0.84, alpha:1.0)
+
     
     func saveOption(_ sender: UIButton) {
         
@@ -270,7 +270,7 @@ class OptionsView: UIViewController {
             
             self.client.clientVisits[selectedVisitIndex].options[btnText!] = "1"
             sender.backgroundColor = UIColor.darkGray
-            sender.setTitleColor(self.myGreen, for: .normal)
+            sender.setTitleColor(Commons.myColor, for: .normal)
             
             self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.selectedVisit.visitDate + "/options/" + btnText!).setValue("1")
             
@@ -279,7 +279,7 @@ class OptionsView: UIViewController {
         if state == "0" {
             self.client.clientVisits[selectedVisitIndex].options[btnText!] = "1"
             sender.backgroundColor = UIColor.darkGray
-            sender.setTitleColor(self.myGreen, for: .normal)
+            sender.setTitleColor(Commons.myColor, for: .normal)
             
             self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.selectedVisit.visitDate + "/options/" + btnText!).setValue("1")
         }

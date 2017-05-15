@@ -12,6 +12,12 @@
 		7905A69B1EC3FF260008D2ED /* ClientDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7905A69A1EC3FF260008D2ED /* ClientDetailsTableViewCell.swift */; };
 		7905A6AA1EC655D10008D2ED /* Commons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7905A6A91EC655D10008D2ED /* Commons.swift */; };
 		7905A6B71EC663AE0008D2ED /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7905A6B61EC663AE0008D2ED /* FontAwesome.otf */; };
+		7905A6CE1EC97C700008D2ED /* UIImageEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7905A6CD1EC97C700008D2ED /* UIImageEffects.swift */; };
+		7905A6D21ECA5B0C0008D2ED /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7905A6D01ECA5B0C0008D2ED /* Tutorial.storyboard */; };
+		7905A6DF1ECA5BBF0008D2ED /* Info.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7905A6DE1ECA5BBF0008D2ED /* Info.storyboard */; };
+		7905A6E21ECA5C590008D2ED /* NewClient.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7905A6E01ECA5C590008D2ED /* NewClient.storyboard */; };
+		7905A6E41ECA5CA00008D2ED /* ClientDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7905A6E31ECA5CA00008D2ED /* ClientDetail.storyboard */; };
+		7905A6E61ECA5D050008D2ED /* EditClient.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7905A6E51ECA5D050008D2ED /* EditClient.storyboard */; };
 		9A0E86441E9B4EA400F02BA6 /* InstagramManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E86431E9B4EA400F02BA6 /* InstagramManager.swift */; };
 		9A0E86501E9BF85C00F02BA6 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0E864E1E9BF85C00F02BA6 /* Fabric.framework */; };
 		9A0E86511E9BF85C00F02BA6 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0E864F1E9BF85C00F02BA6 /* Crashlytics.framework */; };
@@ -131,6 +137,12 @@
 		7905A69A1EC3FF260008D2ED /* ClientDetailsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientDetailsTableViewCell.swift; path = Prossimo/ClientDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		7905A6A91EC655D10008D2ED /* Commons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Commons.swift; path = Prossimo/Commons.swift; sourceTree = "<group>"; };
 		7905A6B61EC663AE0008D2ED /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
+		7905A6CD1EC97C700008D2ED /* UIImageEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageEffects.swift; sourceTree = "<group>"; };
+		7905A6D11ECA5B0C0008D2ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Prossimo/Base.lproj/Tutorial.storyboard; sourceTree = "<group>"; };
+		7905A6DE1ECA5BBF0008D2ED /* Info.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Info.storyboard; sourceTree = "<group>"; };
+		7905A6E11ECA5C590008D2ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Prossimo/Base.lproj/NewClient.storyboard; sourceTree = "<group>"; };
+		7905A6E31ECA5CA00008D2ED /* ClientDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ClientDetail.storyboard; sourceTree = "<group>"; };
+		7905A6E51ECA5D050008D2ED /* EditClient.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditClient.storyboard; sourceTree = "<group>"; };
 		9A0E86431E9B4EA400F02BA6 /* InstagramManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InstagramManager.swift; path = Prossimo/InstagramManager.swift; sourceTree = "<group>"; };
 		9A0E864E1E9BF85C00F02BA6 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		9A0E864F1E9BF85C00F02BA6 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -236,6 +248,7 @@
 				7905A6A91EC655D10008D2ED /* Commons.swift */,
 				9A969DA11EA1B6EA004127CE /* KeychainManager.swift */,
 				9AD116631E5E87C400113753 /* Client.swift */,
+				7905A6CD1EC97C700008D2ED /* UIImageEffects.swift */,
 				9A3BC6451E5A9AA700E9CA71 /* AppDelegate.swift */,
 			);
 			name = Domain;
@@ -245,6 +258,11 @@
 			isa = PBXGroup;
 			children = (
 				9A3BC64B1E5A9AA700E9CA71 /* Main.storyboard */,
+				7905A6E31ECA5CA00008D2ED /* ClientDetail.storyboard */,
+				7905A6E51ECA5D050008D2ED /* EditClient.storyboard */,
+				7905A6E01ECA5C590008D2ED /* NewClient.storyboard */,
+				7905A6DE1ECA5BBF0008D2ED /* Info.storyboard */,
+				7905A6D01ECA5B0C0008D2ED /* Tutorial.storyboard */,
 				9A3BC6501E5A9AA700E9CA71 /* LaunchScreen.storyboard */,
 			);
 			name = UI;
@@ -481,10 +499,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AD2B3681E8C2F3800DF308C /* GoogleService-Info.plist in Resources */,
+				7905A6DF1ECA5BBF0008D2ED /* Info.storyboard in Resources */,
+				7905A6E41ECA5CA00008D2ED /* ClientDetail.storyboard in Resources */,
 				7905A6B71EC663AE0008D2ED /* FontAwesome.otf in Resources */,
 				9A3BC6521E5A9AA700E9CA71 /* LaunchScreen.storyboard in Resources */,
+				7905A6E21ECA5C590008D2ED /* NewClient.storyboard in Resources */,
 				9AD676501E94A0FD00F8BBFB /* Assets.xcassets in Resources */,
+				7905A6D21ECA5B0C0008D2ED /* Tutorial.storyboard in Resources */,
 				9A3BC64D1E5A9AA700E9CA71 /* Main.storyboard in Resources */,
+				7905A6E61ECA5D050008D2ED /* EditClient.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -576,6 +599,7 @@
 				9A6875121EA8048000996B76 /* FourthVC.swift in Sources */,
 				9AB6B8EA1E84F9CA009231B0 /* SaveUserInfo.swift in Sources */,
 				9AAF34C71E713A0B00CAFE44 /* PictureTimeView.swift in Sources */,
+				7905A6CE1EC97C700008D2ED /* UIImageEffects.swift in Sources */,
 				9AAF34C51E70F1B500CAFE44 /* Login.swift in Sources */,
 				9A371A341EB9A84B00A52DDD /* PhotosProvider.swift in Sources */,
 				9A371A331EB9A84B00A52DDD /* ExamplePhoto.swift in Sources */,
@@ -589,6 +613,22 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		7905A6D01ECA5B0C0008D2ED /* Tutorial.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7905A6D11ECA5B0C0008D2ED /* Base */,
+			);
+			name = Tutorial.storyboard;
+			sourceTree = "<group>";
+		};
+		7905A6E01ECA5C590008D2ED /* NewClient.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7905A6E11ECA5C590008D2ED /* Base */,
+			);
+			name = NewClient.storyboard;
+			sourceTree = "<group>";
+		};
 		9A3BC64B1E5A9AA700E9CA71 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

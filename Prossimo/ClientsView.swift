@@ -324,6 +324,7 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
                             clientVisit.notes = visitInfo.value(forKey: "notes") as? String ?? ""
                             clientVisit.sortingDate = visitInfo.value(forKey: "sortingDate") as? String ?? ""
                             clientVisit.starred = visitInfo.value(forKey: "starred") as? Bool ?? false
+                            clientVisit.price = visitInfo.value(forKey: "price") as? Double ?? 0
                             
                             if let options = visitInfo.value(forKey: "options") as? [String : String]
                             {

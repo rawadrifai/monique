@@ -291,12 +291,15 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         btnAllVisits.setTitleColor(UIColor.lightGray, for: .normal)
         btnStarred.setTitleColor(UIColor.white, for: .normal)
         self.tableView.reloadData()
+
+        
     }
 
     func setLastVisit() {
         
-        let stringLastVisit = client.clientVisits[0].visitDate
+        if client.clientVisits.count == 0 { return }
         
+        let stringLastVisit = client.clientVisits[0].visitDate
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/yyyy"
         let dateLastVisit = dateFormatter.date(from:stringLastVisit)!
@@ -304,6 +307,7 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         let sinceLastVisit = Date().days(from: dateLastVisit).description
         
         labelLastVisit.text = sinceLastVisit + " days ago"
+        
 
     }
     
