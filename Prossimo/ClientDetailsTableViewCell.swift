@@ -11,6 +11,8 @@ import UIKit
 class ClientDetailsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var labelVisitDate: UILabel!
+    @IBOutlet weak var labelNotes: UILabel!
+    @IBOutlet weak var labelPrice: UILabel!
     
     
     override func awakeFromNib() {

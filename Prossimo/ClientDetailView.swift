@@ -53,6 +53,10 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
 
     @IBOutlet weak var line: UIView!
     
+    @IBOutlet weak var labelClientAggregate: UILabel!
+    
+    
+    
     var starredVisits = [ClientVisit]()
     
     var originalLinePosition:CGRect?
@@ -327,6 +331,19 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
             self.imgView.image = UIImage(imageLiteralResourceName: "icon-camera-32")
             self.labelChangePicture.isHidden = false
         }
+        
+        var aggregate = ""
+        
+        aggregate = String(self.client.clientVisits.count) + " VISITS - "
+        
+        var revenue:Double = 0
+        for v in self.client.clientVisits {
+            revenue = revenue + v.price
+        }
+        
+        aggregate = aggregate + "$" + String(revenue)
+        
+        self.labelClientAggregate.text = aggregate
     }
     
     
@@ -347,19 +364,29 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? ClientDetailsTableViewCell
         {
             var humanReadableDate = ""
+            var notes = ""
+            var price = ""
             
             // get date from starred visits
             if isStarredSelected {
                 
                 humanReadableDate = Commons.getHumanReadableDate(dateString: self.starredVisits[indexPath.row].visitDate)
+                notes = self.starredVisits[indexPath.row].notes
+                price = "$" + String(self.starredVisits[indexPath.row].price)
+
                 
             } else { // get date from all visits
             
                 humanReadableDate = Commons.getHumanReadableDate(dateString: self.client.clientVisits[indexPath.row].visitDate)
+                
+                notes = self.client.clientVisits[indexPath.row].notes
+                price = "$" + String(self.client.clientVisits[indexPath.row].price)
             }
             
             cell.labelVisitDate.text = humanReadableDate
-
+            cell.labelNotes.text = notes
+            cell.labelPrice.text = price
+            
             return cell
         }
         

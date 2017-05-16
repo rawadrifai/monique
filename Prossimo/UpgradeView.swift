@@ -64,6 +64,7 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
         getPromoCodesFromFirebase()
         
         setBorders()
+        changeProduct(productName: self.availableProducts[productSC.selectedSegmentIndex])
         
     }
     
@@ -233,17 +234,7 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
 
     @IBAction func upgradeClick(_ sender: UIButton) {
         
-       
-        for product in allSKProducts {
-            
-            let prodID = product.productIdentifier
-            
-            if(prodID == promoCodeToUse.product) {
-                sKproductToBuy = product
-                buyPro()
-                break
-            }
-        }
+        buyPro()
     }
     
     func buyPro() {
@@ -290,6 +281,13 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
                     
                     self.promoCodeToUse.code = enteredPromo
                     self.promoCodeToUse.product = c
+                    
+                    for product in allSKProducts {
+                        if product.productIdentifier == c {
+                            sKproductToBuy = product
+                            break;
+                        }
+                    }
                     
                 }
                 else {

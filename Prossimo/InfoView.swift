@@ -54,6 +54,8 @@ class InfoView: UITableViewController {
                 
                 destination.userId = self.userId
                 destination.delegate = self
+
+                CleverTap.sharedInstance()?.recordEvent("Upgrade clicked")
             }
         }
         else if segue.identifier == "signoutSegue" {

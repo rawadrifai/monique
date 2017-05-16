@@ -36,7 +36,6 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
     
     @IBOutlet weak var labelClientCount: UILabel!
     
-    
     // every time the page shows (including when going back to it from the nav)
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -357,7 +356,10 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
                 }
                 self.cellData.sort { $0.clientName < $1.clientName }
                 self.reloadTableDataFromUIThread()
-                self.labelClientCount.text = String(self.cellData.count) + " CLIENTS"
+                
+                
+                self.setAggregates()
+                
 
             }
             
@@ -365,6 +367,27 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
             //print(error.localizedDescription)
         }
         
+    }
+    
+    func setAggregates() {
+        
+        var aggregateString = ""
+        
+        aggregateString = String(self.cellData.count) + " CLIENTS - "
+        
+        
+        // calculate total revenue
+        var revenue:Double = 0
+        
+        for c in cellData {
+            for v in c.clientVisits {
+                revenue = revenue + v.price
+            }
+        }
+        
+        aggregateString = aggregateString + "$" + String(revenue)
+        + " TOTAL REVENUE"
+        self.labelClientCount.text = aggregateString
     }
     
     @IBAction func importClick(_ sender: UIBarButtonItem) {

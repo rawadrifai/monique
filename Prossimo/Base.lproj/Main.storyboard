@@ -18,24 +18,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <view key="tableFooterView" contentMode="scaleToFill" id="ZYK-hb-WKN">
-                            <rect key="frame" x="0.0" y="106" width="375" height="33"/>
+                        <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EHk-h8-PkH">
+                            <rect key="frame" x="0.0" y="106" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EHk-h8-PkH">
-                                    <rect key="frame" x="0.0" y="16.5" width="375" height="0.0"/>
-                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
-                                    <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
                             <color key="backgroundColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="trailing" secondItem="EHk-h8-PkH" secondAttribute="trailing" id="6vQ-Mt-vji"/>
-                                <constraint firstItem="EHk-h8-PkH" firstAttribute="leading" secondItem="ZYK-hb-WKN" secondAttribute="leading" id="bdG-kU-nDQ"/>
-                                <constraint firstItem="EHk-h8-PkH" firstAttribute="centerY" secondItem="ZYK-hb-WKN" secondAttribute="centerY" id="kBf-iq-GyS"/>
-                            </constraints>
-                        </view>
+                            <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="13"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" rowHeight="78" id="ajS-zj-FZc" customClass="ClientsTableViewCell" customModule="Prossimo" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="78"/>
