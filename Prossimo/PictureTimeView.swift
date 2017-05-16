@@ -43,6 +43,7 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         self.ref = FIRDatabase.database().reference()
         loadVisit()
         setBorders()
+        setIcons()
         
     }
     
@@ -68,8 +69,8 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
     
     func setBorders() {
         
-        self.btnHaircutDetails.layer.borderWidth = 0.5
-        self.btnHaircutDetails.layer.borderColor = UIColor.lightGray.cgColor
+       // self.btnHaircutDetails.layer.borderWidth = 0.5
+       // self.btnHaircutDetails.layer.borderColor = UIColor.lightGray.cgColor
         
         self.txvNotes.layer.borderWidth = 0.5
         self.txvNotes.layer.borderColor = UIColor.gray.cgColor
@@ -77,10 +78,15 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         self.txvNotes.clipsToBounds = true
     }
     
+    func setIcons() {
+     
+       // btnHaircutDetails.setImage(UIImage(imageLiteralResourceName: "man-haircut"), for: .normal)
+    }
+    
     func selectBtn(_ sender:UIButton, status:Bool) {
         
         if status {
-            sender.backgroundColor = UIColor.darkGray
+            sender.backgroundColor = Commons.myGrayColor
             sender.setTitleColor(Commons.myColor, for: .normal)
         } else {
             sender.backgroundColor = UIColor.groupTableViewBackground
@@ -111,7 +117,7 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
             
             price1Selected = false
             selectBtn(btnPrice1, status: false)
-            savePrice(price: Double(btnText!)!)
+            savePrice(price: 0)
             
         } else {
             
@@ -122,8 +128,9 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
             selectBtn(btnPrice1, status: true)
             selectBtn(btnPrice2, status: false)
             selectBtn(btnPrice3, status: false)
+            txfPrice.text = ""
             
-            savePrice(price: 0)
+            savePrice(price: Double(btnText!)!)
         }
         
     }
@@ -137,7 +144,7 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
             
             price2Selected = false
             selectBtn(btnPrice2, status: false)
-            savePrice(price: Double(btnText!)!)
+            savePrice(price: 0)
             
         } else {
             
@@ -148,8 +155,9 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
             selectBtn(btnPrice1, status: false)
             selectBtn(btnPrice2, status: true)
             selectBtn(btnPrice3, status: false)
+            txfPrice.text = ""
             
-            savePrice(price: 0)
+            savePrice(price: Double(btnText!)!)
         }
     }
     
@@ -163,7 +171,7 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
             
             price3Selected = false
             selectBtn(btnPrice3, status: false)
-            savePrice(price: Double(btnText!)!)
+            savePrice(price: 0)
             
         } else {
             
@@ -174,10 +182,39 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
             selectBtn(btnPrice1, status: false)
             selectBtn(btnPrice2, status: false)
             selectBtn(btnPrice3, status: true)
+            txfPrice.text = ""
             
-            savePrice(price: 0)
+            savePrice(price: Double(btnText!)!)
         }
     }
+    
+    @IBAction func priceChanged(_ sender: UITextField) {
+        
+        
+        guard let price = txfPrice.text?.replacingOccurrences(of: "$", with: "")
+            else {
+                return
+        }
+        
+        price1Selected = false
+        price2Selected = false
+        price3Selected = false
+        
+        selectBtn(btnPrice1, status: false)
+        selectBtn(btnPrice2, status: false)
+        selectBtn(btnPrice3, status: false)
+        
+        if price == "" {
+            txfPrice.text = ""
+        }
+        else {
+            txfPrice.text = "$" + price
+        }
+        
+        let priceDouble = Double(price) ?? 0
+        savePrice(price: priceDouble)
+    }
+    
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -362,6 +399,33 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         self.txvNotes.text = self.client.clientVisits[selectedVisitIndex].notes
         setStarIcon(selected: self.client.clientVisits[selectedVisitIndex].starred)
         self.title = Commons.getHumanReadableDate(dateString: self.client.clientVisits[selectedVisitIndex].visitDate)
+        
+        
+        let priceDouble = self.client.clientVisits[selectedVisitIndex].price
+        
+        
+        switch priceDouble {
+        case 25:
+            price1Selected = true
+            selectBtn(btnPrice1, status: true)
+            break
+            
+        case 30:
+            price2Selected = true
+            selectBtn(btnPrice2, status: true)
+            break
+            
+        case 40:
+            price3Selected = true
+            selectBtn(btnPrice3, status: true)
+            break
+            
+        default:
+            if priceDouble != 0 {
+                self.txfPrice.text = "$" + String(priceDouble)
+            }
+            break
+        }
     }
     
     

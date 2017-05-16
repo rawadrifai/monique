@@ -279,7 +279,7 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
     @IBAction func visitsClicked(_ sender: UIButton) {
         moveLine(position: 0)
         isStarredSelected = false
-        btnAllVisits.setTitleColor(UIColor.white, for: .normal)
+        btnAllVisits.setTitleColor(Commons.myColor, for: .normal)// UIColor.white, for: .normal)
         btnStarred.setTitleColor(UIColor.lightGray, for: .normal)
         self.tableView.reloadData()
     }
@@ -289,7 +289,7 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         moveLine(position: 1)
         isStarredSelected = true
         btnAllVisits.setTitleColor(UIColor.lightGray, for: .normal)
-        btnStarred.setTitleColor(UIColor.white, for: .normal)
+        btnStarred.setTitleColor(Commons.myColor, for: .normal)//(UIColor.white, for: .normal)
         self.tableView.reloadData()
 
         

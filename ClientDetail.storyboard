@@ -431,7 +431,10 @@
                                                             <rect key="frame" x="210" y="0.0" width="145" height="49"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
-                                                            <textInputTraits key="textInputTraits"/>
+                                                            <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                                            <connections>
+                                                                <action selector="priceChanged:" destination="o9q-rL-Ugv" eventType="editingChanged" id="do8-29-MUv"/>
+                                                            </connections>
                                                         </textField>
                                                     </subviews>
                                                 </stackView>
@@ -476,11 +479,11 @@
                                                 <constraint firstAttribute="height" constant="120" id="Ua9-I8-P08"/>
                                             </constraints>
                                         </stackView>
-                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="tI3-UW-40n">
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="tI3-UW-40n">
                                             <rect key="frame" x="0.0" y="130" width="375" height="60"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rag-x9-7eB">
-                                                    <rect key="frame" x="0.0" y="0.0" width="187.5" height="60"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="187" height="60"/>
                                                     <color key="backgroundColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                     <state key="normal" title="Choose Styles">
@@ -491,7 +494,7 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nTp-47-uuf">
-                                                    <rect key="frame" x="187.5" y="0.0" width="187.5" height="60"/>
+                                                    <rect key="frame" x="188" y="0.0" width="187" height="60"/>
                                                     <color key="backgroundColor" red="0.15686274510000001" green="0.15686274510000001" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                     <state key="normal" title="Choose Styles">
