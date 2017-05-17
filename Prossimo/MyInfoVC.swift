@@ -45,22 +45,23 @@ class MyInfoVC: UIViewController {
     }
     
     func setBorders() {
-        self.txfName.layer.cornerRadius = 10
+        self.txfName.layer.cornerRadius = 7
         self.txfName.clipsToBounds = true
         self.txfName.layer.borderColor = UIColor.lightGray.cgColor
         self.txfName.layer.borderWidth=1
         
-        self.txfPhone.layer.cornerRadius = 10
+        self.txfPhone.layer.cornerRadius = 7
         self.txfPhone.clipsToBounds = true
         self.txfPhone.layer.borderColor = UIColor.lightGray.cgColor
         self.txfPhone.layer.borderWidth=1
         
-        self.txfEmail.layer.cornerRadius = 10
+        self.txfEmail.layer.cornerRadius = 7
         self.txfEmail.clipsToBounds = true
         self.txfEmail.layer.borderColor = UIColor.lightGray.cgColor
         self.txfEmail.layer.borderWidth=1
         
-        self.btnSave.layer.cornerRadius = 5
+        self.btnSave.layer.cornerRadius = 7
+        self.btnSave.clipsToBounds = true
         self.btnSave.clipsToBounds = true
     }
     

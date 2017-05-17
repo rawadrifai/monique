@@ -742,17 +742,17 @@ Cheers!</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="vzw-Os-EXh">
-                                <rect key="frame" x="26" y="94" width="323" height="210"/>
+                                <rect key="frame" x="26" y="193.5" width="323" height="280"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Pv3-Vs-3TF">
-                                        <rect key="frame" x="0.0" y="0.0" width="323" height="63.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="323" height="62.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0iW-Ha-ESd">
-                                        <rect key="frame" x="0.0" y="73.5" width="323" height="63"/>
+                                        <rect key="frame" x="0.0" y="72.5" width="323" height="62.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -762,41 +762,35 @@ Cheers!</string>
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="n9m-n8-yCI">
-                                        <rect key="frame" x="0.0" y="146.5" width="323" height="63.5"/>
+                                        <rect key="frame" x="0.0" y="145" width="323" height="62.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress"/>
                                     </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JVz-mY-6gM">
+                                        <rect key="frame" x="0.0" y="217.5" width="323" height="62.5"/>
+                                        <color key="backgroundColor" red="0.15686274510000001" green="0.15686274510000001" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="Save">
+                                            <color key="titleColor" red="0.37996858960000002" green="1" blue="0.83935681090000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="saveBtnClicked:" destination="MIT-vx-L0S" eventType="touchUpInside" id="mzi-XR-Vey"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="210" id="9U9-Ht-4cS"/>
+                                    <constraint firstAttribute="height" constant="280" id="9U9-Ht-4cS"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JVz-mY-6gM">
-                                <rect key="frame" x="16" y="324" width="343" height="70"/>
-                                <color key="backgroundColor" red="0.15686274510000001" green="0.15686274510000001" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="SBZ-Vd-kmX"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Save">
-                                    <color key="titleColor" red="0.37996858960000002" green="1" blue="0.83935681090000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="saveBtnClicked:" destination="MIT-vx-L0S" eventType="touchUpInside" id="mzi-XR-Vey"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="vzw-Os-EXh" firstAttribute="leading" secondItem="bPH-io-GE6" secondAttribute="leadingMargin" constant="10" id="0J3-Q6-wDc"/>
-                            <constraint firstItem="JVz-mY-6gM" firstAttribute="trailing" secondItem="bPH-io-GE6" secondAttribute="trailingMargin" id="4EQ-M3-eu3"/>
-                            <constraint firstItem="vzw-Os-EXh" firstAttribute="top" secondItem="xgy-V9-hin" secondAttribute="bottom" constant="30" id="NFb-e2-otm"/>
-                            <constraint firstItem="JVz-mY-6gM" firstAttribute="leading" secondItem="bPH-io-GE6" secondAttribute="leadingMargin" id="Nn4-Dt-4pO"/>
-                            <constraint firstItem="JVz-mY-6gM" firstAttribute="top" secondItem="vzw-Os-EXh" secondAttribute="bottom" constant="20" id="VFH-VZ-JI7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="vzw-Os-EXh" secondAttribute="trailing" constant="10" id="d3C-uG-y32"/>
                             <constraint firstItem="vzw-Os-EXh" firstAttribute="centerX" secondItem="bPH-io-GE6" secondAttribute="centerX" id="pIM-SW-5NV"/>
+                            <constraint firstItem="vzw-Os-EXh" firstAttribute="centerY" secondItem="bPH-io-GE6" secondAttribute="centerY" id="zBT-HY-R8M"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="My Info" id="1bT-dw-GCm"/>

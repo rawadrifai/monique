@@ -23,6 +23,8 @@ class SaveUserInfo: UIViewController {
     @IBOutlet weak var txfName: UITextField!
     @IBOutlet weak var txfEmail: UITextField!
     @IBOutlet weak var txfPhone: UITextField!
+    @IBOutlet weak var btnSave: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,17 +35,24 @@ class SaveUserInfo: UIViewController {
     }
     
     func setBorders() {
-        self.txfName.layer.cornerRadius = 20
+        self.txfName.layer.cornerRadius = 7
         self.txfName.clipsToBounds = true
+        self.txfName.layer.borderColor = UIColor.lightGray.cgColor
+        self.txfName.layer.borderWidth=1
         
-        self.txfPhone.layer.cornerRadius = 20
+        self.txfPhone.layer.cornerRadius = 7
         self.txfPhone.clipsToBounds = true
+        self.txfPhone.layer.borderColor = UIColor.lightGray.cgColor
+        self.txfPhone.layer.borderWidth=1
         
-        self.txfEmail.layer.cornerRadius = 20
+        self.txfEmail.layer.cornerRadius = 7
         self.txfEmail.clipsToBounds = true
+        self.txfEmail.layer.borderColor = UIColor.lightGray.cgColor
+        self.txfEmail.layer.borderWidth=1
         
-     //   self.btnSave.layer.cornerRadius = 5
-     //   self.btnSave.clipsToBounds = true
+        self.btnSave.layer.cornerRadius = 7
+        self.btnSave.clipsToBounds = true
+        self.btnSave.clipsToBounds = true
     }
     
     var tmpPhone=""
@@ -68,7 +77,7 @@ class SaveUserInfo: UIViewController {
         
     }
     
-    @IBAction func signInWithDeviceId(_ sender: UIBarButtonItem) {
+    @IBAction func signInWithDeviceId(_ sender: UIButton) {
         
         if validateInput() {
             
