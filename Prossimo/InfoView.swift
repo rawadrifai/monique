@@ -103,8 +103,15 @@ class InfoView: UITableViewController {
                 
                 destination.userId = self.userId
                 destination.delegate = self
-
+                
                 CleverTap.sharedInstance()?.recordEvent("Upgrade clicked")
+            }
+        } else if segue.identifier == "myInfoSegue" {
+            
+            // set the userId
+            if let destination = segue.destination as? MyInfoVC {
+                
+                destination.userId = self.userId
             }
         }
         else if segue.identifier == "signoutSegue" {
@@ -144,7 +151,7 @@ class InfoView: UITableViewController {
         }
     }
     
-    let upgradeSectionIndex = 1
+    let upgradeSectionIndex = 2
     let upgradeRowIndex = 0
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

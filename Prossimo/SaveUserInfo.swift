@@ -34,8 +34,16 @@ class SaveUserInfo: UIViewController {
     
     func setBorders() {
         self.txfName.layer.cornerRadius = 20
+        self.txfName.clipsToBounds = true
+        
         self.txfPhone.layer.cornerRadius = 20
+        self.txfPhone.clipsToBounds = true
+        
         self.txfEmail.layer.cornerRadius = 20
+        self.txfEmail.clipsToBounds = true
+        
+     //   self.btnSave.layer.cornerRadius = 5
+     //   self.btnSave.clipsToBounds = true
     }
     
     var tmpPhone=""

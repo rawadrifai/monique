@@ -20,6 +20,8 @@
 		7975C9071ECBBE5B00C93845 /* ClientCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7975C9051ECBBE5B00C93845 /* ClientCell.xib */; };
 		7975C9151ECBCB3400C93845 /* ClientDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7975C9131ECBCB3400C93845 /* ClientDetailsCell.swift */; };
 		7975C9161ECBCB3400C93845 /* ClientDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7975C9141ECBCB3400C93845 /* ClientDetailsCell.xib */; };
+		7975C9181ECC34FF00C93845 /* MyInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7975C9171ECC34FF00C93845 /* MyInfoVC.swift */; };
+		7975C91A1ECC356300C93845 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7975C9191ECC356300C93845 /* UserInfo.swift */; };
 		9A0E86441E9B4EA400F02BA6 /* InstagramManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E86431E9B4EA400F02BA6 /* InstagramManager.swift */; };
 		9A0E86501E9BF85C00F02BA6 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0E864E1E9BF85C00F02BA6 /* Fabric.framework */; };
 		9A0E86511E9BF85C00F02BA6 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0E864F1E9BF85C00F02BA6 /* Crashlytics.framework */; };
@@ -147,6 +149,8 @@
 		7975C9051ECBBE5B00C93845 /* ClientCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ClientCell.xib; path = Prossimo/ClientCell.xib; sourceTree = "<group>"; };
 		7975C9131ECBCB3400C93845 /* ClientDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientDetailsCell.swift; path = Prossimo/ClientDetailsCell.swift; sourceTree = "<group>"; };
 		7975C9141ECBCB3400C93845 /* ClientDetailsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ClientDetailsCell.xib; path = Prossimo/ClientDetailsCell.xib; sourceTree = "<group>"; };
+		7975C9171ECC34FF00C93845 /* MyInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyInfoVC.swift; path = Prossimo/MyInfoVC.swift; sourceTree = "<group>"; };
+		7975C9191ECC356300C93845 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserInfo.swift; path = Prossimo/UserInfo.swift; sourceTree = "<group>"; };
 		9A0E86431E9B4EA400F02BA6 /* InstagramManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InstagramManager.swift; path = Prossimo/InstagramManager.swift; sourceTree = "<group>"; };
 		9A0E864E1E9BF85C00F02BA6 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		9A0E864F1E9BF85C00F02BA6 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -250,6 +254,7 @@
 		7905A6CA1EC93F260008D2ED /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				7975C9191ECC356300C93845 /* UserInfo.swift */,
 				9A0E86431E9B4EA400F02BA6 /* InstagramManager.swift */,
 				7905A6A91EC655D10008D2ED /* Commons.swift */,
 				9A969DA11EA1B6EA004127CE /* KeychainManager.swift */,
@@ -294,6 +299,7 @@
 				7905A6CC1EC93F930008D2ED /* Miscellaneous */,
 				7905A6CB1EC93F360008D2ED /* UI */,
 				9A371A281EB8007000A52DDD /* OptionsView.swift */,
+				7975C9171ECC34FF00C93845 /* MyInfoVC.swift */,
 				9AE7A1BE1EB4336A0004FCC2 /* NewClientVC.swift */,
 				9A371A311EB9A84B00A52DDD /* ExamplePhoto.swift */,
 				9A371A321EB9A84B00A52DDD /* PhotosProvider.swift */,
@@ -598,6 +604,7 @@
 				9AD116641E5E87C400113753 /* Client.swift in Sources */,
 				9A969DA21EA1B6EA004127CE /* KeychainManager.swift in Sources */,
 				7905A6AA1EC655D10008D2ED /* Commons.swift in Sources */,
+				7975C9181ECC34FF00C93845 /* MyInfoVC.swift in Sources */,
 				9A371A261EB8003F00A52DDD /* SecondVC.swift in Sources */,
 				9A6875051EA8007A00996B76 /* FirstVC.swift in Sources */,
 				9A0E86441E9B4EA400F02BA6 /* InstagramManager.swift in Sources */,
@@ -614,6 +621,7 @@
 				9AB6B8E11E84F869009231B0 /* InfoView.swift in Sources */,
 				9A371A291EB8007000A52DDD /* CrashController.swift in Sources */,
 				9A371A2C1EB8008A00A52DDD /* PageVC.swift in Sources */,
+				7975C91A1ECC356300C93845 /* UserInfo.swift in Sources */,
 				9A371A2A1EB8007000A52DDD /* OptionsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
