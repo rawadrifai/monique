@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
-
+import FontAwesomeKit
 
 class InfoView: UITableViewController {
 
@@ -17,6 +17,19 @@ class InfoView: UITableViewController {
     var userId:String!
     var subscription:String!
 
+    
+    @IBOutlet weak var imageViewMyProfile: UIImageView!
+    
+    @IBOutlet weak var imageViewTC: UIImageView!
+    
+    @IBOutlet weak var imageViewPP: UIImageView!
+    
+    @IBOutlet weak var imageViewUpgrade: UIImageView!
+    
+    @IBOutlet weak var imageViewOurStory: UIImageView!
+    
+    
+    @IBOutlet weak var imageViewContact: UIImageView!
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
@@ -42,7 +55,43 @@ class InfoView: UITableViewController {
         
         super.viewDidLoad()
         
+        setIcons()
 
+    }
+    
+    func setIcons() {
+        
+        var myProfileImage = FAKFontAwesome.addressCardOIcon(withSize: 18).image(with: CGSize(width: 30, height: 30))
+        myProfileImage = myProfileImage?.imageWithColor(color: UIColor.gray)
+        
+        imageViewMyProfile.image = myProfileImage
+        
+        
+        var tcImage = FAKFontAwesome.alignLeftIcon(withSize: 18).image(with: CGSize(width: 30, height: 30))
+        tcImage = tcImage?.imageWithColor(color: UIColor.gray)
+        
+        imageViewTC.image = tcImage
+        
+        var privacyImage = FAKFontAwesome.userSecretIcon(withSize: 18).image(with: CGSize(width: 30, height: 30))
+        privacyImage = privacyImage?.imageWithColor(color: UIColor.gray)
+        
+        imageViewPP.image = privacyImage
+        
+        var upgradeImage = FAKFontAwesome.arrowCircleOUpIcon(withSize: 20).image(with: CGSize(width: 30, height: 30))
+        upgradeImage = upgradeImage?.imageWithColor(color: Commons.myDarkGreenColor)
+        
+        imageViewUpgrade.image = upgradeImage
+        
+        var outStoryImage = FAKFontAwesome.coffeeIcon(withSize: 18).image(with: CGSize(width: 30, height: 30))
+        outStoryImage = outStoryImage?.imageWithColor(color: UIColor.gray)
+        
+        imageViewOurStory.image = outStoryImage
+        
+        var contactImage = FAKFontAwesome.envelopeOIcon(withSize: 18).image(with: CGSize(width: 30, height: 30))
+        contactImage = contactImage?.imageWithColor(color: UIColor.gray)
+        
+        imageViewContact.image = contactImage
+        
     }
     
     

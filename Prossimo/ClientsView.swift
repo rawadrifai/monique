@@ -234,6 +234,12 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
                     
                     // get selected row
                     let selectedRow:Int = (self.tableView.indexPathForSelectedRow?.row)!
+                    
+                    // sometimes it crashes because index out of bounds, so this is to prevent that
+                    guard selectedRow < cellData.count && selectedRow >= 0 else {
+                        return
+                    }
+                    
                     destination.client = cellData[selectedRow]
                     destination.userId = self.userId
                 }
@@ -241,6 +247,12 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
                 else {
                     
                     let selectedRow:Int = (resultsController.tableView.indexPathForSelectedRow?.row)!
+                    
+                    // sometimes it crashes because index out of bounds, so this is to prevent that
+                    guard selectedRow < cellData.count && selectedRow >= 0 else {
+                        return
+                    }
+                    
                     destination.client = filteredData[selectedRow]
                     destination.userId = self.userId
                 }

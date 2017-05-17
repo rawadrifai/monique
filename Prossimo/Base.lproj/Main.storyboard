@@ -27,42 +27,13 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" rowHeight="78" id="ajS-zj-FZc" customClass="ClientsTableViewCell" customModule="Prossimo" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="cell" rowHeight="78" id="ajS-zj-FZc">
                                 <rect key="frame" x="0.0" y="28" width="375" height="78"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ajS-zj-FZc" id="GRr-vA-PZb">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="77.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="77.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sgp-dg-6hn">
-                                            <rect key="frame" x="18" y="13" width="50" height="50"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="50" id="Gbc-IZ-vJh"/>
-                                                <constraint firstAttribute="height" constant="50" id="gQy-6U-Aez"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="nameLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SyT-WS-Nfi">
-                                            <rect key="frame" x="82" y="28" width="260" height="21"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="260" id="FMI-fl-c3I"/>
-                                                <constraint firstAttribute="height" constant="21" id="aww-52-h3D"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="SyT-WS-Nfi" firstAttribute="leading" secondItem="sgp-dg-6hn" secondAttribute="trailing" constant="14" id="3S6-yh-h3F"/>
-                                        <constraint firstItem="SyT-WS-Nfi" firstAttribute="centerY" secondItem="GRr-vA-PZb" secondAttribute="centerY" id="gph-5c-OuX"/>
-                                        <constraint firstItem="sgp-dg-6hn" firstAttribute="centerY" secondItem="GRr-vA-PZb" secondAttribute="centerY" id="jp9-Tr-bc7"/>
-                                        <constraint firstItem="sgp-dg-6hn" firstAttribute="leading" secondItem="GRr-vA-PZb" secondAttribute="leadingMargin" constant="10" id="mvc-xi-tHD"/>
-                                    </constraints>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="clientImageView" destination="sgp-dg-6hn" id="nmu-SB-NZY"/>
-                                    <outlet property="labelClientName" destination="SyT-WS-Nfi" id="Q6e-ZC-Ugm"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

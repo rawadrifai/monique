@@ -123,16 +123,42 @@ class EditClientVC: UIViewController, UINavigationControllerDelegate, UIImagePic
     
     func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
+        displayProfileImageAlert()
+    }
+    
+    func displayProfileImageAlert() {
+        
         let image = UIImagePickerController()
         image.allowsEditing = true
         image.delegate = self
         
-        // set the source to photo library
-        image.sourceType = UIImagePickerControllerSourceType.camera
         
-        self.present(image, animated: true)
+        
+        let profileImageAlert = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        
+        profileImageAlert.addAction(UIAlertAction(title: "Take a New Photo", style: .default, handler: { (action: UIAlertAction!) in
+            
+            image.sourceType = UIImagePickerControllerSourceType.camera
+            self.present(image, animated: true)
+            
+        }))
+        
+        profileImageAlert.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (action: UIAlertAction!) in
+            
+            image.sourceType = UIImagePickerControllerSourceType.photoLibrary
+            self.present(image, animated: true)
+            
+        }))
+        
+        
+        
+        profileImageAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+            
+        }))
+        
+        present(profileImageAlert, animated: true, completion: nil)
     }
-    
+
     
     func fillData() {
         
