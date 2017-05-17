@@ -36,6 +36,7 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
     
     @IBOutlet weak var labelClientCount: UILabel!
     
+    
     // every time the page shows (including when going back to it from the nav)
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -51,6 +52,7 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
         setIcons()
     }
 
+    
     func setIcons() {
         var contactsIconImage = FAKFontAwesome.userPlusIcon(withSize: 25).image(with: CGSize(width: 35, height: 25))
         contactsIconImage = contactsIconImage?.imageWithColor(color: Commons.myColor)
@@ -62,12 +64,16 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
         super.viewDidLoad()
         
         // needed things for the search to work
+        //let storyboard = UIStoryboard(name: "Main", bundle: nil)
+       // self.resultsController = storyboard.instantiateViewController(withIdentifier: "idClientsView") as! UITableViewController
         self.resultsController.tableView.dataSource = self
         self.resultsController.tableView.delegate = self
         self.resultsController.tableView.rowHeight = 78
         
         customizeSearchController()
     }
+    
+    
     
     // this func customizes the search controller provided by default
     func customizeSearchController() {
@@ -126,7 +132,9 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
 //        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ClientsTableViewCell
 
         
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ClientsTableViewCell
+        if let cell = Bundle.main.loadNibNamed("ClientCell", owner: self, options: nil)?.first as? ClientCell
+        
+        //if let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ClientsTableViewCell
         {
             let c = Client()
             
@@ -145,16 +153,16 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
             cell.labelClientName.text = c.clientName
             
             if c.profileImg.imageUrl != "" {
-                cell.clientImageView.sd_setImage(with: URL(string: c.profileImg.imageUrl))
+                cell.imageViewClient.sd_setImage(with: URL(string: c.profileImg.imageUrl))
             }
             else {
-                cell.clientImageView.image = UIImage(imageLiteralResourceName: "user-icon")
-                cell.clientImageView.layer.borderWidth = 1
+                cell.imageViewClient.image = UIImage(imageLiteralResourceName: "user-icon")
+                cell.imageViewClient.layer.borderWidth = 1
             }
             
             // make image round
-            cell.clientImageView.layer.cornerRadius = 25
-            cell.clientImageView.clipsToBounds = true
+            cell.imageViewClient.layer.cornerRadius = 25
+            cell.imageViewClient.clipsToBounds = true
             
             
             return cell

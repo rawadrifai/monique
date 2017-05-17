@@ -361,11 +361,17 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? ClientDetailsTableViewCell
+        if let cell = Bundle.main.loadNibNamed("ClientDetailsCell", owner: self, options: nil)?.first as? ClientDetailsCell
+
+        
+        //if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? ClientDetailsTableViewCell
         {
             var humanReadableDate = ""
             var notes = ""
             var price = ""
+            var icon = UIImage()
+            
+        
             
             // get date from starred visits
             if isStarredSelected {
@@ -373,7 +379,7 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
                 humanReadableDate = Commons.getHumanReadableDate(dateString: self.starredVisits[indexPath.row].visitDate)
                 notes = self.starredVisits[indexPath.row].notes
                 price = "$" + String(self.starredVisits[indexPath.row].price)
-
+                icon = FAKFontAwesome.starIcon(withSize: 16).image(with: CGSize(width: 20, height: 20))
                 
             } else { // get date from all visits
             
@@ -381,11 +387,15 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
                 
                 notes = self.client.clientVisits[indexPath.row].notes
                 price = "$" + String(self.client.clientVisits[indexPath.row].price)
+                icon = FAKFontAwesome.calendarIcon(withSize: 16).image(with: CGSize(width: 20, height: 20))
             }
             
             cell.labelVisitDate.text = humanReadableDate
             cell.labelNotes.text = notes
             cell.labelPrice.text = price
+            
+            icon = icon.imageWithColor(color: UIColor.gray)!
+            cell.imageViewIcon.image = icon
             
             return cell
         }

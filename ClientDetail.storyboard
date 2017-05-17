@@ -284,7 +284,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" rowHeight="75" id="4H3-HP-5zV" customClass="ClientDetailsTableViewCell" customModule="Prossimo" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" rowHeight="75" id="4H3-HP-5zV">
                                 <rect key="frame" x="0.0" y="407" width="375" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4H3-HP-5zV" id="qAD-x3-NfC">
@@ -320,7 +320,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="price" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5EA-4d-88u">
-                                            <rect key="frame" x="284" y="29" width="43" height="21"/>
+                                            <rect key="frame" x="291.5" y="29" width="35.5" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="uLC-Ju-7Im"/>
                                             </constraints>
@@ -330,7 +330,6 @@
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="5EA-4d-88u" firstAttribute="leading" secondItem="vkl-9M-LjL" secondAttribute="trailing" constant="-50" id="2og-vx-hEn"/>
                                         <constraint firstItem="hGG-Qm-uqn" firstAttribute="centerY" secondItem="qAD-x3-NfC" secondAttribute="centerY" id="3qn-5A-lkV"/>
                                         <constraint firstAttribute="trailing" secondItem="5EA-4d-88u" secondAttribute="trailing" constant="15" id="3r9-jK-1xt"/>
                                         <constraint firstItem="QNP-uJ-P1Z" firstAttribute="leading" secondItem="hGG-Qm-uqn" secondAttribute="trailing" constant="14" id="CZM-NM-PZ7"/>

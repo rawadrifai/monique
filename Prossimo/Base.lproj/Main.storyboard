@@ -13,7 +13,7 @@
         <!--Clients-->
         <scene sceneID="4AB-gc-XS9">
             <objects>
-                <tableViewController id="ziU-oG-owb" customClass="ClientsView" customModule="Prossimo" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="idClientsView" id="ziU-oG-owb" customClass="ClientsView" customModule="Prossimo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="78" sectionHeaderHeight="28" sectionFooterHeight="28" id="wtp-iS-dcW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -85,7 +85,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="btnImport" destination="2FV-pB-QDe" id="D2M-Qf-fQr"/>
                         <outlet property="labelClientCount" destination="EHk-h8-PkH" id="uEb-yI-2h4"/>

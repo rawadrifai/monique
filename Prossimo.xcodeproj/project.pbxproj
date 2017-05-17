@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		712C1A8D6E507F7AC790634F /* Pods_Prossimo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C5810A9DE4136D869B270F /* Pods_Prossimo.framework */; };
-		7905A68E1EC3D88B0008D2ED /* ClientsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7905A68D1EC3D88B0008D2ED /* ClientsTableViewCell.swift */; };
-		7905A69B1EC3FF260008D2ED /* ClientDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7905A69A1EC3FF260008D2ED /* ClientDetailsTableViewCell.swift */; };
 		7905A6AA1EC655D10008D2ED /* Commons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7905A6A91EC655D10008D2ED /* Commons.swift */; };
 		7905A6B71EC663AE0008D2ED /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7905A6B61EC663AE0008D2ED /* FontAwesome.otf */; };
 		7905A6CE1EC97C700008D2ED /* UIImageEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7905A6CD1EC97C700008D2ED /* UIImageEffects.swift */; };
@@ -18,6 +16,10 @@
 		7905A6E21ECA5C590008D2ED /* NewClient.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7905A6E01ECA5C590008D2ED /* NewClient.storyboard */; };
 		7905A6E41ECA5CA00008D2ED /* ClientDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7905A6E31ECA5CA00008D2ED /* ClientDetail.storyboard */; };
 		7905A6E61ECA5D050008D2ED /* EditClient.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7905A6E51ECA5D050008D2ED /* EditClient.storyboard */; };
+		7975C9061ECBBE5B00C93845 /* ClientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7975C9041ECBBE5B00C93845 /* ClientCell.swift */; };
+		7975C9071ECBBE5B00C93845 /* ClientCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7975C9051ECBBE5B00C93845 /* ClientCell.xib */; };
+		7975C9151ECBCB3400C93845 /* ClientDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7975C9131ECBCB3400C93845 /* ClientDetailsCell.swift */; };
+		7975C9161ECBCB3400C93845 /* ClientDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7975C9141ECBCB3400C93845 /* ClientDetailsCell.xib */; };
 		9A0E86441E9B4EA400F02BA6 /* InstagramManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E86431E9B4EA400F02BA6 /* InstagramManager.swift */; };
 		9A0E86501E9BF85C00F02BA6 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0E864E1E9BF85C00F02BA6 /* Fabric.framework */; };
 		9A0E86511E9BF85C00F02BA6 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0E864F1E9BF85C00F02BA6 /* Crashlytics.framework */; };
@@ -133,8 +135,6 @@
 
 /* Begin PBXFileReference section */
 		24C5810A9DE4136D869B270F /* Pods_Prossimo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Prossimo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7905A68D1EC3D88B0008D2ED /* ClientsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientsTableViewCell.swift; path = Prossimo/ClientsTableViewCell.swift; sourceTree = "<group>"; };
-		7905A69A1EC3FF260008D2ED /* ClientDetailsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientDetailsTableViewCell.swift; path = Prossimo/ClientDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		7905A6A91EC655D10008D2ED /* Commons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Commons.swift; path = Prossimo/Commons.swift; sourceTree = "<group>"; };
 		7905A6B61EC663AE0008D2ED /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
 		7905A6CD1EC97C700008D2ED /* UIImageEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageEffects.swift; sourceTree = "<group>"; };
@@ -143,6 +143,10 @@
 		7905A6E11ECA5C590008D2ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Prossimo/Base.lproj/NewClient.storyboard; sourceTree = "<group>"; };
 		7905A6E31ECA5CA00008D2ED /* ClientDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ClientDetail.storyboard; sourceTree = "<group>"; };
 		7905A6E51ECA5D050008D2ED /* EditClient.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditClient.storyboard; sourceTree = "<group>"; };
+		7975C9041ECBBE5B00C93845 /* ClientCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientCell.swift; path = Prossimo/ClientCell.swift; sourceTree = "<group>"; };
+		7975C9051ECBBE5B00C93845 /* ClientCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ClientCell.xib; path = Prossimo/ClientCell.xib; sourceTree = "<group>"; };
+		7975C9131ECBCB3400C93845 /* ClientDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientDetailsCell.swift; path = Prossimo/ClientDetailsCell.swift; sourceTree = "<group>"; };
+		7975C9141ECBCB3400C93845 /* ClientDetailsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ClientDetailsCell.xib; path = Prossimo/ClientDetailsCell.xib; sourceTree = "<group>"; };
 		9A0E86431E9B4EA400F02BA6 /* InstagramManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InstagramManager.swift; path = Prossimo/InstagramManager.swift; sourceTree = "<group>"; };
 		9A0E864E1E9BF85C00F02BA6 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		9A0E864F1E9BF85C00F02BA6 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -221,8 +225,10 @@
 		7905A6C81EC93E560008D2ED /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				7905A69A1EC3FF260008D2ED /* ClientDetailsTableViewCell.swift */,
-				7905A68D1EC3D88B0008D2ED /* ClientsTableViewCell.swift */,
+				7975C9041ECBBE5B00C93845 /* ClientCell.swift */,
+				7975C9131ECBCB3400C93845 /* ClientDetailsCell.swift */,
+				7975C9141ECBCB3400C93845 /* ClientDetailsCell.xib */,
+				7975C9051ECBBE5B00C93845 /* ClientCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -499,7 +505,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AD2B3681E8C2F3800DF308C /* GoogleService-Info.plist in Resources */,
+				7975C9071ECBBE5B00C93845 /* ClientCell.xib in Resources */,
 				7905A6DF1ECA5BBF0008D2ED /* Info.storyboard in Resources */,
+				7975C9161ECBCB3400C93845 /* ClientDetailsCell.xib in Resources */,
 				7905A6E41ECA5CA00008D2ED /* ClientDetail.storyboard in Resources */,
 				7905A6B71EC663AE0008D2ED /* FontAwesome.otf in Resources */,
 				9A3BC6521E5A9AA700E9CA71 /* LaunchScreen.storyboard in Resources */,
@@ -581,14 +589,13 @@
 			files = (
 				9A371A251EB8003F00A52DDD /* FifthVC.swift in Sources */,
 				9A3BC6461E5A9AA700E9CA71 /* AppDelegate.swift in Sources */,
-				7905A69B1EC3FF260008D2ED /* ClientDetailsTableViewCell.swift in Sources */,
 				9AD116621E5E7A9F00113753 /* ClientDetailView.swift in Sources */,
 				9A40F5881EAB62C900092723 /* FinalVC.swift in Sources */,
 				9AE7A1C81EB5A5080004FCC2 /* EditClientVC.swift in Sources */,
 				9AE7A1BF1EB4336A0004FCC2 /* NewClientVC.swift in Sources */,
 				9A40F5921EADE19500092723 /* ThirdVC.swift in Sources */,
+				7975C9061ECBBE5B00C93845 /* ClientCell.swift in Sources */,
 				9AD116641E5E87C400113753 /* Client.swift in Sources */,
-				7905A68E1EC3D88B0008D2ED /* ClientsTableViewCell.swift in Sources */,
 				9A969DA21EA1B6EA004127CE /* KeychainManager.swift in Sources */,
 				7905A6AA1EC655D10008D2ED /* Commons.swift in Sources */,
 				9A371A261EB8003F00A52DDD /* SecondVC.swift in Sources */,
@@ -601,6 +608,7 @@
 				9AAF34C71E713A0B00CAFE44 /* PictureTimeView.swift in Sources */,
 				7905A6CE1EC97C700008D2ED /* UIImageEffects.swift in Sources */,
 				9AAF34C51E70F1B500CAFE44 /* Login.swift in Sources */,
+				7975C9151ECBCB3400C93845 /* ClientDetailsCell.swift in Sources */,
 				9A371A341EB9A84B00A52DDD /* PhotosProvider.swift in Sources */,
 				9A371A331EB9A84B00A52DDD /* ExamplePhoto.swift in Sources */,
 				9AB6B8E11E84F869009231B0 /* InfoView.swift in Sources */,
