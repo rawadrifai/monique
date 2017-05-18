@@ -22,6 +22,7 @@
 		7975C9161ECBCB3400C93845 /* ClientDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7975C9141ECBCB3400C93845 /* ClientDetailsCell.xib */; };
 		7975C9181ECC34FF00C93845 /* MyInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7975C9171ECC34FF00C93845 /* MyInfoVC.swift */; };
 		7975C91A1ECC356300C93845 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7975C9191ECC356300C93845 /* UserInfo.swift */; };
+		7975C91C1ECD82A700C93845 /* HaircutDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7975C91B1ECD82A700C93845 /* HaircutDetail.storyboard */; };
 		9A0E86441E9B4EA400F02BA6 /* InstagramManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E86431E9B4EA400F02BA6 /* InstagramManager.swift */; };
 		9A0E86501E9BF85C00F02BA6 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0E864E1E9BF85C00F02BA6 /* Fabric.framework */; };
 		9A0E86511E9BF85C00F02BA6 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0E864F1E9BF85C00F02BA6 /* Crashlytics.framework */; };
@@ -151,6 +152,7 @@
 		7975C9141ECBCB3400C93845 /* ClientDetailsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ClientDetailsCell.xib; path = Prossimo/ClientDetailsCell.xib; sourceTree = "<group>"; };
 		7975C9171ECC34FF00C93845 /* MyInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyInfoVC.swift; path = Prossimo/MyInfoVC.swift; sourceTree = "<group>"; };
 		7975C9191ECC356300C93845 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserInfo.swift; path = Prossimo/UserInfo.swift; sourceTree = "<group>"; };
+		7975C91B1ECD82A700C93845 /* HaircutDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = HaircutDetail.storyboard; path = Prossimo/HaircutDetail.storyboard; sourceTree = "<group>"; };
 		9A0E86431E9B4EA400F02BA6 /* InstagramManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InstagramManager.swift; path = Prossimo/InstagramManager.swift; sourceTree = "<group>"; };
 		9A0E864E1E9BF85C00F02BA6 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		9A0E864F1E9BF85C00F02BA6 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 			children = (
 				9A3BC64B1E5A9AA700E9CA71 /* Main.storyboard */,
 				7905A6E31ECA5CA00008D2ED /* ClientDetail.storyboard */,
+				7975C91B1ECD82A700C93845 /* HaircutDetail.storyboard */,
 				7905A6E51ECA5D050008D2ED /* EditClient.storyboard */,
 				7905A6E01ECA5C590008D2ED /* NewClient.storyboard */,
 				7905A6DE1ECA5BBF0008D2ED /* Info.storyboard */,
@@ -520,6 +523,7 @@
 				7905A6E21ECA5C590008D2ED /* NewClient.storyboard in Resources */,
 				9AD676501E94A0FD00F8BBFB /* Assets.xcassets in Resources */,
 				7905A6D21ECA5B0C0008D2ED /* Tutorial.storyboard in Resources */,
+				7975C91C1ECD82A700C93845 /* HaircutDetail.storyboard in Resources */,
 				9A3BC64D1E5A9AA700E9CA71 /* Main.storyboard in Resources */,
 				7905A6E61ECA5D050008D2ED /* EditClient.storyboard in Resources */,
 			);

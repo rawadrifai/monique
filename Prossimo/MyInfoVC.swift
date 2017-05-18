@@ -102,7 +102,7 @@ class MyInfoVC: UIViewController {
             self.ref.child("users").child(self.userId).child("phone").setValue(phone) { (err, ref) in }
             self.ref.child("users").child(self.userId).child("email").setValue(email) { (err, ref) in }
             
-            dismiss(animated: true, completion: nil)
+            self.navigationController?.popViewController(animated: true)
         }
     }
     
