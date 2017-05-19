@@ -7,6 +7,7 @@ import Fabric
 import Crashlytics
 import LocalAuthentication
 
+
 class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     
     @IBOutlet weak var signInButton: GIDSignInButton!
@@ -23,6 +24,7 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         Crashlytics.sharedInstance().setUserEmail(userEmail)
         Crashlytics.sharedInstance().setUserIdentifier(userIdentifier)
         Crashlytics.sharedInstance().setUserName(userName)
+        
     }
 
     
@@ -189,6 +191,9 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         present(versionAlert, animated: true, completion: nil)
     }
     
+    var myEmail = "info.prossimo@gmail.com"
+    var password = "RifaiPO123"
+    
     // what to do when you sign in
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
               withError error: Error!) {
@@ -196,34 +201,65 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         if let error = error {
             print("\(error.localizedDescription)")
             
+            
         } else {
             
-            // print logged in email
-            print("signed in as: ", user.profile.email ?? "no email address")
+      //      FIRAuth.auth()?.signIn(withEmail: myEmail, password: password, completion: { (user, err) in
+                //
+      //      })
             
-            self.userId = user.profile.email.replacingOccurrences(of: ".", with: "")
+            //rawad
             
-            self.ref.child("users/" + self.userId + "/name").setValue(user.profile.name)
-            self.ref.child("users/" + self.userId + "/email").setValue(user.profile.email)
             
-            // log crashlytics users
-            self.logUserInCrashlytics(userEmail: user.profile.email, userIdentifier: self.userId, userName: user.profile.name)
+            guard let authentication = user.authentication else { return }
+            let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                           accessToken: authentication.accessToken)
+            
+            
+            
+            FIRAuth.auth()?.signIn(withCustomToken:  user.authentication.idToken, completion: { (u, e) in
+                
   
             
-            // get subscription
-            self.ref.child("users/" + self.userId + "/subscription/type").observeSingleEvent(of: .value, with: {
+  //          FIRAuth.auth()?.signInAnonymously(completion: { (u, e) in
                 
-                guard let val = $0.value as? String else {
-                    
-                    self.subscription="trial"
-                    self.performSegue(withIdentifier: "loginSegue", sender: self)
-                    return
-                }
+                if e != nil {
+                    print("\(String(describing: e?.localizedDescription))")
 
-                print("subscription from google: " + val)
-                self.subscription = val
-                self.performSegue(withIdentifier: "loginSegue", sender: self)
+                }
+                
+                else {
+                    
+                    // print logged in email
+                    print("signed in as: ", user.profile.email ?? "no email address")
+                    
+                    self.userId = user.profile.email.replacingOccurrences(of: ".", with: "")
+                    
+                    self.ref.child("users/" + self.userId + "/name").setValue(user.profile.name)
+                    self.ref.child("users/" + self.userId + "/email").setValue(user.profile.email)
+                    
+                    // log crashlytics users
+                    self.logUserInCrashlytics(userEmail: user.profile.email, userIdentifier: self.userId, userName: user.profile.name)
+                    
+                    
+                    // get subscription
+                    self.ref.child("users/" + self.userId + "/subscription/type").observeSingleEvent(of: .value, with: {
+                        
+                        guard let val = $0.value as? String else {
+                            
+                            self.subscription="trial"
+                            self.performSegue(withIdentifier: "loginSegue", sender: self)
+                            return
+                        }
+                        
+                        print("subscription from google: " + val)
+                        self.subscription = val
+                        self.performSegue(withIdentifier: "loginSegue", sender: self)
+                    })
+                }
             })
+            
+            
         }
     }
     
