@@ -205,8 +205,10 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         }
             
 
-            
-            
+        // log crashlytics users
+        self.logUserInCrashlytics(userEmail: user.profile.email, userIdentifier: self.userId, userName: user.profile.name)
+
+        
             guard let authentication = user.authentication else { return }
             let credential = FIRGoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                            accessToken: authentication.accessToken)
@@ -221,38 +223,22 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
                 }
                 
                 
+                
                     
-                    // print logged in email
-                    print("signed in as: ", user.profile.email ?? "no email address")
+                    // update profile info in firebase
                     
                     self.userId = user.profile.email.replacingOccurrences(of: ".", with: "")
                     
                     self.ref.child("users/" + self.userId + "/name").setValue(user.profile.name)
                     self.ref.child("users/" + self.userId + "/email").setValue(user.profile.email)
                     
-                    // log crashlytics users
-                    self.logUserInCrashlytics(userEmail: user.profile.email, userIdentifier: self.userId, userName: user.profile.name)
-                    
+                
                     
                     // get subscription
-                    self.ref.child("users/" + self.userId + "/subscription/type").observeSingleEvent(of: .value, with: {
-                        
-                        guard let val = $0.value as? String else {
-                            
-                            self.subscription="trial"
-                            self.performSegue(withIdentifier: "loginSegue", sender: self)
-                            return
-                        }
-                        
-                        print("subscription from google: " + val)
-                        self.subscription = val
-                        self.performSegue(withIdentifier: "loginSegue", sender: self)
-                    })
+                    self.getSubscriptionType(uid: self.userId)
+
                 
             })
-            
-            
-        
     }
     
     // when the user disconnects from the app
@@ -283,20 +269,7 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
                     
                     // get subscription type
                     
-                    self.ref.child("users/" + uid + "/subscription/type").observeSingleEvent(of: .value, with: {
-                        
-                        guard let val = $0.value as? String else {
-                            
-                            self.subscription="trial"
-                            self.performSegue(withIdentifier: "loginSegue", sender: self)
-                            return
-                        }
-                        
-                        print("subscription: " + val)
-                        self.subscription = val
-                        self.performSegue(withIdentifier: "loginSegue", sender: self)
-                        
-                    })
+                    self.getSubscriptionType(uid: uid)
                     
                 }
                 else {
@@ -308,6 +281,24 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
             }
         })
 
+    }
+    
+    func getSubscriptionType(uid:String) {
+        
+        self.ref.child("users/" + uid + "/subscription/type").observeSingleEvent(of: .value, with: {
+            
+            guard let val = $0.value as? String else {
+                
+                self.subscription="trial"
+                self.performSegue(withIdentifier: "loginSegue", sender: self)
+                return
+            }
+            
+            print("subscription: " + val)
+            self.subscription = val
+            self.performSegue(withIdentifier: "loginSegue", sender: self)
+            
+        })
     }
     
     @IBAction func signInUsignDeviceId(_ sender: UIButton) {
