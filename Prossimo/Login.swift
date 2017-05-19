@@ -1,6 +1,7 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 import GoogleSignIn
 import Google
 import Fabric
@@ -191,44 +192,35 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         present(versionAlert, animated: true, completion: nil)
     }
     
-    var myEmail = "info.prossimo@gmail.com"
-    var password = "RifaiPO123"
+
     
     // what to do when you sign in
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
               withError error: Error!) {
         
-        if let error = error {
+        if error != nil {
             print("\(error.localizedDescription)")
+            return
             
+        }
             
-        } else {
-            
-      //      FIRAuth.auth()?.signIn(withEmail: myEmail, password: password, completion: { (user, err) in
-                //
-      //      })
-            
-            //rawad
+
             
             
             guard let authentication = user.authentication else { return }
-            let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+            let credential = FIRGoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                            accessToken: authentication.accessToken)
             
             
-            
-            FIRAuth.auth()?.signIn(withCustomToken:  user.authentication.idToken, completion: { (u, e) in
+            FIRAuth.auth()?.signIn(with: credential, completion: { (u, e) in
                 
-  
-            
-  //          FIRAuth.auth()?.signInAnonymously(completion: { (u, e) in
-                
+
                 if e != nil {
                     print("\(String(describing: e?.localizedDescription))")
-
+                    return
                 }
                 
-                else {
+                
                     
                     // print logged in email
                     print("signed in as: ", user.profile.email ?? "no email address")
@@ -256,11 +248,11 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
                         self.subscription = val
                         self.performSegue(withIdentifier: "loginSegue", sender: self)
                     })
-                }
+                
             })
             
             
-        }
+        
     }
     
     // when the user disconnects from the app
@@ -271,33 +263,27 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         
     }
     
-    
-    @IBAction func signInUsignDeviceId(_ sender: UIButton) {
+    func signInFirebase(uid:String) {
         
-        
-        self.userId = KeychainManager.sharedInstance.getDeviceIdentifierFromKeychain()
-        
-        Crashlytics.sharedInstance().setUserIdentifier(self.userId)
-        
-        self.ref.child("users/" + userId + "/deviceId").observeSingleEvent(of: .value, with: {
+        self.ref.child("users/" + uid + "/deviceId").observeSingleEvent(of: .value, with: {
             
             if let value = $0.value {
-                if String(describing: value) == self.userId {
+                if String(describing: value) == uid {
                     
                     // store crashlytics user before signing in
                     
-                    self.ref.child("users/" + self.userId + "/email").observeSingleEvent(of: .value, with: {
+                    self.ref.child("users/" + uid + "/email").observeSingleEvent(of: .value, with: {
                         Crashlytics.sharedInstance().setUserEmail($0.value as? String)
                     })
                     
-                    self.ref.child("users/" + self.userId + "/name").observeSingleEvent(of: .value, with: {
+                    self.ref.child("users/" + uid + "/name").observeSingleEvent(of: .value, with: {
                         Crashlytics.sharedInstance().setUserName($0.value as? String)
                     })
                     
                     
                     // get subscription type
                     
-                    self.ref.child("users/" + self.userId + "/subscription/type").observeSingleEvent(of: .value, with: {
+                    self.ref.child("users/" + uid + "/subscription/type").observeSingleEvent(of: .value, with: {
                         
                         guard let val = $0.value as? String else {
                             
@@ -309,7 +295,7 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
                         print("subscription: " + val)
                         self.subscription = val
                         self.performSegue(withIdentifier: "loginSegue", sender: self)
-
+                        
                     })
                     
                 }
@@ -322,6 +308,25 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
             }
         })
 
+    }
+    
+    @IBAction func signInUsignDeviceId(_ sender: UIButton) {
+        
+        
+        self.userId = KeychainManager.sharedInstance.getDeviceIdentifierFromKeychain()
+        
+        Crashlytics.sharedInstance().setUserIdentifier(self.userId)
+        
+        FIRAuth.auth()?.signInAnonymously(completion: { (user, error) in
+            
+            if error != nil {
+                return
+            }
+            
+            self.signInFirebase(uid: self.userId)
+        })
+        
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

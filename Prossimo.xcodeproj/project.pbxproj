@@ -16,6 +16,7 @@
 		7905A6E21ECA5C590008D2ED /* NewClient.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7905A6E01ECA5C590008D2ED /* NewClient.storyboard */; };
 		7905A6E41ECA5CA00008D2ED /* ClientDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7905A6E31ECA5CA00008D2ED /* ClientDetail.storyboard */; };
 		7905A6E61ECA5D050008D2ED /* EditClient.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7905A6E51ECA5D050008D2ED /* EditClient.storyboard */; };
+		792C86EF1ECE922A0082E9F0 /* FemaleOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792C86EE1ECE922A0082E9F0 /* FemaleOptionsView.swift */; };
 		7975C9061ECBBE5B00C93845 /* ClientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7975C9041ECBBE5B00C93845 /* ClientCell.swift */; };
 		7975C9071ECBBE5B00C93845 /* ClientCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7975C9051ECBBE5B00C93845 /* ClientCell.xib */; };
 		7975C9151ECBCB3400C93845 /* ClientDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7975C9131ECBCB3400C93845 /* ClientDetailsCell.swift */; };
@@ -146,6 +147,7 @@
 		7905A6E11ECA5C590008D2ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Prossimo/Base.lproj/NewClient.storyboard; sourceTree = "<group>"; };
 		7905A6E31ECA5CA00008D2ED /* ClientDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ClientDetail.storyboard; sourceTree = "<group>"; };
 		7905A6E51ECA5D050008D2ED /* EditClient.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditClient.storyboard; sourceTree = "<group>"; };
+		792C86EE1ECE922A0082E9F0 /* FemaleOptionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FemaleOptionsView.swift; path = Prossimo/FemaleOptionsView.swift; sourceTree = "<group>"; };
 		7975C9041ECBBE5B00C93845 /* ClientCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientCell.swift; path = Prossimo/ClientCell.swift; sourceTree = "<group>"; };
 		7975C9051ECBBE5B00C93845 /* ClientCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ClientCell.xib; path = Prossimo/ClientCell.xib; sourceTree = "<group>"; };
 		7975C9131ECBCB3400C93845 /* ClientDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientDetailsCell.swift; path = Prossimo/ClientDetailsCell.swift; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 				7905A6CC1EC93F930008D2ED /* Miscellaneous */,
 				7905A6CB1EC93F360008D2ED /* UI */,
 				9A371A281EB8007000A52DDD /* OptionsView.swift */,
+				792C86EE1ECE922A0082E9F0 /* FemaleOptionsView.swift */,
 				7975C9171ECC34FF00C93845 /* MyInfoVC.swift */,
 				9AE7A1BE1EB4336A0004FCC2 /* NewClientVC.swift */,
 				9A371A311EB9A84B00A52DDD /* ExamplePhoto.swift */,
@@ -598,6 +601,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A371A251EB8003F00A52DDD /* FifthVC.swift in Sources */,
+				792C86EF1ECE922A0082E9F0 /* FemaleOptionsView.swift in Sources */,
 				9A3BC6461E5A9AA700E9CA71 /* AppDelegate.swift in Sources */,
 				9AD116621E5E7A9F00113753 /* ClientDetailView.swift in Sources */,
 				9A40F5881EAB62C900092723 /* FinalVC.swift in Sources */,
