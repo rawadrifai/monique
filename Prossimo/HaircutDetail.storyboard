@@ -245,7 +245,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="G74-vR-hE1">
+                    <navigationItem key="navigationItem" prompt="HAIRCUT INFO" id="G74-vR-hE1">
                         <rightBarButtonItems>
                             <barButtonItem systemItem="camera" id="Nih-Wo-aEo">
                                 <color key="tintColor" red="0.37996858960000002" green="1" blue="0.83935681090000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

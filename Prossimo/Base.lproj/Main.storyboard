@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EHk-h8-PkH">
+                        <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOADING CLIENTS ..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EHk-h8-PkH">
                             <rect key="frame" x="0.0" y="106" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
@@ -81,8 +81,8 @@
         <scene sceneID="yl2-sM-qoP">
             <objects>
                 <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" barStyle="black"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     </tabBar>
@@ -115,7 +115,7 @@
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <items>
-                                    <navigationItem title="Sign Up" id="EJa-sS-qzp">
+                                    <navigationItem prompt="SIGN UP" id="EJa-sS-qzp">
                                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="2rf-Lw-BDx">
                                             <connections>
                                                 <action selector="cancel:" destination="296-gp-6M8" id="OqF-i2-Grt"/>
@@ -124,19 +124,35 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ehX-fb-TW6">
-                                <rect key="frame" x="16" y="193.5" width="343" height="280"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PROFILE INFO" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h20-Qs-OLx">
+                                <rect key="frame" x="0.0" y="117" width="375" height="58"/>
+                                <color key="backgroundColor" red="0.15686274510000001" green="0.15686274510000001" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="58" id="kFN-wg-MWa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ehX-fb-TW6">
+                                <rect key="frame" x="26" y="205.5" width="323" height="257.5"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="RQm-6Y-eMy">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="62.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="323" height="52.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="52.5" id="c9V-FB-K6Z"/>
+                                        </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="yJj-c1-uB4">
-                                        <rect key="frame" x="0.0" y="72.5" width="343" height="62.5"/>
+                                        <rect key="frame" x="0.0" y="62.5" width="323" height="52.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="52.5" id="uun-bo-K3a"/>
+                                        </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="phonePad"/>
@@ -145,17 +161,23 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="rxc-Ji-Dz2">
-                                        <rect key="frame" x="0.0" y="145" width="343" height="62.5"/>
+                                        <rect key="frame" x="0.0" y="125" width="323" height="52.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="52.5" id="nUe-YE-RJJ"/>
+                                        </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="olF-1O-eh3">
-                                        <rect key="frame" x="0.0" y="217.5" width="343" height="62.5"/>
+                                        <rect key="frame" x="0.0" y="187.5" width="323" height="70"/>
                                         <color key="backgroundColor" red="0.15686274510000001" green="0.15686274510000001" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="upi-Bf-r4E"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
-                                        <state key="normal" title="START USING PROSSIMO">
+                                        <state key="normal" title="DONE">
                                             <color key="titleColor" red="0.37996858960000002" green="1" blue="0.83935681090000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
@@ -163,17 +185,17 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="280" id="2vn-Zh-7SC"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ehX-fb-TW6" firstAttribute="centerY" secondItem="4Qz-mo-ENe" secondAttribute="centerY" id="5CC-eC-Sg1"/>
+                            <constraint firstItem="ehX-fb-TW6" firstAttribute="centerY" secondItem="4Qz-mo-ENe" secondAttribute="centerY" id="3Ak-cA-OH2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ehX-fb-TW6" secondAttribute="trailing" constant="10" id="Esw-d9-L1Y"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="h20-Qs-OLx" secondAttribute="trailing" constant="-16" id="Qs5-Mh-FDR"/>
                             <constraint firstItem="M6h-lQ-aQZ" firstAttribute="top" secondItem="mVH-EE-p2a" secondAttribute="bottom" id="V0m-2f-nbl"/>
-                            <constraint firstItem="ehX-fb-TW6" firstAttribute="leading" secondItem="4Qz-mo-ENe" secondAttribute="leadingMargin" id="XeQ-jb-Qa8"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ehX-fb-TW6" secondAttribute="trailing" id="eWu-67-LF7"/>
+                            <constraint firstItem="ehX-fb-TW6" firstAttribute="leading" secondItem="4Qz-mo-ENe" secondAttribute="leadingMargin" constant="10" id="Xd4-pT-X7N"/>
+                            <constraint firstItem="h20-Qs-OLx" firstAttribute="leading" secondItem="4Qz-mo-ENe" secondAttribute="leadingMargin" constant="-16" id="kHg-wE-Aqc"/>
+                            <constraint firstItem="ehX-fb-TW6" firstAttribute="top" secondItem="h20-Qs-OLx" secondAttribute="bottom" constant="30.5" id="rhK-af-trh"/>
                             <constraint firstItem="M6h-lQ-aQZ" firstAttribute="leading" secondItem="4Qz-mo-ENe" secondAttribute="leading" id="sSS-Au-P7a"/>
                             <constraint firstAttribute="trailing" secondItem="M6h-lQ-aQZ" secondAttribute="trailing" id="xcs-lz-aLw"/>
                         </constraints>
@@ -290,7 +312,7 @@
                     <connections>
                         <outlet property="btnSignIn" destination="08A-hu-Lj6" id="3XL-Gl-P8b"/>
                         <outlet property="signInButton" destination="waZ-m5-ly2" id="dUx-WF-TGQ"/>
-                        <segue destination="49e-Tb-3d3" kind="presentation" identifier="loginSegue" modalTransitionStyle="flipHorizontal" id="O2Z-Jn-XOB"/>
+                        <segue destination="49e-Tb-3d3" kind="presentation" identifier="loginSegue" id="O2Z-Jn-XOB"/>
                         <segue destination="296-gp-6M8" kind="presentation" identifier="saveUserInfoSegue" modalPresentationStyle="currentContext" id="yrd-yX-KWc"/>
                         <segue destination="Ymg-CF-JqD" kind="show" identifier="tutorialSegue" id="Q2A-cZ-9Fn"/>
                     </connections>
@@ -303,7 +325,7 @@
         <scene sceneID="xzu-Ro-4tb">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9yR-0W-Xz0" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" image="search-7" id="rcm-6f-XcJ"/>
+                    <tabBarItem key="tabBarItem" title="" image="search-7" id="rcm-6f-XcJ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" alpha="0.5" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="AfO-F3-mUS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -382,6 +404,6 @@
         <image name="search-7" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kDg-HA-5R9"/>
+        <segue reference="O2Z-Jn-XOB"/>
     </inferredMetricsTieBreakers>
 </document>

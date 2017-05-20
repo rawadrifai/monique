@@ -125,7 +125,6 @@ class SaveUserInfo: UIViewController {
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         let _ = self.navigationController?.popViewController(animated: true)
         
-        //dismiss(animated: true, completion: nil)
     }
 
     

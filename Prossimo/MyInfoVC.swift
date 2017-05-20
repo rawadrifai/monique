@@ -39,7 +39,8 @@ class MyInfoVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.ref = FIRDatabase.database().reference()
-        
+        self.txfPhone.delegate = self
+
         setBorders()
         loadData()
     }

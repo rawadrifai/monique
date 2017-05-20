@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Bpa-6O-VMt">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--New Client-->
+        <!--New ClientVC-->
         <scene sceneID="1np-IK-4cB">
             <objects>
                 <viewController id="Bpa-6O-VMt" customClass="NewClientVC" customModule="Prossimo" customModuleProvider="target" sceneMemberID="viewController">
@@ -15,7 +19,7 @@
                         <viewControllerLayoutGuide type="bottom" id="QEp-v5-s7h"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="nkf-3K-wdv">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QSE-rP-72S">
@@ -96,7 +100,7 @@
                             <constraint firstItem="ecR-aW-nEC" firstAttribute="leading" secondItem="nkf-3K-wdv" secondAttribute="leadingMargin" constant="20" id="vNf-B2-orA"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="New Client" id="GB2-Cx-Z7x">
+                    <navigationItem key="navigationItem" prompt="NEW CLIENT" id="GB2-Cx-Z7x">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="0aq-B2-afK">
                             <connections>
                                 <action selector="closeView:" destination="Bpa-6O-VMt" id="bfr-z4-eR6"/>
@@ -114,7 +118,6 @@
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </simulatedNavigationBarMetrics>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4_7.fullscreen"/>
                     <connections>
                         <outlet property="btnSave" destination="S7L-5J-N0j" id="g3p-Wh-nwl"/>
                         <outlet property="imgView" destination="mBS-fM-fKT" id="EWR-RX-gdQ"/>

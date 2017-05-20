@@ -11,12 +11,13 @@ import Firebase
 import FirebaseDatabase
 import FirebaseStorage
 
+
 extension EditClientVC: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         guard let text = textField.text else { return true }
-        
+
         let newLength = text.utf16.count + string.utf16.count - range.length
         return newLength <= 12 // Bool
     }

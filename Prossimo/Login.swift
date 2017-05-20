@@ -16,32 +16,32 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     var subscription:String!
     var ref: FIRDatabaseReference!
     var signoutClicked: Bool!
-
+    
     @IBOutlet weak var btnSignIn: UIButton!
     
     
     func logUserInCrashlytics(userEmail:String, userIdentifier:String, userName:String) {
-
+        
         Crashlytics.sharedInstance().setUserEmail(userEmail)
         Crashlytics.sharedInstance().setUserIdentifier(userIdentifier)
         Crashlytics.sharedInstance().setUserName(userName)
         
     }
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-     
+        
         customizeSignInBtns()
-
+        
         
         self.ref = FIRDatabase.database().reference()
-
+        
         checkForLatestVersion()
         checkIfAlreadySignedIn()
-
         
-
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -61,7 +61,7 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         GIDSignIn.sharedInstance().uiDelegate = self
         
         signInButton.style = .iconOnly
-    
+        
         btnSignIn.layer.cornerRadius = 10
         btnSignIn.layer.borderColor = UIColor.black.cgColor
         btnSignIn.layer.borderWidth = 2
@@ -70,11 +70,6 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     
     
     func checkIfAlreadySignedIn() {
-    
-        // signout was clicked then don't try to automatically sign in again
-        //if self.signoutClicked != nil && self.signoutClicked {
-        //    return
-        //}
         
         
         // get last logged in user
@@ -89,6 +84,10 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         
         self.ref.child("users/" + self.userId + "/email").observeSingleEvent(of: .value, with: {
             Crashlytics.sharedInstance().setUserEmail($0.value as? String)
+            
+            // register email in firebase
+            self.ref.child("emails/" + self.userId).setValue($0.value as? String)
+
         })
         
         self.ref.child("users/" + self.userId + "/name").observeSingleEvent(of: .value, with: {
@@ -112,7 +111,7 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
             self.performSegue(withIdentifier: "loginSegue", sender: self)
             
         })
-
+        
     }
     
     // display tutorial if first time use
@@ -124,7 +123,7 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else { return }
         
         
-
+        
         guard let lastVersionUsed = UserDefaults.standard.string(forKey: "prossimoLastVersionUsed")
             else {
                 UserDefaults.standard.set(version, forKey: "prossimoLastVersionUsed")
@@ -139,7 +138,7 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         }
         
     }
-
+    
     
     // check for latest version and prompt for upgrade if necessary
     
@@ -192,7 +191,7 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         present(versionAlert, animated: true, completion: nil)
     }
     
-
+    
     
     // what to do when you sign in
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
@@ -203,42 +202,46 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
             return
             
         }
-            
-
+        
+        // prepare user id for firebase
+        self.userId = user.profile.email.replacingOccurrences(of: ".", with: "")
+        
         // log crashlytics users
         self.logUserInCrashlytics(userEmail: user.profile.email, userIdentifier: self.userId, userName: user.profile.name)
-
         
-            guard let authentication = user.authentication else { return }
-            let credential = FIRGoogleAuthProvider.credential(withIDToken: authentication.idToken,
-                                                           accessToken: authentication.accessToken)
+        
+        guard let authentication = user.authentication else { return }
+        let credential = FIRGoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                          accessToken: authentication.accessToken)
+        
+        
+        FIRAuth.auth()?.signIn(with: credential, completion: { (u, e) in
             
             
-            FIRAuth.auth()?.signIn(with: credential, completion: { (u, e) in
-                
+            if e != nil {
+                print("\(String(describing: e?.localizedDescription))")
+                return
+            }
+            
+            
+            
+            
+            // update profile info in firebase
+            
+            self.userId = user.profile.email.replacingOccurrences(of: ".", with: "")
+            
+            self.ref.child("users/" + self.userId + "/name").setValue(user.profile.name)
+            self.ref.child("users/" + self.userId + "/email").setValue(user.profile.email)
+            
+            // register email in emails table
+            self.ref.child("emails/" + self.userId).setValue(user.profile.email)
 
-                if e != nil {
-                    print("\(String(describing: e?.localizedDescription))")
-                    return
-                }
-                
-                
-                
-                    
-                    // update profile info in firebase
-                    
-                    self.userId = user.profile.email.replacingOccurrences(of: ".", with: "")
-                    
-                    self.ref.child("users/" + self.userId + "/name").setValue(user.profile.name)
-                    self.ref.child("users/" + self.userId + "/email").setValue(user.profile.email)
-                    
-                
-                    
-                    // get subscription
-                    self.getSubscriptionType(uid: self.userId)
-
-                
-            })
+            
+            // get subscription
+            self.getSubscriptionType(uid: self.userId)
+            
+            
+        })
     }
     
     // when the user disconnects from the app
@@ -260,6 +263,10 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
                     
                     self.ref.child("users/" + uid + "/email").observeSingleEvent(of: .value, with: {
                         Crashlytics.sharedInstance().setUserEmail($0.value as? String)
+                        
+                        // register email in emails table
+                        self.ref.child("emails/" + uid).setValue($0.value as? String)
+
                     })
                     
                     self.ref.child("users/" + uid + "/name").observeSingleEvent(of: .value, with: {
@@ -280,7 +287,7 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
                 self.performSegue(withIdentifier: "saveUserInfoSegue", sender: self)
             }
         })
-
+        
     }
     
     func getSubscriptionType(uid:String) {
@@ -314,6 +321,7 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
                 return
             }
             
+
             self.signInFirebase(uid: self.userId)
         })
         
@@ -349,12 +357,12 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
             
             // set the userId
             let destinationViewController = segue.destination
-                
-                
-                if let destinationView = destinationViewController as? SaveUserInfo {
-                    destinationView.userId = self.userId
-                }
-                
+            
+            
+            if let destinationView = destinationViewController as? SaveUserInfo {
+                destinationView.userId = self.userId
+            }
+            
             
         }
         
