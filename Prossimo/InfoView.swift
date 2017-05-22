@@ -31,6 +31,10 @@ class InfoView: UITableViewController {
     
     @IBOutlet weak var imageViewContact: UIImageView!
     
+    @IBOutlet weak var btnFacebook: UIButton!
+    
+    @IBOutlet weak var btnInstagram: UIButton!
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
@@ -60,6 +64,14 @@ class InfoView: UITableViewController {
     }
     
     func setIcons() {
+        
+        let fbImage = FAKFontAwesome.facebookIcon(withSize: 36).image(with: CGSize(width: 60, height: 60))
+        //fbImage = fbImage?.imageWithColor(color: UIColor.blue)
+        btnFacebook.setImage(fbImage, for: .normal)
+        
+        let instagramImage = FAKFontAwesome.instagramIcon(withSize: 40).image(with: CGSize(width: 60, height: 60))
+        //instagramImage = instagramImage?.imageWithColor(color: UIColor.brown)
+        btnInstagram.setImage(instagramImage, for: .normal)
         
         var myProfileImage = FAKFontAwesome.addressCardOIcon(withSize: 18).image(with: CGSize(width: 30, height: 30))
         myProfileImage = myProfileImage?.imageWithColor(color: UIColor.gray)

@@ -63,8 +63,8 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         signInButton.style = .iconOnly
         
         btnSignIn.layer.cornerRadius = 10
-        btnSignIn.layer.borderColor = UIColor.black.cgColor
-        btnSignIn.layer.borderWidth = 2
+        btnSignIn.layer.borderColor = UIColor.lightGray.cgColor
+        btnSignIn.layer.borderWidth = 1
         btnSignIn.clipsToBounds = true
     }
     

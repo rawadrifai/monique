@@ -17,6 +17,8 @@
 		7905A6E41ECA5CA00008D2ED /* ClientDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7905A6E31ECA5CA00008D2ED /* ClientDetail.storyboard */; };
 		7905A6E61ECA5D050008D2ED /* EditClient.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7905A6E51ECA5D050008D2ED /* EditClient.storyboard */; };
 		792C86EF1ECE922A0082E9F0 /* FemaleOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792C86EE1ECE922A0082E9F0 /* FemaleOptionsView.swift */; };
+		792C86F41ED258A60082E9F0 /* PictureTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792C86F21ED258A60082E9F0 /* PictureTimeCell.swift */; };
+		792C86F51ED258A60082E9F0 /* PictureTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 792C86F31ED258A60082E9F0 /* PictureTimeCell.xib */; };
 		7975C9061ECBBE5B00C93845 /* ClientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7975C9041ECBBE5B00C93845 /* ClientCell.swift */; };
 		7975C9071ECBBE5B00C93845 /* ClientCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7975C9051ECBBE5B00C93845 /* ClientCell.xib */; };
 		7975C9151ECBCB3400C93845 /* ClientDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7975C9131ECBCB3400C93845 /* ClientDetailsCell.swift */; };
@@ -148,6 +150,8 @@
 		7905A6E31ECA5CA00008D2ED /* ClientDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ClientDetail.storyboard; sourceTree = "<group>"; };
 		7905A6E51ECA5D050008D2ED /* EditClient.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditClient.storyboard; sourceTree = "<group>"; };
 		792C86EE1ECE922A0082E9F0 /* FemaleOptionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FemaleOptionsView.swift; path = Prossimo/FemaleOptionsView.swift; sourceTree = "<group>"; };
+		792C86F21ED258A60082E9F0 /* PictureTimeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PictureTimeCell.swift; path = Prossimo/PictureTimeCell.swift; sourceTree = "<group>"; };
+		792C86F31ED258A60082E9F0 /* PictureTimeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PictureTimeCell.xib; path = Prossimo/PictureTimeCell.xib; sourceTree = "<group>"; };
 		7975C9041ECBBE5B00C93845 /* ClientCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientCell.swift; path = Prossimo/ClientCell.swift; sourceTree = "<group>"; };
 		7975C9051ECBBE5B00C93845 /* ClientCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ClientCell.xib; path = Prossimo/ClientCell.xib; sourceTree = "<group>"; };
 		7975C9131ECBCB3400C93845 /* ClientDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientDetailsCell.swift; path = Prossimo/ClientDetailsCell.swift; sourceTree = "<group>"; };
@@ -237,6 +241,8 @@
 				7975C9131ECBCB3400C93845 /* ClientDetailsCell.swift */,
 				7975C9141ECBCB3400C93845 /* ClientDetailsCell.xib */,
 				7975C9051ECBBE5B00C93845 /* ClientCell.xib */,
+				792C86F21ED258A60082E9F0 /* PictureTimeCell.swift */,
+				792C86F31ED258A60082E9F0 /* PictureTimeCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -517,6 +523,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AD2B3681E8C2F3800DF308C /* GoogleService-Info.plist in Resources */,
+				792C86F51ED258A60082E9F0 /* PictureTimeCell.xib in Resources */,
 				7975C9071ECBBE5B00C93845 /* ClientCell.xib in Resources */,
 				7905A6DF1ECA5BBF0008D2ED /* Info.storyboard in Resources */,
 				7975C9161ECBCB3400C93845 /* ClientDetailsCell.xib in Resources */,
@@ -627,6 +634,7 @@
 				9A371A341EB9A84B00A52DDD /* PhotosProvider.swift in Sources */,
 				9A371A331EB9A84B00A52DDD /* ExamplePhoto.swift in Sources */,
 				9AB6B8E11E84F869009231B0 /* InfoView.swift in Sources */,
+				792C86F41ED258A60082E9F0 /* PictureTimeCell.swift in Sources */,
 				9A371A291EB8007000A52DDD /* CrashController.swift in Sources */,
 				9A371A2C1EB8008A00A52DDD /* PageVC.swift in Sources */,
 				7975C91A1ECC356300C93845 /* UserInfo.swift in Sources */,

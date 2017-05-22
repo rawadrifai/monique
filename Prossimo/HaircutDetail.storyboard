@@ -214,26 +214,25 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="376.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ycZ-lT-dcB">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="22"/>
-                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="22" id="EPF-cv-0af"/>
-                                            </constraints>
-                                        </view>
-                                        <imageView userInteractionEnabled="NO" alpha="0.90000000000000002" tag="1" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fNT-hU-8AK">
+                                        <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fNT-hU-8AK">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
                                         </imageView>
+                                        <view opaque="NO" alpha="0.40000000000000002" tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3rT-bd-cqg">
+                                            <rect key="frame" x="0.0" y="354" width="375" height="22"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="22" id="lZY-gy-U3Y"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="fNT-hU-8AK" firstAttribute="top" secondItem="92J-OF-fGQ" secondAttribute="topMargin" constant="-8" id="24S-JL-wc8"/>
-                                        <constraint firstItem="ycZ-lT-dcB" firstAttribute="leading" secondItem="92J-OF-fGQ" secondAttribute="leading" id="BZr-ps-xVK"/>
+                                        <constraint firstAttribute="trailing" secondItem="3rT-bd-cqg" secondAttribute="trailing" id="3qv-TE-tEZ"/>
+                                        <constraint firstAttribute="bottom" secondItem="3rT-bd-cqg" secondAttribute="bottom" id="40W-jQ-BIm"/>
                                         <constraint firstItem="fNT-hU-8AK" firstAttribute="centerX" secondItem="92J-OF-fGQ" secondAttribute="centerX" id="GSX-IC-aL6"/>
                                         <constraint firstItem="fNT-hU-8AK" firstAttribute="leading" secondItem="92J-OF-fGQ" secondAttribute="leadingMargin" constant="-8" id="U4S-dv-jr9"/>
                                         <constraint firstItem="fNT-hU-8AK" firstAttribute="centerY" secondItem="92J-OF-fGQ" secondAttribute="centerY" constant="-63.25" id="Vkk-jn-p8E"/>
+                                        <constraint firstItem="3rT-bd-cqg" firstAttribute="leading" secondItem="92J-OF-fGQ" secondAttribute="leading" id="YgU-6d-ERw"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="fNT-hU-8AK" secondAttribute="trailing" constant="-8" id="lFI-ak-NxK"/>
-                                        <constraint firstAttribute="trailing" secondItem="ycZ-lT-dcB" secondAttribute="trailing" id="rvJ-FQ-irt"/>
-                                        <constraint firstItem="ycZ-lT-dcB" firstAttribute="top" secondItem="92J-OF-fGQ" secondAttribute="top" id="uTe-E8-GLd"/>
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>

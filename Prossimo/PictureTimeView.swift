@@ -240,12 +240,39 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
             let imageView = cell.viewWithTag(1) as! UIImageView
             imageView.sd_setShowActivityIndicatorView(true)
             imageView.sd_setIndicatorStyle(.gray)
+            
             imageView.sd_setImage(with: URL(string: imgobj.imageUrl), completed: { (img, err, ct, url) in
-                
                 
             })
             
+            
+            
+            
+            // create radiant effect
+            let bottomGradientLayer = CAGradientLayer()
+            
+            let bottomLine = cell.viewWithTag(3)!
+            
+            // 1
+            bottomLine.backgroundColor = UIColor.black
+            
+            // 2
+            bottomGradientLayer.frame = bottomLine.bounds
+            
+            // 3
+            let color1 = UIColor.black.cgColor
+            let color2 = UIColor.lightGray.cgColor
+            
+            bottomGradientLayer.colors = [color2, color1]
+            
+            // 4
+            bottomGradientLayer.locations = [0.2, 1]
+            
+            // 5
+            bottomLine.layer.addSublayer(bottomGradientLayer)
 
+            
+            
             return cell
         }
         
@@ -446,16 +473,43 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
     
     @IBAction func cameraClick(_ sender: UIBarButtonItem) {
         
+        displayImageAlert()
+        
+    }
+    
+    func displayImageAlert() {
+        
         let image = UIImagePickerController()
         image.allowsEditing = true
         image.delegate = self
         
-        // set the source to photo library
-        image.sourceType = UIImagePickerControllerSourceType.camera
         
-        self.present(image, animated: true)
         
+        let imageAlert = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        
+        imageAlert.addAction(UIAlertAction(title: "Take a New Photo", style: .default, handler: { (action: UIAlertAction!) in
+            
+            image.sourceType = UIImagePickerControllerSourceType.camera
+            self.present(image, animated: true)
+            
+        }))
+        
+        imageAlert.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (action: UIAlertAction!) in
+            
+            image.sourceType = UIImagePickerControllerSourceType.photoLibrary
+            self.present(image, animated: true)
+            
+        }))
+        
+        
+        
+        imageAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+            
+        }))
+        
+        present(imageAlert, animated: true, completion: nil)
     }
+    
     
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
