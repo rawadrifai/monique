@@ -362,7 +362,7 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         
-         if segue.identifier == "moreSegue1" {
+        if segue.identifier == "moreSegue1" {
             
             // set the userId
             if let destination = segue.destination as? OptionsView {
@@ -370,7 +370,17 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
                 destination.userId = self.userId
                 destination.client = self.client
                 destination.selectedVisitIndex = self.selectedVisitIndex
-
+                
+            }
+        } else if segue.identifier == "moreSegue2" {
+            
+            // set the userId
+            if let destination = segue.destination as? FemaleOptionsView {
+                
+                destination.userId = self.userId
+                destination.client = self.client
+                destination.selectedVisitIndex = self.selectedVisitIndex
+                
             }
         }
     }

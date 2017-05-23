@@ -156,7 +156,7 @@
                                                     <color key="backgroundColor" red="0.15686274510000001" green="0.15686274510000001" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="17"/>
                                                     <connections>
-                                                        <segue destination="oyG-k5-9ky" kind="show" id="11s-lQ-sIT"/>
+                                                        <segue destination="oyG-k5-9ky" kind="show" identifier="moreSegue2" id="11s-lQ-sIT"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
