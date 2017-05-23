@@ -156,8 +156,8 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
                 cell.imageViewClient.sd_setImage(with: URL(string: c.profileImg.imageUrl))
             }
             else {
-                cell.imageViewClient.image = UIImage(imageLiteralResourceName: "user-icon")
-                cell.imageViewClient.layer.borderWidth = 1
+                cell.imageViewClient.image = UIImage(imageLiteralResourceName: "user")
+                //cell.imageViewClient.layer.borderWidth = 1
             }
             
             // make image round

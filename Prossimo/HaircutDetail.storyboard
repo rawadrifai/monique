@@ -143,26 +143,20 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="tI3-UW-40n">
                                             <rect key="frame" x="0.0" y="130" width="375" height="60"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rag-x9-7eB">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rag-x9-7eB">
                                                     <rect key="frame" x="0.0" y="0.0" width="187" height="60"/>
                                                     <color key="backgroundColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="17"/>
-                                                    <state key="normal" title="Male">
-                                                        <color key="titleColor" red="0.37996858956091184" green="1" blue="0.83935681091484726" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </state>
                                                     <connections>
                                                         <segue destination="GpK-c8-QkJ" kind="show" identifier="moreSegue1" id="RXd-fV-cNt"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nTp-47-uuf">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Kd-bY-CPa">
                                                     <rect key="frame" x="188" y="0.0" width="187" height="60"/>
                                                     <color key="backgroundColor" red="0.15686274510000001" green="0.15686274510000001" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                                    <state key="normal" title="Female">
-                                                        <color key="titleColor" red="0.37996858960000002" green="1" blue="0.83935681090000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </state>
+                                                    <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="17"/>
                                                     <connections>
-                                                        <segue destination="oyG-k5-9ky" kind="show" id="eqN-W2-L9b"/>
+                                                        <segue destination="oyG-k5-9ky" kind="show" id="11s-lQ-sIT"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -266,7 +260,8 @@
                     </simulatedNavigationBarMetrics>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="btnHaircutDetails" destination="rag-x9-7eB" id="oxZ-Pb-ewu"/>
+                        <outlet property="btnFemale" destination="2Kd-bY-CPa" id="tZD-A9-TTh"/>
+                        <outlet property="btnMale" destination="rag-x9-7eB" id="reu-qo-mI4"/>
                         <outlet property="btnPrice1" destination="uS8-ZY-RKd" id="uR1-HL-Igm"/>
                         <outlet property="btnPrice2" destination="4l7-RA-mkf" id="43Q-0w-EVY"/>
                         <outlet property="btnPrice3" destination="5d1-o7-Mjp" id="5qO-TE-nUI"/>

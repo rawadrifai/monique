@@ -65,7 +65,7 @@ class InfoView: UITableViewController {
     
     func setIcons() {
         
-        let fbImage = FAKFontAwesome.facebookIcon(withSize: 36).image(with: CGSize(width: 60, height: 60))
+        let fbImage = FAKFontAwesome.facebookSquareIcon(withSize: 40).image(with: CGSize(width: 60, height: 60))
         //fbImage = fbImage?.imageWithColor(color: UIColor.blue)
         btnFacebook.setImage(fbImage, for: .normal)
         
@@ -163,7 +163,7 @@ class InfoView: UITableViewController {
         }
     }
     
-    let upgradeSectionIndex = 2
+    let upgradeSectionIndex = 1
     let upgradeRowIndex = 0
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -183,6 +183,24 @@ class InfoView: UITableViewController {
         return height
     }
     
+    
+    @IBAction func facebookClick(_ sender: UIButton) {
+        UIApplication.tryURL(urls: [
+            "fb://profile/prossimostylist", // App
+            "https://www.facebook.com/prossimostylist/" // Website if app fails
+            ])
+    }
+    
+    
+    @IBAction func instagramClick(_ sender: UIButton) {
+        UIApplication.tryURL(urls: [
+            "instagram://user?username=prossimostylist", // App
+            "https://www.instagram.com/prossimostylist/" // Website if app fails
+            ])
+        
+        
+    }
+    
 
 }
 
@@ -193,5 +211,18 @@ extension InfoView: UpgradeDelegate {
         
         self.subscription = subscription
         self.tableView.reloadData()
+    }
+}
+
+
+extension UIApplication {
+    class func tryURL(urls: [String]) {
+        let application = UIApplication.shared
+        for url in urls {
+            if application.canOpenURL(URL(string: url)!) {
+                application.openURL(URL(string: url)!)
+                return
+            }
+        }
     }
 }

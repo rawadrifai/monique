@@ -16,7 +16,10 @@ import NYTPhotoViewer
 
 class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
-    @IBOutlet weak var btnHaircutDetails: UIButton!
+
+    @IBOutlet weak var btnMale: UIButton!
+    @IBOutlet weak var btnFemale: UIButton!
+    
     @IBOutlet weak var txvNotes: UITextView!
     var selectedVisitIndex:Int!
     var userId:String!
@@ -79,9 +82,25 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
     }
     
     func setIcons() {
-     
-       // btnHaircutDetails.setImage(UIImage(imageLiteralResourceName: "man-haircut"), for: .normal)
+        
+        
+      
+        // male icon
+        var maleIconImage = FAKFontAwesome.marsIcon(withSize: 28).image(with: CGSize(width: 40, height: 40))
+        maleIconImage = maleIconImage?.imageWithColor(color: Commons.myColor)
+        btnMale.setImage(maleIconImage, for: .normal)
+        
+        
+        // female icon
+        var femaleIconImage = FAKFontAwesome.venusIcon(withSize: 28).image(with: CGSize(width: 40, height: 40))
+        femaleIconImage = femaleIconImage?.imageWithColor(color: Commons.myColor)
+        btnFemale.setImage(femaleIconImage, for: .normal)
+        
+        
+        
+        
     }
+
     
     func selectBtn(_ sender:UIButton, status:Bool) {
         
@@ -261,12 +280,13 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
             
             // 3
             let color1 = UIColor.black.cgColor
-            let color2 = UIColor.lightGray.cgColor
+            let color2 = UIColor.darkGray.cgColor
+            let color3 = UIColor.lightGray.cgColor
             
-            bottomGradientLayer.colors = [color2, color1]
+            bottomGradientLayer.colors = [color3, color2, color1]
             
             // 4
-            bottomGradientLayer.locations = [0.2, 1]
+            bottomGradientLayer.locations = [0.1, 0.5, 1]
             
             // 5
             bottomLine.layer.addSublayer(bottomGradientLayer)

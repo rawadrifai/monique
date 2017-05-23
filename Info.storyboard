@@ -222,25 +222,35 @@
                                                         <constraint firstAttribute="height" constant="40" id="Qoq-nC-N6p"/>
                                                     </constraints>
                                                 </view>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ch7-Xi-m2c">
-                                                    <rect key="frame" x="8" y="4" width="171" height="62"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ch7-Xi-m2c">
+                                                    <rect key="frame" x="8" y="5" width="169" height="60"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="60" id="Jga-sd-qmM"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <action selector="facebookClick:" destination="KZI-Y6-GH1" eventType="touchUpInside" id="Mhb-3U-Fnb"/>
+                                                    </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1lS-uG-Scb">
-                                                    <rect key="frame" x="196" y="4" width="171" height="62"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1lS-uG-Scb">
+                                                    <rect key="frame" x="198" y="4" width="169" height="62"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="62" id="mjQ-dc-cPt"/>
+                                                    </constraints>
                                                     <color key="tintColor" red="0.9248691307106599" green="0.46135991304472879" blue="0.63510536771887849" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <connections>
+                                                        <action selector="instagramClick:" destination="KZI-Y6-GH1" eventType="touchUpInside" id="aRM-ld-jW5"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="ch7-Xi-m2c" firstAttribute="leading" secondItem="6vg-4N-A6U" secondAttribute="leading" constant="8" id="0CB-5o-S2A"/>
                                                 <constraint firstItem="5Xi-U1-RVc" firstAttribute="centerX" secondItem="6vg-4N-A6U" secondAttribute="centerX" id="ABR-H1-dxA"/>
-                                                <constraint firstAttribute="trailing" secondItem="1lS-uG-Scb" secondAttribute="trailing" constant="8" id="Ebm-nx-oxu"/>
-                                                <constraint firstItem="1lS-uG-Scb" firstAttribute="leading" secondItem="5Xi-U1-RVc" secondAttribute="trailing" constant="8" id="LEq-SZ-v7M"/>
-                                                <constraint firstItem="5Xi-U1-RVc" firstAttribute="leading" secondItem="ch7-Xi-m2c" secondAttribute="trailing" constant="8" id="OqE-Yu-6El"/>
-                                                <constraint firstAttribute="bottom" secondItem="ch7-Xi-m2c" secondAttribute="bottom" constant="4" id="PkE-iV-Qzp"/>
-                                                <constraint firstAttribute="bottom" secondItem="1lS-uG-Scb" secondAttribute="bottom" constant="4" id="XbU-uc-LiA"/>
-                                                <constraint firstItem="ch7-Xi-m2c" firstAttribute="top" secondItem="6vg-4N-A6U" secondAttribute="top" constant="4" id="bed-b2-88U"/>
-                                                <constraint firstItem="1lS-uG-Scb" firstAttribute="top" secondItem="6vg-4N-A6U" secondAttribute="top" constant="4" id="dbu-UJ-csh"/>
+                                                <constraint firstItem="5Xi-U1-RVc" firstAttribute="leading" secondItem="ch7-Xi-m2c" secondAttribute="trailing" constant="10" id="Fhm-wL-sGQ"/>
+                                                <constraint firstItem="ch7-Xi-m2c" firstAttribute="leading" secondItem="6vg-4N-A6U" secondAttribute="leadingMargin" id="ONH-do-xIe"/>
+                                                <constraint firstItem="1lS-uG-Scb" firstAttribute="centerY" secondItem="6vg-4N-A6U" secondAttribute="centerY" id="X9X-3v-4ST"/>
+                                                <constraint firstItem="1lS-uG-Scb" firstAttribute="leading" secondItem="5Xi-U1-RVc" secondAttribute="trailing" constant="10" id="bUj-AO-FdK"/>
+                                                <constraint firstItem="ch7-Xi-m2c" firstAttribute="centerY" secondItem="6vg-4N-A6U" secondAttribute="centerY" id="iSD-E4-1oZ"/>
                                                 <constraint firstItem="5Xi-U1-RVc" firstAttribute="centerY" secondItem="6vg-4N-A6U" secondAttribute="centerY" id="scv-cK-7yU"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="1lS-uG-Scb" secondAttribute="trailing" id="vGA-Mt-MOP"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
