@@ -75,7 +75,7 @@
                                     <constraint firstAttribute="height" constant="200" id="IUQ-va-s9j"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Picture" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aaP-Ux-xei">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Picture" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aaP-Ux-xei">
                                 <rect key="frame" x="120" y="202" width="135" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="135" id="17M-Sx-GKC"/>
@@ -83,8 +83,8 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="k46-UK-VUn"/>
                                     <constraint firstAttribute="height" constant="25" id="wJl-Ml-P4y"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
