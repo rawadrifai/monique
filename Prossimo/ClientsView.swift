@@ -54,7 +54,7 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
 
     
     func setIcons() {
-        var contactsIconImage = FAKFontAwesome.userPlusIcon(withSize: 25).image(with: CGSize(width: 35, height: 25))
+        var contactsIconImage = FAKFontAwesome.userPlusIcon(withSize: 22).image(with: CGSize(width: 35, height: 25))
         contactsIconImage = contactsIconImage?.imageWithColor(color: Commons.myColor)
         btnImport.image = contactsIconImage
         
@@ -64,8 +64,7 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
         super.viewDidLoad()
         
         // needed things for the search to work
-        //let storyboard = UIStoryboard(name: "Main", bundle: nil)
-       // self.resultsController = storyboard.instantiateViewController(withIdentifier: "idClientsView") as! UITableViewController
+        
         self.resultsController.tableView.dataSource = self
         self.resultsController.tableView.delegate = self
         self.resultsController.tableView.rowHeight = 78
@@ -129,12 +128,9 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ClientsTableViewCell
-
         
         if let cell = Bundle.main.loadNibNamed("ClientCell", owner: self, options: nil)?.first as? ClientCell
         
-        //if let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ClientsTableViewCell
         {
             let c = Client()
             
@@ -370,7 +366,7 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
                             }
                             client.clientVisits.append(clientVisit)
                         }
-                        client.clientVisits.sort{ $0.sortingDate > $1.sortingDate }
+                        client.clientVisits.sort { $0.sortingDate > $1.sortingDate }
                     }
                     self.cellData.append(client)
                 }

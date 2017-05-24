@@ -16,6 +16,8 @@ public class Commons {
     
     static let myDarkGreenColor = UIColor(red:0.00, green:0.50, blue:0.25, alpha:1.0)
     
+    static let myLightLightGrayColor = UIColor(red:0.94, green:0.94, blue:0.96, alpha:1.0)
+    
     static func getHumanReadableDate(dateString:String) -> String {
         
         let df = DateFormatter()

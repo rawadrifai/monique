@@ -154,19 +154,19 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         
         
         // phone icon
-        var phoneIconImage = FAKFontAwesome.phoneIcon(withSize: 25).image(with: CGSize(width: 40, height: 40))
+        var phoneIconImage = FAKFontAwesome.phoneIcon(withSize: 20).image(with: CGSize(width: 40, height: 40))
         phoneIconImage = phoneIconImage?.imageWithColor(color: Commons.myColor)
         btnPhone.setImage(phoneIconImage, for: .normal)
         
         
         // sms icon
-        var smsIconImage = FAKFontAwesome.commentingOIcon(withSize: 25).image(with: CGSize(width: 40, height: 40))
+        var smsIconImage = FAKFontAwesome.commentingOIcon(withSize: 20).image(with: CGSize(width: 40, height: 40))
         smsIconImage = smsIconImage?.imageWithColor(color: Commons.myColor)
         btnText.setImage(smsIconImage, for: .normal)
         
         
         // email icon
-        var emailIconImage = FAKFontAwesome.envelopeOIcon(withSize: 25).image(with: CGSize(width: 40, height: 40))
+        var emailIconImage = FAKFontAwesome.envelopeOIcon(withSize: 20).image(with: CGSize(width: 40, height: 40))
         emailIconImage = emailIconImage?.imageWithColor(color: Commons.myColor)
         btnEmail.setImage(emailIconImage, for: .normal)
         
@@ -228,19 +228,23 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         let date = Date()
         let calendar = Calendar.current
         let year = calendar.component(.year, from: date)
+        let yearString = String(format: "%04d", year)
+        
         let month = calendar.component(.month, from: date)
+        let monthString = String(format: "%02d", month)
+        
         let day = calendar.component(.day, from: date)
+        let dayString = String(format: "%02d", day)
 
+        
         let visitdate = String(month) + "-" + String(day) + "-" + String(year)
-        let sorteddate = String(year) + "-" + String(month) + "-" + String(day)
+        let sorteddate = yearString + "-" + monthString + "-" + dayString
         
         
         // if visit date exists then don't add it
         for v in client.clientVisits {
             if v.visitDate == visitdate {
                 
-                self.selectedVisitIndex = 0
-            
                 displayNewHCAlert()
                 
                 return
@@ -613,7 +617,7 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
     
     func displayNewHCAlert() {
         
-        let alert = UIAlertController(title: "Haircut Exists", message: "", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "There is already a haircut for today", message: "", preferredStyle: UIAlertControllerStyle.alert)
         
         alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (action: UIAlertAction!) in
             

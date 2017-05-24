@@ -588,70 +588,108 @@ This Privacy Policy may be updated from time to time for any reason. We will not
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="wdG-b0-0kX">
                                 <rect key="frame" x="21" y="135" width="333" height="210"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="PwH-Xq-IIK">
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PwH-Xq-IIK">
                                         <rect key="frame" x="0.0" y="0.0" width="333" height="68.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   Month To Month" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pYD-f6-2r9">
-                                                <rect key="frame" x="0.0" y="0.0" width="262" height="68.5"/>
-                                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$6.99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6wH-K8-3oX">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YoI-Sf-FRZ">
+                                                <rect key="frame" x="0.0" y="0.0" width="263" height="68.5"/>
+                                                <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                                <state key="normal" title="   ONE MONTH">
+                                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="oneMonthClick:" destination="hZa-Pe-Vyq" eventType="touchUpInside" id="ULr-qm-AM0"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lhh-Jq-b6V">
                                                 <rect key="frame" x="263" y="0.0" width="70" height="68.5"/>
                                                 <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="70" id="OWd-Fh-EEz"/>
+                                                    <constraint firstAttribute="width" constant="70" id="maF-mD-1hV"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
-                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                                                <state key="normal" title="$6.99">
+                                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="oneMonthClick:" destination="hZa-Pe-Vyq" eventType="touchUpInside" id="ozO-YS-t3y"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="MNc-RT-DUP">
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MNc-RT-DUP">
                                         <rect key="frame" x="0.0" y="70.5" width="333" height="69"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   One Year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Wc-hp-ngx">
-                                                <rect key="frame" x="0.0" y="0.0" width="262" height="69"/>
-                                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$6.99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vdJ-ZL-jAM">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fSU-Uv-jeO">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="69"/>
+                                                <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="iv2-5G-xhO"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                                <state key="normal" title="   ONE YEAR">
+                                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="oneYearClick:" destination="hZa-Pe-Vyq" eventType="touchUpInside" id="UxJ-E0-KTc"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rqs-pg-Qwr">
+                                                <rect key="frame" x="100" y="0.0" width="163" height="69"/>
+                                                <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="14"/>
+                                                <state key="normal" title="recommended">
+                                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="oneYearClick:" destination="hZa-Pe-Vyq" eventType="touchUpInside" id="lkq-2g-Yin"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ITa-of-OZV">
                                                 <rect key="frame" x="263" y="0.0" width="70" height="69"/>
                                                 <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="70" id="6KE-K1-lmk"/>
+                                                    <constraint firstAttribute="width" constant="70" id="dcU-Q4-iP7"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
-                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                                                <state key="normal" title="$54.99">
+                                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="oneYearClick:" destination="hZa-Pe-Vyq" eventType="touchUpInside" id="sh8-ng-o25"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="W0H-lx-IC9">
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W0H-lx-IC9">
                                         <rect key="frame" x="0.0" y="141.5" width="333" height="68.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   LIFETIME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GqX-jO-p1V">
-                                                <rect key="frame" x="0.0" y="0.0" width="262" height="68.5"/>
-                                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$6.99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ht2-IY-yUt">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MOi-Mf-0oJ">
+                                                <rect key="frame" x="0.0" y="0.0" width="263" height="68.5"/>
+                                                <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                                <state key="normal" title="   LIFETIME">
+                                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="lifeTimeClick:" destination="hZa-Pe-Vyq" eventType="touchUpInside" id="ByE-Jx-TYv"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xxG-70-sR4">
                                                 <rect key="frame" x="263" y="0.0" width="70" height="68.5"/>
                                                 <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="70" id="BJn-Li-oxp"/>
+                                                    <constraint firstAttribute="width" constant="70" id="BYA-IK-vXN"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
-                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                                                <state key="normal" title="$89.99">
+                                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="lifeTimeClick:" destination="hZa-Pe-Vyq" eventType="touchUpInside" id="Kjb-tX-5Xm"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -674,7 +712,7 @@ This Privacy Policy may be updated from time to time for any reason. We will not
                                     <action selector="upgradeClick:" destination="hZa-Pe-Vyq" eventType="touchUpInside" id="UNH-jo-eWL"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose an Upgrade plan" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cqt-Qr-if6">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose an Upgrade plan" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cqt-Qr-if6">
                                 <rect key="frame" x="28" y="94" width="319" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Ugn-go-5g2"/>
@@ -710,15 +748,13 @@ This Privacy Policy may be updated from time to time for any reason. We will not
                                     <action selector="restoreClicked:" destination="hZa-Pe-Vyq" eventType="touchUpInside" id="SZN-cN-4iX"/>
                                 </connections>
                             </button>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congratulations! Promotion applied successfully" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kUB-Ry-sP7">
-                                <rect key="frame" x="20" y="516" width="335" height="20"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check" translatesAutoresizingMaskIntoConstraints="NO" id="Xng-tL-E3k">
+                                <rect key="frame" x="96" y="467" width="18" height="18"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="ZDU-2c-6UA"/>
+                                    <constraint firstAttribute="width" constant="18" id="els-Ni-HMk"/>
+                                    <constraint firstAttribute="height" constant="18" id="n2l-Sh-wlY"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -726,27 +762,33 @@ This Privacy Policy may be updated from time to time for any reason. We will not
                             <constraint firstItem="LGN-Pl-RCu" firstAttribute="centerX" secondItem="9I3-HI-UGL" secondAttribute="centerX" id="4KO-s2-qvt"/>
                             <constraint firstItem="t9F-7Z-94R" firstAttribute="top" secondItem="E6q-rr-3tt" secondAttribute="bottom" constant="37" id="4Zz-Bh-neD"/>
                             <constraint firstItem="rGv-Ao-CaL" firstAttribute="centerX" secondItem="9I3-HI-UGL" secondAttribute="centerX" id="7cQ-Vh-zFO"/>
-                            <constraint firstAttribute="trailing" secondItem="kUB-Ry-sP7" secondAttribute="trailing" constant="20" id="89R-jG-ScI"/>
                             <constraint firstItem="rGv-Ao-CaL" firstAttribute="top" secondItem="LGN-Pl-RCu" secondAttribute="bottom" constant="21" id="8ME-Ox-ybv"/>
                             <constraint firstItem="Cqt-Qr-if6" firstAttribute="top" secondItem="Equ-oD-zdE" secondAttribute="bottom" constant="30" id="9rR-iO-9M4"/>
                             <constraint firstItem="E6q-rr-3tt" firstAttribute="centerX" secondItem="9I3-HI-UGL" secondAttribute="centerX" id="Ftf-NP-Koy"/>
                             <constraint firstItem="n7W-a5-Elq" firstAttribute="leading" secondItem="9I3-HI-UGL" secondAttribute="leading" id="H0o-8y-JeM"/>
                             <constraint firstItem="LGN-Pl-RCu" firstAttribute="top" secondItem="wdG-b0-0kX" secondAttribute="bottom" constant="30" id="T3W-39-wD7"/>
-                            <constraint firstItem="kUB-Ry-sP7" firstAttribute="leading" secondItem="9I3-HI-UGL" secondAttribute="leading" constant="20" id="WV2-bY-DVh"/>
                             <constraint firstAttribute="trailing" secondItem="n7W-a5-Elq" secondAttribute="trailing" id="adk-oB-X28"/>
                             <constraint firstItem="Cqt-Qr-if6" firstAttribute="leading" secondItem="9I3-HI-UGL" secondAttribute="leadingMargin" constant="12" id="bmy-KP-gIr"/>
                             <constraint firstItem="t9F-7Z-94R" firstAttribute="top" secondItem="n7W-a5-Elq" secondAttribute="bottom" id="cvV-2j-cxq"/>
                             <constraint firstItem="wdG-b0-0kX" firstAttribute="leading" secondItem="9I3-HI-UGL" secondAttribute="leadingMargin" constant="5" id="f0p-60-dwm"/>
-                            <constraint firstItem="kUB-Ry-sP7" firstAttribute="top" secondItem="rGv-Ao-CaL" secondAttribute="bottom" constant="20" id="kM9-AX-gmJ"/>
+                            <constraint firstItem="rGv-Ao-CaL" firstAttribute="leading" secondItem="Xng-tL-E3k" secondAttribute="trailing" constant="-35" id="fpY-4h-Wel"/>
+                            <constraint firstItem="Xng-tL-E3k" firstAttribute="top" secondItem="LGN-Pl-RCu" secondAttribute="bottom" constant="32" id="lKk-Ga-phk"/>
                             <constraint firstItem="wdG-b0-0kX" firstAttribute="top" secondItem="Cqt-Qr-if6" secondAttribute="bottom" constant="20" id="vq8-Gc-ZIe"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Cqt-Qr-if6" secondAttribute="trailing" constant="12" id="yAo-k5-hKj"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="YOd-OA-Tex"/>
                     <connections>
+                        <outlet property="btnLifeTime" destination="MOi-Mf-0oJ" id="z2M-mq-leR"/>
+                        <outlet property="btnLifeTimePrice" destination="xxG-70-sR4" id="1u6-B4-10K"/>
+                        <outlet property="btnOneMonth" destination="YoI-Sf-FRZ" id="CR3-kO-6en"/>
+                        <outlet property="btnOneMonthPrice" destination="Lhh-Jq-b6V" id="lni-3V-gls"/>
+                        <outlet property="btnOneYear" destination="fSU-Uv-jeO" id="GcL-j0-you"/>
+                        <outlet property="btnOneYearPrice" destination="ITa-of-OZV" id="HdR-qy-qUf"/>
+                        <outlet property="btnRecommended" destination="rqs-pg-Qwr" id="y9m-nM-oOo"/>
                         <outlet property="btnRestore" destination="E6q-rr-3tt" id="bSe-Fp-gp9"/>
                         <outlet property="btnUpgrade" destination="LGN-Pl-RCu" id="h9F-Ef-YNb"/>
-                        <outlet property="labelDiscountApplied" destination="kUB-Ry-sP7" id="s5y-9y-XX1"/>
+                        <outlet property="imageCheck" destination="Xng-tL-E3k" id="dgg-Wl-t3s"/>
                         <outlet property="txfPromo" destination="rGv-Ao-CaL" id="X9z-Y1-BIa"/>
                     </connections>
                 </viewController>
@@ -900,4 +942,7 @@ Cheers!</string>
             <point key="canvasLocation" x="2472.8000000000002" y="1184.257871064468"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="check" width="256" height="256"/>
+    </resources>
 </document>

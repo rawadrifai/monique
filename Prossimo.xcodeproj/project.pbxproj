@@ -19,6 +19,7 @@
 		792C86EF1ECE922A0082E9F0 /* FemaleOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792C86EE1ECE922A0082E9F0 /* FemaleOptionsView.swift */; };
 		792C86F41ED258A60082E9F0 /* PictureTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792C86F21ED258A60082E9F0 /* PictureTimeCell.swift */; };
 		792C86F51ED258A60082E9F0 /* PictureTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 792C86F31ED258A60082E9F0 /* PictureTimeCell.xib */; };
+		792C86F71ED55C950082E9F0 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792C86F61ED55C950082E9F0 /* Product.swift */; };
 		7975C9061ECBBE5B00C93845 /* ClientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7975C9041ECBBE5B00C93845 /* ClientCell.swift */; };
 		7975C9071ECBBE5B00C93845 /* ClientCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7975C9051ECBBE5B00C93845 /* ClientCell.xib */; };
 		7975C9151ECBCB3400C93845 /* ClientDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7975C9131ECBCB3400C93845 /* ClientDetailsCell.swift */; };
@@ -152,6 +153,7 @@
 		792C86EE1ECE922A0082E9F0 /* FemaleOptionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FemaleOptionsView.swift; path = Prossimo/FemaleOptionsView.swift; sourceTree = "<group>"; };
 		792C86F21ED258A60082E9F0 /* PictureTimeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PictureTimeCell.swift; path = Prossimo/PictureTimeCell.swift; sourceTree = "<group>"; };
 		792C86F31ED258A60082E9F0 /* PictureTimeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PictureTimeCell.xib; path = Prossimo/PictureTimeCell.xib; sourceTree = "<group>"; };
+		792C86F61ED55C950082E9F0 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Product.swift; path = Prossimo/Product.swift; sourceTree = "<group>"; };
 		7975C9041ECBBE5B00C93845 /* ClientCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientCell.swift; path = Prossimo/ClientCell.swift; sourceTree = "<group>"; };
 		7975C9051ECBBE5B00C93845 /* ClientCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ClientCell.xib; path = Prossimo/ClientCell.xib; sourceTree = "<group>"; };
 		7975C9131ECBCB3400C93845 /* ClientDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientDetailsCell.swift; path = Prossimo/ClientDetailsCell.swift; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 				9AD116631E5E87C400113753 /* Client.swift */,
 				7905A6CD1EC97C700008D2ED /* UIImageEffects.swift */,
 				9A3BC6451E5A9AA700E9CA71 /* AppDelegate.swift */,
+				792C86F61ED55C950082E9F0 /* Product.swift */,
 			);
 			name = Domain;
 			sourceTree = "<group>";
@@ -612,6 +615,7 @@
 				9A3BC6461E5A9AA700E9CA71 /* AppDelegate.swift in Sources */,
 				9AD116621E5E7A9F00113753 /* ClientDetailView.swift in Sources */,
 				9A40F5881EAB62C900092723 /* FinalVC.swift in Sources */,
+				792C86F71ED55C950082E9F0 /* Product.swift in Sources */,
 				9AE7A1C81EB5A5080004FCC2 /* EditClientVC.swift in Sources */,
 				9AE7A1BF1EB4336A0004FCC2 /* NewClientVC.swift in Sources */,
 				9A40F5921EADE19500092723 /* ThirdVC.swift in Sources */,

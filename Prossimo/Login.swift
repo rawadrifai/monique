@@ -353,6 +353,9 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
             // log the user to the device, so that next time no log in will be required
             UserDefaults.standard.set(self.userId, forKey: "loggedInUser")
             
+            CleverTap.sharedInstance()?.recordEvent("Sign In")
+
+            
         } else if segue.identifier == "saveUserInfoSegue" {
             
             // set the userId

@@ -30,12 +30,99 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
     @IBOutlet weak var btnRestore: UIButton!
     @IBOutlet weak var productSC: UISegmentedControl!
     
-    @IBAction func productChanged(_ sender: UISegmentedControl) {
+    
+    @IBOutlet weak var btnOneMonth: UIButton!
+    @IBOutlet weak var btnOneMonthPrice: UIButton!
+    @IBOutlet weak var btnOneYear: UIButton!
+    @IBOutlet weak var btnRecommended: UIButton!
+    @IBOutlet weak var btnOneYearPrice: UIButton!
+    @IBOutlet weak var btnLifeTime: UIButton!
+    @IBOutlet weak var btnLifeTimePrice: UIButton!
+    
+    @IBOutlet weak var imageCheck: UIImageView!
+    
+    
+    override func viewDidLoad() {
         
-        // change the product when selection changes
-        changeProduct(productName: self.availableProducts[productSC.selectedSegmentIndex])
+        super.viewDidLoad()
+        
+        self.ref = FIRDatabase.database().reference()
+        getProductsFromFirebase()
+        getPromoCodesFromFirebase()
+        
+        setBorders()
+        // changeProduct(productName: self.availableProducts[productSC.selectedSegmentIndex])
         
     }
+    
+    
+    @IBAction func oneMonthClick(_ sender: UIButton) {
+        
+        changeProduct(productName: self.availableProducts[0])
+        
+        btnOneMonth.backgroundColor = Commons.myGrayColor
+        btnOneYear.backgroundColor = Commons.myLightLightGrayColor
+        btnLifeTime.backgroundColor = Commons.myLightLightGrayColor
+        btnRecommended.backgroundColor = Commons.myLightLightGrayColor
+        btnOneMonthPrice.backgroundColor = Commons.myGrayColor
+        btnOneYearPrice.backgroundColor = Commons.myLightLightGrayColor
+        btnLifeTimePrice.backgroundColor = Commons.myLightLightGrayColor
+        
+        
+        btnOneMonth.setTitleColor(UIColor.white, for: .normal)
+        btnOneYear.setTitleColor(UIColor.lightGray, for: .normal)
+        btnLifeTime.setTitleColor(UIColor.lightGray, for: .normal)
+        btnRecommended.setTitleColor(UIColor.lightGray, for: .normal)
+        btnOneMonthPrice.setTitleColor(UIColor.white, for: .normal)
+        btnOneYearPrice.setTitleColor(UIColor.lightGray, for: .normal)
+        btnLifeTimePrice.setTitleColor(UIColor.lightGray, for: .normal)
+        
+        
+    }
+    
+    @IBAction func oneYearClick(_ sender: UIButton) {
+        
+        changeProduct(productName: self.availableProducts[1])
+        
+        btnOneMonth.backgroundColor = Commons.myLightLightGrayColor
+        btnOneYear.backgroundColor = Commons.myGrayColor
+        btnLifeTime.backgroundColor = Commons.myLightLightGrayColor
+        btnRecommended.backgroundColor = Commons.myGrayColor
+        btnOneMonthPrice.backgroundColor = Commons.myLightLightGrayColor
+        btnOneYearPrice.backgroundColor = Commons.myGrayColor
+        btnLifeTimePrice.backgroundColor = Commons.myLightLightGrayColor
+        
+        btnOneMonth.setTitleColor(UIColor.lightGray, for: .normal)
+        btnOneYear.setTitleColor(UIColor.white, for: .normal)
+        btnLifeTime.setTitleColor(UIColor.lightGray, for: .normal)
+        btnRecommended.setTitleColor(UIColor.white, for: .normal)
+        btnOneMonthPrice.setTitleColor(UIColor.lightGray, for: .normal)
+        btnOneYearPrice.setTitleColor(UIColor.white, for: .normal)
+        btnLifeTimePrice.setTitleColor(UIColor.lightGray, for: .normal)
+    }
+    
+    @IBAction func lifeTimeClick(_ sender: UIButton) {
+        
+        changeProduct(productName: self.availableProducts[2])
+        
+        btnOneMonth.backgroundColor = Commons.myLightLightGrayColor
+        btnOneYear.backgroundColor = Commons.myLightLightGrayColor
+        btnLifeTime.backgroundColor = Commons.myGrayColor
+        btnRecommended.backgroundColor = Commons.myLightLightGrayColor
+        btnOneMonthPrice.backgroundColor = Commons.myLightLightGrayColor
+        btnOneYearPrice.backgroundColor = Commons.myLightLightGrayColor
+        btnLifeTimePrice.backgroundColor = Commons.myGrayColor
+        
+        btnOneMonth.setTitleColor(UIColor.lightGray, for: .normal)
+        btnOneYear.setTitleColor(UIColor.lightGray, for: .normal)
+        btnLifeTime.setTitleColor(UIColor.white, for: .normal)
+        btnRecommended.setTitleColor(UIColor.lightGray, for: .normal)
+        btnOneMonthPrice.setTitleColor(UIColor.lightGray, for: .normal)
+        btnOneYearPrice.setTitleColor(UIColor.lightGray, for: .normal)
+        btnLifeTimePrice.setTitleColor(UIColor.white, for: .normal)
+
+    }
+    
     
     // changes the selected products
     func changeProduct(productName:String) {
@@ -55,18 +142,7 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
     }
 
     
-    override func viewDidLoad() {
-        
-        super.viewDidLoad()
-        
-        self.ref = FIRDatabase.database().reference()
-        getProductsFromFirebase()
-        getPromoCodesFromFirebase()
-        
-        setBorders()
-        changeProduct(productName: self.availableProducts[productSC.selectedSegmentIndex])
-        
-    }
+    
     
     func setBorders() {
         self.btnUpgrade.layer.cornerRadius = 5
@@ -78,24 +154,72 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
         
     }
     
+    
     func getProductsFromFirebase() {
+    
         
-        self.ref.child("products").observeSingleEvent(of: .value, with: {
+        self.ref.child("products/Product 1").observeSingleEvent(of: .value, with: { (snapshot) in
             
-            if let val = $0.value as? NSDictionary {
+            if let product1 = snapshot.value as? NSDictionary {
                 
-                self.productsInFirebase = Set<String>()
+                let id = product1["id"] as? String ?? ""
+                let price = product1["price"] as? Double ?? 0
+                let description = product1["description"] as? String ?? ""
                 
-                for v in val.allValues {
-                    self.productsInFirebase.insert(String(describing: v))
+                let product = Product(id: id, price: price, description: description)
+                availableProducts.append(product)
+                
                     
-                }
+                    print(self.productsInFirebase)
+                    
+                    self.requestProductsFromAppStore()
+                
+
+            }
+        })
+            
+        
+        self.ref.child("products/Product 1").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let product2 = snapshot.value as? NSDictionary {
+                
+                let id = product2["id"] as? String ?? ""
+                let price = product2["price"] as? Double ?? 0
+                let description = product2["description"] as? String ?? ""
+                
+                let product = Product(id: id, price: price, description: description)
+                availableProducts.append(product)
+                
                 
                 print(self.productsInFirebase)
                 
                 self.requestProductsFromAppStore()
+                
+                
             }
         })
+        
+        self.ref.child("products/Product 3").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let product3 = snapshot.value as? NSDictionary {
+                
+                let id = product3["id"] as? String ?? ""
+                let price = product3["price"] as? Double ?? 0
+                let description = product3["description"] as? String ?? ""
+                
+                let product = Product(id: id, price: price, description: description)
+                availableProducts.append(product)
+                
+                
+                print(self.productsInFirebase)
+                
+                self.requestProductsFromAppStore()
+                
+                
+            }
+        })
+        
+
         
     }
     
@@ -117,7 +241,7 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
         
     }
     
-    let availableProducts:[String] = ["rifai.prossimo.ios.pp","rifai.prossimo.ios.pponeyear"]
+    let availableProducts = [Product]()
         
     
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
