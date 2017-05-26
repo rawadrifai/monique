@@ -11,11 +11,8 @@ import Foundation
 public class Commons {
     
     static let myColor = UIColor(red:0.51, green:1.00, blue:0.86, alpha:1.0)
-    
     static let myGrayColor = UIColor(red:0.25, green:0.25, blue:0.25, alpha:1.0)
-    
     static let myDarkGreenColor = UIColor(red:0.00, green:0.50, blue:0.25, alpha:1.0)
-    
     static let myLightLightGrayColor = UIColor(red:0.94, green:0.94, blue:0.96, alpha:1.0)
     
     static func getHumanReadableDate(dateString:String) -> String {
@@ -32,4 +29,5 @@ public class Commons {
         return dateString.uppercased()
         
     }
+    
 }

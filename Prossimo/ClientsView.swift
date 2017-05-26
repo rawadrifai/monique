@@ -56,8 +56,9 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
     func setIcons() {
         var contactsIconImage = FAKFontAwesome.userPlusIcon(withSize: 22).image(with: CGSize(width: 35, height: 25))
         contactsIconImage = contactsIconImage?.imageWithColor(color: Commons.myColor)
-        btnImport.image = contactsIconImage
         
+        self.btnImport.image = contactsIconImage
+
     }
     
     override func viewDidLoad() {

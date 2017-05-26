@@ -16,6 +16,7 @@
 		7905A6E21ECA5C590008D2ED /* NewClient.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7905A6E01ECA5C590008D2ED /* NewClient.storyboard */; };
 		7905A6E41ECA5CA00008D2ED /* ClientDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7905A6E31ECA5CA00008D2ED /* ClientDetail.storyboard */; };
 		7905A6E61ECA5D050008D2ED /* EditClient.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7905A6E51ECA5D050008D2ED /* EditClient.storyboard */; };
+		7912E8B41ED665F400DDC55B /* PromoCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7912E8B31ED665F400DDC55B /* PromoCode.swift */; };
 		792C86EF1ECE922A0082E9F0 /* FemaleOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792C86EE1ECE922A0082E9F0 /* FemaleOptionsView.swift */; };
 		792C86F41ED258A60082E9F0 /* PictureTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792C86F21ED258A60082E9F0 /* PictureTimeCell.swift */; };
 		792C86F51ED258A60082E9F0 /* PictureTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 792C86F31ED258A60082E9F0 /* PictureTimeCell.xib */; };
@@ -150,6 +151,7 @@
 		7905A6E11ECA5C590008D2ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Prossimo/Base.lproj/NewClient.storyboard; sourceTree = "<group>"; };
 		7905A6E31ECA5CA00008D2ED /* ClientDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ClientDetail.storyboard; sourceTree = "<group>"; };
 		7905A6E51ECA5D050008D2ED /* EditClient.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditClient.storyboard; sourceTree = "<group>"; };
+		7912E8B31ED665F400DDC55B /* PromoCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PromoCode.swift; path = Prossimo/PromoCode.swift; sourceTree = "<group>"; };
 		792C86EE1ECE922A0082E9F0 /* FemaleOptionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FemaleOptionsView.swift; path = Prossimo/FemaleOptionsView.swift; sourceTree = "<group>"; };
 		792C86F21ED258A60082E9F0 /* PictureTimeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PictureTimeCell.swift; path = Prossimo/PictureTimeCell.swift; sourceTree = "<group>"; };
 		792C86F31ED258A60082E9F0 /* PictureTimeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PictureTimeCell.xib; path = Prossimo/PictureTimeCell.xib; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 				7905A6CD1EC97C700008D2ED /* UIImageEffects.swift */,
 				9A3BC6451E5A9AA700E9CA71 /* AppDelegate.swift */,
 				792C86F61ED55C950082E9F0 /* Product.swift */,
+				7912E8B31ED665F400DDC55B /* PromoCode.swift */,
 			);
 			name = Domain;
 			sourceTree = "<group>";
@@ -585,7 +588,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		F0DD158469BA70BB44D73A26 /* [CP] Embed Pods Frameworks */ = {
@@ -634,6 +637,7 @@
 				9AAF34C71E713A0B00CAFE44 /* PictureTimeView.swift in Sources */,
 				7905A6CE1EC97C700008D2ED /* UIImageEffects.swift in Sources */,
 				9AAF34C51E70F1B500CAFE44 /* Login.swift in Sources */,
+				7912E8B41ED665F400DDC55B /* PromoCode.swift in Sources */,
 				7975C9151ECBCB3400C93845 /* ClientDetailsCell.swift in Sources */,
 				9A371A341EB9A84B00A52DDD /* PhotosProvider.swift in Sources */,
 				9A371A331EB9A84B00A52DDD /* ExamplePhoto.swift in Sources */,

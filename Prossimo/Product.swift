@@ -13,16 +13,19 @@ public class Product {
     var id:String
     var price:Double
     var description:String
+    var length:String
     
     init() {
         id = ""
         price = 0
         description = ""
+        length = ""
     }
     
-    init(id:String, price:Double, description:String) {
+    init(id:String, price:Double, description:String, length:String) {
         self.id = id
         self.price = price
         self.description = description
+        self.length = length
     }
 }
