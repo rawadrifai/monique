@@ -38,19 +38,20 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
     @IBOutlet weak var imageCheck: UIImageView!
     
     let defaultProducts:[Product] = [
-        Product(id: "rifai.prossimo.ios.ppmonthly", price: 6.99, description: "MONTH TO MONTH", length: "monthly"),
-        Product(id: "rifai.prossimo.ios.ppannual", price: 54.99, description: "ANNUAL", length: "annual"),
-        Product(id: "rifai.prossimo.ios.pp", price: 89.99, description: "LIFETIME", length: "lifetime")
+        Product(id: "rifai.prossimo.ios.ppmonthly", price: "6.99", description: "MONTH TO MONTH", length: "monthly"),
+        Product(id: "rifai.prossimo.ios.ppannual", price: "54.99", description: "ANNUAL", length: "annual"),
+        Product(id: "rifai.prossimo.ios.pp", price: "89.99", description: "LIFETIME", length: "lifetime")
     ]
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
+        requestProductsFromAppStore()
+        
         self.ref = FIRDatabase.database().reference()
         getProductsFromFirebase()
         getPromoCodesFromFirebase()
-        requestProductsFromAppStore()
         setBorders()
         
     }
@@ -154,24 +155,24 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
                 case self.defaultProducts[0].length:
                     selectPlan(productNumber: 1)
                     
-                    btnOneMonthPrice.setTitle(String(self.promoCodeToUse.price), for: .normal)
-                    btnOneMonthPrice.setTitle(String(self.promoCodeToUse.price), for: .selected)
+                    btnOneMonthPrice.setTitle(String(describing: self.promoCodeToUse.price), for: .normal)
+                    btnOneMonthPrice.setTitle(String(describing: self.promoCodeToUse.price), for: .selected)
                     break;
                     
                 // annual
                 case self.defaultProducts[1].length:
                     selectPlan(productNumber: 2)
                     
-                    btnOneYearPrice.setTitle(String(self.promoCodeToUse.price), for: .normal)
-                    btnOneYearPrice.setTitle(String(self.promoCodeToUse.price), for: .selected)
+                    btnOneYearPrice.setTitle(String(describing: self.promoCodeToUse.price), for: .normal)
+                    btnOneYearPrice.setTitle(String(describing: self.promoCodeToUse.price), for: .selected)
                     break;
                     
                 // lifetime
                 case self.defaultProducts[2].length:
                     selectPlan(productNumber: 3)
                     
-                    btnLifeTimePrice.setTitle(String(self.promoCodeToUse.price), for: .normal)
-                    btnLifeTimePrice.setTitle(String(self.promoCodeToUse.price), for: .selected)
+                    btnLifeTimePrice.setTitle(String(describing: self.promoCodeToUse.price), for: .normal)
+                    btnLifeTimePrice.setTitle(String(describing: self.promoCodeToUse.price), for: .selected)
                     break;
                     
                 default:
@@ -202,20 +203,39 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
             
             if(prodID == productName) {
                 sKproductToBuy = p
+                enableBtnUpgrade(enabled: true)
                 break
+            } else {
+                enableBtnUpgrade(enabled: false)
             }
+            
         }
         
-        btnUpgrade.isEnabled = true
+        
     }
 
+    func enableBtnUpgrade(enabled:Bool) {
+        if enabled {
+            btnUpgrade.isEnabled = true
+            btnUpgrade.backgroundColor = Commons.myLightLightGrayColor
+            btnUpgrade.setTitleColor(UIColor.lightGray, for: .normal)
+        } else {
+            btnUpgrade.isEnabled = false
+            btnUpgrade.backgroundColor = Commons.myDarkGreenColor
+            btnUpgrade.setTitleColor(Commons.myColor, for: .normal)
+        }
+    }
     
     
     func getProductsFromFirebase() {
         
+        let formatter = NumberFormatter()
+        formatter.generatesDecimalNumbers = true
+        
+        
         availableProducts = [Product]()
         
-        self.ref.child("products/Product 1").observeSingleEvent(of: .value, with: { (snapshot) in
+        self.ref.child("products").observeSingleEvent(of: .value, with: { (snapshot) in
             
             guard let productsDictionary = snapshot.value as? NSDictionary else { return }
             
@@ -223,24 +243,26 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
             guard let product2Dictionary = productsDictionary["Product 2"] as? NSDictionary else { return }
             guard let product3Dictionary = productsDictionary["Product 3"] as? NSDictionary else { return }
             
-            
             let product1 = Product(
                 id: product1Dictionary["id"] as? String ?? self.defaultProducts[0].id,
-                price: product1Dictionary["price"] as? Double ?? self.defaultProducts[0].price,
+                price: product1Dictionary["price"] as? String ?? self.defaultProducts[0].price,
                 description: product1Dictionary["description"] as? String ?? self.defaultProducts[0].description,
                 length: product1Dictionary["length"] as? String ?? self.defaultProducts[0].length
             )
             
+            
             let product2 = Product(
                 id: product2Dictionary["id"] as? String ?? self.defaultProducts[1].id,
-                price: product2Dictionary["price"] as? Double ?? self.defaultProducts[1].price,
+                price: product2Dictionary["price"] as? String ?? self.defaultProducts[1].price,
                 description: product2Dictionary["description"] as? String ?? self.defaultProducts[1].description,
                 length: product2Dictionary["length"] as? String ?? self.defaultProducts[1].length
             )
             
+            
+            
             let product3 = Product(
                 id: product3Dictionary["id"] as? String ?? self.defaultProducts[2].id,
-                price: product3Dictionary["price"] as? Double ?? self.defaultProducts[2].price,
+                price: product3Dictionary["price"] as? String ?? self.defaultProducts[2].price,
                 description: product3Dictionary["description"] as? String ?? self.defaultProducts[2].description,
                 length: product3Dictionary["length"] as? String ?? self.defaultProducts[2].length
             )
@@ -257,20 +279,24 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
     
     func resetPricesAndDescription() {
         
-        self.btnOneMonth.setTitle(availableProducts[0].description, for: .normal)
-        self.btnOneMonth.setTitle(availableProducts[0].description, for: .selected)
-        self.btnOneMonthPrice.setTitle(String(availableProducts[0].price), for: .normal)
-        self.btnOneMonthPrice.setTitle(String(availableProducts[0].price), for: .selected)
+        print(String(describing: availableProducts[0].price))
+        print(String(describing: availableProducts[1].price))
+        print(String(describing: availableProducts[2].price))
+    
+        self.btnOneMonth.setTitle("   " + availableProducts[0].description.uppercased(), for: .normal)
+        self.btnOneMonth.setTitle("   " + availableProducts[0].description.uppercased(), for: .selected)
+        self.btnOneMonthPrice.setTitle(String(describing: availableProducts[0].price), for: .normal)
+        self.btnOneMonthPrice.setTitle(String(describing: availableProducts[0].price), for: .selected)
         
-        self.btnOneYear.setTitle(availableProducts[1].description, for: .normal)
-        self.btnOneYear.setTitle(availableProducts[1].description, for: .selected)
-        self.btnOneYearPrice.setTitle(String(availableProducts[1].price), for: .normal)
-        self.btnOneYearPrice.setTitle(String(availableProducts[1].price), for: .selected)
+        self.btnOneYear.setTitle("   " + availableProducts[1].description.uppercased(), for: .normal)
+        self.btnOneYear.setTitle("   " + availableProducts[1].description.uppercased(), for: .selected)
+        self.btnOneYearPrice.setTitle(String(describing: availableProducts[1].price), for: .normal)
+        self.btnOneYearPrice.setTitle(String(describing: availableProducts[1].price), for: .selected)
         
-        self.btnLifeTime.setTitle(availableProducts[2].description, for: .normal)
-        self.btnLifeTime.setTitle(availableProducts[2].description, for: .selected)
-        self.btnLifeTimePrice.setTitle(String(availableProducts[2].price), for: .normal)
-        self.btnLifeTimePrice.setTitle(String(availableProducts[2].price), for: .selected)
+        self.btnLifeTime.setTitle("   " + availableProducts[2].description.uppercased(), for: .normal)
+        self.btnLifeTime.setTitle("   " + availableProducts[2].description.uppercased(), for: .selected)
+        self.btnLifeTimePrice.setTitle(String(describing: availableProducts[2].price), for: .normal)
+        self.btnLifeTimePrice.setTitle(String(describing: availableProducts[2].price), for: .selected)
         
     }
     
@@ -299,6 +325,7 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
         
         
         let myProduct = response.products
+        print(String(response.products.count) + " products loaded")
         
         for product in myProduct {
 
@@ -306,9 +333,13 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
             allSKProducts.append(product)
             
         }
+        
+        enableBtnUpgrade(enabled: true)
     }
     
-    
+    func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
+        
+    }
     
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         
@@ -323,10 +354,10 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
                 
             case .restored:
                 print("RESTORED")
-                let p = PromoCode.init()
-                p.product = "rifai.prossimo.ios.pp"
-                p.code = "restored"
-                registerProInFirebase(prodID: p.product, promoCode: p)
+                let p = Product()
+                p.id = "rifai.prossimo.ios.pp"
+                p.length = "restored"
+                registerProInFirebase(product: p, promoCode: PromoCode())
                 
                 
                 if let del = self.delegate {
@@ -337,6 +368,8 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
                 dismiss(animated: true, completion: nil)
                 
                 queue.finishTransaction(trans)
+                
+                
                 
             case .purchased:
                 
@@ -354,7 +387,11 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
                 
                 print(sKproductToBuy.productIdentifier)
                 
-                registerProInFirebase(prodID: sKproductToBuy.productIdentifier, promoCode: self.promoCodeToUse)
+                let product = Product();
+                product.id = sKproductToBuy.productIdentifier
+                product.price = String(describing: sKproductToBuy.price)
+                
+                registerProInFirebase(product: product, promoCode: self.promoCodeToUse)
                 
                 if let del = self.delegate {
                     del.subscriptionChanged(subscription: "pro")
@@ -398,14 +435,17 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
     
     var registeredInFirebase = false
     
-    func registerProInFirebase(prodID:String, promoCode:PromoCode) {
+    func registerProInFirebase(product:Product, promoCode:PromoCode) {
+        
         if !registeredInFirebase {
+            
             print("adding pro")
             
             self.ref = FIRDatabase.database().reference()
             self.ref.child("users/" + self.userId + "/subscription/type").setValue("pro")
             self.ref.child("users/" + self.userId + "/subscription/promocode").setValue(promoCode.code)
-            self.ref.child("users/" + self.userId + "/subscription/product").setValue(promoCode.productId)
+            self.ref.child("users/" + self.userId + "/subscription/product").setValue(product.id)
+            self.ref.child("users/" + self.userId + "/subscription/price").setValue(product.price)
             self.ref.child("users/" + self.userId + "/subscription/date").setValue(NSDate())
             
             registeredInFirebase = true
@@ -419,6 +459,9 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
         
         self.ref.child("promocodes").observeSingleEvent(of: .value, with: {
             
+            let formatter = NumberFormatter()
+            formatter.generatesDecimalNumbers = true
+            
             guard let promos = $0.value as? NSDictionary else { return }
             
             self.promoCodesInFirebase = [PromoCode]()
@@ -426,11 +469,11 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
             for promo in promos.allValues {
                 
                 guard let promoValue = promo as? NSDictionary else { return }
-                
+         
                 let promoCode = PromoCode(
-                    code: promoValue.value(forKey: "code") as! String,
-                    productId: promoValue.value(forKey: "productId") as! String,
-                    price: promoValue.value(forKey: "price") as! Double,
+                    code: promoValue.value(forKey: "code") as? String ?? "",
+                    productId: promoValue.value(forKey: "productId") as? String ?? "",
+                    price: promoValue.value(forKey: "price") as? String ?? "",
                     length: promoValue.value(forKey: "length") as! String
                 )
                 

@@ -211,21 +211,19 @@
                                         <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fNT-hU-8AK">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
                                         </imageView>
-                                        <view opaque="NO" alpha="0.40000000000000002" tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3rT-bd-cqg">
-                                            <rect key="frame" x="0.0" y="354" width="375" height="22"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="22" id="lZY-gy-U3Y"/>
-                                            </constraints>
+                                        <view opaque="NO" alpha="0.10000000000000001" tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3rT-bd-cqg">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="376"/>
                                         </view>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="fNT-hU-8AK" firstAttribute="top" secondItem="92J-OF-fGQ" secondAttribute="topMargin" constant="-8" id="24S-JL-wc8"/>
-                                        <constraint firstAttribute="trailing" secondItem="3rT-bd-cqg" secondAttribute="trailing" id="3qv-TE-tEZ"/>
-                                        <constraint firstAttribute="bottom" secondItem="3rT-bd-cqg" secondAttribute="bottom" id="40W-jQ-BIm"/>
                                         <constraint firstItem="fNT-hU-8AK" firstAttribute="centerX" secondItem="92J-OF-fGQ" secondAttribute="centerX" id="GSX-IC-aL6"/>
+                                        <constraint firstItem="3rT-bd-cqg" firstAttribute="height" secondItem="92J-OF-fGQ" secondAttribute="height" id="KtB-Vt-oQi"/>
+                                        <constraint firstItem="3rT-bd-cqg" firstAttribute="centerX" secondItem="92J-OF-fGQ" secondAttribute="centerX" id="Mzz-b6-Fsb"/>
+                                        <constraint firstItem="3rT-bd-cqg" firstAttribute="centerY" secondItem="92J-OF-fGQ" secondAttribute="centerY" id="Q2j-2l-czg"/>
+                                        <constraint firstItem="3rT-bd-cqg" firstAttribute="width" secondItem="92J-OF-fGQ" secondAttribute="width" id="QQi-KH-6XR"/>
                                         <constraint firstItem="fNT-hU-8AK" firstAttribute="leading" secondItem="92J-OF-fGQ" secondAttribute="leadingMargin" constant="-8" id="U4S-dv-jr9"/>
                                         <constraint firstItem="fNT-hU-8AK" firstAttribute="centerY" secondItem="92J-OF-fGQ" secondAttribute="centerY" constant="-63.25" id="Vkk-jn-p8E"/>
-                                        <constraint firstItem="3rT-bd-cqg" firstAttribute="leading" secondItem="92J-OF-fGQ" secondAttribute="leading" id="YgU-6d-ERw"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="fNT-hU-8AK" secondAttribute="trailing" constant="-8" id="lFI-ak-NxK"/>
                                     </constraints>
                                 </tableViewCellContentView>

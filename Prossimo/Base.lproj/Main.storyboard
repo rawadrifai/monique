@@ -271,22 +271,23 @@
                                     <action selector="signInUsignDeviceId:" destination="yoX-Q4-vMH" eventType="touchUpInside" id="dGd-Bm-YRe"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="waZ-m5-ly2" customClass="GIDSignInButton">
-                                <rect key="frame" x="162" y="555" width="51" height="48"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="waZ-m5-ly2" customClass="GIDSignInButton">
+                                <rect key="frame" x="162.5" y="553" width="50" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="Z9h-3r-G8F"/>
-                                    <constraint firstAttribute="width" constant="51" id="hUV-xD-cr0"/>
+                                    <constraint firstAttribute="height" constant="50" id="9C0-Lv-wpE"/>
+                                    <constraint firstAttribute="width" constant="50" id="FQd-aq-GUx"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="uqu-ex-9vc" secondAttribute="trailing" id="69c-oL-24N"/>
+                            <constraint firstItem="uqu-ex-9vc" firstAttribute="top" secondItem="waZ-m5-ly2" secondAttribute="bottom" constant="8" id="Fzj-L7-oGh"/>
+                            <constraint firstItem="waZ-m5-ly2" firstAttribute="centerX" secondItem="Kqa-jY-2nE" secondAttribute="centerX" id="T0v-Yg-ZpE"/>
                             <constraint firstItem="u0Q-vR-RFs" firstAttribute="top" secondItem="uqu-ex-9vc" secondAttribute="bottom" constant="35" id="WJk-rP-Clz"/>
                             <constraint firstItem="fUr-AG-tuX" firstAttribute="centerX" secondItem="Kqa-jY-2nE" secondAttribute="centerX" id="WcI-o5-K8j"/>
                             <constraint firstItem="oNG-48-gvU" firstAttribute="centerY" secondItem="Kqa-jY-2nE" secondAttribute="centerY" id="Whp-cI-wA1"/>
                             <constraint firstItem="08A-hu-Lj6" firstAttribute="top" secondItem="oNG-48-gvU" secondAttribute="bottom" constant="-1" id="bIy-05-clo"/>
-                            <constraint firstItem="waZ-m5-ly2" firstAttribute="centerX" secondItem="Kqa-jY-2nE" secondAttribute="centerX" id="h82-Nk-6AC"/>
                             <constraint firstItem="08A-hu-Lj6" firstAttribute="centerX" secondItem="Kqa-jY-2nE" secondAttribute="centerX" id="huU-Ut-TB4"/>
                             <constraint firstItem="WGN-5p-rIu" firstAttribute="centerX" secondItem="Kqa-jY-2nE" secondAttribute="centerX" id="huf-Q5-lrR"/>
                             <constraint firstItem="uqu-ex-9vc" firstAttribute="leading" secondItem="Kqa-jY-2nE" secondAttribute="leadingMargin" id="juX-Xl-Xhd"/>

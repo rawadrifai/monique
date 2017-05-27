@@ -586,7 +586,7 @@ This Privacy Policy may be updated from time to time for any reason. We will not
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="wdG-b0-0kX">
-                                <rect key="frame" x="21" y="135" width="333" height="210"/>
+                                <rect key="frame" x="21" y="165" width="333" height="210"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PwH-Xq-IIK">
                                         <rect key="frame" x="0.0" y="0.0" width="333" height="68.5"/>
@@ -698,7 +698,7 @@ This Privacy Policy may be updated from time to time for any reason. We will not
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LGN-Pl-RCu">
-                                <rect key="frame" x="79" y="375" width="216" height="60"/>
+                                <rect key="frame" x="79" y="405" width="216" height="60"/>
                                 <color key="backgroundColor" red="0.1764705882" green="0.1764705882" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="216" id="Pf9-Eh-z1J"/>
@@ -713,7 +713,7 @@ This Privacy Policy may be updated from time to time for any reason. We will not
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose an Upgrade plan" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cqt-Qr-if6">
-                                <rect key="frame" x="28" y="94" width="319" height="21"/>
+                                <rect key="frame" x="28" y="124" width="319" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Ugn-go-5g2"/>
                                 </constraints>
@@ -722,7 +722,7 @@ This Privacy Policy may be updated from time to time for any reason. We will not
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Got Promo?" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="rGv-Ao-CaL">
-                                <rect key="frame" x="79" y="456" width="216" height="40"/>
+                                <rect key="frame" x="79" y="486" width="216" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="bfy-R5-KS4"/>
                                     <constraint firstAttribute="width" constant="216" id="rY2-Ml-RLa"/>
@@ -748,8 +748,8 @@ This Privacy Policy may be updated from time to time for any reason. We will not
                                     <action selector="restoreClicked:" destination="hZa-Pe-Vyq" eventType="touchUpInside" id="SZN-cN-4iX"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check" translatesAutoresizingMaskIntoConstraints="NO" id="Xng-tL-E3k">
-                                <rect key="frame" x="96" y="467" width="18" height="18"/>
+                            <imageView hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check" translatesAutoresizingMaskIntoConstraints="NO" id="Xng-tL-E3k">
+                                <rect key="frame" x="96" y="497" width="18" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="18" id="els-Ni-HMk"/>
                                     <constraint firstAttribute="height" constant="18" id="n2l-Sh-wlY"/>
@@ -777,7 +777,7 @@ This Privacy Policy may be updated from time to time for any reason. We will not
                             <constraint firstAttribute="trailingMargin" secondItem="Cqt-Qr-if6" secondAttribute="trailing" constant="12" id="yAo-k5-hKj"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="YOd-OA-Tex"/>
+                    <navigationItem key="navigationItem" prompt="UPGRADE TO PRO" id="YOd-OA-Tex"/>
                     <connections>
                         <outlet property="btnLifeTime" destination="MOi-Mf-0oJ" id="z2M-mq-leR"/>
                         <outlet property="btnLifeTimePrice" destination="xxG-70-sR4" id="1u6-B4-10K"/>

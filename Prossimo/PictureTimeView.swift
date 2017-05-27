@@ -273,20 +273,21 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
             let bottomLine = cell.viewWithTag(3)!
             
             // 1
-            bottomLine.backgroundColor = UIColor.black
+            //bottomLine.backgroundColor = UIColor.black
+            
             
             // 2
             bottomGradientLayer.frame = bottomLine.bounds
             
             // 3
-            let color1 = UIColor.black.cgColor
-            let color2 = UIColor.darkGray.cgColor
-            let color3 = UIColor.lightGray.cgColor
+            let color2 = UIColor.white.cgColor
+            let color3 = UIColor.white.cgColor
+            let color4 = UIColor.black.cgColor
             
-            bottomGradientLayer.colors = [color3, color2, color1]
+            bottomGradientLayer.colors = [color2, color3, color4]
             
             // 4
-            bottomGradientLayer.locations = [0.1, 0.5, 1]
+            bottomGradientLayer.locations = [0.05, 0.5, 0.55]
             
             // 5
             bottomLine.layer.addSublayer(bottomGradientLayer)

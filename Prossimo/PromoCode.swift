@@ -11,17 +11,17 @@ import Foundation
 public class PromoCode {
     var code:String
     var productId:String
-    var price:Double
+    var price:String
     var length:String
     
     init() {
         code = ""
         productId = ""
-        price = 0
+        price = ""
         length = ""
     }
     
-    init(code:String, productId:String, price:Double, length:String) {
+    init(code:String, productId:String, price:String, length:String) {
         self.code = code
         self.productId = productId
         self.price = price

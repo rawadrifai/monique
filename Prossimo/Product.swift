@@ -11,18 +11,18 @@ import Foundation
 public class Product {
     
     var id:String
-    var price:Double
+    var price:String
     var description:String
     var length:String
     
     init() {
         id = ""
-        price = 0
+        price = ""
         description = ""
         length = ""
     }
     
-    init(id:String, price:Double, description:String, length:String) {
+    init(id:String, price:String, description:String, length:String) {
         self.id = id
         self.price = price
         self.description = description
