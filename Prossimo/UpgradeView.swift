@@ -11,7 +11,112 @@ import StoreKit
 import Firebase
 import FirebaseDatabase
 
-class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransactionObserver {
+
+extension UpgradeView:SKProductsRequestDelegate, SKPaymentTransactionObserver {
+    
+    
+    
+    
+    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+        
+        
+        let myProduct = response.products
+        print(String(response.products.count) + " products loaded")
+        
+        for product in myProduct {
+            
+            print(product.productIdentifier)
+            allSKProducts.append(product)
+            
+        }
+        
+        enableBtnUpgrade(enabled: true)
+        
+    }
+    
+    
+    
+    func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
+        
+    }
+    
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        
+        print("add payment")
+        
+        for transaction: AnyObject in transactions {
+            
+            let trans = transaction as! SKPaymentTransaction
+            print(trans.error ?? "default error")
+            
+            switch trans.transactionState {
+                
+            case .restored:
+                
+                print("RESTORED")
+                let p = Product()
+                p.id = "rifai.prossimo.ios.pp"
+                p.length = "restored"
+                registerProInFirebase(product: p, promoCode: PromoCode())
+                
+                
+                if let del = self.delegate {
+                    del.subscriptionChanged(subscription: "pro")
+                }
+                
+                let _ = self.navigationController?.popViewController(animated: true)
+                dismiss(animated: true, completion: nil)
+                
+                queue.finishTransaction(trans)
+                
+                
+                
+            case .purchased:
+                
+                print("BUY OK:")
+                
+                // send event to clever tap
+                
+                let props = [
+                    "Product name": sKproductToBuy.productIdentifier,
+                    "Price": sKproductToBuy.price,
+                    "Date": NSDate()
+                    ] as [String : Any]
+                
+                CleverTap.sharedInstance()?.recordEvent("Product purchased", withProps: props)
+                
+                print(sKproductToBuy.productIdentifier)
+                
+                let product = Product();
+                product.id = sKproductToBuy.productIdentifier
+                product.price = String(describing: sKproductToBuy.price)
+                
+                registerProInFirebase(product: product, promoCode: self.promoCodeToUse)
+                
+                if let del = self.delegate {
+                    del.subscriptionChanged(subscription: "pro")
+                }
+                
+                let _ = self.navigationController?.popViewController(animated: true)
+                dismiss(animated: true, completion: nil)
+                
+                queue.finishTransaction(trans)
+                
+            case .failed:
+                print("buy error")
+                queue.finishTransaction(trans)
+                break
+                
+            default:
+                print("Default")
+                break
+            }
+        }
+    }
+    
+}
+
+class UpgradeView: UIViewController {
 
     var delegate: UpgradeDelegate?
     
@@ -19,11 +124,11 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
     var userId:String!
     var allSKProducts = [SKProduct]()
     var sKproductToBuy = SKProduct()
-    var productsInFirebase = Set<String>()
+    var productsSet = Set<String>()
     var promoCodeToUse = PromoCode()
     var promoCodesInFirebase = [PromoCode]()
     var availableProducts = [Product]()
-
+    var productsPurchased = Set<String>()
     
     @IBOutlet weak var txfPromo: UITextField!
     @IBOutlet weak var btnUpgrade: UIButton!
@@ -47,12 +152,20 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
         
         super.viewDidLoad()
         
-        requestProductsFromAppStore()
-        
         self.ref = FIRDatabase.database().reference()
         getProductsFromFirebase()
         getPromoCodesFromFirebase()
         setBorders()
+        
+        do {
+        let receiptURL = Bundle.main.appStoreReceiptURL
+        let receipt = try Data(contentsOf: receiptURL!)
+            
+        
+        
+        } catch {
+        
+        }
         
     }
     
@@ -203,12 +316,8 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
             
             if(prodID == productName) {
                 sKproductToBuy = p
-                enableBtnUpgrade(enabled: true)
                 break
-            } else {
-                enableBtnUpgrade(enabled: false)
             }
-            
         }
         
         
@@ -217,12 +326,10 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
     func enableBtnUpgrade(enabled:Bool) {
         if enabled {
             btnUpgrade.isEnabled = true
-            btnUpgrade.backgroundColor = Commons.myLightLightGrayColor
-            btnUpgrade.setTitleColor(UIColor.lightGray, for: .normal)
+            btnUpgrade.setTitleColor(Commons.myColor, for: .normal)
         } else {
             btnUpgrade.isEnabled = false
-            btnUpgrade.backgroundColor = Commons.myDarkGreenColor
-            btnUpgrade.setTitleColor(Commons.myColor, for: .normal)
+            btnUpgrade.setTitleColor(UIColor.lightGray, for: .normal)
         }
     }
     
@@ -271,7 +378,13 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
             self.availableProducts.append(product2)
             self.availableProducts.append(product3)
             
+            self.productsSet.insert(product1.id)
+            self.productsSet.insert(product2.id)
+            self.productsSet.insert(product3.id)
+            self.requestProductsFromAppStore()
+            
             self.resetPricesAndDescription()
+            
             
         })
     }
@@ -279,9 +392,6 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
     
     func resetPricesAndDescription() {
         
-        print(String(describing: availableProducts[0].price))
-        print(String(describing: availableProducts[1].price))
-        print(String(describing: availableProducts[2].price))
     
         self.btnOneMonth.setTitle("   " + availableProducts[0].description.uppercased(), for: .normal)
         self.btnOneMonth.setTitle("   " + availableProducts[0].description.uppercased(), for: .selected)
@@ -308,7 +418,7 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
             
             print("IAP is enabled, loading")
 
-            let request: SKProductsRequest = SKProductsRequest(productIdentifiers: productsInFirebase)
+            let request: SKProductsRequest = SKProductsRequest(productIdentifiers: productsSet)
 
             request.delegate = self
             request.start()
@@ -321,98 +431,6 @@ class UpgradeView: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
     
     
     
-    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
-        
-        
-        let myProduct = response.products
-        print(String(response.products.count) + " products loaded")
-        
-        for product in myProduct {
-
-            print(product.productIdentifier)
-            allSKProducts.append(product)
-            
-        }
-        
-        enableBtnUpgrade(enabled: true)
-    }
-    
-    func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
-        
-    }
-    
-    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-        
-        print("add payment")
-        
-        for transaction: AnyObject in transactions {
-            
-            let trans = transaction as! SKPaymentTransaction
-            print(trans.error ?? "default error")
-            
-            switch trans.transactionState {
-                
-            case .restored:
-                print("RESTORED")
-                let p = Product()
-                p.id = "rifai.prossimo.ios.pp"
-                p.length = "restored"
-                registerProInFirebase(product: p, promoCode: PromoCode())
-                
-                
-                if let del = self.delegate {
-                    del.subscriptionChanged(subscription: "pro")
-                }
-                
-                let _ = self.navigationController?.popViewController(animated: true)
-                dismiss(animated: true, completion: nil)
-                
-                queue.finishTransaction(trans)
-                
-                
-                
-            case .purchased:
-                
-                print("BUY OK:")
-                
-                // send event to clever tap
-                
-                let props = [
-                    "Product name": sKproductToBuy.productIdentifier,
-                    "Price": sKproductToBuy.price,
-                    "Date": NSDate()
-                ] as [String : Any]
-                
-                CleverTap.sharedInstance()?.recordEvent("Product purchased", withProps: props)
-                
-                print(sKproductToBuy.productIdentifier)
-                
-                let product = Product();
-                product.id = sKproductToBuy.productIdentifier
-                product.price = String(describing: sKproductToBuy.price)
-                
-                registerProInFirebase(product: product, promoCode: self.promoCodeToUse)
-                
-                if let del = self.delegate {
-                    del.subscriptionChanged(subscription: "pro")
-                }
-                
-                let _ = self.navigationController?.popViewController(animated: true)
-                dismiss(animated: true, completion: nil)
-                
-                queue.finishTransaction(trans)
-                
-            case .failed:
-                print("buy error")
-                queue.finishTransaction(trans)
-                break
-                
-            default:
-                print("Default")
-                break
-            }
-        }
-    }
     
     
     

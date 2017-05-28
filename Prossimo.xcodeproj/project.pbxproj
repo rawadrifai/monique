@@ -17,6 +17,7 @@
 		7905A6E41ECA5CA00008D2ED /* ClientDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7905A6E31ECA5CA00008D2ED /* ClientDetail.storyboard */; };
 		7905A6E61ECA5D050008D2ED /* EditClient.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7905A6E51ECA5D050008D2ED /* EditClient.storyboard */; };
 		7912E8B41ED665F400DDC55B /* PromoCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7912E8B31ED665F400DDC55B /* PromoCode.swift */; };
+		7912E8C81EDAD89300DDC55B /* ReceiptManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7912E8C71EDAD89300DDC55B /* ReceiptManager.swift */; };
 		792C86EF1ECE922A0082E9F0 /* FemaleOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792C86EE1ECE922A0082E9F0 /* FemaleOptionsView.swift */; };
 		792C86F41ED258A60082E9F0 /* PictureTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792C86F21ED258A60082E9F0 /* PictureTimeCell.swift */; };
 		792C86F51ED258A60082E9F0 /* PictureTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 792C86F31ED258A60082E9F0 /* PictureTimeCell.xib */; };
@@ -152,6 +153,7 @@
 		7905A6E31ECA5CA00008D2ED /* ClientDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ClientDetail.storyboard; sourceTree = "<group>"; };
 		7905A6E51ECA5D050008D2ED /* EditClient.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditClient.storyboard; sourceTree = "<group>"; };
 		7912E8B31ED665F400DDC55B /* PromoCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PromoCode.swift; path = Prossimo/PromoCode.swift; sourceTree = "<group>"; };
+		7912E8C71EDAD89300DDC55B /* ReceiptManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReceiptManager.swift; path = Prossimo/ReceiptManager.swift; sourceTree = "<group>"; };
 		792C86EE1ECE922A0082E9F0 /* FemaleOptionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FemaleOptionsView.swift; path = Prossimo/FemaleOptionsView.swift; sourceTree = "<group>"; };
 		792C86F21ED258A60082E9F0 /* PictureTimeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PictureTimeCell.swift; path = Prossimo/PictureTimeCell.swift; sourceTree = "<group>"; };
 		792C86F31ED258A60082E9F0 /* PictureTimeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PictureTimeCell.xib; path = Prossimo/PictureTimeCell.xib; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 		7905A6CA1EC93F260008D2ED /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				7912E8C61EDA400E00DDC55B /* Subscriptions */,
 				7975C9191ECC356300C93845 /* UserInfo.swift */,
 				9A0E86431E9B4EA400F02BA6 /* InstagramManager.swift */,
 				7905A6A91EC655D10008D2ED /* Commons.swift */,
@@ -304,6 +307,14 @@
 				9A371A271EB8007000A52DDD /* CrashController.swift */,
 			);
 			name = Miscellaneous;
+			sourceTree = "<group>";
+		};
+		7912E8C61EDA400E00DDC55B /* Subscriptions */ = {
+			isa = PBXGroup;
+			children = (
+				7912E8C71EDAD89300DDC55B /* ReceiptManager.swift */,
+			);
+			name = Subscriptions;
 			sourceTree = "<group>";
 		};
 		9A3BC6391E5A9AA700E9CA71 = {
@@ -621,6 +632,7 @@
 				792C86F71ED55C950082E9F0 /* Product.swift in Sources */,
 				9AE7A1C81EB5A5080004FCC2 /* EditClientVC.swift in Sources */,
 				9AE7A1BF1EB4336A0004FCC2 /* NewClientVC.swift in Sources */,
+				7912E8C81EDAD89300DDC55B /* ReceiptManager.swift in Sources */,
 				9A40F5921EADE19500092723 /* ThirdVC.swift in Sources */,
 				7975C9061ECBBE5B00C93845 /* ClientCell.swift in Sources */,
 				9AD116641E5E87C400113753 /* Client.swift in Sources */,
