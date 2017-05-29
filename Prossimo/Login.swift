@@ -39,9 +39,6 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         
         checkForLatestVersion()
         checkIfAlreadySignedIn()
-        
-        
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -51,13 +48,17 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     
     func customizeSignInBtns() {
         
+        FIRApp.configure()
+        
         // Initialize sign-in
         var configureError: NSError?
         GGLContext.sharedInstance().configureWithError(&configureError)
-        GIDSignIn.sharedInstance().delegate = self
         
         GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
+        
+        
+        
         GIDSignIn.sharedInstance().uiDelegate = self
         
         signInButton.style = .iconOnly
@@ -210,6 +211,7 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         self.logUserInCrashlytics(userEmail: user.profile.email, userIdentifier: self.userId, userName: user.profile.name)
         
         
+        // this is to authenticate with firebase
         guard let authentication = user.authentication else { return }
         let credential = FIRGoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                           accessToken: authentication.accessToken)

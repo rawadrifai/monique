@@ -32,6 +32,7 @@ enum ReceiptValidatingItunesURLS:String {
 
 public class ReceiptManager:NSObject {
     
+
     public override init() {
         super.init()
         
@@ -43,7 +44,7 @@ public class ReceiptManager:NSObject {
         
         do {
         _ = try self.getReceiptURL()?.checkResourceIsReachable()
-            
+
             do {
                 let data = try Data(contentsOf: self.getReceiptURL()!)
                 self.validateData(data: data)
@@ -55,18 +56,22 @@ public class ReceiptManager:NSObject {
             
             // if receipt doesn't exist we refresh from app store
             
-            guard UserDefaults.standard.bool(forKey: "didRefreshReceipt") == false else {
+            if  UserDefaults.standard.bool(forKey: "didRefreshReceipt") == false {
+                
+                UserDefaults.standard.set(true, forKey: "didRefreshReceipt")
+                
+                let receiptRequest = SKReceiptRefreshRequest()
+                receiptRequest.delegate = self
+                receiptRequest.start()
+                
+                print("Receipt URL does not exist, refreshing from app store")
+                
+            } else {
                 print("Stopped after second attempt")
                 return
             }
             
-            UserDefaults.standard.set(true, forKey: "didRefreshReceipt")
             
-            let receiptRequest = SKReceiptRefreshRequest()
-            receiptRequest.delegate = self as! SKRequestDelegate
-            receiptRequest.start()
-            
-            print("Receipt URL does not exist, refreshing from app store")
         }
     }
     
@@ -81,7 +86,7 @@ public class ReceiptManager:NSObject {
         
         // wrap receipt with secret
         var dic:[String:AnyObject] = ["receipt-data":receiptsString as AnyObject]
-        let sharedSecret = ""
+        let sharedSecret = "b295e82273af4f34884d52f1f295a257"
         dic["password"] = sharedSecret as AnyObject?
         
         // convert to json object
@@ -91,10 +96,13 @@ public class ReceiptManager:NSObject {
         var urlRequest = URLRequest(url: ReceiptValidatingItunesURLS.url)
         urlRequest.httpMethod = "POST"
         urlRequest.httpBody = json
-        
+
         
         // use url session to send request
         let session = URLSession.shared
+     
+        
+        
         let task = session.dataTask(with: urlRequest) { (data, response, error) in
             
             if let receiptData = data  {
@@ -103,10 +111,9 @@ public class ReceiptManager:NSObject {
                 print("error validating receipt with itunes connect")
                 return
             }
-            
-            
-            
         }
+        
+        task.resume()
         
     }
     
@@ -138,13 +145,18 @@ public class ReceiptManager:NSObject {
             // loop through products
             for inApp in inApps {
                 
-                let prodID = inApp["product_id"]
+                let product = Product()
+                
+                product.id = inApp["product_id"] as! String
+                
                 
                 guard let expiryDate = inApp["expires_date_ms"] as? NSString else {
                     continue
                 }
                 
-                self.checkSubscriptionStatu(date: Date.init(timeIntervalSince1970: expiryDate.doubleValue/1000))
+                
+                
+                self.checkSubscriptionStatus(date: Date.init(timeIntervalSince1970: expiryDate.doubleValue/1000))
             }
         
         } else {
@@ -155,7 +167,7 @@ public class ReceiptManager:NSObject {
 
 extension ReceiptManager {
     
-    func checkSubscriptionStatu(date:Date) {
+    func checkSubscriptionStatus(date:Date) {
         
         let calendar = Calendar.current
         let now = Date()
@@ -163,6 +175,7 @@ extension ReceiptManager {
         
         switch order {
         case .orderedAscending:
+            self.saveActiveSubscriptions(date: date)
             print("User subscribed")
         default:
             print("user subscription has expired")

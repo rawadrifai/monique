@@ -91,7 +91,9 @@ extension UpgradeView:SKProductsRequestDelegate, SKPaymentTransactionObserver {
                 product.id = sKproductToBuy.productIdentifier
                 product.price = String(describing: sKproductToBuy.price)
                 
+                registerProLocally(product: product)
                 registerProInFirebase(product: product, promoCode: self.promoCodeToUse)
+                
                 
                 if let del = self.delegate {
                     del.subscriptionChanged(subscription: "pro")
@@ -151,22 +153,104 @@ class UpgradeView: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        registerNotifications()
         
         self.ref = FIRDatabase.database().reference()
-        getProductsFromFirebase()
+        //getProductsFromFirebase()
         getPromoCodesFromFirebase()
         setBorders()
         
-        do {
-        let receiptURL = Bundle.main.appStoreReceiptURL
-        let receipt = try Data(contentsOf: receiptURL!)
+
+       // let receiptManager = ReceiptManager()
+
+        
+        
+        productsFinishedLoading()
+        
+    }
+
+    func registerNotifications() {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.productsFinishedLoading), name: NSNotification.Name.init("SKProductsHaveLoaded"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.productPurchased), name: NSNotification.Name.init("SKProductPurchased"), object: nil)
+        
+    }
+    
+    
+    func productsFinishedLoading() {
+        
+        
+        
+        allSKProducts = StoreManager.shared.productsFromStore
+        
+        for product in allSKProducts {
             
-        
-        
-        } catch {
-        
+            
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .currency
+            formatter.locale = product.priceLocale
+            
+            
+            switch product.productIdentifier {
+            case "rifai.prossimo.ios.pp":
+                btnLifeTimePrice.setTitle(formatter.string(from: product.price), for: .normal)
+                break;
+                
+            case "rifai.prossimo.ios.ppmonthly":
+                btnOneMonthPrice.setTitle(formatter.string(from: product.price), for: .normal)
+                break;
+                
+            case "rifai.prossimo.ios.ppannual":
+                btnOneYearPrice.setTitle(formatter.string(from: product.price), for: .normal)
+                break;
+            default:
+                break;
+            }
         }
         
+        enableBtnUpgrade(enabled: true)
+    }
+    
+    func registerProductPurchaseInCleverTap(product:SKProduct) {
+    
+    
+        // send event to clever tap
+        
+        let props = [
+            "Product name": product.productIdentifier,
+            "Price": product.price,
+            "Date": NSDate()
+            ] as [String : Any]
+        
+        CleverTap.sharedInstance()?.recordEvent("Product purchased", withProps: props)
+    }
+    
+    func productPurchased(notification:NSNotification) {
+        
+        let productDict = notification.userInfo
+        guard let productPurchased = productDict?["product"] as? SKProduct else {
+            return
+        }
+        
+        
+        registerProductPurchaseInCleverTap(product: productPurchased)
+        
+     
+        registerProLocally(productPurchased)
+        registerProInFirebase(product: productPurchased, promoCode: self.promoCodeToUse)
+        
+        
+        if let del = self.delegate {
+            del.subscriptionChanged(subscription: "pro")
+        }
+        
+        let _ = self.navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+        
+        
+        
+        print("product purchased is " + productPurchased.productIdentifier)
     }
     
     func setBorders() {
@@ -181,11 +265,24 @@ class UpgradeView: UIViewController {
     
     @IBAction func oneMonthClick(_ sender: UIButton) {
         
-        for product in availableProducts {
-            switch product.id {
-            case defaultProducts[0].id:
+//        for product in availableProducts {
+//            switch product.id {
+//            case defaultProducts[0].id:
+//                
+//                changeProduct(productName: product.id)
+//                selectPlan(productNumber: 1)
+//                clearPromo()
+//                break;
+//            default:
+//                break;
+//            }
+//        }
+//        
+        for p in StoreManager.shared.productsFromStore {
+            switch p.productIdentifier {
+            case "rifai.prossimo.ios.ppmonthly":
                 
-                changeProduct(productName: product.id)
+                changeProduct(productName: p.productIdentifier)
                 selectPlan(productNumber: 1)
                 clearPromo()
                 break;
@@ -310,7 +407,7 @@ class UpgradeView: UIViewController {
     // changes the selected products
     func changeProduct(productName:String) {
     
-        for p in allSKProducts {
+        for p in StoreManager.shared.productsFromStore {
             
             let prodID = p.productIdentifier
             
@@ -438,7 +535,9 @@ class UpgradeView: UIViewController {
 
     @IBAction func upgradeClick(_ sender: UIButton) {
         
-        buyPro()
+        //buyPro()
+        
+        StoreManager.shared.buy(product: sKproductToBuy)
     }
     
     func buyPro() {
@@ -451,9 +550,28 @@ class UpgradeView: UIViewController {
         
     }
     
+    var registeredLocally = false
+
+    
+    func registerProLocallyForever(product:SKProduct) {
+        
+        if !registeredLocally {
+            
+            if product.productIdentifier == "rifai.prossimo.ios.pp" {
+                print("adding pro to local")
+            
+                UserDefaults.standard.set(true, forKey: "ppLifeTimeActive")
+                UserDefaults.standard.synchronize()
+            }
+            registeredLocally = true
+        
+        }
+    }
+    
+    
     var registeredInFirebase = false
     
-    func registerProInFirebase(product:Product, promoCode:PromoCode) {
+    func registerProInFirebase(product:SKProduct, promoCode:PromoCode) {
         
         if !registeredInFirebase {
             
@@ -462,7 +580,7 @@ class UpgradeView: UIViewController {
             self.ref = FIRDatabase.database().reference()
             self.ref.child("users/" + self.userId + "/subscription/type").setValue("pro")
             self.ref.child("users/" + self.userId + "/subscription/promocode").setValue(promoCode.code)
-            self.ref.child("users/" + self.userId + "/subscription/product").setValue(product.id)
+            self.ref.child("users/" + self.userId + "/subscription/product").setValue(product.productIdentifier)
             self.ref.child("users/" + self.userId + "/subscription/price").setValue(product.price)
             self.ref.child("users/" + self.userId + "/subscription/date").setValue(NSDate())
             

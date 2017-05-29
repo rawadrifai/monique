@@ -12,6 +12,7 @@ import GoogleSignIn
 import Fabric
 import Crashlytics
 import IQKeyboardManagerSwift
+import Firebase
 
 
 @UIApplicationMain
@@ -24,9 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        
         Fabric.with([Crashlytics.self])
         CleverTap.autoIntegrate()
         
+        StoreManager.shared.setup()
         IQKeyboardManager.sharedManager().enable = true
         
         UITabBar.appearance().tintColor = Commons.myColor//= UIColor(red:0.20, green:0.60, blue:0.00, alpha:1.0)
@@ -55,22 +58,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
     func application(_ application: UIApplication, handleOpen url: URL) -> Bool {
         
-        let urlString = url.absoluteString
+       // let urlString = url.absoluteString
         
-        if urlString == "https://rawadrifai.wixsite.com/prossimo" {
-            
+        
             let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-            let loginVC = storyBoard.instantiateViewController(withIdentifier: "loginViewController") as? UINavigationController
+            let loginVC = storyBoard.instantiateViewController(withIdentifier: "loginSB") as? UINavigationController
             self.window?.rootViewController?.present(loginVC!, animated: true, completion: nil)
-        }
+        
         
         return true
     }
     
     
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        
+        if error != nil {
+            
+            print("\(error.localizedDescription)")
+            return
+            
+            
+        }
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        print("disconnected with user")
+    }
     
     
-
+    
     
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
