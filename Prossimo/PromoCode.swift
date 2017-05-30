@@ -12,19 +12,19 @@ public class PromoCode {
     var code:String
     var productId:String
     var price:String
-    var length:String
+    var productToApplyPromoOn:String
     
     init() {
         code = ""
         productId = ""
         price = ""
-        length = ""
+        productToApplyPromoOn = ""
     }
     
-    init(code:String, productId:String, price:String, length:String) {
+    init(code:String, productId:String, price:String, productToApplyPromoOn:String) {
         self.code = code
         self.productId = productId
         self.price = price
-        self.length = length
+        self.productToApplyPromoOn = productToApplyPromoOn
     }
 }

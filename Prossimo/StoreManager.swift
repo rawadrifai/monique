@@ -22,6 +22,7 @@ class StoreManager:NSObject {
          "rifai.prossimo.ios.pp"]
     
     var productsFromStore = [SKProduct]()
+    var productsMap = [String:SKProduct]()
     
     func setup() {
      
@@ -83,7 +84,16 @@ extension StoreManager:SKPaymentTransactionObserver {
     
     func purchaseCompleted(transaction:SKPaymentTransaction) {
         
-        self.unlockContentForTransaction(transaction: transaction)
+        // get product id and create a SKProduct object to send in the notification
+        let purchasedProductId = transaction.payment.productIdentifier
+        guard let purchasedProduct = productsMap[purchasedProductId] else {
+            return
+        }
+        
+        // wrap product with a dictionary object and post in a notification
+        let productDict:[String: SKProduct] = ["product": purchasedProduct]
+        
+        NotificationCenter.default.post(name: NSNotification.Name.init("SKProductPurchased"), object: nil, userInfo: productDict)
         
         // tell itunes that transaction is finished
         SKPaymentQueue.default().finishTransaction(transaction)
@@ -92,9 +102,16 @@ extension StoreManager:SKPaymentTransactionObserver {
     
     func purchaseRestored(transaction:SKPaymentTransaction) {
         
-        if self.purchasableProductIds.contains(transaction.payment.productIdentifier) {
-            self.unlockContentForTransaction(transaction: transaction)
+        // get product id and create a SKProduct object to send in the notification
+        let purchasedProductId = transaction.payment.productIdentifier
+        guard let purchasedProduct = productsMap[purchasedProductId] else {
+            return
         }
+        
+        // wrap product with a dictionary object and post in a notification
+        let productDict:[String: SKProduct] = ["product": purchasedProduct]
+        
+        NotificationCenter.default.post(name: NSNotification.Name.init("SKProductRestored"), object: nil, userInfo: productDict)
         
         // tell itunes that transaction is finished
         SKPaymentQueue.default().finishTransaction(transaction)
@@ -127,9 +144,6 @@ extension StoreManager:SKPaymentTransactionObserver {
         }
     }
     
-    func unlockContentForTransaction(transaction:SKPaymentTransaction) {
-        print(transaction.payment.productIdentifier + " unlocked")
-    }
     
     func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
         
@@ -148,7 +162,8 @@ extension StoreManager:SKProductsRequestDelegate {
             
             for product in products {
                 
-                productsFromStore.append(product)
+                productsFromStore.append(product) // add to array
+                productsMap[product.productIdentifier] = product // add to map (get product by id)
             }
             
         } else {
@@ -167,16 +182,11 @@ extension StoreManager:SKProductsRequestDelegate {
         }
     }
     
-    
+    // func to execute payments
     func buy(product:SKProduct) {
         
-        let productDict:[String: SKProduct] = ["product": product]
-        //NotificationCenter.default.post(name: NSNotification.Name.init("SKProductPurchased"), object:nil)
-        NotificationCenter.default.post(name: NSNotification.Name.init("SKProductPurchased"), object: nil, userInfo: productDict)
-
-        
-//        let payment = SKPayment(product: product)
-//        SKPaymentQueue.default().add(payment)
+        let payment = SKPayment(product: product)
+        SKPaymentQueue.default().add(payment)
         
         print("buying " + product.productIdentifier)
 

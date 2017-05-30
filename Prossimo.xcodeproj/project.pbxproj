@@ -30,6 +30,7 @@
 		7975C91A1ECC356300C93845 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7975C9191ECC356300C93845 /* UserInfo.swift */; };
 		7975C91C1ECD82A700C93845 /* HaircutDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7975C91B1ECD82A700C93845 /* HaircutDetail.storyboard */; };
 		79C043B61EDC20DE004907E2 /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C043B51EDC20DE004907E2 /* StoreManager.swift */; };
+		79C043C31EDCEFC8004907E2 /* CleverTapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C043C21EDCEFC8004907E2 /* CleverTapManager.swift */; };
 		9A0E86441E9B4EA400F02BA6 /* InstagramManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E86431E9B4EA400F02BA6 /* InstagramManager.swift */; };
 		9A0E86501E9BF85C00F02BA6 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0E864E1E9BF85C00F02BA6 /* Fabric.framework */; };
 		9A0E86511E9BF85C00F02BA6 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0E864F1E9BF85C00F02BA6 /* Crashlytics.framework */; };
@@ -167,6 +168,7 @@
 		7975C9191ECC356300C93845 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserInfo.swift; path = Prossimo/UserInfo.swift; sourceTree = "<group>"; };
 		7975C91B1ECD82A700C93845 /* HaircutDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = HaircutDetail.storyboard; path = Prossimo/HaircutDetail.storyboard; sourceTree = "<group>"; };
 		79C043B51EDC20DE004907E2 /* StoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StoreManager.swift; path = Prossimo/StoreManager.swift; sourceTree = "<group>"; };
+		79C043C21EDCEFC8004907E2 /* CleverTapManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CleverTapManager.swift; path = Prossimo/CleverTapManager.swift; sourceTree = "<group>"; };
 		9A0E86431E9B4EA400F02BA6 /* InstagramManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InstagramManager.swift; path = Prossimo/InstagramManager.swift; sourceTree = "<group>"; };
 		9A0E864E1E9BF85C00F02BA6 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		9A0E864F1E9BF85C00F02BA6 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 			children = (
 				7912E8C71EDAD89300DDC55B /* ReceiptManager.swift */,
 				79C043B51EDC20DE004907E2 /* StoreManager.swift */,
+				79C043C21EDCEFC8004907E2 /* CleverTapManager.swift */,
 			);
 			name = Subscriptions;
 			sourceTree = "<group>";
@@ -651,6 +654,7 @@
 				9AB6B8EA1E84F9CA009231B0 /* SaveUserInfo.swift in Sources */,
 				9AAF34C71E713A0B00CAFE44 /* PictureTimeView.swift in Sources */,
 				7905A6CE1EC97C700008D2ED /* UIImageEffects.swift in Sources */,
+				79C043C31EDCEFC8004907E2 /* CleverTapManager.swift in Sources */,
 				9AAF34C51E70F1B500CAFE44 /* Login.swift in Sources */,
 				7912E8B41ED665F400DDC55B /* PromoCode.swift in Sources */,
 				7975C9151ECBCB3400C93845 /* ClientDetailsCell.swift in Sources */,
