@@ -27,7 +27,6 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
     var resultsController = UITableViewController()
     
     var userId:String!
-    var subscription:String!
     var cellData = [Client]()
     var filteredData = [Client]()
     var importClicked:Bool!
@@ -259,7 +258,6 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
         else if segue.identifier == "newClientSegue" {
             if let destination = segue.destination as? NewClientVC {
                 destination.userId = self.userId
-                destination.subscription = subscription
                 destination.numberOfClients = self.tableView.numberOfRows(inSection: 0)
                 destination.delegate = self
                 
@@ -374,11 +372,10 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
                 self.cellData.sort { $0.clientName < $1.clientName }
                 self.reloadTableDataFromUIThread()
                 
-                
-                self.setAggregates()
-                
+                                
 
             }
+            self.setAggregates()
             
         }) { (error) in
             //print(error.localizedDescription)

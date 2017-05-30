@@ -81,6 +81,8 @@ class SaveUserInfo: UIViewController {
         
         if validateInput() {
             
+            
+            
             var user = [String:String]()
             user["deviceId"] = self.userId
             user["name"] = txfName.text!
@@ -109,6 +111,7 @@ class SaveUserInfo: UIViewController {
                 ]
                 
                 CleverTap.sharedInstance()?.profilePush(profile)
+                CleverTapManager.shared.registerEvent(eventName: "Sign Up")
 
                 self.performSegue(withIdentifier: "loginSegue", sender: self)
             }
@@ -164,14 +167,12 @@ class SaveUserInfo: UIViewController {
                 if let destinationNavigation = destinationTabBar.viewControllers!.first as? UINavigationController {
                     if let destinationClientsView = destinationNavigation.topViewController as? ClientsView {
                         destinationClientsView.userId = self.userId
-                        destinationClientsView.subscription = "trial"
                     }
                 }
                 
                 if let d = destinationTabBar.viewControllers![1] as? UINavigationController {
                     if let infoView = d.topViewController as? InfoView {
                         infoView.userId = self.userId
-                        infoView.isProUser = false
                     }
                 }
             }

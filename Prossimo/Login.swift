@@ -13,11 +13,14 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     
     @IBOutlet weak var signInButton: GIDSignInButton!
     var userId:String!
-    var isProUser:Bool!
     var ref: FIRDatabaseReference!
-    var signoutClicked: Bool!
+    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     
     @IBOutlet weak var btnSignIn: UIButton!
+    
+    
     
     
     func logUserInCrashlytics(userEmail:String, userIdentifier:String, userName:String) {
@@ -32,23 +35,25 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.animateIndicator(animate: false)
         customizeSignInBtns()
         
         
         self.ref = FIRDatabase.database().reference()
         
-        checkForLatestVersion()
-        checkIfAlreadySignedIn()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(false)
+        
+        checkForLatestVersion()
+        checkIfAlreadySignedIn()
         checkIfFirstTimeUse()
     }
     
     func customizeSignInBtns() {
         
-        FIRApp.configure()
         
         // Initialize sign-in
         var configureError: NSError?
@@ -74,11 +79,15 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         
         
         // get last logged in user
-        guard let loggedInUser = UserDefaults.standard.string(forKey: "loggedInUser")
-            else {
-                return
+        guard let loggedInUser = UserDefaults.standard.value(forKey: "loggedInUser") as? String else {
+            return
         }
         
+//        guard let loggedInUser = UserDefaults.standard.string(forKey: "loggedInUser")
+//            else {
+//                return
+//        }
+    
         self.userId = loggedInUser
         
         // store crashlytics user before signing in
@@ -96,9 +105,7 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         })
         
         
-        // get subscription type
-        self.isProUser = StoreManager.shared.isSubscriptionActive()
-        print("isPro?: " + String(self.isProUser))
+        
         self.performSegue(withIdentifier: "loginSegue", sender: self)
         
         
@@ -171,6 +178,8 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
                 if let value = $0.value {
                     
                     if "1" == String(describing: value) {
+                        
+                        self.displayImportUpdateAlert()
                         self.displayVersionAlert()
                     }
                     
@@ -182,7 +191,28 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         present(versionAlert, animated: true, completion: nil)
     }
     
+    func displayImportUpdateAlert() {
+        
+        let alert = UIAlertController(title: "This is an important update", message: "Please download the updates", preferredStyle: UIAlertControllerStyle.alert)
+        
+        
+        alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (action: UIAlertAction!) in
+            
+            // do nothing
+        }))
+        
+        present(alert, animated: true, completion: nil)
+    }
     
+    
+    @IBAction func GIDClicked(_ sender: GIDSignInButton) {
+        
+        print("gid clicked")
+        
+        // start animating indicator
+        self.animateIndicator(animate: true)
+        self.lockButtons(lock: true)
+    }
     
     // what to do when you sign in
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
@@ -228,10 +258,7 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
             // register email in emails table
             self.ref.child("emails/" + self.userId).setValue(user.profile.email)
 
-            
-            // get subscription
-            self.getSubscriptionType(uid: self.userId)
-            
+            self.performSegue(withIdentifier: "loginSegue", sender: self)
             
         })
     }
@@ -266,10 +293,9 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
                     })
                     
                     
-                    // get subscription type
                     
-                    self.getSubscriptionType(uid: uid)
-                    
+                    // logged in
+                    self.performSegue(withIdentifier: "loginSegue", sender: self)
                 }
                 else {
                     self.performSegue(withIdentifier: "saveUserInfoSegue", sender: self)
@@ -282,25 +308,41 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         
     }
     
-    func getSubscriptionType(uid:String) {
+    
+    func lockButtons(lock: Bool) {
         
-        self.ref.child("users/" + uid + "/subscription/type").observeSingleEvent(of: .value, with: {
+        if lock {
             
-            guard let val = $0.value as? String else {
-                
-                self.subscription="trial"
-                self.performSegue(withIdentifier: "loginSegue", sender: self)
-                return
-            }
-            
-            print("subscription: " + val)
-            self.subscription = val
-            self.performSegue(withIdentifier: "loginSegue", sender: self)
-            
-        })
+            self.btnSignIn.isEnabled = false
+            self.signInButton.isEnabled = false
+
+        } else {
+
+            self.activityIndicator.stopAnimating()
+            self.activityIndicator.isHidden = true
+        }
+        
+    }
+    
+    func animateIndicator(animate: Bool) {
+        
+        if animate {
+
+            self.activityIndicator.isHidden = false
+            self.activityIndicator.startAnimating()
+        } else {
+
+            self.activityIndicator.stopAnimating()
+            self.activityIndicator.isHidden = true
+        }
+    
     }
     
     @IBAction func signInUsignDeviceId(_ sender: UIButton) {
+        
+        // start animating indicator
+        self.animateIndicator(animate: true)
+        self.lockButtons(lock: true)
         
         
         self.userId = KeychainManager.sharedInstance.getDeviceIdentifierFromKeychain()
@@ -322,6 +364,10 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        // stop animating indicator
+        self.animateIndicator(animate: false)
+        self.lockButtons(lock: false)
+        
         if segue.identifier == "loginSegue" {
             
             // set the userId
@@ -330,14 +376,12 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
                 if let destinationNavigation = destinationTabBar.viewControllers!.first as? UINavigationController {
                     if let destinationClientsView = destinationNavigation.topViewController as? ClientsView {
                         destinationClientsView.userId = self.userId
-                        destinationClientsView.subscription = self.subscription
                     }
                 }
                 
                 if let d = destinationTabBar.viewControllers![1] as? UINavigationController {
                     if let infoView = d.topViewController as? InfoView {
                         infoView.userId = self.userId
-                        infoView.isProUser = self.isProUser
                     }
                 }
             }

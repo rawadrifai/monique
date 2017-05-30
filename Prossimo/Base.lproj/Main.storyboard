@@ -277,12 +277,24 @@
                                     <constraint firstAttribute="height" constant="50" id="9C0-Lv-wpE"/>
                                     <constraint firstAttribute="width" constant="50" id="FQd-aq-GUx"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="GIDClicked:" destination="yoX-Q4-vMH" eventType="touchUpInside" id="oeP-Ly-Ub9"/>
+                                </connections>
                             </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="F6W-25-J5L">
+                                <rect key="frame" x="177" y="285" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="Pyg-se-ffz"/>
+                                    <constraint firstAttribute="width" constant="20" id="qn9-Cn-TjB"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="uqu-ex-9vc" secondAttribute="trailing" id="69c-oL-24N"/>
+                            <constraint firstItem="F6W-25-J5L" firstAttribute="top" secondItem="fUr-AG-tuX" secondAttribute="bottom" constant="15" id="96X-pb-LZe"/>
                             <constraint firstItem="uqu-ex-9vc" firstAttribute="top" secondItem="waZ-m5-ly2" secondAttribute="bottom" constant="8" id="Fzj-L7-oGh"/>
+                            <constraint firstItem="F6W-25-J5L" firstAttribute="centerX" secondItem="Kqa-jY-2nE" secondAttribute="centerX" id="N3p-GJ-q3u"/>
                             <constraint firstItem="waZ-m5-ly2" firstAttribute="centerX" secondItem="Kqa-jY-2nE" secondAttribute="centerX" id="T0v-Yg-ZpE"/>
                             <constraint firstItem="u0Q-vR-RFs" firstAttribute="top" secondItem="uqu-ex-9vc" secondAttribute="bottom" constant="35" id="WJk-rP-Clz"/>
                             <constraint firstItem="fUr-AG-tuX" firstAttribute="centerX" secondItem="Kqa-jY-2nE" secondAttribute="centerX" id="WcI-o5-K8j"/>
@@ -298,6 +310,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="F6W-25-J5L" id="YHK-a8-EOR"/>
                         <outlet property="btnSignIn" destination="08A-hu-Lj6" id="3XL-Gl-P8b"/>
                         <outlet property="signInButton" destination="waZ-m5-ly2" id="dUx-WF-TGQ"/>
                         <segue destination="49e-Tb-3d3" kind="presentation" identifier="loginSegue" id="O2Z-Jn-XOB"/>
@@ -315,7 +328,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9yR-0W-Xz0" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="search-7" id="rcm-6f-XcJ"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" alpha="0.5" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="AfO-F3-mUS">
+                    <navigationBar key="navigationBar" alpha="0.5" contentMode="scaleToFill" barStyle="black" id="AfO-F3-mUS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -336,7 +349,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="m32-ze-ylf" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" image="info" id="ysb-Oa-uIw"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" alpha="0.5" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="hdr-Ba-Po8">
+                    <navigationBar key="navigationBar" alpha="0.5" contentMode="scaleToFill" barStyle="black" id="hdr-Ba-Po8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -368,35 +381,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MhS-9K-oZX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1789" y="278"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="Io4-P7-sYx">
-            <objects>
-                <viewController id="1Vz-kv-088" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ZXT-yE-084"/>
-                        <viewControllerLayoutGuide type="bottom" id="VN7-77-vlf"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="rmr-Ns-bXd">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KTm-ZC-MTG">
-                                <rect key="frame" x="164" y="273" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2zb-r3-qUx">
-                                <rect key="frame" x="67" y="409" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xNx-3b-KgX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3218" y="-893"/>
         </scene>
         <!--NewClient-->
         <scene sceneID="W02-Be-Anw">

@@ -16,6 +16,8 @@ class InfoView: UITableViewController {
     var ref: FIRDatabaseReference!
     var userId:String!
     var isProUser:Bool!
+    
+    
 
     
     @IBOutlet weak var imageViewMyProfile: UIImageView!
@@ -54,6 +56,7 @@ class InfoView: UITableViewController {
         super.viewDidLoad()
         
         setIcons()
+        self.isProUser=false
 
     }
     
@@ -133,6 +136,19 @@ class InfoView: UITableViewController {
     }
 
     
+    func composeEmail(email:String) {
+        
+        guard let url = URL(string: "mailto:\(email)") else {
+            return
+        }
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
+        
+    }
+    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -141,18 +157,24 @@ class InfoView: UITableViewController {
             
             if cellText == "Contact Us" {
                 
-                let email = "info.prossimo@gmail.com"
-                if let url = URL(string: "mailto:\(email)") {
-                    if #available(iOS 10.0, *) {
-                        UIApplication.shared.open(url)
+                self.ref.child("contactemail").observeSingleEvent(of: .value, with: {
+                    
+                    
+                    if let email = $0.value as? String {
+                        
+                        self.composeEmail(email: email)
+                        
                     } else {
-                        UIApplication.shared.openURL(url)
-                        // Fallback on earlier versions
+                        
+                        self.composeEmail(email: "info.prossimo@gmail.com")
+                        
                     }
-                }
+                })
+                
+                
                 
                 self.tableView.deselectRow(at: indexPath, animated: true)
-
+                
             }
             
         }
@@ -180,10 +202,24 @@ class InfoView: UITableViewController {
     
     
     @IBAction func facebookClick(_ sender: UIButton) {
-        UIApplication.tryURL(urls: [
-            "fb://profile/prossimostylist", // App
-            "https://www.facebook.com/prossimostylist/" // Website if app fails
-            ])
+        
+        
+        let fbUrlString = "fb://profile/225583714592844"
+        let webUrlString = "https://www.facebook.com/prossimostylist"
+        
+        
+        let application = UIApplication.shared
+        
+        guard let fbUrl = NSURL.init(string: fbUrlString) else { return }
+        guard let webUrl = NSURL.init(string: webUrlString) else { return }
+
+      
+        if application.canOpenURL(fbUrl as URL) {
+            application.openURL(fbUrl as URL)
+        } else {
+            application.openURL(webUrl as URL)
+        }
+
     }
     
     
@@ -192,6 +228,21 @@ class InfoView: UITableViewController {
             "instagram://user?username=prossimostylist", // App
             "https://www.instagram.com/prossimostylist/" // Website if app fails
             ])
+        
+        let instagramUrlString = "instagram://user?username=prossimostylist"
+        let webUrlString = "https://www.instagram.com/prossimostylist"
+        
+        let application = UIApplication.shared
+        
+        guard let instagramUrl = NSURL.init(string: instagramUrlString) else { return }
+        guard let webUrl = NSURL.init(string: webUrlString) else { return }
+        
+        
+        if application.canOpenURL(instagramUrl as URL) {
+            application.openURL(instagramUrl as URL)
+        } else {
+            application.openURL(webUrl as URL)
+        }
         
         
     }

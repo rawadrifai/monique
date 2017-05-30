@@ -26,6 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         
+        FIRApp.configure()
+
         Fabric.with([Crashlytics.self])
         CleverTap.autoIntegrate()
         
