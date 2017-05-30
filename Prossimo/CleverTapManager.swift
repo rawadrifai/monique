@@ -40,4 +40,9 @@ class CleverTapManager {
         
         CleverTap.sharedInstance()?.recordEvent("Product restored", withProps: props)
     }
+    
+    func registerEvent(eventName:String) {
+        
+        CleverTap.sharedInstance()?.recordEvent(eventName)
+    }
 }

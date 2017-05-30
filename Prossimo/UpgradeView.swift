@@ -21,7 +21,6 @@ class UpgradeView: UIViewController {
     var sKproductToBuy = SKProduct()
     var promoCodeToUse = PromoCode()
     var promoCodesInFirebase = [PromoCode]()
-    var registeredLocally = false
     var registeredInFirebase = false
     
     
@@ -110,9 +109,7 @@ class UpgradeView: UIViewController {
         
         // register event in clever tap
         CleverTapManager.shared.registerProductPurchaseEvent(product: productPurchased)
-        
-        // store registration on local device (only if lifetime)
-        registerProLocallyForever(product: productPurchased)
+
         
         // update firebase
         registerProInFirebase(product: productPurchased, promoCode: self.promoCodeToUse)
@@ -120,7 +117,7 @@ class UpgradeView: UIViewController {
         
         // fire the delegate back to info view
         if let del = self.delegate {
-            del.subscriptionChanged(subscription: "pro")
+            del.subscriptionChanged(isProUser: true)
         }
         
         let _ = self.navigationController?.popViewController(animated: true)
@@ -141,8 +138,6 @@ class UpgradeView: UIViewController {
         // register event in clever tap
         CleverTapManager.shared.registerProductRestoreEvent(product: productPurchased)
         
-        // store registration on local device (only if lifetime)
-        registerProLocallyForever(product: productPurchased)
         
         // update firebase
         registerProInFirebase(product: productPurchased, promoCode: self.promoCodeToUse)
@@ -150,7 +145,7 @@ class UpgradeView: UIViewController {
         
         // fire the delegate back to info view
         if let del = self.delegate {
-            del.subscriptionChanged(subscription: "pro")
+            del.subscriptionChanged(isProUser: true)
         }
         
         let _ = self.navigationController?.popViewController(animated: true)
@@ -373,8 +368,7 @@ class UpgradeView: UIViewController {
     
     @IBAction func restoreClicked(_ sender: UIButton) {
         
-        SKPaymentQueue.default().add(self)
-        SKPaymentQueue.default().restoreCompletedTransactions()
+        StoreManager.shared.restoreAllPurchases()
     }
     
 
@@ -464,22 +458,6 @@ extension UpgradeView {
     
     
     
-    func registerProLocallyForever(product:SKProduct) {
-        
-        if !registeredLocally {
-            
-            if product.productIdentifier == "rifai.prossimo.ios.pp" {
-                print("adding pro to local")
-                
-                UserDefaults.standard.set(true, forKey: "ppLifeTimeActive")
-                UserDefaults.standard.synchronize()
-            }
-            registeredLocally = true
-            
-        }
-    }
-    
-    
     func registerProInFirebase(product:SKProduct, promoCode:PromoCode) {
         
         if !registeredInFirebase {
@@ -503,6 +481,6 @@ extension UpgradeView {
 }
 
 protocol UpgradeDelegate {
-    func subscriptionChanged(subscription: String)
+    func subscriptionChanged(isProUser: Bool)
 }
 

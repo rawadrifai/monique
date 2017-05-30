@@ -15,7 +15,7 @@ class InfoView: UITableViewController {
 
     var ref: FIRDatabaseReference!
     var userId:String!
-    var subscription:String!
+    var isProUser:Bool!
 
     
     @IBOutlet weak var imageViewMyProfile: UIImageView!
@@ -40,16 +40,10 @@ class InfoView: UITableViewController {
         
         print("user id is " + self.userId)
         self.ref = FIRDatabase.database().reference()
-        self.ref.child("users/" + self.userId + "/subscription/type").observeSingleEvent(of: .value, with: {
-            
-            if let val = $0.value as? String {
-                
-                print("subcription: " + val)
-                self.subscription = val
-
-            }
-            
-        })
+        
+        
+        self.isProUser = StoreManager.shared.isSubscriptionActive()
+        
         
 
     }
@@ -116,7 +110,8 @@ class InfoView: UITableViewController {
                 destination.userId = self.userId
                 destination.delegate = self
                 
-                CleverTap.sharedInstance()?.recordEvent("Upgrade clicked")
+                CleverTapManager.shared.registerEvent(eventName: "Upgrade Clicked")
+                
             }
         } else if segue.identifier == "myInfoSegue" {
             
@@ -170,7 +165,7 @@ class InfoView: UITableViewController {
         
         var height:CGFloat = 70.0;
 
-        if self.subscription == "pro" {
+        if self.isProUser {
             
             if indexPath.section == self.upgradeSectionIndex && indexPath.row == upgradeRowIndex
             {
@@ -207,10 +202,14 @@ class InfoView: UITableViewController {
 
 extension InfoView: UpgradeDelegate {
     
-    func subscriptionChanged(subscription: String) {
+    func subscriptionChanged(isProUser: Bool) {
         
-        self.subscription = subscription
-        self.tableView.reloadData()
+        self.isProUser = isProUser
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+        
     }
 }
 

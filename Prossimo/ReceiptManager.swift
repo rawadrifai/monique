@@ -42,35 +42,41 @@ public class ReceiptManager:NSObject {
     
     func startValidatingReceipts() {
         
-        do {
-        _ = try self.getReceiptURL()?.checkResourceIsReachable()
-
-            do {
-                let data = try Data(contentsOf: self.getReceiptURL()!)
-                self.validateData(data: data)
+        
+        if let isExist = try? self.getReceiptURL()?.checkResourceIsReachable(),isExist == true{
+            
+            do{
                 
-            } catch {
-                print("unable to read receipt")
+                let receiptData = try Data(contentsOf: self.getReceiptURL()!)
+                
+                
+                //Start vaildating the receipt with iTunes server
+                self.validateData(data: receiptData)
+                
+                print("Receipt exist")
+                
+            }catch{
+                print("Not able to get data from URL")
+                
             }
-        } catch {
             
-            // if receipt doesn't exist we refresh from app store
-            
-            if  UserDefaults.standard.bool(forKey: "didRefreshReceipt") == false {
-                
-                UserDefaults.standard.set(true, forKey: "didRefreshReceipt")
-                
-                let receiptRequest = SKReceiptRefreshRequest()
-                receiptRequest.delegate = self
-                receiptRequest.start()
-                
-                print("Receipt URL does not exist, refreshing from app store")
-                
-            } else {
-                print("Stopped after second attempt")
+        }else{
+            guard UserDefaults.standard.bool(forKey: "didRefreshReceipt") == false else {
+                print("Stopping after second attempt")
                 return
             }
             
+            UserDefaults.standard.set(true, forKey: "didRefreshReceipt")
+            
+            
+            //Now if we try to load the receipt from local and for some reason the url doesn't exist, we need to make SKReceiptRefreshRequest
+            
+        
+            let receiptRequest = SKReceiptRefreshRequest()
+            receiptRequest.delegate = self
+            receiptRequest.start()
+            
+            print("Receipt URL Doesn't exist")
             
         }
     }
@@ -145,16 +151,11 @@ public class ReceiptManager:NSObject {
             // loop through products
             for inApp in inApps {
                 
-                let product = Product()
-                
-                product.id = inApp["product_id"] as! String
-                
-                
+
                 guard let expiryDate = inApp["expires_date_ms"] as? NSString else {
                     continue
                 }
-                
-                
+            
                 
                 self.checkSubscriptionStatus(date: Date.init(timeIntervalSince1970: expiryDate.doubleValue/1000))
             }
@@ -174,11 +175,15 @@ extension ReceiptManager {
         let order = calendar.compare(now, to: date, toGranularity: .minute)
         
         switch order {
-        case .orderedAscending:
-            self.saveActiveSubscriptions(date: date)
-            print("User subscribed")
-        default:
-            print("user subscription has expired")
+            
+            case .orderedAscending,.orderedSame:
+                self.saveActiveSubscriptions(date: date)
+                print("User subscribed")
+            
+            
+            default:
+                print("user subscription has expired")
+            
         }
     }
     
@@ -207,6 +212,6 @@ extension ReceiptManager:SKRequestDelegate {
     }
     
     public func request(_ request: SKRequest, didFailWithError error: Error) {
-        //
+        print("Error refreshing receipt",error.localizedDescription)
     }
 }

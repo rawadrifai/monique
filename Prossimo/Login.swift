@@ -13,7 +13,7 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     
     @IBOutlet weak var signInButton: GIDSignInButton!
     var userId:String!
-    var subscription:String!
+    var isProUser:Bool!
     var ref: FIRDatabaseReference!
     var signoutClicked: Bool!
     
@@ -97,21 +97,11 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         
         
         // get subscription type
+        self.isProUser = StoreManager.shared.isSubscriptionActive()
+        print("isPro?: " + String(self.isProUser))
+        self.performSegue(withIdentifier: "loginSegue", sender: self)
         
-        self.ref.child("users/" + self.userId + "/subscription/type").observeSingleEvent(of: .value, with: {
-            
-            guard let val = $0.value as? String else {
-                
-                self.subscription="trial"
-                self.performSegue(withIdentifier: "loginSegue", sender: self)
-                return
-            }
-            
-            print("subscription: " + val)
-            self.subscription = val
-            self.performSegue(withIdentifier: "loginSegue", sender: self)
-            
-        })
+        
         
     }
     
@@ -347,7 +337,7 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
                 if let d = destinationTabBar.viewControllers![1] as? UINavigationController {
                     if let infoView = d.topViewController as? InfoView {
                         infoView.userId = self.userId
-                        infoView.subscription = self.subscription
+                        infoView.isProUser = self.isProUser
                     }
                 }
             }
@@ -355,7 +345,8 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
             // log the user to the device, so that next time no log in will be required
             UserDefaults.standard.set(self.userId, forKey: "loggedInUser")
             
-            CleverTap.sharedInstance()?.recordEvent("Sign In")
+            CleverTapManager.shared.registerEvent(eventName: "Sign In")
+            
 
             
         } else if segue.identifier == "saveUserInfoSegue" {

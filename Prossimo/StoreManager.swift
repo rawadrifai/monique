@@ -24,6 +24,12 @@ class StoreManager:NSObject {
     var productsFromStore = [SKProduct]()
     var productsMap = [String:SKProduct]()
     
+    var registeredLocally = false
+    var registeredInFirebase = false
+
+    // instantiate an object of receipt manager
+    var receiptManager:ReceiptManager = ReceiptManager()
+    
     func setup() {
      
         // request products
@@ -31,6 +37,7 @@ class StoreManager:NSObject {
         
         // become the delegate for SKpaymentTransaction
         SKPaymentQueue.default().add(self)
+        
     }
     
     func requestProducts(ids:Set<String>) {
@@ -92,6 +99,9 @@ extension StoreManager:SKPaymentTransactionObserver {
         
         // wrap product with a dictionary object and post in a notification
         let productDict:[String: SKProduct] = ["product": purchasedProduct]
+        
+        // register product locally in user defaults
+        registerProductPurchasedLocally(product: purchasedProduct)
         
         NotificationCenter.default.post(name: NSNotification.Name.init("SKProductPurchased"), object: nil, userInfo: productDict)
         
@@ -192,7 +202,44 @@ extension StoreManager:SKProductsRequestDelegate {
 
     }
     
-    func request(_ request: SKRequest, didFailWithError error: Error) {
-        //
+    func restoreAllPurchases() {
+        
+        SKPaymentQueue.default().restoreCompletedTransactions()
     }
+    
+    func request(_ request: SKRequest, didFailWithError error: Error) {
+        print ("could not retrieve products from app store: ", error)
+    }
+}
+
+extension StoreManager {
+    
+    
+    func registerProductPurchasedLocally(product:SKProduct) {
+        
+        if !registeredLocally {
+            
+            // store it in user defaults only if it's a non-consumable (life time)
+            if product.productIdentifier == Commons.lifetimeProductId {
+                print("adding pro to local")
+                
+                UserDefaults.standard.set(true, forKey: Commons.lifetimeProductId)
+                UserDefaults.standard.synchronize()
+            }
+            registeredLocally = true
+            
+        }
+    }
+    
+    
+    func isPurchased(id:String)->Bool{
+        
+        return UserDefaults.standard.bool(forKey: id)
+    }
+    
+    func isSubscriptionActive()->Bool {
+        return isPurchased(id: Commons.lifetimeProductId) || receiptManager.isSubscribed
+    }
+    
+    
 }

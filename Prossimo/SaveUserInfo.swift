@@ -81,10 +81,6 @@ class SaveUserInfo: UIViewController {
         
         if validateInput() {
             
-            //  let defaults = UserDefaults.standard
-            
-            // let userId = UIDevice.current.identifierForVendor!.uuidString
-            
             var user = [String:String]()
             user["deviceId"] = self.userId
             user["name"] = txfName.text!
@@ -175,7 +171,7 @@ class SaveUserInfo: UIViewController {
                 if let d = destinationTabBar.viewControllers![1] as? UINavigationController {
                     if let infoView = d.topViewController as? InfoView {
                         infoView.userId = self.userId
-                        infoView.subscription = "trial"
+                        infoView.isProUser = false
                     }
                 }
             }
