@@ -19,7 +19,10 @@ class StoreManager:NSObject {
     let purchasableProductIds:Set<String> =
         ["rifai.prossimo.ios.ppmonthly",
          "rifai.prossimo.ios.ppannual",
-         "rifai.prossimo.ios.pp"]
+         "rifai.prossimo.ios.pp",
+         "rifai.prossimo.ios.pp00",
+         "rifai.prossimo.ios.pp50",
+         "rifai.prossimo.ios.pp70"]
     
     var productsFromStore = [SKProduct]()
     var productsMap = [String:SKProduct]()
@@ -65,6 +68,7 @@ extension StoreManager:SKPaymentTransactionObserver {
         
         for transaction in transactions {
             
+            
             switch transaction.transactionState {
                 
             case .purchased:
@@ -81,7 +85,6 @@ extension StoreManager:SKPaymentTransactionObserver {
             
             case .deferred:
                 print("pending")
-                
                 
             default:
                 break
@@ -125,6 +128,8 @@ extension StoreManager:SKPaymentTransactionObserver {
         
         // tell itunes that transaction is finished
         SKPaymentQueue.default().finishTransaction(transaction)
+        
+        print("identifier: " + transaction.payment.productIdentifier)
     }
     
     func purchaseFailed(transaction:SKPaymentTransaction) {
@@ -172,6 +177,7 @@ extension StoreManager:SKProductsRequestDelegate {
             
             for product in products {
                 
+                print("product exists: " + product.productIdentifier)
                 productsFromStore.append(product) // add to array
                 productsMap[product.productIdentifier] = product // add to map (get product by id)
             }

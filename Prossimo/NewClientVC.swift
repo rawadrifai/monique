@@ -30,7 +30,6 @@ class NewClientVC: UIViewController, UINavigationControllerDelegate, UIImagePick
     var userId:String!
     var ref: FIRDatabaseReference!
     var client = Client()
-    var isProUser:Bool!
     var numberOfClients:Int!
     var trialClientsLimit:Int!
     
@@ -140,7 +139,7 @@ class NewClientVC: UIViewController, UINavigationControllerDelegate, UIImagePick
     
     func getTrialClientsLimitFromFirebase() {
         
-        if self.isProUser {
+        if StoreManager.shared.isSubscriptionActive() {
             
             self.ref.child("triallimit").observeSingleEvent(of: .value, with: {
                 
@@ -309,7 +308,7 @@ class NewClientVC: UIViewController, UINavigationControllerDelegate, UIImagePick
             CleverTapManager.shared.registerEvent(eventName: "Client Added")
             
             
-            if self.isProUser {
+            if StoreManager.shared.isSubscriptionActive() {
                 
                 let clientsLeft = self.trialClientsLimit - numberOfClients - 1
                 self.alertAboutClients(title: "You have " + String(clientsLeft) + " free client(s)", message: "Upgrade to Pro for UNLIMITED storage! Keep your clients backed up everywhere you go.")

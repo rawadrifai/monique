@@ -15,10 +15,7 @@ class InfoView: UITableViewController {
 
     var ref: FIRDatabaseReference!
     var userId:String!
-    var isProUser:Bool!
     
-    
-
     
     @IBOutlet weak var imageViewMyProfile: UIImageView!
     
@@ -44,9 +41,6 @@ class InfoView: UITableViewController {
         self.ref = FIRDatabase.database().reference()
         
         
-        self.isProUser = StoreManager.shared.isSubscriptionActive()
-        
-        
 
     }
     
@@ -56,7 +50,6 @@ class InfoView: UITableViewController {
         super.viewDidLoad()
         
         setIcons()
-        self.isProUser=false
 
     }
     
@@ -187,7 +180,7 @@ class InfoView: UITableViewController {
         
         var height:CGFloat = 70.0;
 
-        if self.isProUser {
+        if StoreManager.shared.isSubscriptionActive() {
             
             if indexPath.section == self.upgradeSectionIndex && indexPath.row == upgradeRowIndex
             {
@@ -253,9 +246,7 @@ class InfoView: UITableViewController {
 
 extension InfoView: UpgradeDelegate {
     
-    func subscriptionChanged(isProUser: Bool) {
-        
-        self.isProUser = isProUser
+    func subscriptionChangedToPro() {
         
         DispatchQueue.main.async {
             self.tableView.reloadData()

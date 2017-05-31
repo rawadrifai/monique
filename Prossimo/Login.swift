@@ -83,10 +83,8 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
             return
         }
         
-//        guard let loggedInUser = UserDefaults.standard.string(forKey: "loggedInUser")
-//            else {
-//                return
-//        }
+        self.lockButtons(lock: true)
+        self.animateIndicator(animate: true)
     
         self.userId = loggedInUser
         
@@ -314,12 +312,22 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         if lock {
             
             self.btnSignIn.isEnabled = false
+            self.btnSignIn.setTitleColor(UIColor.darkGray, for: .normal)
+            
+            
             self.signInButton.isEnabled = false
+            
+
 
         } else {
 
-            self.activityIndicator.stopAnimating()
-            self.activityIndicator.isHidden = true
+            self.btnSignIn.isEnabled = true
+            self.btnSignIn.setTitleColor(UIColor.lightGray, for: .normal)
+            
+            
+            self.signInButton.isEnabled = true
+            
+
         }
         
     }

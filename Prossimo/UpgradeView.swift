@@ -117,7 +117,7 @@ class UpgradeView: UIViewController {
         
         // fire the delegate back to info view
         if let del = self.delegate {
-            del.subscriptionChanged(isProUser: true)
+            del.subscriptionChangedToPro()
         }
         
         let _ = self.navigationController?.popViewController(animated: true)
@@ -145,7 +145,7 @@ class UpgradeView: UIViewController {
         
         // fire the delegate back to info view
         if let del = self.delegate {
-            del.subscriptionChanged(isProUser: true)
+            del.subscriptionChangedToPro()
         }
         
         let _ = self.navigationController?.popViewController(animated: true)
@@ -171,6 +171,7 @@ class UpgradeView: UIViewController {
             switch product.productIdentifier {
             case Commons.monthlyProductId:
                 
+                productsFinishedLoading()
                 changeProduct(productName: product.productIdentifier)
                 selectPlan(productId: product.productIdentifier)
                 clearPromo()
@@ -187,6 +188,7 @@ class UpgradeView: UIViewController {
             switch product.productIdentifier {
             case Commons.annualProductId:
                 
+                productsFinishedLoading()
                 changeProduct(productName: product.productIdentifier)
                 selectPlan(productId: product.productIdentifier)
                 clearPromo()
@@ -203,9 +205,11 @@ class UpgradeView: UIViewController {
             switch product.productIdentifier {
             case Commons.lifetimeProductId:
                 
+                productsFinishedLoading()
                 changeProduct(productName: product.productIdentifier)
                 selectPlan(productId: product.productIdentifier)
                 clearPromo()
+                
                 break;
             default:
                 break;
@@ -216,14 +220,30 @@ class UpgradeView: UIViewController {
     func clearPromo() {
         
         txfPromo.text = ""
+        self.imageCheck.isHidden = true
         promoCodeToUse = PromoCode()
     }
     
     
     @IBAction func promoTextChanged(_ sender: UITextField) {
         
-        guard let enteredPromo = txfPromo.text else {return}
-        guard enteredPromo.characters.count == 6 else {return}
+        // clear selection and reset prices
+        guard let enteredPromo = txfPromo.text else {
+            productsFinishedLoading()
+            self.changeProduct(productName: "")
+            self.selectPlan(productId: "")
+            imageCheck.isHidden = true
+            return
+        }
+        
+        // clear selection and reset prices
+        guard enteredPromo.characters.count == 6 else {
+            productsFinishedLoading()
+            self.changeProduct(productName: "")
+            self.selectPlan(productId: "")
+            imageCheck.isHidden = true
+            return
+        }
         
         
         for promo in self.promoCodesInFirebase {
@@ -240,11 +260,18 @@ class UpgradeView: UIViewController {
                     productToApplyPromoOn: promo.productToApplyPromoOn
                 )
                 
+                // get the discounted price
+                guard let discountedPrice = StoreManager.shared.productsMap[promo.productId]?.price else {
+                    return
+                }
+                
                 // change skProduct to buy
                 changeProduct(productName: promo.productId)
                 
                 // change selection
                 selectPlan(productId: promo.productToApplyPromoOn)
+                
+                
                 
                 // display the proper selection and change the price displayed
                 
@@ -253,25 +280,26 @@ class UpgradeView: UIViewController {
                 // monthly
                 case Commons.monthlyProductId:
                     
-                    btnOneMonthPrice.setTitle(String(describing: self.promoCodeToUse.price), for: .normal)
-                    btnOneMonthPrice.setTitle(String(describing: self.promoCodeToUse.price), for: .selected)
+                    btnOneMonthPrice.setTitle("$" + String(describing: discountedPrice), for: .normal)
+                    btnOneMonthPrice.setTitle("$" + String(describing: discountedPrice), for: .selected)
                     break;
                     
                 // annual
                 case Commons.annualProductId:
                     
-                    btnOneYearPrice.setTitle(String(describing: self.promoCodeToUse.price), for: .normal)
-                    btnOneYearPrice.setTitle(String(describing: self.promoCodeToUse.price), for: .selected)
+                    btnOneYearPrice.setTitle("$" + String(describing: discountedPrice), for: .normal)
+                    btnOneYearPrice.setTitle("$" + String(describing: discountedPrice), for: .selected)
                     break;
                     
                 // lifetime
                 case Commons.lifetimeProductId:
                     
-                    btnLifeTimePrice.setTitle(String(describing: self.promoCodeToUse.price), for: .normal)
-                    btnLifeTimePrice.setTitle(String(describing: self.promoCodeToUse.price), for: .selected)
+                    btnLifeTimePrice.setTitle("$" + String(describing: discountedPrice), for: .normal)
+                    btnLifeTimePrice.setTitle("$" + String(describing: discountedPrice), for: .selected)
                     break;
                     
                 default:
+                    
                     break;
                 }
                 
@@ -293,6 +321,12 @@ class UpgradeView: UIViewController {
     // changes the selected products
     func changeProduct(productName:String) {
     
+        // if empty product is provided (wrong promo) then clear product to buy
+        if productName == "" {
+            sKproductToBuy = SKProduct()
+            return
+        }
+        
         for p in StoreManager.shared.productsFromStore {
             
             let prodID = p.productIdentifier
@@ -321,15 +355,23 @@ class UpgradeView: UIViewController {
    
     
     
-    
-    
-    
-    
+    func alert(title:String, message output:String) {
+        let alert = UIAlertController(title: title, message: output, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
     
 
     @IBAction func upgradeClick(_ sender: UIButton) {
 
+        
+        guard StoreManager.shared.productsMap[sKproductToBuy.productIdentifier] != nil else {
+            alert(title: "Invalid Selection", message: "Please select a product")
+            return
+        }
+        
         StoreManager.shared.buy(product: sKproductToBuy)
+        
     }
 
     
@@ -439,6 +481,21 @@ class UpgradeView: UIViewController {
             break;
             
         default:
+            btnOneMonth.backgroundColor = Commons.myLightLightGrayColor
+            btnOneYear.backgroundColor = Commons.myLightLightGrayColor
+            btnLifeTime.backgroundColor = Commons.myLightLightGrayColor
+            btnRecommended.backgroundColor = Commons.myLightLightGrayColor
+            btnOneMonthPrice.backgroundColor = Commons.myLightLightGrayColor
+            btnOneYearPrice.backgroundColor = Commons.myLightLightGrayColor
+            btnLifeTimePrice.backgroundColor = Commons.myLightLightGrayColor
+            
+            btnOneMonth.setTitleColor(UIColor.lightGray, for: .normal)
+            btnOneYear.setTitleColor(UIColor.lightGray, for: .normal)
+            btnLifeTime.setTitleColor(UIColor.lightGray, for: .normal)
+            btnRecommended.setTitleColor(UIColor.lightGray, for: .normal)
+            btnOneMonthPrice.setTitleColor(UIColor.lightGray, for: .normal)
+            btnOneYearPrice.setTitleColor(UIColor.lightGray, for: .normal)
+            btnLifeTimePrice.setTitleColor(UIColor.lightGray, for: .normal)
             
             break;
         }
@@ -469,7 +526,7 @@ extension UpgradeView {
             self.ref.child("users/" + self.userId + "/subscription/promocode").setValue(promoCode.code)
             self.ref.child("users/" + self.userId + "/subscription/product").setValue(product.productIdentifier)
             self.ref.child("users/" + self.userId + "/subscription/price").setValue(product.price)
-            self.ref.child("users/" + self.userId + "/subscription/date").setValue(NSDate())
+            self.ref.child("users/" + self.userId + "/subscription/date").setValue("whatever")
             
             registeredInFirebase = true
             
@@ -481,6 +538,6 @@ extension UpgradeView {
 }
 
 protocol UpgradeDelegate {
-    func subscriptionChanged(isProUser: Bool)
+    func subscriptionChangedToPro()
 }
 

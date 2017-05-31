@@ -19,6 +19,10 @@ public class Commons {
     static let annualProductId = "rifai.prossimo.ios.ppannual"
     static let lifetimeProductId = "rifai.prossimo.ios.pp"
     
+    static let monthlyLength = "monthly"
+    static let annualLength = "ppannual"
+    static let lifetimeLength = "lifetime"
+    
     static func getHumanReadableDate(dateString:String) -> String {
         
         let df = DateFormatter()
