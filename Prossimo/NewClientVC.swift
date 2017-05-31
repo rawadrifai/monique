@@ -55,10 +55,11 @@ class NewClientVC: UIViewController, UINavigationControllerDelegate, UIImagePick
         // get reference to database
         self.ref = FIRDatabase.database().reference()
         
+        self.txfPhone.delegate = self
+        
         getTrialClientsLimitFromFirebase()
         makeProfilePicInteractive()
         setBorders()
-        resizeProfilePic()
         
         populateContact()
     }
@@ -106,16 +107,7 @@ class NewClientVC: UIViewController, UINavigationControllerDelegate, UIImagePick
     func resizeProfilePic() {
         
         
-        
-        // if there's an image
-        if (self.client.profileImg.imageUrl != "") {
-            self.imgView.contentMode = .scaleAspectFill
-        }
-            // if there's no image (small camera icon, we want it to be center)
-        else {
-            self.imgView.contentMode = .center
-        }
-        
+        self.imgView.contentMode = .scaleAspectFill
         self.imgView.layer.cornerRadius = 100
         self.imgView.clipsToBounds = true
     }
@@ -239,11 +231,12 @@ class NewClientVC: UIViewController, UINavigationControllerDelegate, UIImagePick
         if let image = info[UIImagePickerControllerEditedImage] as? UIImage
         {
             imgView.image = image
+            self.resizeProfilePic()
+            
             self.labelChangePicture.isHidden = true
             imageChanged = true
-            
-            
         }
+        
         
         self.dismiss(animated: true, completion: nil)
     }
@@ -302,6 +295,7 @@ class NewClientVC: UIViewController, UINavigationControllerDelegate, UIImagePick
                 let compressedImageData = UIImageJPEGRepresentation(self.imgView.image!, 0)
                 
                 uploadImageToFirebase(data: compressedImageData!, path: "users/" + self.userId + "/clients/" + self.client.clientId + "/profile/", fileName: UUID().uuidString)
+                
             }
             
             // record clever tap event

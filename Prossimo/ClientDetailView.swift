@@ -112,11 +112,8 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
     
     func resizeProfilePic() {
         
-        self.imgView.layer.cornerRadius = 64
-        self.imgView.clipsToBounds = true
-        
         // if there's an image
-        if (self.client.profileImg.imageUrl != "") {
+        if (self.client.profileImg.imageUrl != "" || imgTapped) {
             self.imgView.contentMode = .scaleAspectFill
         }
             // if there's no image (small camera icon, we want it to be center)
@@ -124,8 +121,10 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
             self.imgView.contentMode = .center
         }
         
-        
+        self.imgView.layer.cornerRadius = 75
+        self.imgView.clipsToBounds = true
     }
+    
     
     func setBorders() {
 
@@ -330,6 +329,8 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
             self.imgView.sd_setIndicatorStyle(.gray)
             self.imgView.sd_setImage(with: URL(string: client.profileImg.imageUrl))
             self.labelChangePicture.isHidden = true
+            
+            self.resizeProfilePic()
         }
         else {
             self.imgView.image = UIImage(imageLiteralResourceName: "icon-camera-32")
@@ -508,10 +509,13 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
     }
     
 
+    var imgTapped = false
 
     
     func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
+    
+        imgTapped = true
         displayProfileImageAlert()
         
         
@@ -585,12 +589,17 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         if let image = info[UIImagePickerControllerEditedImage] as? UIImage
         {
             self.imgView.image = UIImage(data: image.sd_imageData()!,scale: 0)
+            self.resizeProfilePic()
+            
             self.labelChangePicture.isHidden = true
 
             let compressedImageData = UIImageJPEGRepresentation(self.imgView.image!, 0)
             
             uploadImageToFirebase(data: compressedImageData!, path: "users/" + self.userId + "/clients/" + self.client.clientId + "/profile/", fileName: UUID().uuidString)
+            
         }
+        
+        
         
         self.dismiss(animated: true, completion: nil)
     }
@@ -645,6 +654,8 @@ extension ClientDetailView: EditClientDelegate {
         self.imgView.sd_setIndicatorStyle(.gray)
         self.imgView.sd_setImage(with: URL(string: self.client.profileImg.imageUrl))
         self.labelChangePicture.isHidden=true
+        
+        self.resizeProfilePic()
         
     }
     

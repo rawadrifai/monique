@@ -65,7 +65,7 @@ class EditClientVC: UIViewController, UINavigationControllerDelegate, UIImagePic
     func resizeProfilePic() {
         
         // if there's an image
-        if (self.client.profileImg.imageUrl != "") {
+        if (self.client.profileImg.imageUrl != "" || imgTapped) {
             self.imgView.contentMode = .scaleAspectFill
         }
             // if there's no image (small camera icon, we want it to be center)
@@ -122,8 +122,11 @@ class EditClientVC: UIViewController, UINavigationControllerDelegate, UIImagePic
         
     }
     
+    var imgTapped = false
+    
     func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
+        imgTapped = true
         displayProfileImageAlert()
     }
     
@@ -168,10 +171,13 @@ class EditClientVC: UIViewController, UINavigationControllerDelegate, UIImagePic
         txfEmail.text = client.clientEmail
         
         if client.profileImg.imageUrl != "" {
+            
             self.imgView.sd_setShowActivityIndicatorView(true)
             self.imgView.sd_setIndicatorStyle(.gray)
             self.imgView.sd_setImage(with: URL(string: client.profileImg.imageUrl))
             self.labelChangePicture.isHidden = true
+            
+            self.resizeProfilePic()
         }
         else {
             self.imgView.image = UIImage(imageLiteralResourceName: "icon-camera-32")
@@ -210,6 +216,7 @@ class EditClientVC: UIViewController, UINavigationControllerDelegate, UIImagePic
                 let compressedImageData = UIImageJPEGRepresentation(self.imgView.image!, 0)
                 
                 uploadImageToFirebase(data: compressedImageData!, path: "users/" + self.userId + "/clients/" + self.client.clientId + "/profile/", fileName: UUID().uuidString)
+                
             }
             
         }
@@ -284,6 +291,8 @@ class EditClientVC: UIViewController, UINavigationControllerDelegate, UIImagePic
         {
             
             self.imgView.image = UIImage(data: image.sd_imageData()!,scale: 0)
+            self.resizeProfilePic()
+            
             imageChanged = true
             self.labelChangePicture.isHidden = true
             

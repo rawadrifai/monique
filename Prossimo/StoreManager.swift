@@ -84,9 +84,11 @@ extension StoreManager:SKPaymentTransactionObserver {
                 break
             
             case .deferred:
-                print("pending")
+                self.purchaseDeferred()
+                break
                 
             default:
+                self.purchaseDeferred()
                 break
             }
         }
@@ -128,8 +130,6 @@ extension StoreManager:SKPaymentTransactionObserver {
         
         // tell itunes that transaction is finished
         SKPaymentQueue.default().finishTransaction(transaction)
-        
-        print("identifier: " + transaction.payment.productIdentifier)
     }
     
     func purchaseFailed(transaction:SKPaymentTransaction) {
@@ -139,7 +139,7 @@ extension StoreManager:SKPaymentTransactionObserver {
             switch error {
             case SKError.clientInvalid:
                 print("client cannot make purchase")
-            
+                
             case SKError.unknown:
                 print("unknown payment error")
                 
@@ -154,9 +154,17 @@ extension StoreManager:SKPaymentTransactionObserver {
                 
             default:
                 break
-            
+                
             }
         }
+        
+        NotificationCenter.default.post(name: NSNotification.Name.init("PurchaseFailed"), object: nil)
+    }
+    
+    func purchaseDeferred() {
+        
+        NotificationCenter.default.post(name: NSNotification.Name.init("PurchaseDeferred"), object: nil)
+        
     }
     
     
@@ -244,7 +252,7 @@ extension StoreManager {
     }
     
     func isSubscriptionActive()->Bool {
-        return isPurchased(id: Commons.lifetimeProductId) || receiptManager.isSubscribed
+        return false //isPurchased(id: Commons.lifetimeProductId) || receiptManager.isSubscribed
     }
     
     
