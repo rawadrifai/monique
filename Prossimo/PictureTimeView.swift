@@ -93,7 +93,7 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         
         // female icon
         var femaleIconImage = FAKFontAwesome.venusIcon(withSize: 28).image(with: CGSize(width: 40, height: 40))
-        femaleIconImage = femaleIconImage?.imageWithColor(color: Commons.myColor)
+        femaleIconImage = femaleIconImage?.imageWithColor(color: Commons.myPinkColor)
         btnFemale.setImage(femaleIconImage, for: .normal)
         
         

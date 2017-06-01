@@ -57,6 +57,7 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
     
     
     
+    
     var starredVisits = [ClientVisit]()
     
     var originalLinePosition:CGRect?
@@ -70,16 +71,20 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         // get reference to database
         self.ref = FIRDatabase.database().reference()
         
+        
         makeUIChanges()
-        fillData()
         resizeProfilePic()
         
         // get the original CGRect for the line
         originalLinePosition = line.frame
         
+        fillData()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
+        
         
         // get the starred visits
         self.starredVisits = [ClientVisit]()
@@ -348,7 +353,13 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         
         aggregate = aggregate + "$" + String(revenue)
         
+        
         self.labelClientAggregate.text = aggregate
+        
+        // hide the footer if no visits
+        if self.client.clientVisits.count == 0 {
+            self.labelClientAggregate.isHidden = true
+        }
     }
     
     

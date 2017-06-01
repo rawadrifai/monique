@@ -14,6 +14,7 @@ public class Commons {
     static let myGrayColor = UIColor(red:0.25, green:0.25, blue:0.25, alpha:1.0)
     static let myDarkGreenColor = UIColor(red:0.00, green:0.50, blue:0.25, alpha:1.0)
     static let myLightLightGrayColor = UIColor(red:0.94, green:0.94, blue:0.96, alpha:1.0)
+    static let myPinkColor = UIColor(red:1.00, green:0.72, blue:0.90, alpha:1.0)
     
     static let monthlyProductId = "rifai.prossimo.ios.ppmonthly"
     static let annualProductId = "rifai.prossimo.ios.ppannual"

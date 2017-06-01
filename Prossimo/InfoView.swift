@@ -146,31 +146,44 @@ class InfoView: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         _ = tableView.indexPathForSelectedRow!
-        if let cellText = tableView.cellForRow(at: indexPath)?.textLabel?.text {
+        
+        if let contactUsCell = tableView.cellForRow(at: indexPath) {
             
-            if cellText == "Contact Us" {
-                
-                self.ref.child("contactemail").observeSingleEvent(of: .value, with: {
-                    
-                    
-                    if let email = $0.value as? String {
-                        
-                        self.composeEmail(email: email)
-                        
-                    } else {
-                        
-                        self.composeEmail(email: "info.prossimo@gmail.com")
-                        
-                    }
-                })
-                
-                
-                
+            
+            guard let label = contactUsCell.viewWithTag(1) as? UILabel else {
                 self.tableView.deselectRow(at: indexPath, animated: true)
-                
+                return
             }
             
+            guard label.text == "Contact Us" else {
+                self.tableView.deselectRow(at: indexPath, animated: true)
+                return
+            }
+            
+            self.ref.child("contactemail").observeSingleEvent(of: .value, with: {
+                
+                
+                if let email = $0.value as? String {
+                    
+                    self.composeEmail(email: email)
+                    
+                } else {
+                    
+                    self.composeEmail(email: "info.prossimo@gmail.com")
+                    
+                }
+            })
+            
+            
+            
+            self.tableView.deselectRow(at: indexPath, animated: true)
+            
+            
+            
+            
         }
+        
+        
     }
     
     let upgradeSectionIndex = 1
