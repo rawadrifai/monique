@@ -48,8 +48,9 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         super.viewDidAppear(false)
         
         checkForLatestVersion()
-        checkIfAlreadySignedIn()
         checkIfFirstTimeUse()
+        checkIfAlreadySignedIn()
+
     }
     
     func customizeSignInBtns() {
@@ -114,7 +115,7 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     
     func checkIfFirstTimeUse() {
         
-        //UserDefaults.standard.removeObject(forKey: "prossimoLastVersionUsed")
+        UserDefaults.standard.removeObject(forKey: "prossimoLastVersionUsed")
         
         guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else { return }
         
@@ -127,11 +128,21 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
                 return
         }
         
-        if version != lastVersionUsed {
-            
-            UserDefaults.standard.set(version, forKey: "prossimoLastVersionUsed")
-            self.performSegue(withIdentifier: "tutorialSegue", sender: self)
-        }
+//        if let lastVersionUsed = UserDefaults.standard.string(forKey: "prossimoLastVersionUsed")
+//        {
+//            UserDefaults.standard.set(version, forKey: "prossimoLastVersionUsed")
+        
+            if version != lastVersionUsed {
+                
+                UserDefaults.standard.set(version, forKey: "prossimoLastVersionUsed")
+                self.performSegue(withIdentifier: "tutorialSegue", sender: self)
+            }
+//        } else {
+//            self.performSegue(withIdentifier: "tutorialSegue", sender: self)
+//
+//        }
+        
+        
         
     }
     
@@ -410,8 +421,6 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
             if let destinationView = destinationViewController as? SaveUserInfo {
                 destinationView.userId = self.userId
             }
-            
-            
         }
         
     }

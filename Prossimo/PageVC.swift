@@ -10,14 +10,15 @@ import UIKit
 
 class PageVC: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
+
     lazy var VCArr: [UIViewController] = {
         return [
-            self.VCInstance(name: "ZerothVC"),
-                self.VCInstance(name: "FirstVC"),
-                self.VCInstance(name: "SecondVC"),
-                self.VCInstance(name: "ThirdVC"),
-                self.VCInstance(name: "FourthVC"),
-                self.VCInstance(name: "FinalVC")]
+                UIStoryboard(name: "Tutorial", bundle: nil).instantiateViewController(withIdentifier: "FirstVC"),
+                UIStoryboard(name: "Tutorial", bundle: nil).instantiateViewController(withIdentifier: "SecondVC"),
+                UIStoryboard(name: "Tutorial", bundle: nil).instantiateViewController(withIdentifier: "ThirdVC"),
+                UIStoryboard(name: "Tutorial", bundle: nil).instantiateViewController(withIdentifier: "FourthVC"),
+                UIStoryboard(name: "Tutorial", bundle: nil).instantiateViewController(withIdentifier: "FifthVC"),
+                UIStoryboard(name: "Tutorial", bundle: nil).instantiateViewController(withIdentifier: "FinalVC")]
     }()
     
     private func VCInstance(name: String) -> UIViewController {
@@ -25,6 +26,9 @@ class PageVC: UIPageViewController, UIPageViewControllerDataSource, UIPageViewCo
     }
     
     override func viewDidLoad() {
+     //   let storyboard = UIStoryboard(name: "Tutorial", bundle: nil)
+
+        
         super.viewDidLoad()
         self.dataSource = self
         self.delegate = self

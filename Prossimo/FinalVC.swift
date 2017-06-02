@@ -10,10 +10,15 @@ import UIKit
 
 class FinalVC: UIViewController {
 
+    
+    @IBOutlet weak var btnGetStarted: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        btnGetStarted.layer.borderWidth = 1
+        btnGetStarted.layer.cornerRadius = 7
+        btnGetStarted.clipsToBounds = true
     }
 
    
