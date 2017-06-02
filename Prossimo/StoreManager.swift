@@ -22,7 +22,9 @@ class StoreManager:NSObject {
          "rifai.prossimo.ios.pp",
          "rifai.prossimo.ios.pp00",
          "rifai.prossimo.ios.pp50",
-         "rifai.prossimo.ios.pp70"]
+         "rifai.prossimo.ios.pp70",
+         "rifai.prossimo.ios.ppmonthly499",
+         "rifai.prossimo.ios.ppannual4499"]
     
     var productsFromStore = [SKProduct]()
     var productsMap = [String:SKProduct]()
@@ -84,11 +86,9 @@ extension StoreManager:SKPaymentTransactionObserver {
                 break
             
             case .deferred:
-                self.purchaseDeferred()
                 break
                 
             default:
-                self.purchaseDeferred()
                 break
             }
         }
@@ -102,11 +102,11 @@ extension StoreManager:SKPaymentTransactionObserver {
             return
         }
         
-        // wrap product with a dictionary object and post in a notification
-        let productDict:[String: SKProduct] = ["product": purchasedProduct]
-        
         // register product locally in user defaults
         registerProductPurchasedLocally(product: purchasedProduct)
+        
+        // wrap product with a dictionary object and post in a notification
+        let productDict:[String: SKProduct] = ["product": purchasedProduct]
         
         NotificationCenter.default.post(name: NSNotification.Name.init("SKProductPurchased"), object: nil, userInfo: productDict)
         
@@ -122,6 +122,9 @@ extension StoreManager:SKPaymentTransactionObserver {
         guard let purchasedProduct = productsMap[purchasedProductId] else {
             return
         }
+        
+        // register product locally in user defaults
+        registerProductPurchasedLocally(product: purchasedProduct)
         
         // wrap product with a dictionary object and post in a notification
         let productDict:[String: SKProduct] = ["product": purchasedProduct]
@@ -158,14 +161,8 @@ extension StoreManager:SKPaymentTransactionObserver {
             }
         }
         
-        NotificationCenter.default.post(name: NSNotification.Name.init("PurchaseFailed"), object: nil)
     }
     
-    func purchaseDeferred() {
-        
-        NotificationCenter.default.post(name: NSNotification.Name.init("PurchaseDeferred"), object: nil)
-        
-    }
     
     
     func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
@@ -252,7 +249,7 @@ extension StoreManager {
     }
     
     func isSubscriptionActive()->Bool {
-        return false //isPurchased(id: Commons.lifetimeProductId) || receiptManager.isSubscribed
+        return isPurchased(id: Commons.lifetimeProductId) || receiptManager.isSubscribed
     }
     
     

@@ -456,8 +456,9 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         // set notes, star and title
         self.txvNotes.text = self.client.clientVisits[selectedVisitIndex].notes
         setStarIcon(selected: self.client.clientVisits[selectedVisitIndex].starred)
-        self.title = Commons.getHumanReadableDate(dateString: self.client.clientVisits[selectedVisitIndex].visitDate)
+        //self.title = Commons.getHumanReadableDate(dateString: self.client.clientVisits[selectedVisitIndex].visitDate)
         
+        self.navigationItem.prompt = Commons.getHumanReadableDate(dateString: self.client.clientVisits[selectedVisitIndex].visitDate)
         
         let priceDouble = self.client.clientVisits[selectedVisitIndex].price
         

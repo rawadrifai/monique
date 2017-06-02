@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FontAwesomeKit
 
 public class Commons {
     
@@ -38,6 +39,5 @@ public class Commons {
         return dateString.uppercased()
         
     }
-
     
 }

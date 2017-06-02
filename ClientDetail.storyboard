@@ -368,7 +368,7 @@
                             <outlet property="delegate" destination="cdu-h2-G3J" id="53d-TJ-Js9"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="RNq-Nc-4zr">
+                    <navigationItem key="navigationItem" prompt="CLIENT INFO" id="RNq-Nc-4zr">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="Sal-wN-lPi">
                             <color key="tintColor" red="0.37996858960000002" green="1" blue="0.83935681090000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>

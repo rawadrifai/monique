@@ -57,10 +57,7 @@ class UpgradeView: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.productPurchased), name: NSNotification.Name.init("SKProductPurchased"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.productRestored), name: NSNotification.Name.init("SKProductRestored"), object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(self.purchaseDeferred), name: NSNotification.Name.init("PurchaseDeferred"), object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(self.purchaseFailed), name: NSNotification.Name.init("PurchaseFailed"), object: nil)
+
         
     }
     
@@ -154,20 +151,6 @@ class UpgradeView: UIViewController {
         print("product restored is " + productPurchased.productIdentifier)
     }
     
-    func purchaseDeferred() {
-        
-        alert(title: "Something went wrong", message: "Please make sure you are signed into iTunes and eligible to make payments")
-        
-    }
-    
-    func purchaseFailed() {
-        
-        alert(title: "Something went wrong", message: "Please make sure you are signed into iTunes and eligible to make payments")
-        
-        let _ = self.navigationController?.popViewController(animated: true)
-        dismiss(animated: true, completion: nil)
-        
-    }
     
     
     func setBorders() {

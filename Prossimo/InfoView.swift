@@ -41,6 +41,12 @@ class InfoView: UITableViewController {
         self.ref = FIRDatabase.database().reference()
         
         
+        // seach icon
+        var searchImage = FAKFontAwesome.addressBookOIcon(withSize: 30).image(with: CGSize(width: 30, height: 30))
+        searchImage = searchImage?.imageWithColor(color: Commons.myColor)
+        tabBarItem.image = searchImage
+        
+        
 
     }
     
@@ -169,7 +175,7 @@ class InfoView: UITableViewController {
                     
                 } else {
                     
-                    self.composeEmail(email: "info.prossimo@gmail.com")
+                    self.composeEmail(email: "contact@prossimostylist.com")
                     
                 }
             })

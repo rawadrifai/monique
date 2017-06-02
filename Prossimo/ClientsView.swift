@@ -49,6 +49,13 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
         importClicked = false
         
         setIcons()
+        
+        
+        
+        
+        
+        
+        
     }
 
     
@@ -63,6 +70,7 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         // needed things for the search to work
         
         self.resultsController.tableView.dataSource = self
@@ -70,6 +78,13 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
         self.resultsController.tableView.rowHeight = 78
         
         customizeSearchController()
+    }
+    
+    func setTabBarIcon() {
+        // seach icon
+        var image = FAKFontAwesome.cameraIcon(withSize: 30).image(with: CGSize(width: 30, height: 30))
+        image = image?.imageWithColor(color: Commons.myColor)
+        tabBarItem.image = image
     }
     
     
@@ -128,7 +143,7 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        
+    
         if let cell = Bundle.main.loadNibNamed("ClientCell", owner: self, options: nil)?.first as? ClientCell
         
         {
@@ -157,7 +172,7 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
             }
             
             // make image round
-            cell.imageViewClient.layer.cornerRadius = 25
+            cell.imageViewClient.layer.cornerRadius = 28
             cell.imageViewClient.clipsToBounds = true
             
             
