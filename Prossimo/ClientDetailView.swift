@@ -80,7 +80,9 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         
         fillData()
         
+        
     }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         
@@ -361,16 +363,18 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
             self.labelClientAggregate.isHidden = true
         }
     }
-    
+
     
     // must exist: returns number of rows
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         
         if isStarredSelected {
             return self.starredVisits.count
         } else {
             return self.client.clientVisits.count
         }
+        
     }
     
     // must exist: customize each cell

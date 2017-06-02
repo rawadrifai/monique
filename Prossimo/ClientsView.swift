@@ -70,7 +70,6 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         // needed things for the search to work
         
         self.resultsController.tableView.dataSource = self

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="TNJ-vv-ANl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="TNJ-vv-ANl">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -24,9 +24,21 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CBF-Bf-Uel">
                                 <rect key="frame" x="0.0" y="64" width="375" height="120"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jDo-ZE-Uz7">
+                                        <rect key="frame" x="0.0" y="110" width="375" height="10"/>
+                                        <color key="backgroundColor" red="0.38431372549019605" green="0.87058823529411766" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="10" id="v86-DO-wWg"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" red="0.1764705882352941" green="0.1764705882352941" blue="0.20392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="3FI-bC-HoD"/>
+                                    <constraint firstItem="jDo-ZE-Uz7" firstAttribute="leading" secondItem="CBF-Bf-Uel" secondAttribute="leading" id="HcJ-kF-OxE"/>
+                                    <constraint firstAttribute="trailing" secondItem="jDo-ZE-Uz7" secondAttribute="trailing" id="N52-Ol-zWP"/>
+                                    <constraint firstAttribute="bottom" secondItem="jDo-ZE-Uz7" secondAttribute="bottom" id="Qgd-2H-gLa"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="JW0-Ng-TYX">
@@ -118,7 +130,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R1t-pf-RuJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3167" y="-521"/>
+            <point key="canvasLocation" x="3165.5999999999999" y="-521.28935532233891"/>
         </scene>
     </scenes>
     <resources>

@@ -857,7 +857,7 @@ Cheers!</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="vzw-Os-EXh">
-                                <rect key="frame" x="26" y="205" width="323" height="257.5"/>
+                                <rect key="frame" x="26" y="227" width="323" height="257.5"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Pv3-Vs-3TF">
                                         <rect key="frame" x="0.0" y="0.0" width="323" height="52.5"/>
@@ -900,7 +900,7 @@ Cheers!</string>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                         <state key="normal" title="DONE">
-                                            <color key="titleColor" red="0.37996858960000002" green="1" blue="0.83935681090000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleColor" red="0.38431372549019605" green="0.87058823529411766" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="saveBtnClicked:" destination="MIT-vx-L0S" eventType="touchUpInside" id="mzi-XR-Vey"/>
@@ -925,8 +925,8 @@ Cheers!</string>
                             <constraint firstAttribute="trailingMargin" secondItem="vzw-Os-EXh" secondAttribute="trailing" constant="10" id="FfN-vE-CHe"/>
                             <constraint firstAttribute="trailing" secondItem="zWT-5P-9jB" secondAttribute="trailing" id="U15-tt-UTr"/>
                             <constraint firstItem="vzw-Os-EXh" firstAttribute="leading" secondItem="bPH-io-GE6" secondAttribute="leadingMargin" constant="10" id="cQV-6y-0zt"/>
-                            <constraint firstItem="vzw-Os-EXh" firstAttribute="top" secondItem="zWT-5P-9jB" secondAttribute="bottom" constant="30" id="eca-rf-iIE"/>
-                            <constraint firstItem="vzw-Os-EXh" firstAttribute="centerY" secondItem="bPH-io-GE6" secondAttribute="centerY" id="ore-Vy-bgh"/>
+                            <constraint firstItem="vzw-Os-EXh" firstAttribute="top" secondItem="zWT-5P-9jB" secondAttribute="bottom" constant="52" id="eca-rf-iIE"/>
+                            <constraint firstItem="vzw-Os-EXh" firstAttribute="centerY" secondItem="bPH-io-GE6" secondAttribute="centerY" constant="22.25" id="ore-Vy-bgh"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" prompt="MY INFO" id="1bT-dw-GCm"/>

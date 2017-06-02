@@ -67,7 +67,7 @@ class FemaleOptionsView: UIViewController {
             if state == "1" {
                 
                 btnLong.backgroundColor = Commons.myGrayColor
-                btnLong.setTitleColor(Commons.myColor, for: .normal)
+                btnLong.setTitleColor(Commons.myPinkColor, for: .normal)
             }
         }
         
@@ -77,7 +77,7 @@ class FemaleOptionsView: UIViewController {
             if state == "1" {
                 
                 btnMedium.backgroundColor = Commons.myGrayColor
-                btnMedium.setTitleColor(Commons.myColor, for: .normal)
+                btnMedium.setTitleColor(Commons.myPinkColor, for: .normal)
             }
         }
         
@@ -87,7 +87,7 @@ class FemaleOptionsView: UIViewController {
             if state == "1" {
                 
                 btnShort.backgroundColor = Commons.myGrayColor
-                btnShort.setTitleColor(Commons.myColor, for: .normal)
+                btnShort.setTitleColor(Commons.myPinkColor, for: .normal)
             }
         }
         
@@ -97,7 +97,7 @@ class FemaleOptionsView: UIViewController {
             if state == "1" {
                 
                 btnBlunt.backgroundColor = Commons.myGrayColor
-                btnBlunt.setTitleColor(Commons.myColor, for: .normal)
+                btnBlunt.setTitleColor(Commons.myPinkColor, for: .normal)
             }
         }
         
@@ -107,7 +107,7 @@ class FemaleOptionsView: UIViewController {
             if state == "1" {
                 
                 btnTexturized.backgroundColor = Commons.myGrayColor
-                btnTexturized.setTitleColor(Commons.myColor, for: .normal)
+                btnTexturized.setTitleColor(Commons.myPinkColor, for: .normal)
             }
         }
         
@@ -117,7 +117,7 @@ class FemaleOptionsView: UIViewController {
             if state == "1" {
                 
                 btnInnerLayers.backgroundColor = Commons.myGrayColor
-                btnInnerLayers.setTitleColor(Commons.myColor, for: .normal)
+                btnInnerLayers.setTitleColor(Commons.myPinkColor, for: .normal)
             }
         }
         
@@ -127,7 +127,7 @@ class FemaleOptionsView: UIViewController {
             if state == "1" {
                 
                 btnBangs.backgroundColor = Commons.myGrayColor
-                btnBangs.setTitleColor(Commons.myColor, for: .normal)
+                btnBangs.setTitleColor(Commons.myPinkColor, for: .normal)
             }
         }
         
@@ -137,7 +137,7 @@ class FemaleOptionsView: UIViewController {
             if state == "1" {
                 
                 btnFaceFraming.backgroundColor = Commons.myGrayColor
-                btnFaceFraming.setTitleColor(Commons.myColor, for: .normal)
+                btnFaceFraming.setTitleColor(Commons.myPinkColor, for: .normal)
             }
         }
         
@@ -147,7 +147,7 @@ class FemaleOptionsView: UIViewController {
             if state == "1" {
                 
                 btnColor.backgroundColor = Commons.myGrayColor
-                btnColor.setTitleColor(Commons.myColor, for: .normal)
+                btnColor.setTitleColor(Commons.myPinkColor, for: .normal)
             }
         }
         
@@ -157,7 +157,7 @@ class FemaleOptionsView: UIViewController {
             if state == "1" {
                 
                 btnBlowDry.backgroundColor = Commons.myGrayColor
-                btnBlowDry.setTitleColor(Commons.myColor, for: .normal)
+                btnBlowDry.setTitleColor(Commons.myPinkColor, for: .normal)
             }
         }
         
@@ -175,7 +175,7 @@ class FemaleOptionsView: UIViewController {
             
             self.client.clientVisits[selectedVisitIndex].options[btnText!] = "1"
             sender.backgroundColor = Commons.myGrayColor
-            sender.setTitleColor(Commons.myColor, for: .normal)
+            sender.setTitleColor(Commons.myPinkColor, for: .normal)
             
             self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.selectedVisit.visitDate + "/options/" + btnText!).setValue("1")
             
@@ -184,7 +184,7 @@ class FemaleOptionsView: UIViewController {
         if state == "0" {
             self.client.clientVisits[selectedVisitIndex].options[btnText!] = "1"
             sender.backgroundColor = Commons.myGrayColor
-            sender.setTitleColor(Commons.myColor, for: .normal)
+            sender.setTitleColor(Commons.myPinkColor, for: .normal)
             
             self.ref.child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.selectedVisit.visitDate + "/options/" + btnText!).setValue("1")
         }
