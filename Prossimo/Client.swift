@@ -87,15 +87,18 @@ class Expense {
 
 class Receipt {
 
+    var id:String
     var imageUrl:String
     var uploadDate:String
     
     init() {
+        id = ""
         imageUrl = ""
         uploadDate = ""
     }
     
-    init(imageUrl:String, uploadDate:String) {
+    init(id:String, imageUrl:String, uploadDate:String) {
+        self.id = id
         self.imageUrl = imageUrl
         self.uploadDate = uploadDate
     }

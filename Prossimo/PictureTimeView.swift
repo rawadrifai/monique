@@ -340,7 +340,7 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
                 self.tableView.reloadData()
                 
                 // delete from firebase
-                let storageRef = FIRStorage.storage().reference().child(self.userId + "/clients/" + self.client.clientId + "/visits/" + self.client.clientVisits[self.selectedVisitIndex].visitDate + "/images/" + imageToBeDeleted.imageName)
+                let storageRef = FIRStorage.storage().reference().child("users/" + self.userId + "/clients/" + self.client.clientId + "/visits/" + self.client.clientVisits[self.selectedVisitIndex].visitDate + "/images/" + imageToBeDeleted.imageName)
                 
                 
                 storageRef.delete { (err) in
