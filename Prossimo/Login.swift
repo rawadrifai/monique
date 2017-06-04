@@ -375,6 +375,12 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
                     }
                 }
                 
+                if let moneyNavigation = destinationTabBar.viewControllers![1] as? UINavigationController {
+                    if let moneyView = moneyNavigation.topViewController as? ExpensesTVC {
+                        moneyView.userId = self.userId
+                    }
+                }
+                
                 if let d = destinationTabBar.viewControllers![2] as? UINavigationController {
                     if let infoView = d.topViewController as? InfoView {
                         infoView.userId = self.userId

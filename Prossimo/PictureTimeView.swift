@@ -17,16 +17,17 @@ import NYTPhotoViewer
 class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
 
-    @IBOutlet weak var btnMale: UIButton!
-    @IBOutlet weak var btnFemale: UIButton!
-    
-    @IBOutlet weak var txvNotes: UITextView!
     var selectedVisitIndex:Int!
     var userId:String!
     var client:Client!
     var ref: FIRDatabaseReference!
     var delegate: PictureTimeDelegate?
     
+    
+    
+    @IBOutlet weak var btnMale: UIButton!
+    @IBOutlet weak var btnFemale: UIButton!
+    @IBOutlet weak var txvNotes: UITextView!
     @IBOutlet weak var btnStar: UIBarButtonItem!
     @IBOutlet weak var labelNotes: UILabel!
     @IBOutlet weak var txfPrice: UITextField!

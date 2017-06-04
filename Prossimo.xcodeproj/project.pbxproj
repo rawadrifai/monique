@@ -27,6 +27,8 @@
 		7942944B1EE2475900FBC813 /* ExpensesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7942944A1EE2475900FBC813 /* ExpensesTVC.swift */; };
 		7942944E1EE2CCEF00FBC813 /* ExpenseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7942944C1EE2CCEF00FBC813 /* ExpenseCell.swift */; };
 		7942944F1EE2CCEF00FBC813 /* ExpenseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7942944D1EE2CCEF00FBC813 /* ExpenseCell.xib */; };
+		794294511EE3BC8800FBC813 /* ExpenseDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 794294501EE3BC8800FBC813 /* ExpenseDetails.storyboard */; };
+		794294531EE3C08C00FBC813 /* ExpenseDetailsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794294521EE3C08B00FBC813 /* ExpenseDetailsTVC.swift */; };
 		79557F761EDFEFAD0000505A /* TabControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79557F751EDFEFAD0000505A /* TabControl.swift */; };
 		7975C9061ECBBE5B00C93845 /* ClientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7975C9041ECBBE5B00C93845 /* ClientCell.swift */; };
 		7975C9071ECBBE5B00C93845 /* ClientCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7975C9051ECBBE5B00C93845 /* ClientCell.xib */; };
@@ -171,6 +173,8 @@
 		7942944A1EE2475900FBC813 /* ExpensesTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExpensesTVC.swift; path = Prossimo/ExpensesTVC.swift; sourceTree = "<group>"; };
 		7942944C1EE2CCEF00FBC813 /* ExpenseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExpenseCell.swift; path = Prossimo/ExpenseCell.swift; sourceTree = "<group>"; };
 		7942944D1EE2CCEF00FBC813 /* ExpenseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ExpenseCell.xib; path = Prossimo/ExpenseCell.xib; sourceTree = "<group>"; };
+		794294501EE3BC8800FBC813 /* ExpenseDetails.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ExpenseDetails.storyboard; path = Prossimo/ExpenseDetails.storyboard; sourceTree = "<group>"; };
+		794294521EE3C08B00FBC813 /* ExpenseDetailsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExpenseDetailsTVC.swift; path = Prossimo/ExpenseDetailsTVC.swift; sourceTree = "<group>"; };
 		79557F751EDFEFAD0000505A /* TabControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabControl.swift; path = Prossimo/TabControl.swift; sourceTree = "<group>"; };
 		7975C9041ECBBE5B00C93845 /* ClientCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientCell.swift; path = Prossimo/ClientCell.swift; sourceTree = "<group>"; };
 		7975C9051ECBBE5B00C93845 /* ClientCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ClientCell.xib; path = Prossimo/ClientCell.xib; sourceTree = "<group>"; };
@@ -309,6 +313,7 @@
 				9A3BC64B1E5A9AA700E9CA71 /* Main.storyboard */,
 				794294471EE23B9B00FBC813 /* Clients.storyboard */,
 				7942943A1EE238E700FBC813 /* Money.storyboard */,
+				794294501EE3BC8800FBC813 /* ExpenseDetails.storyboard */,
 				7905A6E31ECA5CA00008D2ED /* ClientDetail.storyboard */,
 				7975C91B1ECD82A700C93845 /* HaircutDetail.storyboard */,
 				7905A6E51ECA5D050008D2ED /* EditClient.storyboard */,
@@ -351,6 +356,7 @@
 				7905A6CB1EC93F360008D2ED /* UI */,
 				9A371A281EB8007000A52DDD /* OptionsView.swift */,
 				792C86EE1ECE922A0082E9F0 /* FemaleOptionsView.swift */,
+				794294521EE3C08B00FBC813 /* ExpenseDetailsTVC.swift */,
 				7942944A1EE2475900FBC813 /* ExpensesTVC.swift */,
 				7975C9171ECC34FF00C93845 /* MyInfoVC.swift */,
 				9AE7A1BE1EB4336A0004FCC2 /* NewClientVC.swift */,
@@ -573,6 +579,7 @@
 				9A3BC6521E5A9AA700E9CA71 /* LaunchScreen.storyboard in Resources */,
 				7905A6E21ECA5C590008D2ED /* NewClient.storyboard in Resources */,
 				9AD676501E94A0FD00F8BBFB /* Assets.xcassets in Resources */,
+				794294511EE3BC8800FBC813 /* ExpenseDetails.storyboard in Resources */,
 				7905A6D21ECA5B0C0008D2ED /* Tutorial.storyboard in Resources */,
 				794294491EE23B9B00FBC813 /* Clients.storyboard in Resources */,
 				7975C91C1ECD82A700C93845 /* HaircutDetail.storyboard in Resources */,
@@ -674,6 +681,7 @@
 				9A969DA01E9EEC9E004127CE /* UpgradeView.swift in Sources */,
 				9A3BC65C1E5AA5C300E9CA71 /* ClientsView.swift in Sources */,
 				9A6875121EA8048000996B76 /* FourthVC.swift in Sources */,
+				794294531EE3C08C00FBC813 /* ExpenseDetailsTVC.swift in Sources */,
 				9AB6B8EA1E84F9CA009231B0 /* SaveUserInfo.swift in Sources */,
 				7942944E1EE2CCEF00FBC813 /* ExpenseCell.swift in Sources */,
 				9AAF34C71E713A0B00CAFE44 /* PictureTimeView.swift in Sources */,

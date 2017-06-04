@@ -18,7 +18,7 @@ class Client {
     var profileImg:ImageObject
     
     var clientVisits:[ClientVisit]
-    var clientExpenses:[ClientExpense]
+    var expenses:[Expense]
     
     init() {
         self.clientId = ""
@@ -28,7 +28,7 @@ class Client {
         self.profileImg = ImageObject()
         
         self.clientVisits = []
-        self.clientExpenses = []
+        self.expenses = []
     }
     
     init(clientId:String, clientName:String, clientEmail:String, clientPhone:String) {
@@ -39,7 +39,7 @@ class Client {
         self.profileImg = ImageObject()
         
         self.clientVisits = []
-        self.clientExpenses = []
+        self.expenses = []
     }
     
     init(clientId:String, clientName:String, clientEmail:String, clientPhone:String, profileImg:ImageObject) {
@@ -50,12 +50,12 @@ class Client {
         self.profileImg = profileImg
         
         self.clientVisits = []
-        self.clientExpenses = []
+        self.expenses = []
     }
     
 }
 
-class ClientExpense {
+class Expense {
 
     var id:String
     var item:String

@@ -17,10 +17,9 @@ class ExpensesTVC: UITableViewController {
     
     var ref: FIRDatabaseReference!
     var userId:String!
-    var expenses:[ClientExpense]
+    var expenses = [Expense]()
 
-    @IBOutlet weak var btnImport: UIBarButtonItem!
-    @IBOutlet weak var labelClientCount: UILabel!
+    @IBOutlet weak var labelTotalExpenses: UILabel!
     
     
     // every time the page shows (including when going back to it from the nav)
@@ -28,66 +27,44 @@ class ExpensesTVC: UITableViewController {
         
         super.viewDidAppear(animated)
         
-        // get all the user related data
-        getUserData()
+        getExpenses()
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         getExpenses()
-
     }
-    
 
 
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        // check what's the tableview passed
-        if tableView == self.tableView {
-            return cellData.count
-        }
-        else {
-            return filteredData.count
-        }
+        return expenses.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
-        if let cell = Bundle.main.loadNibNamed("ClientCell", owner: self, options: nil)?.first as? ClientCell
+        if let cell = Bundle.main.loadNibNamed("ExpenseCell", owner: self, options: nil)?.first as? ExpenseCell
             
         {
-            let c = Client()
+            let expense = Expense()
             
-            // check what's the tableview passed
-            if tableView == self.tableView {
-                c.clientName = cellData[indexPath.row].clientName
-                c.profileImg = cellData[indexPath.row].profileImg
-                
-                
-            }
-            else {
-                c.clientName = filteredData[indexPath.row].clientName
-                c.profileImg = filteredData[indexPath.row].profileImg
-            }
+            expense.item = expenses[indexPath.row].item
+            expense.price = expenses[indexPath.row].price
+            expense.date = expenses[indexPath.row].date
             
-            cell.labelClientName.text = c.clientName
             
-            if c.profileImg.imageUrl != "" {
-                cell.imageViewClient.sd_setImage(with: URL(string: c.profileImg.imageUrl))
-            }
-            else {
-                cell.imageViewClient.image = UIImage(imageLiteralResourceName: "user")
-                //cell.imageViewClient.layer.borderWidth = 1
-            }
+            cell.labelItem.text = expense.item
+            cell.labelPrice.text = String(expense.price)
+            cell.labelDate.text = expense.date
             
-            // make image round
-            cell.imageViewClient.layer.cornerRadius = 28
-            cell.imageViewClient.clipsToBounds = true
             
+            var icon = UIImage()
+            icon = FAKFontAwesome.calendarIcon(withSize: 16).image(with: CGSize(width: 20, height: 20))
+            icon = icon.imageWithColor(color: UIColor.lightGray)!
+            cell.imageViewDate.image = icon
             
             return cell
         }
@@ -100,7 +77,7 @@ class ExpensesTVC: UITableViewController {
         
         if let _ = tableView.cellForRow(at: indexPath) {
             
-            self.performSegue(withIdentifier: "clientDetailsSegue", sender: self)
+            self.performSegue(withIdentifier: "", sender: self)
             
         }
     }
@@ -109,7 +86,7 @@ class ExpensesTVC: UITableViewController {
         
         
         // get an instance of the expense to be deleted
-        let expenseToBeDeleted = self.expenses[indexPath.row] as ClientExpense
+        let expenseToBeDeleted = self.expenses[indexPath.row] as Expense
         
         let deleteAlert = UIAlertController(title: "Confirm", message: "Are you sure?", preferredStyle: UIAlertControllerStyle.alert)
         
@@ -119,13 +96,13 @@ class ExpensesTVC: UITableViewController {
             
             // delete from firebase database, with completion block
             
-            self.ref.child("users/" + self.userId + "/expenses/" + expenseToBeDeleted).removeValue(completionBlock: { (err, ref) in
+            self.ref.child("users/" + self.userId + "/expenses/" + expenseToBeDeleted.id).removeValue(completionBlock: { (err, ref) in
                 
-                self.cellData.remove(at: indexPath.row)
-                self.tableView.reloadData()
+                self.expenses.remove(at: indexPath.row)
+                self.reloadTableDataFromUIThread()
                 
                 // delete from firebase
-                let storageRef = FIRStorage.storage().reference().child(self.userId).child("clients").child(clientToBeDeleted.clientId)
+                let storageRef = FIRStorage.storage().reference().child(self.userId).child("expenses").child(expenseToBeDeleted.id)
                 
                 storageRef.delete { (err) in
                     
@@ -167,7 +144,7 @@ class ExpensesTVC: UITableViewController {
     
     func getExpenses() {
         
-        self.expenses = [ClientExpense]()
+        self.expenses = [Expense]()
         
         ref = FIRDatabase.database().reference()
         self.ref.child("users/" + self.userId + "/expenses").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -181,11 +158,11 @@ class ExpensesTVC: UITableViewController {
                     
                     let expenseInfo = expense as! NSDictionary
                     
-                    let clientExpense = ClientExpense()
+                    let expense = Expense()
                     
-                    clientExpense.item = expenseInfo.value(forKey: "item") as? String ?? ""
-                    clientExpense.price = expenseInfo.value(forKey: "price") as? Double ?? 0
-                    clientExpense.date = expenseInfo.value(forKey: "date") as? String ?? ""
+                    expense.item = expenseInfo.value(forKey: "item") as? String ?? ""
+                    expense.price = expenseInfo.value(forKey: "price") as? Double ?? 0
+                    expense.date = expenseInfo.value(forKey: "date") as? String ?? ""
                     
                     
                     // get the images for each receipt
@@ -200,24 +177,16 @@ class ExpensesTVC: UITableViewController {
                                 r.uploadDate = receiptInfo.value(forKey: "uploadDate") as! String
                                 
                                 
-                                clientExpense.receipts.append(r)
+                                expense.receipts.append(r)
                             }
                         }
-                        clientExpense.receipts.sort { $0.uploadDate > $1.uploadDate }
+                        expense.receipts.sort { $0.uploadDate > $1.uploadDate }
                     }
-                    client.clientExpenses.append(clientExpense)
+                    self.expenses.append(expense)
                 }
-                client.clientExpenses.sort { $0.sortingDate > $1.sortingDate }
+                self.expenses.sort { $0.sortingDate > $1.sortingDate }
             }
             
-            
-            
-            self.expenses.sort { $0.clientName < $1.clientName }
-                self.reloadTableDataFromUIThread()
-            
-            
-            
-            }
             self.setAggregates()
         
         }) { (error) in
@@ -228,44 +197,27 @@ class ExpensesTVC: UITableViewController {
     
     func setAggregates() {
         
-        var aggregateString = ""
+        // calculate total expenses
+        var totalExpenses:Double = 0
         
-        aggregateString = String(self.cellData.count) + " CLIENTS - "
-        
-        
-        // calculate total revenue
-        var revenue:Double = 0
-        
-        for c in cellData {
-            for v in c.clientVisits {
-                revenue = revenue + v.price
-            }
+        for e in self.expenses {
+            
+            totalExpenses = totalExpenses + e.price
         }
         
-        aggregateString = aggregateString + "$" + String(revenue)
-            + " TOTAL REVENUE"
-        self.labelClientCount.text = aggregateString
+        let aggregateString = "$" + String(totalExpenses)
+            + " TOTAL"
+        self.labelTotalExpenses.text = aggregateString
     }
+
     
-    @IBAction func importClick(_ sender: UIBarButtonItem) {
-        
-        let entityType = CNEntityType.contacts
-        let authStatus = CNContactStore.authorizationStatus(for: entityType)
-        
-        if authStatus == .notDetermined {
-            let contactStore = CNContactStore.init()
-            contactStore.requestAccess(for: entityType, completionHandler: { (success, nil) in
-                if (success) {
-                    self.openContacts()
-                }
-                
-            })
-        }
-        else if authStatus == .authorized {
-            self.openContacts()
-        }
+}
+
+extension ExpensesTVC: ExpenseDetailsDelegate {
+    
+    func expenseChanged() {
+        self.reloadTableDataFromUIThread()
     }
-    
 }
 
 

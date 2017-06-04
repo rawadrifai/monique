@@ -68,6 +68,12 @@
                     <constraint firstAttribute="bottomMargin" secondItem="t1v-hr-33H" secondAttribute="bottom" constant="16" id="zc7-sF-YOB"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="imageViewDate" destination="gpb-UQ-uKQ" id="iXS-3W-RRU"/>
+                <outlet property="labelDate" destination="bXO-d2-GQa" id="21W-Yg-54d"/>
+                <outlet property="labelItem" destination="fwe-5J-k9J" id="AmA-ad-6Cu"/>
+                <outlet property="labelPrice" destination="t1v-hr-33H" id="76W-PU-e88"/>
+            </connections>
             <point key="canvasLocation" x="34" y="90.5"/>
         </tableViewCell>
     </objects>
