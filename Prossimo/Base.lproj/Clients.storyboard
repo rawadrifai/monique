@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ziU-oG-owb">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Clients-->
+        <scene sceneID="4AB-gc-XS9">
+            <objects>
+                <tableViewController storyboardIdentifier="idClientsView" id="ziU-oG-owb" customClass="ClientsView" customModule="Prossimo" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="78" sectionHeaderHeight="28" sectionFooterHeight="28" id="wtp-iS-dcW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOADING CLIENTS ..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EHk-h8-PkH">
+                            <rect key="frame" x="0.0" y="106" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="13"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="cell" rowHeight="78" id="ajS-zj-FZc">
+                                <rect key="frame" x="0.0" y="28" width="375" height="78"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ajS-zj-FZc" id="GRr-vA-PZb">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="77.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ziU-oG-owb" id="LO9-ti-VZj"/>
+                            <outlet property="delegate" destination="ziU-oG-owb" id="Jt7-K5-I81"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Clients" id="y7h-ar-T1R">
+                        <barButtonItem key="leftBarButtonItem" title="" id="2FV-pB-QDe">
+                            <color key="tintColor" red="0.38431372549019605" green="0.87058823529411766" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="importClick:" destination="ziU-oG-owb" id="Zl3-0G-BZS"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="9sU-GN-Vq4">
+                            <color key="tintColor" red="0.38431372549019605" green="0.87058823529411766" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <segue destination="Jzp-1Y-k6F" kind="show" identifier="newClientSegue" id="si4-HL-2bY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO">
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </simulatedNavigationBarMetrics>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="btnImport" destination="2FV-pB-QDe" id="D2M-Qf-fQr"/>
+                        <outlet property="labelClientCount" destination="EHk-h8-PkH" id="uEb-yI-2h4"/>
+                        <outlet property="searchDisplayController" destination="Gic-RT-EUo" id="r2P-iJ-0AT"/>
+                        <outlet property="tableView" destination="wtp-iS-dcW" id="OsO-XC-mEq"/>
+                        <segue destination="mwm-fM-YI3" kind="show" identifier="clientDetailsSegue" id="TVX-aX-8z0"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KTC-C4-f12" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="Gic-RT-EUo">
+                    <connections>
+                        <outlet property="delegate" destination="ziU-oG-owb" id="a7M-Lb-hAB"/>
+                        <outlet property="searchContentsController" destination="ziU-oG-owb" id="RrY-Xe-W4V"/>
+                        <outlet property="searchResultsDataSource" destination="ziU-oG-owb" id="BLU-vS-sBv"/>
+                        <outlet property="searchResultsDelegate" destination="ziU-oG-owb" id="VJh-LV-EnB"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="2044" y="-796"/>
+        </scene>
+        <!--NewClient-->
+        <scene sceneID="W02-Be-Anw">
+            <objects>
+                <viewControllerPlaceholder storyboardName="NewClient" id="Jzp-1Y-k6F" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bqa-gq-F5a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2802" y="-948"/>
+        </scene>
+        <!--ClientDetail-->
+        <scene sceneID="Kk4-0i-3Ku">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ClientDetail" id="mwm-fM-YI3" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d58-ZO-kv5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2802" y="-667"/>
+        </scene>
+    </scenes>
+</document>

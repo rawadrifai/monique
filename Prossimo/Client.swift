@@ -18,6 +18,7 @@ class Client {
     var profileImg:ImageObject
     
     var clientVisits:[ClientVisit]
+    var clientExpenses:[ClientExpense]
     
     init() {
         self.clientId = ""
@@ -27,6 +28,7 @@ class Client {
         self.profileImg = ImageObject()
         
         self.clientVisits = []
+        self.clientExpenses = []
     }
     
     init(clientId:String, clientName:String, clientEmail:String, clientPhone:String) {
@@ -35,7 +37,9 @@ class Client {
         self.clientEmail = clientEmail
         self.clientPhone = clientPhone
         self.profileImg = ImageObject()
+        
         self.clientVisits = []
+        self.clientExpenses = []
     }
     
     init(clientId:String, clientName:String, clientEmail:String, clientPhone:String, profileImg:ImageObject) {
@@ -46,8 +50,56 @@ class Client {
         self.profileImg = profileImg
         
         self.clientVisits = []
+        self.clientExpenses = []
     }
     
+}
+
+class ClientExpense {
+
+    var id:String
+    var item:String
+    var price:Double
+    var date:String
+    var sortingDate:String
+    var receipts:[Receipt]
+    
+    init() {
+        
+        id = ""
+        item = ""
+        price = 0
+        date = ""
+        sortingDate = ""
+        receipts = []
+    }
+    
+    init(id:String, item:String, price:Double, date:String, sortingDate:String) {
+        
+        self.id = id
+        self.item = item
+        self.price = price
+        self.date = date
+        self.sortingDate = sortingDate
+        self.receipts = []
+    }
+}
+
+class Receipt {
+
+    var imageUrl:String
+    var uploadDate:String
+    
+    init() {
+        imageUrl = ""
+        uploadDate = ""
+    }
+    
+    init(imageUrl:String, uploadDate:String) {
+        self.imageUrl = imageUrl
+        self.uploadDate = uploadDate
+    }
+
 }
 
 class ClientVisit {

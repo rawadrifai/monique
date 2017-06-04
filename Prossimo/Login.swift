@@ -11,16 +11,12 @@ import LocalAuthentication
 
 class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     
-    @IBOutlet weak var signInButton: GIDSignInButton!
     var userId:String!
     var ref: FIRDatabaseReference!
-    
+
+    @IBOutlet weak var signInButton: GIDSignInButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
-    
     @IBOutlet weak var btnSignIn: UIButton!
-    
-    
     
     
     func logUserInCrashlytics(userEmail:String, userIdentifier:String, userName:String) {
@@ -104,10 +100,7 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         })
         
         
-        
         self.performSegue(withIdentifier: "loginSegue", sender: self)
-        
-        
         
     }
     
@@ -115,11 +108,9 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     
     func checkIfFirstTimeUse() {
         
-      //  UserDefaults.standard.removeObject(forKey: "prossimoLastVersionUsed")
+        //  UserDefaults.standard.removeObject(forKey: "prossimoLastVersionUsed")
         
         guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else { return }
-        
-        
         
         guard let lastVersionUsed = UserDefaults.standard.string(forKey: "prossimoLastVersionUsed")
             else {
@@ -128,22 +119,11 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
                 return
         }
         
-//        if let lastVersionUsed = UserDefaults.standard.string(forKey: "prossimoLastVersionUsed")
-//        {
-//            UserDefaults.standard.set(version, forKey: "prossimoLastVersionUsed")
-        
-            if version != lastVersionUsed {
-                
-                UserDefaults.standard.set(version, forKey: "prossimoLastVersionUsed")
-                self.performSegue(withIdentifier: "tutorialSegue", sender: self)
-            }
-//        } else {
-//            self.performSegue(withIdentifier: "tutorialSegue", sender: self)
-//
-//        }
-        
-        
-        
+        if version != lastVersionUsed {
+            
+            UserDefaults.standard.set(version, forKey: "prossimoLastVersionUsed")
+            self.performSegue(withIdentifier: "tutorialSegue", sender: self)
+        }
     }
     
     
@@ -373,12 +353,9 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
             if error != nil {
                 return
             }
-            
 
             self.signInFirebase(uid: self.userId)
         })
-        
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -398,7 +375,7 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
                     }
                 }
                 
-                if let d = destinationTabBar.viewControllers![1] as? UINavigationController {
+                if let d = destinationTabBar.viewControllers![2] as? UINavigationController {
                     if let infoView = d.topViewController as? InfoView {
                         infoView.userId = self.userId
                     }

@@ -40,23 +40,13 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        
-        
         // get all the user related data
         getUserData()
         
-        
         importClicked = false
-        
         setIcons()
         
-        
-        
-        
-        
-        
-        
-    }
+        }
 
     
     func setIcons() {
@@ -78,14 +68,6 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
         
         customizeSearchController()
     }
-    
-    func setTabBarIcon() {
-        // seach icon
-        var image = FAKFontAwesome.cameraIcon(withSize: 30).image(with: CGSize(width: 30, height: 30))
-        image = image?.imageWithColor(color: Commons.myColor)
-        tabBarItem.image = image
-    }
-    
     
     
     // this func customizes the search controller provided by default
@@ -381,6 +363,13 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
                         }
                         client.clientVisits.sort { $0.sortingDate > $1.sortingDate }
                     }
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     self.cellData.append(client)
                 }
                 self.cellData.sort { $0.clientName < $1.clientName }
@@ -475,4 +464,5 @@ extension ClientsView:CNContactPickerDelegate {
         self.performSegue(withIdentifier: "newClientSegue", sender: self)
     }
 }
+
 

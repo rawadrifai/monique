@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -132,7 +131,7 @@
                                                                         <constraint firstAttribute="width" constant="40" id="f5P-rS-dKT"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="20"/>
-                                                                    <state key="normal" title="">
+                                                                    <state key="normal">
                                                                         <color key="titleColor" red="0.38431372549019605" green="0.87058823529411766" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     </state>
                                                                     <connections>
@@ -147,7 +146,7 @@
                                                                         <constraint firstAttribute="height" constant="40" id="has-el-pr2"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="20"/>
-                                                                    <state key="normal" title="">
+                                                                    <state key="normal">
                                                                         <color key="titleColor" red="0.38431372549019605" green="0.87058823529411766" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     </state>
                                                                     <connections>
@@ -162,7 +161,7 @@
                                                                         <constraint firstAttribute="width" constant="40" id="xJR-0k-bVh"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="20"/>
-                                                                    <state key="normal" title="">
+                                                                    <state key="normal">
                                                                         <color key="titleColor" red="0.38431372549019605" green="0.87058823529411766" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     </state>
                                                                     <connections>
@@ -229,7 +228,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tn7-uz-Fjr">
                                                     <rect key="frame" x="0.0" y="0.0" width="115" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                                    <state key="normal" title="  ALL VISITS" image="">
+                                                    <state key="normal" title="  ALL VISITS">
                                                         <color key="titleColor" red="0.38431372549019605" green="0.87058823529411766" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                     <connections>
@@ -239,7 +238,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YiL-dx-uHw" userLabel="Btn Starred">
                                                     <rect key="frame" x="115" y="0.0" width="115" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                                    <state key="normal" title="  STARRED" image="">
+                                                    <state key="normal" title="  STARRED">
                                                         <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
@@ -303,64 +302,8 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4H3-HP-5zV" id="qAD-x3-NfC">
                                     <rect key="frame" x="0.0" y="0.0" width="342" height="74.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGG-Qm-uqn">
-                                            <rect key="frame" x="18" y="27.5" width="16" height="20"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="16" id="68o-w6-P1r"/>
-                                                <constraint firstAttribute="height" constant="20" id="GZP-4O-Ot3"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="16"/>
-                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QNP-uJ-P1Z">
-                                            <rect key="frame" x="48" y="27" width="242" height="21"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="zaT-mM-DpG"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vkl-9M-LjL">
-                                            <rect key="frame" x="49" y="47" width="285" height="21"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="Z1R-3e-LpT"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
-                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="price" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5EA-4d-88u">
-                                            <rect key="frame" x="291.5" y="29" width="35.5" height="21"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="uLC-Ju-7Im"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
-                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="hGG-Qm-uqn" firstAttribute="centerY" secondItem="qAD-x3-NfC" secondAttribute="centerY" id="3qn-5A-lkV"/>
-                                        <constraint firstAttribute="trailing" secondItem="5EA-4d-88u" secondAttribute="trailing" constant="15" id="3r9-jK-1xt"/>
-                                        <constraint firstItem="QNP-uJ-P1Z" firstAttribute="leading" secondItem="hGG-Qm-uqn" secondAttribute="trailing" constant="14" id="CZM-NM-PZ7"/>
-                                        <constraint firstAttribute="trailing" secondItem="vkl-9M-LjL" secondAttribute="trailing" constant="8" id="FBL-xf-Hlf"/>
-                                        <constraint firstItem="vkl-9M-LjL" firstAttribute="top" secondItem="QNP-uJ-P1Z" secondAttribute="bottom" constant="-1" id="Kcu-Ad-w5N"/>
-                                        <constraint firstItem="5EA-4d-88u" firstAttribute="top" secondItem="QNP-uJ-P1Z" secondAttribute="bottom" constant="-19" id="aDo-BR-UFw"/>
-                                        <constraint firstItem="hGG-Qm-uqn" firstAttribute="leading" secondItem="qAD-x3-NfC" secondAttribute="leadingMargin" constant="10" id="uah-cw-Rvw"/>
-                                        <constraint firstItem="vkl-9M-LjL" firstAttribute="leading" secondItem="qAD-x3-NfC" secondAttribute="leading" constant="49" id="vKi-pE-fFx"/>
-                                        <constraint firstItem="QNP-uJ-P1Z" firstAttribute="top" secondItem="qAD-x3-NfC" secondAttribute="top" constant="27" id="zGh-O4-DfA"/>
-                                        <constraint firstAttribute="trailing" secondItem="QNP-uJ-P1Z" secondAttribute="trailing" constant="52" id="zyp-fw-pQ4"/>
-                                    </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="labelNotes" destination="vkl-9M-LjL" id="1zy-ZE-7sK"/>
-                                    <outlet property="labelPrice" destination="5EA-4d-88u" id="XPh-vJ-5TB"/>
-                                    <outlet property="labelVisitDate" destination="QNP-uJ-P1Z" id="2nj-hF-rcZ"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -408,7 +351,7 @@
                 <viewControllerPlaceholder storyboardName="EditClient" id="k27-ew-ekf" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HBh-09-eoe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3191" y="-367"/>
+            <point key="canvasLocation" x="3174" y="-284"/>
         </scene>
         <!--HaircutDetail-->
         <scene sceneID="bDf-L8-eOf">
@@ -421,7 +364,5 @@
     </scenes>
     <resources>
         <image name="icon-camera-32" width="32" height="32"/>
-        <image name="" width="16" height="16"/>
-        <image name="" width="16" height="16"/>
     </resources>
 </document>
