@@ -73,6 +73,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		794294631EE4EF7200FBC813 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9AD2B33A1E8AE50800DF308C /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BB62B7F1A452045E3C1B32455C0ABABD;
+			remoteInfo = DatePickerDialog;
+		};
 		9A371A401EB9A84B00A52DDD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9AD2B33A1E8AE50800DF308C /* Pods.xcodeproj */;
@@ -398,6 +405,7 @@
 		9AD2B33B1E8AE50800DF308C /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				794294641EE4EF7200FBC813 /* DatePickerDialog.framework */,
 				9A371A411EB9A84B00A52DDD /* FLAnimatedImage.framework */,
 				9AAFE62F1E96FFA2007185A0 /* FontAwesomeKit.framework */,
 				9A63D3281E945AF200F67805 /* GoogleToolboxForMac.framework */,
@@ -485,6 +493,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		794294641EE4EF7200FBC813 /* DatePickerDialog.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = DatePickerDialog.framework;
+			remoteRef = 794294631EE4EF7200FBC813 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		9A371A411EB9A84B00A52DDD /* FLAnimatedImage.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;

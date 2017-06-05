@@ -35,17 +35,14 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="I5V-oI-fJR" id="wF8-o1-2c4"/>
-                            <outlet property="delegate" destination="I5V-oI-fJR" id="loM-vZ-JXH"/>
+                            <outlet property="dataSource" destination="I5V-oI-fJR" id="1PE-Qs-hq9"/>
+                            <outlet property="delegate" destination="I5V-oI-fJR" id="y77-bc-P6j"/>
                         </connections>
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Expenses" id="P7j-06-VMe">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="H6z-j4-QMh">
                             <color key="tintColor" red="0.38431372549999998" green="0.87058823529999996" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <segue destination="pwm-VI-swW" kind="show" id="5bp-ZV-ceS"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
@@ -55,19 +52,12 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="labelTotalExpenses" destination="hlq-3x-nRn" id="grh-TM-dSK"/>
-                        <outlet property="searchDisplayController" destination="Qvw-Cj-tjp" id="JEw-3b-3ij"/>
                         <outlet property="tableView" destination="HRG-E0-Gj6" id="ZNd-XN-VDG"/>
+                        <segue destination="pwm-VI-swW" kind="show" identifier="expenseDetailSegue" id="hfX-iF-M2h"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gWy-j7-EdW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="Qvw-Cj-tjp">
-                    <connections>
-                        <outlet property="delegate" destination="I5V-oI-fJR" id="sXe-l1-XDy"/>
-                        <outlet property="searchContentsController" destination="I5V-oI-fJR" id="ZCz-gR-U4z"/>
-                        <outlet property="searchResultsDataSource" destination="I5V-oI-fJR" id="LM5-Zh-9rX"/>
-                        <outlet property="searchResultsDelegate" destination="I5V-oI-fJR" id="O6q-n4-dnj"/>
-                    </connections>
-                </searchDisplayController>
+                <searchDisplayController id="Qvw-Cj-tjp"/>
             </objects>
             <point key="canvasLocation" x="2044" y="-796.55172413793105"/>
         </scene>
@@ -77,7 +67,7 @@
                 <viewControllerPlaceholder storyboardName="ExpenseDetails" id="pwm-VI-swW" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VUz-ll-WRm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3119" y="-797"/>
+            <point key="canvasLocation" x="2974" y="-607"/>
         </scene>
     </scenes>
 </document>

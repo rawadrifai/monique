@@ -10,6 +10,7 @@ import UIKit
 import FirebaseDatabase
 import FontAwesomeKit
 import FirebaseStorage
+import DatePickerDialog
 
 class ExpenseDetailsTVC: UITableViewController {
 
@@ -21,11 +22,11 @@ class ExpenseDetailsTVC: UITableViewController {
     @IBOutlet weak var btnCamera: UIButton!
     @IBOutlet weak var txfItem: UITextField!
     @IBOutlet weak var txfPrice: UITextField!
-    @IBOutlet weak var datePicker: UIDatePicker!
+
+    @IBOutlet weak var btnDate: UIButton!
+    @IBOutlet weak var btnCalendar: UIButton!
     
-    @IBOutlet weak var imageViewUp: UIImageView!
     
-    @IBOutlet weak var imageViewDown: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,38 +35,114 @@ class ExpenseDetailsTVC: UITableViewController {
         loadExpense()
     }
     
+
+    
     func setIcons() {
+        
         
         var cameraIconImage = FAKFontAwesome.cameraIcon(withSize: 35).image(with: CGSize(width: 40, height: 40))
         cameraIconImage = cameraIconImage?.imageWithColor(color: UIColor.black)
         btnCamera.setImage(cameraIconImage, for: .normal)
         
-        var upIconImage = FAKFontAwesome.angleUpIcon(withSize: 12).image(with: CGSize(width: 12, height: 12))
-        upIconImage = upIconImage?.imageWithColor(color: UIColor.black)
-        imageViewUp.image = upIconImage
-
         
-        var downIconImage = FAKFontAwesome.angleDownIcon(withSize: 12).image(with: CGSize(width: 12, height: 12))
-        downIconImage = downIconImage?.imageWithColor(color: UIColor.black)
-        imageViewDown.image = downIconImage
+        var calendarIconImage = FAKFontAwesome.angleUpIcon(withSize: 14).image(with: CGSize(width: 30, height: 30))
+        calendarIconImage = calendarIconImage?.imageWithColor(color: UIColor.black)
+        btnCalendar.setImage(calendarIconImage, for: .normal)
+        
 
     }
     
     func loadExpense() {
-        
+
         txfItem.text = expense.item
         txfPrice.text = String(expense.price)
         
-        
-        // get date and convert from string to date
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM/dd/yyyy"
-        let date = dateFormatter.date(from: expense.date)!
-        datePicker.date = date
+        btnDate.setTitle(expense.date, for: .normal)
         
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        save()
+    }
+    
+    func save() {
+        
+        guard validateInput() else {
+            return
+        }
+        
+        self.expense.item = txfItem.text!
+        self.expense.price = Double(txfPrice.text!)!
+        
+        
+        
+        // update values
+        self.ref.child("users/" + self.userId + "/expenses/" + self.expense.id + "/item").setValue(self.expense.item)
+        
+        self.ref.child("users/" + self.userId + "/expenses/" + self.expense.id + "/price").setValue(self.expense.price)
+        
+        self.ref.child("users/" + self.userId + "/expenses/" + self.expense.id + "/date").setValue(self.expense.date)
+        
+        self.ref.child("users/" + self.userId + "/expenses/" + self.expense.id + "/sortingDate").setValue(self.expense.sortingDate)
+        
+        
+        if let del = self.delegate {
+            del.expenseChanged()
+        }
+        
+    }
+
+    func validateInput() -> Bool {
+        
+        
+        let item = txfItem.text ?? ""
+        let price = txfPrice.text ?? ""
+        
+        
+        // validate input
+        if (item.trimmingCharacters(in: .whitespacesAndNewlines) == "") {
+            alert(title: "Invalid Input", message: "Invalid Item")
+            return false
+        }
+
+        if (price.trimmingCharacters(in: .whitespacesAndNewlines) == "") {
+            alert(title: "Invalid Input", message: "Invalid Price")
+            return false
+        }
+        
+        return true
+    }
+
+
+    @IBAction func btnCalendarClick(_ sender: UIButton) {
+        
+        DatePickerDialog().show(title: "DatePicker", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", datePickerMode: .date) {
+            (date) -> Void in
+            
+            guard date != nil else {
+                return
+            }
+            
+            let calendar = Calendar.current
+            let year = calendar.component(.year, from: date!)
+            let month = calendar.component(.month, from: date!)
+            let day = calendar.component(.day, from: date!)
+            
+            let yearString = String(format: "%04d", year)
+            let monthString = String(format: "%02d", month)
+            let dayString = String(format: "%02d", day)
+            
+            let dateString = String(month) + "-" + String(day) + "-" + String(year)
+            
+            let sortingdate = yearString + "-" + monthString + "-" + dayString
+            
+            self.btnDate.setTitle(dateString, for: .normal)
+            
+            // give the values to the expense object from now
+            self.expense.date = dateString
+            self.expense.sortingDate = sortingdate
+        }
+    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -94,9 +171,6 @@ class ExpenseDetailsTVC: UITableViewController {
             imageView.sd_setImage(with: URL(string: receipt.imageUrl), completed: { (img, err, ct, url) in
                 
             })
-            
-            
-            
             
             return cell
         }
@@ -199,34 +273,38 @@ class ExpenseDetailsTVC: UITableViewController {
                 return
             }
             
-                guard metadata != nil else {
-                    print("error occurred")
-                    return
-                }
-                
-                let receipt = Receipt()
-                receipt.id = fileName
-                receipt.imageUrl = (metadata?.downloadURL()?.absoluteString)!
-                receipt.uploadDate = String(Date().timeIntervalSince1970)
-                
-                self.expense.receipts.append(receipt)
-                
-                
-                self.ref.child(path + receipt.id + "/imageUrl").setValue(receipt.imageUrl)
-                self.ref.child(path + receipt.id + "/uploadDate").setValue(receipt.uploadDate)
-                
-                self.expense.receipts.sort { $0.uploadDate > $1.uploadDate }
-                
-                
-                self.tableView.reloadData()
-                
-                if let del = self.delegate {
-                    del.expenseChanged()
-                }
-                
+            guard metadata != nil else {
+                print("error occurred")
+                return
+            }
+            
+            let receipt = Receipt()
+            receipt.id = fileName
+            receipt.imageUrl = (metadata?.downloadURL()?.absoluteString)!
+            receipt.uploadDate = String(Date().timeIntervalSince1970)
+            
+            self.expense.receipts.append(receipt)
+            
+            
+            self.ref.child(path + receipt.id + "/imageUrl").setValue(receipt.imageUrl)
+            self.ref.child(path + receipt.id + "/uploadDate").setValue(receipt.uploadDate)
+            
+            self.expense.receipts.sort { $0.uploadDate > $1.uploadDate }
+            
+            
+            self.tableView.reloadData()
+            
+            if let del = self.delegate {
+                del.expenseChanged()
+            }
         }
     }
     
+    func alert(title:String, message:String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 
 extension ExpenseDetailsTVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {

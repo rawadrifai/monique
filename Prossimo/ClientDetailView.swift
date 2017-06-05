@@ -383,8 +383,6 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         
         if let cell = Bundle.main.loadNibNamed("ClientDetailsCell", owner: self, options: nil)?.first as? ClientDetailsCell
 
-        
-        //if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? ClientDetailsTableViewCell
         {
             var humanReadableDate = ""
             var notes = ""

@@ -22,18 +22,12 @@ class ExpensesTVC: UITableViewController {
     @IBOutlet weak var labelTotalExpenses: UILabel!
     
     
-    // every time the page shows (including when going back to it from the nav)
-    override func viewDidAppear(_ animated: Bool) {
-        
-        super.viewDidAppear(animated)
-        
-        getExpenses()
-    }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         getExpenses()
+
     }
 
 
@@ -57,7 +51,7 @@ class ExpensesTVC: UITableViewController {
             
             
             cell.labelItem.text = expense.item
-            cell.labelPrice.text = String(expense.price)
+            cell.labelPrice.text = "$" + String(expense.price)
             cell.labelDate.text = expense.date
             
             
@@ -77,7 +71,7 @@ class ExpensesTVC: UITableViewController {
         
         if let _ = tableView.cellForRow(at: indexPath) {
             
-            self.performSegue(withIdentifier: "", sender: self)
+            self.performSegue(withIdentifier: "expenseDetailsSegue", sender: self)
             
         }
     }
@@ -124,7 +118,29 @@ class ExpensesTVC: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        
+        if segue.identifier == "expenseDetailsSegue" {
+            
+            if let destination = segue.destination as? ExpenseDetailsTVC {
+
+                    // get selected row
+                    let selectedRow:Int = (self.tableView.indexPathForSelectedRow?.row)!
+                    
+                    // sometimes it crashes because index out of bounds, so this is to prevent that
+                    guard selectedRow < expenses.count && selectedRow >= 0 else {
+                        return
+                    }
+                    
+                    destination.expense = expenses[selectedRow]
+                    destination.userId = self.userId
+               
+            }
+        }
+            // set userId if we're going to add a client
+        else if segue.identifier == "newClientSegue" {
+            if let destination = segue.destination as? NewClientVC {
+                
+            }
+        }
     }
     
     
@@ -185,6 +201,7 @@ class ExpensesTVC: UITableViewController {
                     self.expenses.append(expense)
                 }
                 self.expenses.sort { $0.sortingDate > $1.sortingDate }
+                self.reloadTableDataFromUIThread()
             }
             
             self.setAggregates()

@@ -2,6 +2,7 @@ PODS:
   - CleverTap-iOS-SDK (3.1.2):
     - CleverTap-iOS-SDK/Main (= 3.1.2)
   - CleverTap-iOS-SDK/Main (3.1.2)
+  - DatePickerDialog (1.1.7)
   - Firebase (3.17.0):
     - Firebase/Core (= 3.17.0)
   - Firebase/Auth (3.17.0):
@@ -78,6 +79,7 @@ PODS:
 
 DEPENDENCIES:
   - CleverTap-iOS-SDK
+  - DatePickerDialog
   - Firebase
   - Firebase/Auth
   - Firebase/Core
@@ -93,6 +95,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   CleverTap-iOS-SDK: c054bb514fd8efafc92180acf234711097ad6773
+  DatePickerDialog: bd5e7e92e4da2c6a8966b28d5f5d8f335d6c2c63
   Firebase: 4b66b5b59c43edac745b87f0c87e42cdd0279c13
   FirebaseAnalytics: e5fe8486efc01bec33f6bf82e2fa9fce4b124052
   FirebaseAuth: cc8a1824170adbd351edb7f994490a3fb5c18be6
@@ -112,6 +115,6 @@ SPEC CHECKSUMS:
   NYTPhotoViewer: e80e8767f3780d2df37c6f72cbab15d6c7232911
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
 
-PODFILE CHECKSUM: 3246da2d95c8a6323a1be4518d00aea842193766
+PODFILE CHECKSUM: 3185a3d0a931d19979dc55f23dcc5841237350c3
 
 COCOAPODS: 1.2.1
