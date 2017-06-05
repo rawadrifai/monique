@@ -25,11 +25,11 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="cell" rowHeight="90" id="01N-rN-Uuv">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" rowHeight="90" id="01N-rN-Uuv">
                                 <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="01N-rN-Uuv" id="jPU-XM-PMF">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="89.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -53,7 +53,7 @@
                     <connections>
                         <outlet property="labelTotalExpenses" destination="hlq-3x-nRn" id="grh-TM-dSK"/>
                         <outlet property="tableView" destination="HRG-E0-Gj6" id="ZNd-XN-VDG"/>
-                        <segue destination="pwm-VI-swW" kind="show" identifier="expenseDetailSegue" id="hfX-iF-M2h"/>
+                        <segue destination="pwm-VI-swW" kind="show" identifier="expenseDetailsSegue" id="hfX-iF-M2h"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gWy-j7-EdW" userLabel="First Responder" sceneMemberID="firstResponder"/>

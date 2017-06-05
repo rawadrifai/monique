@@ -121,18 +121,18 @@ class ExpensesTVC: UITableViewController {
         if segue.identifier == "expenseDetailsSegue" {
             
             if let destination = segue.destination as? ExpenseDetailsTVC {
-
-                    // get selected row
-                    let selectedRow:Int = (self.tableView.indexPathForSelectedRow?.row)!
-                    
-                    // sometimes it crashes because index out of bounds, so this is to prevent that
-                    guard selectedRow < expenses.count && selectedRow >= 0 else {
-                        return
-                    }
-                    
-                    destination.expense = expenses[selectedRow]
-                    destination.userId = self.userId
-               
+                
+                // get selected row
+                let selectedRow:Int = (self.tableView.indexPathForSelectedRow?.row)!
+                
+                // sometimes it crashes because index out of bounds, so this is to prevent that
+                guard selectedRow < expenses.count && selectedRow >= 0 else {
+                    return
+                }
+                
+                destination.expense = expenses[selectedRow]
+                destination.userId = self.userId
+                
             }
         }
             // set userId if we're going to add a client

@@ -45,7 +45,7 @@ class ExpenseDetailsTVC: UITableViewController {
         btnCamera.setImage(cameraIconImage, for: .normal)
         
         
-        var calendarIconImage = FAKFontAwesome.angleUpIcon(withSize: 14).image(with: CGSize(width: 30, height: 30))
+        var calendarIconImage = FAKFontAwesome.calendarOIcon(withSize: 30).image(with: CGSize(width: 30, height: 30))
         calendarIconImage = calendarIconImage?.imageWithColor(color: UIColor.black)
         btnCalendar.setImage(calendarIconImage, for: .normal)
         
