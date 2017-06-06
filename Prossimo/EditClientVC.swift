@@ -225,20 +225,10 @@ class EditClientVC: UIViewController, UINavigationControllerDelegate, UIImagePic
     func validateInput() -> Bool {
         
         let clientName = txfName.text ?? ""
-        let clientPhone = txfPhone.text ?? ""
-        let clientEmail = txfEmail.text ?? ""
         
         // validate input
         if (clientName.trimmingCharacters(in: .whitespacesAndNewlines) == "") {
             alert(message: "Invalid Name")
-            return false
-        }
-        if (!isValidEmail(testStr: clientEmail)) {
-            alert(message: "Invalid Email")
-            return false
-        }
-        if (clientPhone.trimmingCharacters(in: .whitespacesAndNewlines) == "") {
-            alert(message: "Invalid Phone")
             return false
         }
         

@@ -200,6 +200,7 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
                     if err != nil {
                         //print("received an error: " + (err?.localizedDescription)!)
                     }
+                    self.setAggregates()
                 }
             })
         }))

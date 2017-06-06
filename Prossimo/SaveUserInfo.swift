@@ -122,7 +122,8 @@ class SaveUserInfo: UIViewController {
     
 
     @IBAction func cancel(_ sender: UIBarButtonItem) {
-        let _ = self.navigationController?.popViewController(animated: true)
+        
+        self.dismiss(animated: true, completion: nil)
         
     }
 
@@ -130,7 +131,6 @@ class SaveUserInfo: UIViewController {
     func validateInput() -> Bool {
         
         let clientName = txfName.text ?? ""
-        let clientPhone = txfPhone.text ?? ""
         let clientEmail = txfEmail.text ?? ""
         
         // validate input
@@ -142,11 +142,7 @@ class SaveUserInfo: UIViewController {
             alert(message: "Invalid Email")
             return false
         }
-        if (clientPhone.trimmingCharacters(in: .whitespacesAndNewlines) == "") {
-            alert(message: "Invalid Phone")
-            return false
-        }
-        
+
         return true
     }
     

@@ -245,20 +245,10 @@ class NewClientVC: UIViewController, UINavigationControllerDelegate, UIImagePick
     func validateInput() -> Bool {
         
         let clientName = txfName.text ?? ""
-        let clientPhone = txfPhone.text ?? ""
-        let clientEmail = txfEmail.text ?? ""
         
         // validate input
         if (clientName.trimmingCharacters(in: .whitespacesAndNewlines) == "") {
             alert(title: "Invalid Input", message: "Invalid Name")
-            return false
-        }
-        if (!isValidEmail(testStr: clientEmail)) {
-            alert(title: "Invalid Input", message: "Invalid Email")
-            return false
-        }
-        if (clientPhone.trimmingCharacters(in: .whitespacesAndNewlines) == "") {
-            alert(title: "Invalid Input", message: "Invalid Phone")
             return false
         }
         

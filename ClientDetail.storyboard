@@ -14,7 +14,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Client Detail View-->
+        <!--CLIENT INFO-->
         <scene sceneID="g0d-CE-5jy">
             <objects>
                 <tableViewController id="cdu-h2-G3J" customClass="ClientDetailView" customModule="Prossimo" customModuleProvider="target" sceneMemberID="viewController">
@@ -238,7 +238,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YiL-dx-uHw" userLabel="Btn Starred">
                                                     <rect key="frame" x="115" y="0.0" width="115" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                                    <state key="normal" title="  STARRED">
+                                                    <state key="normal" title="  FAVORITES">
                                                         <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
@@ -290,9 +290,8 @@
                         <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zhR-A0-c2T">
                             <rect key="frame" x="0.0" y="488" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.15686274510000001" green="0.15686274510000001" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="13"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <prototypes>
@@ -311,7 +310,7 @@
                             <outlet property="delegate" destination="cdu-h2-G3J" id="53d-TJ-Js9"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" prompt="CLIENT INFO" id="RNq-Nc-4zr">
+                    <navigationItem key="navigationItem" title="CLIENT INFO" id="RNq-Nc-4zr">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="Sal-wN-lPi">
                             <color key="tintColor" red="0.38431372549019605" green="0.87058823529411766" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>

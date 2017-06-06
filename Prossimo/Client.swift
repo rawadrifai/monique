@@ -27,8 +27,8 @@ class Client {
         self.clientPhone = ""
         self.profileImg = ImageObject()
         
-        self.clientVisits = []
-        self.expenses = []
+        self.clientVisits = [ClientVisit]()
+        self.expenses = [Expense]()
     }
     
     init(clientId:String, clientName:String, clientEmail:String, clientPhone:String) {
@@ -38,8 +38,8 @@ class Client {
         self.clientPhone = clientPhone
         self.profileImg = ImageObject()
         
-        self.clientVisits = []
-        self.expenses = []
+        self.clientVisits = [ClientVisit]()
+        self.expenses = [Expense]()
     }
     
     init(clientId:String, clientName:String, clientEmail:String, clientPhone:String, profileImg:ImageObject) {
@@ -49,8 +49,8 @@ class Client {
         self.clientPhone = clientPhone
         self.profileImg = profileImg
         
-        self.clientVisits = []
-        self.expenses = []
+        self.clientVisits = [ClientVisit]()
+        self.expenses = [Expense]()
     }
     
 }
@@ -71,7 +71,7 @@ class Expense {
         price = 0
         date = ""
         sortingDate = ""
-        receipts = []
+        receipts = [Receipt]()
     }
     
     init(id:String, item:String, price:Double, date:String, sortingDate:String) {
@@ -81,7 +81,7 @@ class Expense {
         self.price = price
         self.date = date
         self.sortingDate = sortingDate
-        self.receipts = []
+        self.receipts = [Receipt]()
     }
 }
 

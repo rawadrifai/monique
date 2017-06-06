@@ -79,6 +79,7 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         originalLinePosition = line.frame
         
         fillData()
+        setAggregates()
         
         
     }
@@ -98,6 +99,8 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         }
         
         self.tableView.reloadData()
+        
+        self.setAggregates()
     }
     
     func makeUIChanges() {
@@ -229,22 +232,8 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
     @IBAction func newHaircut(_ sender: UIButton)
     {
         
-
-        
-        let date = Date()
-        let calendar = Calendar.current
-        let year = calendar.component(.year, from: date)
-        let yearString = String(format: "%04d", year)
-        
-        let month = calendar.component(.month, from: date)
-        let monthString = String(format: "%02d", month)
-        
-        let day = calendar.component(.day, from: date)
-        let dayString = String(format: "%02d", day)
-
-        
-        let visitdate = String(month) + "-" + String(day) + "-" + String(year)
-        let sorteddate = yearString + "-" + monthString + "-" + dayString
+        let visitdate = Commons.getTodaysShortDate()
+        let sorteddate = Commons.getTodaysSortingDate()
         
         
         // if visit date exists then don't add it
@@ -344,6 +333,10 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
             self.labelChangePicture.isHidden = false
         }
         
+    }
+
+    func setAggregates() {
+        
         var aggregate = ""
         
         aggregate = String(self.client.clientVisits.count) + " VISITS - "
@@ -363,7 +356,6 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
             self.labelClientAggregate.isHidden = true
         }
     }
-
     
     // must exist: returns number of rows
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -471,6 +463,7 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
                 self.client.clientVisits.remove(at: indexPath.row)
                 self.tableView.reloadData()
                 self.setLastVisit()
+                self.setAggregates()
                 
                 // delete from firebase
                 let storageRef = FIRStorage.storage().reference().child(self.userId + "/clients/" + self.client.clientId + "/visits/" + visitToBeDeleted.visitDate)
@@ -481,6 +474,7 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
                     if err != nil {
                         //print("received an error: " + (err?.localizedDescription)!)
                     }
+                    
                 }
             })
         }))

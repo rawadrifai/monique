@@ -40,4 +40,36 @@ public class Commons {
         
     }
     
+    static func getTodaysShortDate() -> String {
+        
+        let date = Date()
+        let calendar = Calendar.current
+        let year = calendar.component(.year, from: date)
+        
+        let month = calendar.component(.month, from: date)
+        let day = calendar.component(.day, from: date)
+        let todaysDate = String(month) + "-" + String(day) + "-" + String(year)
+        
+        return todaysDate
+        
+    }
+    
+    static func getTodaysSortingDate() -> String {
+        
+        let date = Date()
+        let calendar = Calendar.current
+        let year = calendar.component(.year, from: date)
+        let yearString = String(format: "%04d", year)
+        
+        let month = calendar.component(.month, from: date)
+        let monthString = String(format: "%02d", month)
+        
+        let day = calendar.component(.day, from: date)
+        let dayString = String(format: "%02d", day)
+        
+        let sortingDate = yearString + "-" + monthString + "-" + dayString
+        return sortingDate
+        
+    }
+    
 }

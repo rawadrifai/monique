@@ -33,15 +33,15 @@ class ExpenseDetailsTVC: UITableViewController {
 
         setIcons()
         loadExpense()
+
     }
     
-
     
     func setIcons() {
         
         
         var cameraIconImage = FAKFontAwesome.cameraIcon(withSize: 35).image(with: CGSize(width: 40, height: 40))
-        cameraIconImage = cameraIconImage?.imageWithColor(color: UIColor.black)
+        cameraIconImage = cameraIconImage?.imageWithColor(color: UIColor.darkGray)
         btnCamera.setImage(cameraIconImage, for: .normal)
         
         
@@ -54,8 +54,17 @@ class ExpenseDetailsTVC: UITableViewController {
     
     func loadExpense() {
 
-        txfItem.text = expense.item
-        txfPrice.text = String(expense.price)
+        if self.expense.date != "" {
+            btnDate.setTitle(expense.date, for: .normal)
+        }
+        
+        if self.expense.item != "" {
+            txfItem.text = expense.item
+        }
+        
+        if self.expense.price != 0 {
+            txfPrice.text = "$" + String(format: "%.2f", expense.price)
+        }
         
         btnDate.setTitle(expense.date, for: .normal)
         
@@ -65,24 +74,43 @@ class ExpenseDetailsTVC: UITableViewController {
         save()
     }
     
+    
+    @IBAction func priceChanged(_ sender: UITextField) {
+        
+        guard let price = txfPrice.text?.replacingOccurrences(of: "$", with: "")
+            else {
+                return
+        }
+
+        
+        if price == "" {
+            txfPrice.text = ""
+        }
+        else {
+            txfPrice.text = "$" + price
+        }
+        
+    
+    }
+    
     func save() {
         
+        self.ref = FIRDatabase.database().reference()
+
+
         guard validateInput() else {
             return
         }
         
         self.expense.item = txfItem.text!
-        self.expense.price = Double(txfPrice.text!)!
+        self.expense.price = Double((txfPrice.text?.replacingOccurrences(of: "$", with: ""))!)!
         
-        
+        // date and sortingDate are already changed from the date picker
         
         // update values
         self.ref.child("users/" + self.userId + "/expenses/" + self.expense.id + "/item").setValue(self.expense.item)
-        
         self.ref.child("users/" + self.userId + "/expenses/" + self.expense.id + "/price").setValue(self.expense.price)
-        
         self.ref.child("users/" + self.userId + "/expenses/" + self.expense.id + "/date").setValue(self.expense.date)
-        
         self.ref.child("users/" + self.userId + "/expenses/" + self.expense.id + "/sortingDate").setValue(self.expense.sortingDate)
         
         
@@ -181,9 +209,7 @@ class ExpenseDetailsTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
         
-        
         let delete = UITableViewRowAction(style: .default, title: "Delete") { action, index in
-            
             
             // get an instance of the image to be deleted
             let receiptToBeDeleted = self.expense.receipts[indexPath.row]
@@ -193,23 +219,13 @@ class ExpenseDetailsTVC: UITableViewController {
             
             // delete from firebase database, with completion block
             
-            self.ref.child("users/" + self.userId + "/expenses/" + self.expense.id).removeValue { (err, ref) in
+            self.ref.child("users/" + self.userId + "/expenses/" + self.expense.id + "/receipts/" + receiptToBeDeleted.id).removeValue { (err, ref) in
                 
                 self.expense.receipts.remove(at: indexPath.row)
-                
-                
                 self.tableView.reloadData()
                 
-                // delete from firebase
-                let storageRef = FIRStorage.storage().reference().child("users/" + self.userId + "/expenses/" + self.expense.id + receiptToBeDeleted.id)
+                self.deleteImageFromFirebase(path: "users/" + self.userId + "/expenses/" + self.expense.id + "/receipts/", fileName: receiptToBeDeleted.id)
                 
-                
-                storageRef.delete { (err) in
-                    
-                    if err != nil {
-                        print("received an error: " + (err?.localizedDescription)!)
-                    }
-                }
             }
         }
         
@@ -264,6 +280,8 @@ class ExpenseDetailsTVC: UITableViewController {
     
     func uploadImageToFirebase(data: Data, path: String, fileName: String) {
         
+        self.ref = FIRDatabase.database().reference()
+
         // get storage service reference
         let storageRef = FIRStorage.storage().reference(withPath: path + fileName)
         storageRef.put(data, metadata: nil) { (metadata, err) in
@@ -300,6 +318,22 @@ class ExpenseDetailsTVC: UITableViewController {
         }
     }
     
+    func deleteImageFromFirebase(path: String, fileName: String) {
+        
+        let storageRef = FIRStorage.storage().reference(withPath: path + fileName)
+        
+        storageRef.delete { (err) in
+            
+            print("receipt deleted from storage")
+            
+            if err != nil {
+                print("received an error: " + (err?.localizedDescription)!)
+            }
+            
+        }
+    }
+    
+    
     func alert(title:String, message:String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
@@ -320,7 +354,7 @@ extension ExpenseDetailsTVC: UIImagePickerControllerDelegate, UINavigationContro
             // compress the image
             let compressedImageData = UIImageJPEGRepresentation(image, 0)
             
-            uploadImageToFirebase(data: compressedImageData!, path: "users/" + userId + "/expenses/" + expense.id + "/", fileName: UUID().uuidString)
+            uploadImageToFirebase(data: compressedImageData!, path: "users/" + userId + "/expenses/" + expense.id + "/receipts/" , fileName: UUID().uuidString)
         }
         
         self.dismiss(animated: true, completion: nil)

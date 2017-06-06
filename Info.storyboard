@@ -403,7 +403,7 @@
             </objects>
             <point key="canvasLocation" x="888.79999999999995" y="1163.568215892054"/>
         </scene>
-        <!--View Controller-->
+        <!--TERMS OF SERVICE-->
         <scene sceneID="1tJ-nY-jXC">
             <objects>
                 <viewController id="PIx-bd-12k" sceneMemberID="viewController">
@@ -416,7 +416,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Fj-kC-KI9">
-                                <rect key="frame" x="16" y="94" width="343" height="524"/>
+                                <rect key="frame" x="16" y="64" width="343" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">The following terms and conditions govern all use of the Prossimo website and the related mobile app (collectively, the “Service”). The Service is owned and operated by Prossimo (“Prossimo”). The Website is offered subject to your acceptance without modification of all of the terms and conditions contained herein and all other operating rules, policies (including, without limitation, Prossimo’ Privacy Policy) and procedures that may be published from time to time on this Site by Prossimo (collectively, the “Agreement”).
 
@@ -484,13 +484,13 @@ This Agreement was last modified on 03/20/2017</string>
                             <constraint firstItem="0Fj-kC-KI9" firstAttribute="trailing" secondItem="j4o-fJ-qwC" secondAttribute="trailingMargin" id="zi3-SH-07h"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" prompt="TERMS OF SERVICE" id="55b-ie-yZU"/>
+                    <navigationItem key="navigationItem" title="TERMS OF SERVICE" id="55b-ie-yZU"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZWJ-6R-BYq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2473" y="2131"/>
         </scene>
-        <!--View Controller-->
+        <!--PRIVACY POLICY-->
         <scene sceneID="yda-R2-ztM">
             <objects>
                 <viewController id="X0f-dE-DfG" sceneMemberID="viewController">
@@ -503,7 +503,7 @@ This Agreement was last modified on 03/20/2017</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4RT-Mg-PIu">
-                                <rect key="frame" x="16" y="94" width="343" height="524"/>
+                                <rect key="frame" x="16" y="64" width="343" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">This Privacy Policy describes all Prossimo apps policies and procedures on the collection, use and disclosure of your information. Prossimo receives your information through our various web sites, SMS, APIs, and other services (“Services”). When using any of our Services you consent to the collection, transfer, manipulation, storage, disclosure and other uses of your information as described in this Privacy Policy. Irrespective of which country that you reside in or create information from, your information may be used by Prossimo in the United States or any other country where Prossimo operates.
 
@@ -558,7 +558,7 @@ This Privacy Policy may be updated from time to time for any reason. We will not
                             <constraint firstItem="4RT-Mg-PIu" firstAttribute="leading" secondItem="r1g-Jd-jZt" secondAttribute="leadingMargin" id="dZO-Dh-87m"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" prompt="PRIVACY POLICY" id="hfO-r8-BwD"/>
+                    <navigationItem key="navigationItem" title="PRIVACY POLICY" id="hfO-r8-BwD"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="543-1S-0To" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -796,7 +796,7 @@ This Privacy Policy may be updated from time to time for any reason. We will not
             </objects>
             <point key="canvasLocation" x="364" y="2129.6851574212897"/>
         </scene>
-        <!--View Controller-->
+        <!--OUR STORY-->
         <scene sceneID="eTs-mT-RVn">
             <objects>
                 <viewController id="8U2-2v-cqz" sceneMemberID="viewController">
@@ -809,7 +809,7 @@ This Privacy Policy may be updated from time to time for any reason. We will not
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eDX-f8-qA1">
-                                <rect key="frame" x="16" y="94" width="343" height="524"/>
+                                <rect key="frame" x="16" y="64" width="343" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">I was getting a haircut at Floyd's in Venice, CA. Like usual chatting with my stylist, I asked her if I can develop something to help her with her daily job. Light bulb. Fast forward 4 months, we're writing this app description..
 
@@ -830,7 +830,7 @@ Cheers!</string>
                             <constraint firstItem="eDX-f8-qA1" firstAttribute="trailing" secondItem="O3T-tz-sbR" secondAttribute="trailingMargin" id="paQ-Sp-OqC"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" prompt="OUR STORY" id="KZR-rX-ygt"/>
+                    <navigationItem key="navigationItem" title="OUR STORY" id="KZR-rX-ygt"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ktC-pg-dcm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -844,7 +844,7 @@ Cheers!</string>
             </objects>
             <point key="canvasLocation" x="1748" y="799"/>
         </scene>
-        <!--My InfoVC-->
+        <!--MY INFO-->
         <scene sceneID="okI-vK-9Wj">
             <objects>
                 <viewController id="MIT-vx-L0S" customClass="MyInfoVC" customModule="Prossimo" customModuleProvider="target" sceneMemberID="viewController">
@@ -869,7 +869,7 @@ Cheers!</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0iW-Ha-ESd">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone (Optional)" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0iW-Ha-ESd">
                                         <rect key="frame" x="0.0" y="62.5" width="323" height="52.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -909,13 +909,12 @@ Cheers!</string>
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PROFILE INFO" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zWT-5P-9jB">
-                                <rect key="frame" x="0.0" y="117" width="375" height="58"/>
-                                <color key="backgroundColor" red="0.15686274510000001" green="0.15686274510000001" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="0.0" y="100" width="375" height="58"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="58" id="hxw-h2-Fg4"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -925,11 +924,11 @@ Cheers!</string>
                             <constraint firstAttribute="trailingMargin" secondItem="vzw-Os-EXh" secondAttribute="trailing" constant="10" id="FfN-vE-CHe"/>
                             <constraint firstAttribute="trailing" secondItem="zWT-5P-9jB" secondAttribute="trailing" id="U15-tt-UTr"/>
                             <constraint firstItem="vzw-Os-EXh" firstAttribute="leading" secondItem="bPH-io-GE6" secondAttribute="leadingMargin" constant="10" id="cQV-6y-0zt"/>
-                            <constraint firstItem="vzw-Os-EXh" firstAttribute="top" secondItem="zWT-5P-9jB" secondAttribute="bottom" constant="52" id="eca-rf-iIE"/>
+                            <constraint firstItem="vzw-Os-EXh" firstAttribute="top" secondItem="zWT-5P-9jB" secondAttribute="bottom" constant="69" id="eca-rf-iIE"/>
                             <constraint firstItem="vzw-Os-EXh" firstAttribute="centerY" secondItem="bPH-io-GE6" secondAttribute="centerY" constant="22.25" id="ore-Vy-bgh"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" prompt="MY INFO" id="1bT-dw-GCm"/>
+                    <navigationItem key="navigationItem" title="MY INFO" id="1bT-dw-GCm"/>
                     <connections>
                         <outlet property="btnSave" destination="JVz-mY-6gM" id="Spd-lg-4Up"/>
                         <outlet property="txfEmail" destination="n9m-n8-yCI" id="a7t-ne-Voy"/>

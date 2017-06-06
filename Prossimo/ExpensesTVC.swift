@@ -25,11 +25,20 @@ class ExpensesTVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         getExpenses()
-
     }
 
+    
+    @IBAction func plusClicked(_ sender: UIBarButtonItem) {
+        
+        self.performSegue(withIdentifier: "expenseDetailsSegue", sender: self)
+        
+    }
 
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -45,13 +54,20 @@ class ExpensesTVC: UITableViewController {
         {
             let expense = Expense()
             
+            
             expense.item = expenses[indexPath.row].item
             expense.price = expenses[indexPath.row].price
             expense.date = expenses[indexPath.row].date
             
             
-            cell.labelItem.text = expense.item
-            cell.labelPrice.text = "$" + String(expense.price)
+            if expense.item == "" {
+                cell.labelItem.text = "No Item"
+            } else {
+                cell.labelItem.text = expense.item
+            }
+            
+            
+            cell.labelPrice.text = "$" + String(format: "%.2f", expense.price)
             cell.labelDate.text = expense.date
             
             
@@ -116,31 +132,42 @@ class ExpensesTVC: UITableViewController {
     }
     
     
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "expenseDetailsSegue" {
             
             if let destination = segue.destination as? ExpenseDetailsTVC {
                 
-                // get selected row
-                let selectedRow:Int = (self.tableView.indexPathForSelectedRow?.row)!
-                
-                // sometimes it crashes because index out of bounds, so this is to prevent that
-                guard selectedRow < expenses.count && selectedRow >= 0 else {
-                    return
+                // if the plus sign is clicked
+                if self.tableView.indexPathForSelectedRow == nil {
+                    
+                    // create a generic expense object with id and todays dates
+                    let expense = Expense()
+                    expense.id = UUID().uuidString
+                    expense.date = Commons.getTodaysShortDate()
+                    expense.sortingDate = Commons.getTodaysSortingDate()
+                    
+                    destination.expense = expense
+                    destination.userId = self.userId
+                    
+                } else { // if a row is selected
+                    
+                    // get selected row
+                    let selectedRow:Int = (self.tableView.indexPathForSelectedRow?.row)!
+                    
+                    // sometimes it crashes because index out of bounds, so this is to prevent that
+                    guard selectedRow < expenses.count && selectedRow >= 0 else {
+                        return
+                    }
+                    
+                    destination.expense = expenses[selectedRow]
+                    destination.userId = self.userId
                 }
                 
-                destination.expense = expenses[selectedRow]
-                destination.userId = self.userId
-                
             }
         }
-            // set userId if we're going to add a client
-        else if segue.identifier == "newClientSegue" {
-            if let destination = segue.destination as? NewClientVC {
-                
-            }
-        }
+
     }
     
     
@@ -169,17 +196,22 @@ class ExpensesTVC: UITableViewController {
             // Expenses
             if let expenses = snapshot.value as? NSDictionary {
                 
-                // loop through visits
-                for expense in (expenses.allValues) {
-                    
-                    let expenseInfo = expense as! NSDictionary
-                    
+                // loop through visit keys (which are the expense ids)
+                
+                for e in (expenses.allKeys) {
+
                     let expense = Expense()
+                    expense.id = e as! String
+                    
+                    // get rest of the client info
+                    let expenseInfo = (expenses.value(forKey: expense.id) as? NSDictionary)!
                     
                     expense.item = expenseInfo.value(forKey: "item") as? String ?? ""
                     expense.price = expenseInfo.value(forKey: "price") as? Double ?? 0
                     expense.date = expenseInfo.value(forKey: "date") as? String ?? ""
-                    
+
+                    expense.sortingDate = expenseInfo.value(forKey: "sortingDate") as? String ?? ""
+
                     
                     // get the images for each receipt
                     if let receipts = (expenseInfo.value(forKey: "receipts") as? NSDictionary) {
@@ -222,9 +254,16 @@ class ExpensesTVC: UITableViewController {
             totalExpenses = totalExpenses + e.price
         }
         
+        // hide label if total is 0
+        if totalExpenses == 0 {
+            self.labelTotalExpenses.isHidden = true
+            return
+        }
         let aggregateString = "$" + String(totalExpenses)
             + " TOTAL"
         self.labelTotalExpenses.text = aggregateString
+        
+        
     }
 
     
@@ -233,7 +272,9 @@ class ExpensesTVC: UITableViewController {
 extension ExpensesTVC: ExpenseDetailsDelegate {
     
     func expenseChanged() {
-        self.reloadTableDataFromUIThread()
+        
+//        self.getExpenses()
+//        self.reloadTableDataFromUIThread()
     }
 }
 

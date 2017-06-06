@@ -34,6 +34,7 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
     @IBOutlet weak var btnPrice1: UIButton!
     @IBOutlet weak var btnPrice2: UIButton!
     @IBOutlet weak var btnPrice3: UIButton!
+    @IBOutlet weak var btnCamera: UIButton!
     
     var price1Selected = false
     var price2Selected = false
@@ -97,6 +98,10 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         femaleIconImage = femaleIconImage?.imageWithColor(color: Commons.myPinkColor)
         btnFemale.setImage(femaleIconImage, for: .normal)
         
+        
+        var cameraIconImage = FAKFontAwesome.cameraIcon(withSize: 35).image(with: CGSize(width: 40, height: 40))
+        cameraIconImage = cameraIconImage?.imageWithColor(color: UIColor.darkGray)
+        btnCamera.setImage(cameraIconImage, for: .normal)
         
         
         
@@ -459,7 +464,7 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         setStarIcon(selected: self.client.clientVisits[selectedVisitIndex].starred)
         //self.title = Commons.getHumanReadableDate(dateString: self.client.clientVisits[selectedVisitIndex].visitDate)
         
-        self.navigationItem.prompt = Commons.getHumanReadableDate(dateString: self.client.clientVisits[selectedVisitIndex].visitDate)
+        self.title = Commons.getHumanReadableDate(dateString: self.client.clientVisits[selectedVisitIndex].visitDate)
         
         let priceDouble = self.client.clientVisits[selectedVisitIndex].price
         
@@ -504,7 +509,7 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
     }
     
     
-    @IBAction func cameraClick(_ sender: UIBarButtonItem) {
+    @IBAction func cameraClick(_ sender: UIButton) {
         
         displayImageAlert()
         
