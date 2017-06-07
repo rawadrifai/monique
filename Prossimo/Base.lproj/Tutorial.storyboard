@@ -32,9 +32,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhw-Rg-wna">
-                                <rect key="frame" x="36" y="288" width="303" height="90"/>
+                                <rect key="frame" x="36" y="293" width="303" height="80"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="90" id="BFU-VM-78n"/>
+                                    <constraint firstAttribute="height" constant="80" id="BFU-VM-78n"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="28"/>
                                 <state key="normal" title="GET STARTED">
@@ -45,7 +45,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HOPE YOU LIKE US!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RnT-Eb-MqC">
-                                <rect key="frame" x="0.0" y="423" width="375" height="23"/>
+                                <rect key="frame" x="0.0" y="418" width="375" height="23"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="23" id="gVq-oM-DxO"/>

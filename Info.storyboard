@@ -887,17 +887,8 @@ Cheers!</string>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7vL-oM-SqX">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PROFILE INFO" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zWT-5P-9jB">
-                                                <rect key="frame" x="0.0" y="40" width="375" height="58"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="58" id="M9o-it-EE9"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
-                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="vzw-Os-EXh">
-                                                <rect key="frame" x="20" y="113" width="335" height="257.5"/>
+                                                <rect key="frame" x="20" y="25" width="335" height="257.5"/>
                                                 <subviews>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Pv3-Vs-3TF">
                                                         <rect key="frame" x="0.0" y="0.0" width="335" height="52.5"/>
@@ -951,13 +942,10 @@ Cheers!</string>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="zWT-5P-9jB" firstAttribute="leading" secondItem="7vL-oM-SqX" secondAttribute="leading" id="1EF-FU-c8V"/>
-                                            <constraint firstItem="zWT-5P-9jB" firstAttribute="top" secondItem="7vL-oM-SqX" secondAttribute="top" constant="40" id="H1d-Yh-TKI"/>
+                                            <constraint firstAttribute="trailing" secondItem="vzw-Os-EXh" secondAttribute="trailing" constant="20" id="HXD-iR-3ML"/>
                                             <constraint firstAttribute="height" constant="554" id="JEV-lo-6Gk"/>
-                                            <constraint firstAttribute="trailing" secondItem="zWT-5P-9jB" secondAttribute="trailing" id="LuP-he-eXn"/>
-                                            <constraint firstAttribute="trailing" secondItem="vzw-Os-EXh" secondAttribute="trailing" constant="20" id="bn7-x3-cHg"/>
-                                            <constraint firstItem="vzw-Os-EXh" firstAttribute="leading" secondItem="7vL-oM-SqX" secondAttribute="leading" constant="20" id="vyA-6c-fgr"/>
-                                            <constraint firstItem="vzw-Os-EXh" firstAttribute="top" secondItem="zWT-5P-9jB" secondAttribute="bottom" constant="15" id="ytO-LX-4In"/>
+                                            <constraint firstItem="vzw-Os-EXh" firstAttribute="top" secondItem="7vL-oM-SqX" secondAttribute="top" constant="25" id="TjC-Iv-Tag"/>
+                                            <constraint firstItem="vzw-Os-EXh" firstAttribute="leading" secondItem="7vL-oM-SqX" secondAttribute="leading" constant="20" id="bjz-Lv-FjT"/>
                                         </constraints>
                                     </view>
                                 </subviews>
