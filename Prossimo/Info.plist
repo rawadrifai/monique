@@ -2,21 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>fb</string>
-		<string>instagram</string>
-	</array>
-	<key>UIAppFonts</key>
-	<array>
-		<string>FontAwesome.otf</string>
-	</array>
-	<key>NSContactsUsageDescription</key>
-	<string></string>
-	<key>CleverTapAccountID</key>
-	<string>8R5-W74-494Z</string>
-	<key>CleverTapToken</key>
-	<string>4a0-52b</string>
 	<key>CFBundleDisplayName</key>
 	<string>Prossimo</string>
 	<key>CFBundleExecutable</key>
@@ -30,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.5</string>
+	<string>2.3</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -51,7 +36,11 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1.5</string>
+	<string>2.3</string>
+	<key>CleverTapAccountID</key>
+	<string>8R5-W74-494Z</string>
+	<key>CleverTapToken</key>
+	<string>4a0-52b</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -66,12 +55,23 @@
 			</dict>
 		</array>
 	</dict>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fb</string>
+		<string>instagram</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>Your images are safe here!</string>
+	<string>Prossimo needs to access the camera</string>
+	<key>NSContactsUsageDescription</key>
+	<string>Prossimo needs to access contacts</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Your images are safe here!</string>
+	<string>Prossimo needs to access photo library</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>FontAwesome.otf</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

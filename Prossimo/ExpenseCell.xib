@@ -20,11 +20,11 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fwe-5J-k9J">
-                        <rect key="frame" x="38" y="50" width="188" height="21"/>
+                        <rect key="frame" x="38" y="54" width="171" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="JSb-PN-nEX"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -45,12 +45,12 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="price" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t1v-hr-33H">
-                        <rect key="frame" x="214" y="50" width="85" height="21"/>
+                        <rect key="frame" x="214" y="54" width="85" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="85" id="Hj1-4P-KyC"/>
                             <constraint firstAttribute="height" constant="21" id="gIs-K1-l2m"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -59,13 +59,13 @@
                     <constraint firstItem="fwe-5J-k9J" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="30" id="2Hf-SB-8cK"/>
                     <constraint firstItem="gpb-UQ-uKQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="2Sv-2h-AQR"/>
                     <constraint firstItem="bXO-d2-GQa" firstAttribute="leading" secondItem="gpb-UQ-uKQ" secondAttribute="trailing" constant="5" id="DM5-Tu-3GM"/>
-                    <constraint firstItem="t1v-hr-33H" firstAttribute="leading" secondItem="fwe-5J-k9J" secondAttribute="trailing" constant="-12" id="H5O-SX-DQ1"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="fwe-5J-k9J" secondAttribute="bottom" constant="10.5" id="Qxz-mV-oLy"/>
+                    <constraint firstItem="t1v-hr-33H" firstAttribute="leading" secondItem="fwe-5J-k9J" secondAttribute="trailing" constant="5" id="H5O-SX-DQ1"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="fwe-5J-k9J" secondAttribute="bottom" constant="6.5" id="Qxz-mV-oLy"/>
                     <constraint firstAttribute="trailingMargin" secondItem="t1v-hr-33H" secondAttribute="trailing" constant="13" id="bYh-wg-LqB"/>
                     <constraint firstItem="bXO-d2-GQa" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="jwF-iG-Lpo"/>
                     <constraint firstItem="bXO-d2-GQa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="4" id="tBk-hf-MPf"/>
                     <constraint firstItem="gpb-UQ-uKQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="tvK-LG-b9U"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="t1v-hr-33H" secondAttribute="bottom" constant="11" id="zc7-sF-YOB"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="t1v-hr-33H" secondAttribute="bottom" constant="6.5" id="zc7-sF-YOB"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

@@ -346,7 +346,7 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
             revenue = revenue + v.price
         }
         
-        aggregate = aggregate + "$" + String(revenue)
+        aggregate = aggregate + "$" + String(format: "%.2f", revenue)
         
         
         self.labelClientAggregate.text = aggregate
@@ -388,7 +388,7 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
                 
                 humanReadableDate = Commons.getHumanReadableDate(dateString: self.starredVisits[indexPath.row].visitDate)
                 notes = self.starredVisits[indexPath.row].notes
-                price = "$" + String(self.starredVisits[indexPath.row].price)
+                price = "$" + String(format: "%.2f", self.starredVisits[indexPath.row].price) //String(self.starredVisits[indexPath.row].price)
                 icon = FAKFontAwesome.starIcon(withSize: 16).image(with: CGSize(width: 20, height: 20))
                 
             } else { // get date from all visits
@@ -396,7 +396,7 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
                 humanReadableDate = Commons.getHumanReadableDate(dateString: self.client.clientVisits[indexPath.row].visitDate)
                 
                 notes = self.client.clientVisits[indexPath.row].notes
-                price = "$" + String(self.client.clientVisits[indexPath.row].price)
+                price = "$" + String(format: "%.2f", self.client.clientVisits[indexPath.row].price)
                 icon = FAKFontAwesome.calendarIcon(withSize: 16).image(with: CGSize(width: 20, height: 20))
             }
             

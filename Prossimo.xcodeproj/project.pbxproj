@@ -42,7 +42,6 @@
 		9A0E86441E9B4EA400F02BA6 /* InstagramManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E86431E9B4EA400F02BA6 /* InstagramManager.swift */; };
 		9A0E86501E9BF85C00F02BA6 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0E864E1E9BF85C00F02BA6 /* Fabric.framework */; };
 		9A0E86511E9BF85C00F02BA6 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0E864F1E9BF85C00F02BA6 /* Crashlytics.framework */; };
-		9A371A251EB8003F00A52DDD /* FifthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A371A231EB8003F00A52DDD /* FifthVC.swift */; };
 		9A371A261EB8003F00A52DDD /* SecondVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A371A241EB8003F00A52DDD /* SecondVC.swift */; };
 		9A371A291EB8007000A52DDD /* CrashController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A371A271EB8007000A52DDD /* CrashController.swift */; };
 		9A371A2A1EB8007000A52DDD /* OptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A371A281EB8007000A52DDD /* OptionsView.swift */; };
@@ -192,10 +191,10 @@
 		7975C91B1ECD82A700C93845 /* HaircutDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = HaircutDetail.storyboard; path = Prossimo/HaircutDetail.storyboard; sourceTree = "<group>"; };
 		79C043B51EDC20DE004907E2 /* StoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StoreManager.swift; path = Prossimo/StoreManager.swift; sourceTree = "<group>"; };
 		79C043C21EDCEFC8004907E2 /* CleverTapManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CleverTapManager.swift; path = Prossimo/CleverTapManager.swift; sourceTree = "<group>"; };
+		79E633F31EE6D984001FF8E9 /* Prossimo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Prossimo.entitlements; path = Prossimo/Prossimo.entitlements; sourceTree = "<group>"; };
 		9A0E86431E9B4EA400F02BA6 /* InstagramManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InstagramManager.swift; path = Prossimo/InstagramManager.swift; sourceTree = "<group>"; };
 		9A0E864E1E9BF85C00F02BA6 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		9A0E864F1E9BF85C00F02BA6 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
-		9A371A231EB8003F00A52DDD /* FifthVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FifthVC.swift; path = Prossimo/FifthVC.swift; sourceTree = "<group>"; };
 		9A371A241EB8003F00A52DDD /* SecondVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SecondVC.swift; path = Prossimo/SecondVC.swift; sourceTree = "<group>"; };
 		9A371A271EB8007000A52DDD /* CrashController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CrashController.swift; path = Prossimo/CrashController.swift; sourceTree = "<group>"; };
 		9A371A281EB8007000A52DDD /* OptionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OptionsView.swift; path = Prossimo/OptionsView.swift; sourceTree = "<group>"; };
@@ -288,7 +287,6 @@
 				9A371A241EB8003F00A52DDD /* SecondVC.swift */,
 				9A40F5911EADE19500092723 /* ThirdVC.swift */,
 				9A6875041EA8007A00996B76 /* FirstVC.swift */,
-				9A371A231EB8003F00A52DDD /* FifthVC.swift */,
 				9A6875111EA8048000996B76 /* FourthVC.swift */,
 				9A40F5871EAB62C900092723 /* FinalVC.swift */,
 				9A371A2B1EB8008A00A52DDD /* PageVC.swift */,
@@ -355,6 +353,7 @@
 		9A3BC6391E5A9AA700E9CA71 = {
 			isa = PBXGroup;
 			children = (
+				79E633F31EE6D984001FF8E9 /* Prossimo.entitlements */,
 				9AD6764F1E94A0FD00F8BBFB /* Assets.xcassets */,
 				7905A6C91EC93E800008D2ED /* Tutorial */,
 				7905A6C81EC93E560008D2ED /* Cells */,
@@ -462,6 +461,9 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+							com.apple.Push = {
 								enabled = 1;
 							};
 						};
@@ -673,7 +675,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A371A251EB8003F00A52DDD /* FifthVC.swift in Sources */,
 				792C86EF1ECE922A0082E9F0 /* FemaleOptionsView.swift in Sources */,
 				9A3BC6461E5A9AA700E9CA71 /* AppDelegate.swift in Sources */,
 				9AD116621E5E7A9F00113753 /* ClientDetailView.swift in Sources */,
@@ -865,6 +866,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Prossimo/Prossimo.entitlements;
 				DEVELOPMENT_TEAM = 8WVDFQN9GC;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -888,6 +890,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Prossimo/Prossimo.entitlements;
 				DEVELOPMENT_TEAM = 8WVDFQN9GC;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

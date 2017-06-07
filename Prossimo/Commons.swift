@@ -25,6 +25,9 @@ public class Commons {
     static let annualLength = "ppannual"
     static let lifetimeLength = "lifetime"
     
+    
+    static let appStoreUrl = "itms-apps://itunes.apple.com/us/app/prossimo-hair-stylist-assistant/id1220990527?ls=1&mt=8"
+    
     static func getHumanReadableDate(dateString:String) -> String {
         
         let df = DateFormatter()

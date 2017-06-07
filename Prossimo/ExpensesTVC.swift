@@ -18,24 +18,36 @@ class ExpensesTVC: UITableViewController {
     var ref: FIRDatabaseReference!
     var userId:String!
     var expenses = [Expense]()
-
+    var filteredData = [Expense]()
+    var plusClicked = false
+    
+    // search bar stuff
+    var searchController : UISearchController!
+    var resultsController = UITableViewController()
+    
     @IBOutlet weak var labelTotalExpenses: UILabel!
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+        customizeSearchController()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         getExpenses()
+        plusClicked = false
     }
 
     
     @IBAction func plusClicked(_ sender: UIBarButtonItem) {
         
+        plusClicked = true
         self.performSegue(withIdentifier: "expenseDetailsSegue", sender: self)
         
     }
@@ -43,7 +55,13 @@ class ExpensesTVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return expenses.count
+        // check what's the tableview passed
+        if tableView == self.tableView {
+            return expenses.count
+        }
+        else {
+            return filteredData.count
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -55,18 +73,25 @@ class ExpensesTVC: UITableViewController {
             let expense = Expense()
             
             
-            expense.item = expenses[indexPath.row].item
-            expense.price = expenses[indexPath.row].price
-            expense.date = expenses[indexPath.row].date
             
-            
-            if expense.item == "" {
-                cell.labelItem.text = "No Item"
-            } else {
-                cell.labelItem.text = expense.item
+            // check what's the tableview passed
+            if tableView == self.tableView {
+                
+                
+                expense.item = expenses[indexPath.row].item
+                expense.price = expenses[indexPath.row].price
+                expense.date = expenses[indexPath.row].date
+                
             }
-            
-            
+            else {
+
+                expense.item = filteredData[indexPath.row].item
+                expense.price = filteredData[indexPath.row].price
+                expense.date = filteredData[indexPath.row].date
+            }
+
+
+            cell.labelItem.text = expense.item
             cell.labelPrice.text = "$" + String(format: "%.2f", expense.price)
             cell.labelDate.text = expense.date
             
@@ -77,9 +102,15 @@ class ExpensesTVC: UITableViewController {
             cell.imageViewDate.image = icon
             
             return cell
+            
+            
         }
         
         return UITableViewCell(style: .default, reuseIdentifier: "cell")
+        
+        
+        
+        
     }
     
     
@@ -140,7 +171,11 @@ class ExpensesTVC: UITableViewController {
             if let destination = segue.destination as? ExpenseDetailsTVC {
                 
                 // if the plus sign is clicked
-                if self.tableView.indexPathForSelectedRow == nil {
+                print(sender ?? "default")
+                
+               if plusClicked
+                // if self.tableView.indexPathForSelectedRow ==
+                    {
                     
                     // create a generic expense object with id and todays dates
                     let expense = Expense()
@@ -153,21 +188,42 @@ class ExpensesTVC: UITableViewController {
                     
                 } else { // if a row is selected
                     
-                    // get selected row
-                    let selectedRow:Int = (self.tableView.indexPathForSelectedRow?.row)!
                     
-                    // sometimes it crashes because index out of bounds, so this is to prevent that
-                    guard selectedRow < expenses.count && selectedRow >= 0 else {
-                        return
+                    
+
+                    
+                    // if there is text in the search bar
+                    if ((searchController.searchBar.text) == "") {
+                        
+                        // get selected row
+                        let selectedRow:Int = (self.tableView.indexPathForSelectedRow?.row)!
+                        
+                        // sometimes it crashes because index out of bounds, so this is to prevent that
+                        guard selectedRow < self.expenses.count && selectedRow >= 0 else {
+                            return
+                        }
+                        
+                        destination.expense = expenses[selectedRow]
+                        destination.userId = self.userId
                     }
-                    
-                    destination.expense = expenses[selectedRow]
-                    destination.userId = self.userId
+                        // if no text is in the searchbar
+                    else {
+                        
+                        let selectedRow:Int = (resultsController.tableView.indexPathForSelectedRow?.row)!
+                        
+                        // sometimes it crashes because index out of bounds, so this is to prevent that
+                        guard selectedRow < filteredData.count && selectedRow >= 0 else {
+                            return
+                        }
+                        
+                        destination.expense = filteredData[selectedRow]
+                        destination.userId = self.userId
+                        
+                   
+                    }
                 }
-                
             }
         }
-
     }
     
     
@@ -203,7 +259,7 @@ class ExpensesTVC: UITableViewController {
                     let expense = Expense()
                     expense.id = e as! String
                     
-                    // get rest of the client info
+                    // get rest of the expense info
                     let expenseInfo = (expenses.value(forKey: expense.id) as? NSDictionary)!
                     
                     expense.item = expenseInfo.value(forKey: "item") as? String ?? ""
@@ -259,8 +315,10 @@ class ExpensesTVC: UITableViewController {
             self.labelTotalExpenses.isHidden = true
             return
         }
-        let aggregateString = "$" + String(totalExpenses)
+        
+        let aggregateString = "$" + String(format: "%.2f", totalExpenses)
             + " TOTAL"
+        
         self.labelTotalExpenses.text = aggregateString
         
         
@@ -269,12 +327,49 @@ class ExpensesTVC: UITableViewController {
     
 }
 
-extension ExpensesTVC: ExpenseDetailsDelegate {
+extension ExpensesTVC: UISearchResultsUpdating {
     
-    func expenseChanged() {
+
+    // this func customizes the search controller provided by default
+    func customizeSearchController() {
         
-//        self.getExpenses()
-//        self.reloadTableDataFromUIThread()
+        self.resultsController.tableView.dataSource = self
+        self.resultsController.tableView.delegate = self
+        self.resultsController.tableView.rowHeight = 90
+        
+        self.searchController = UISearchController(searchResultsController: self.resultsController)
+        self.searchController.searchResultsUpdater = self
+        self.searchController.searchBar.autocapitalizationType = .none
+        self.searchController.dimsBackgroundDuringPresentation = true
+        
+        // make the header = to the searchController
+        self.tableView.tableHeaderView = self.searchController.searchBar
+        
+        // eliminates white space between search bar and results
+        definesPresentationContext = true
+        
+    }
+    
+    // function must exist if we implement UISearchResultsUpdating
+    func updateSearchResults(for searchController: UISearchController) {
+        
+        // filter data
+        self.filteredData = self.expenses.filter({ (data:Expense) -> Bool in
+            
+            if self.searchController.searchBar.text! == ""
+            {return true}
+            
+            if data.item.lowercased().contains(self.searchController.searchBar.text!.lowercased()) {
+                
+                return true
+            }
+            else {
+                return false
+            }
+        })
+        
+        // update tableview
+        self.resultsController.tableView.reloadData()
     }
 }
 

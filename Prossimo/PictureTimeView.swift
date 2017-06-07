@@ -287,13 +287,13 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
             
             // 3
             let color2 = UIColor.white.cgColor
-            let color3 = UIColor.white.cgColor
+            let color3 = UIColor.lightGray.cgColor
             let color4 = UIColor.black.cgColor
             
             bottomGradientLayer.colors = [color2, color3, color4]
             
             // 4
-            bottomGradientLayer.locations = [0.05, 0.5, 0.55]
+            bottomGradientLayer.locations = [0.05, 0.5, 0.75]
             
             // 5
             bottomLine.layer.addSublayer(bottomGradientLayer)
@@ -487,7 +487,7 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
             
         default:
             if priceDouble != 0 {
-                self.txfPrice.text = "$" + String(priceDouble)
+                self.txfPrice.text = "$" + String(format: "%.2f", priceDouble)
             }
             break
         }

@@ -43,8 +43,10 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(false)
         
-        checkForLatestVersion()
+        // check whether to display tutorial
         checkIfFirstTimeUse()
+        
+        // auto sign in
         checkIfAlreadySignedIn()
 
     }
@@ -108,7 +110,7 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     
     func checkIfFirstTimeUse() {
         
-        //  UserDefaults.standard.removeObject(forKey: "prossimoLastVersionUsed")
+        //UserDefaults.standard.removeObject(forKey: "prossimoLastVersionUsed")
         
         guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else { return }
         
@@ -126,73 +128,7 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         }
     }
     
-    
-    // check for latest version and prompt for upgrade if necessary
-    
-    func checkForLatestVersion() {
-        
-        self.ref.child("latestversion").observeSingleEvent(of: .value, with: {
-            
-            
-            if let value = $0.value {
-                
-                if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
-                {
-                    
-                    if version != String(describing: value) {
-                        self.displayVersionAlert()
-                    }
-                }
-            }
-        })
-    }
-    
-    func displayVersionAlert() {
-        
-        let versionAlert = UIAlertController(title: "New Version Available", message: "Please download the latest version", preferredStyle: UIAlertControllerStyle.alert)
-        
-        versionAlert.addAction(UIAlertAction(title: "Download", style: .default, handler: { (action: UIAlertAction!) in
-            
-            UIApplication.shared.openURL(URL(string: "itms-apps://itunes.apple.com/us/app/prossimo-hair-stylist-assistant/id1220990527?ls=1&mt=8")!)
-            
-        }))
-        
-        versionAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
-            
-            
-            
-            self.ref.child("forceupdate").observeSingleEvent(of: .value, with: {
-                
-                
-                if let value = $0.value {
-                    
-                    if "1" == String(describing: value) {
-                        
-                        self.displayImportUpdateAlert()
-                        self.displayVersionAlert()
-                    }
-                    
-                }
-            })
-            
-        }))
-        
-        present(versionAlert, animated: true, completion: nil)
-    }
-    
-    func displayImportUpdateAlert() {
-        
-        let alert = UIAlertController(title: "This is an important update", message: "Please download the updates", preferredStyle: UIAlertControllerStyle.alert)
-        
-        
-        alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (action: UIAlertAction!) in
-            
-            // do nothing
-        }))
-        
-        present(alert, animated: true, completion: nil)
-    }
-    
+
     
     @IBAction func GIDClicked(_ sender: GIDSignInButton) {
         
@@ -280,7 +216,6 @@ class Login: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
                     self.ref.child("users/" + uid + "/name").observeSingleEvent(of: .value, with: {
                         Crashlytics.sharedInstance().setUserName($0.value as? String)
                     })
-                    
                     
                     
                     // logged in

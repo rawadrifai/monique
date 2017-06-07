@@ -11,6 +11,7 @@ import FirebaseDatabase
 import FontAwesomeKit
 import FirebaseStorage
 import DatePickerDialog
+import NYTPhotoViewer
 
 class ExpenseDetailsTVC: UITableViewController {
 
@@ -98,13 +99,14 @@ class ExpenseDetailsTVC: UITableViewController {
         self.ref = FIRDatabase.database().reference()
 
 
-        guard validateInput() else {
-            return
-        }
+        self.expense.item = txfItem.text ?? "No Item"
         
-        self.expense.item = txfItem.text!
-        self.expense.price = Double((txfPrice.text?.replacingOccurrences(of: "$", with: ""))!)!
+        var priceText = txfPrice.text ?? "0"
+        priceText = priceText.replacingOccurrences(of: "$", with: "")
+        let priceDouble = Double(priceText) ?? 0
+        self.expense.price = priceDouble
         
+
         // date and sortingDate are already changed from the date picker
         
         // update values
@@ -206,6 +208,71 @@ class ExpenseDetailsTVC: UITableViewController {
         return UITableViewCell(style: .default, reuseIdentifier: "cell")
     }
     
+    var photos = [ExamplePhoto]()
+    var images = [UIImage]()
+    
+    var tappedImageIndex:Int!
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if let _ = tableView.cellForRow(at: indexPath) {
+            
+            self.tappedImageIndex = indexPath.row
+            
+            
+            // empty and refill the images array
+            self.images = [UIImage]()
+            
+            for i in self.expense.receipts {
+                
+                let imgView = UIImageView()
+                
+                imgView.sd_setImage(with: URL(string: i.imageUrl))
+                self.images.append(imgView.image!)
+            }
+            
+            
+            // create a photo provider, it will give us an array of ExamplePhoto
+            let photosProvider = PhotosProvider(images: self.images)
+            self.photos = photosProvider.getPhotos()
+            
+            
+            // create a photos view controller, and set the initial photo to the tapped one
+            let photosViewController = NYTPhotosViewController(photos: self.photos, initialPhoto: self.photos[indexPath.row])
+            
+            
+            present(photosViewController, animated: true, completion: nil)
+            
+            updateImagesOnPhotosViewController(photosViewController: photosViewController, afterDelayWithPhotos: photos)
+            
+            
+        }
+    }
+    
+    var count = 0
+    func updateImagesOnPhotosViewController(photosViewController: NYTPhotosViewController, afterDelayWithPhotos: [ExamplePhoto]) {
+        
+        count = 0
+        let deadlineTime = DispatchTime.now() + .seconds(0)
+        DispatchQueue.main.asyncAfter(deadline: deadlineTime) {
+            
+            for photo in self.photos {
+                
+                print(String(self.count))
+                
+                
+                if photo.image == nil {
+                    
+                    photo.image = self.images[self.count]
+                    photosViewController.updateImage(for: photo)
+                }
+                
+                self.count = self.count + 1
+            }
+        }
+    }
+
+    
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
         
@@ -246,7 +313,7 @@ class ExpenseDetailsTVC: UITableViewController {
     func displayImageAlert() {
         
         let image = UIImagePickerController()
-        image.allowsEditing = true
+        image.allowsEditing = false
         image.delegate = self
         
         
@@ -344,11 +411,13 @@ class ExpenseDetailsTVC: UITableViewController {
 extension ExpenseDetailsTVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     
+    
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
     {
         
-        
-        if let image = info[UIImagePickerControllerEditedImage] as? UIImage
+       
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage
         {
      
             // compress the image

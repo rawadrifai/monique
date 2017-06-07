@@ -16,7 +16,7 @@ class FirstVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        imageView.layer.cornerRadius = 20
+        imageView.layer.cornerRadius = 7
         imageView.clipsToBounds = true
         
     }

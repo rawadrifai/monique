@@ -60,6 +60,8 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.checkForLatestVersion()
+        
         // needed things for the search to work
         
         self.resultsController.tableView.dataSource = self
@@ -242,7 +244,7 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
                     let selectedRow:Int = (resultsController.tableView.indexPathForSelectedRow?.row)!
                     
                     // sometimes it crashes because index out of bounds, so this is to prevent that
-                    guard selectedRow < cellData.count && selectedRow >= 0 else {
+                    guard selectedRow < filteredData.count && selectedRow >= 0 else {
                         return
                     }
                     
@@ -403,7 +405,7 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
             }
         }
         
-        aggregateString = aggregateString + "$" + String(revenue)
+        aggregateString = aggregateString + "$" + String(format: "%.2f", revenue)
         + " TOTAL REVENUE"
         self.labelClientCount.text = aggregateString
     }
@@ -464,6 +466,71 @@ extension ClientsView:CNContactPickerDelegate {
         self.contactToImport = contact
         self.performSegue(withIdentifier: "newClientSegue", sender: self)
     }
+}
+
+extension ClientsView {
+    
+    
+    // check for latest version and prompt for upgrade if necessary
+    
+    func checkForLatestVersion() {
+        
+        self.ref = FIRDatabase.database().reference()
+
+        self.ref.child("latestversion").observeSingleEvent(of: .value, with: {
+            
+            
+            // get latest version from firebase
+            guard let value = $0.value as? Double else {
+                
+                return
+            }
+            
+            // get local version
+            guard let versionText = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else {
+                return
+            }
+            
+            // convert version to double for sake of comparison
+            guard let versionDouble = Double(versionText) else {
+                return
+            }
+
+            
+            // if value in firebase is higher than local
+            if value > versionDouble {
+                
+                self.ref.child("forceupdate").observeSingleEvent(of: .value, with: {
+                    
+                    
+                    // if no force update value exists in firebase
+                    guard let forceUpdate = $0.value else {
+                        return
+                    }
+                    
+                    if "1" == String(describing: forceUpdate) {
+                        
+                        self.redirectToAppStore()
+                    }
+                    
+                    
+                })
+            } else {
+                print("version is current")
+            }
+          
+        })
+    }
+    
+
+    func redirectToAppStore() {
+        
+        UIApplication.shared.openURL(URL(string: Commons.appStoreUrl)!)
+        
+    }
+    
+    
+    
 }
 
 

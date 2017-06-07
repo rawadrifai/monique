@@ -210,6 +210,9 @@
                                     <constraints>
                                         <constraint firstAttribute="width" constant="102" id="gcA-5K-2dW"/>
                                     </constraints>
+                                    <connections>
+                                        <action selector="cameraClick:" destination="o9q-rL-Ugv" eventType="touchUpInside" id="0YR-gP-1Lb"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oi9-ho-fQn">
                                     <rect key="frame" x="327" y="389" width="33" height="33"/>
