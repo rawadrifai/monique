@@ -46,7 +46,7 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
         importClicked = false
         setIcons()
         
-        }
+    }
 
     
     func setIcons() {

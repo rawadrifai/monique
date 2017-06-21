@@ -3,6 +3,7 @@ PODS:
     - CleverTap-iOS-SDK/Main (= 3.1.2)
   - CleverTap-iOS-SDK/Main (3.1.2)
   - DatePickerDialog (1.1.7)
+  - EasyTipView (1.0.2)
   - Firebase (3.17.0):
     - Firebase/Core (= 3.17.0)
   - Firebase/Auth (3.17.0):
@@ -38,9 +39,9 @@ PODS:
   - FontAwesomeKit/Core (2.2.1)
   - FontAwesomeKit/FontAwesome (2.2.1):
     - FontAwesomeKit/Core
-  - Google (3.0.3):
-    - Google/Core (= 3.0.3)
-  - Google/Core (3.0.3):
+  - Google (3.1.0):
+    - Google/Core (= 3.1.0)
+  - Google/Core (3.1.0):
     - FirebaseAnalytics (~> 3.2)
   - GoogleSignIn (4.0.2):
     - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
@@ -59,12 +60,12 @@ PODS:
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
   - GTMOAuth2 (1.1.4):
     - GTMSessionFetcher (~> 1.1)
-  - GTMSessionFetcher (1.1.9):
-    - GTMSessionFetcher/Full (= 1.1.9)
-  - GTMSessionFetcher/Core (1.1.9)
-  - GTMSessionFetcher/Full (1.1.9):
-    - GTMSessionFetcher/Core (= 1.1.9)
-  - IQKeyboardManagerSwift (4.0.9)
+  - GTMSessionFetcher (1.1.10):
+    - GTMSessionFetcher/Full (= 1.1.10)
+  - GTMSessionFetcher/Core (1.1.10)
+  - GTMSessionFetcher/Full (1.1.10):
+    - GTMSessionFetcher/Core (= 1.1.10)
+  - IQKeyboardManagerSwift (4.0.10)
   - JNKeychain (0.1.4)
   - NYTPhotoViewer (1.1.0):
     - NYTPhotoViewer/AnimatedGifSupport (= 1.1.0)
@@ -80,6 +81,7 @@ PODS:
 DEPENDENCIES:
   - CleverTap-iOS-SDK
   - DatePickerDialog
+  - EasyTipView
   - Firebase
   - Firebase/Auth
   - Firebase/Core
@@ -96,6 +98,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   CleverTap-iOS-SDK: c054bb514fd8efafc92180acf234711097ad6773
   DatePickerDialog: bd5e7e92e4da2c6a8966b28d5f5d8f335d6c2c63
+  EasyTipView: b93a19be981cc2221d6d7191d49872f547e0bebf
   Firebase: 4b66b5b59c43edac745b87f0c87e42cdd0279c13
   FirebaseAnalytics: e5fe8486efc01bec33f6bf82e2fa9fce4b124052
   FirebaseAuth: cc8a1824170adbd351edb7f994490a3fb5c18be6
@@ -105,16 +108,16 @@ SPEC CHECKSUMS:
   FirebaseStorage: a5c55b23741a49a72af8f30f95b3bb5ddbeda12d
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   FontAwesomeKit: 3614979b3dbb0ec3f7fac1bd760b91f66c31db67
-  Google: 813c467362eabc11385f5a5cc9ad0cb651a58f4e
+  Google: 98da4b1a60ed0beb80a290387a28333406a1eb90
   GoogleSignIn: d7ad83f13480e1f30453471d00d19b5293ac46af
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
-  GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
-  IQKeyboardManagerSwift: 2eefe6c429b86aa08bfbc1b5c891164d754adf91
+  GTMSessionFetcher: 30d874b96d0d76028f61fbd122801e3f030d47db
+  IQKeyboardManagerSwift: 75ba21a23794a1e6b6fe6d9a267ea17f80e06771
   JNKeychain: fb6cc9ec95959ba46cd95d0ee6f7a05e41da9f42
   NYTPhotoViewer: e80e8767f3780d2df37c6f72cbab15d6c7232911
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
 
-PODFILE CHECKSUM: 3185a3d0a931d19979dc55f23dcc5841237350c3
+PODFILE CHECKSUM: 328f558a04eb16248c0322dc616f2cd17d398ccc
 
 COCOAPODS: 1.2.1

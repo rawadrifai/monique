@@ -21,4 +21,5 @@ target 'Prossimo' do
   pod 'NYTPhotoViewer', '~> 1.1.0'
   pod 'CleverTap-iOS-SDK'
   pod 'DatePickerDialog'
+  pod 'EasyTipView'
   end

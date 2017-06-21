@@ -10,6 +10,7 @@ import UIKit
 import FirebaseDatabase
 import FirebaseStorage
 import FontAwesomeKit
+import EasyTipView
 
 extension UIImage {
     func imageWithColor(color: UIColor) -> UIImage? {
@@ -23,6 +24,7 @@ extension UIImage {
     }
 
 }
+
 
 class ClientDetailView: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
@@ -54,6 +56,8 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
     @IBOutlet weak var line: UIView!
     
     @IBOutlet weak var labelClientAggregate: UILabel!
+    
+    @IBOutlet weak var btnReminder: UIBarButtonItem!
     
     
     
@@ -101,7 +105,26 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         self.tableView.reloadData()
         
         self.setAggregates()
-    }
+        
+        
+        
+        var preferences = EasyTipView.Preferences()
+        preferences.drawing.font = UIFont(name: "Futura-Medium", size: 13)!
+        preferences.drawing.foregroundColor = UIColor.white
+        preferences.drawing.backgroundColor = UIColor(hue:0.46, saturation:0.99, brightness:0.6, alpha:1)
+        preferences.drawing.arrowPosition = EasyTipView.ArrowPosition.top
+        
+        
+        EasyTipView.globalPreferences = preferences
+        
+    
+        
+        
+        EasyTipView.show(forView: self.btnNewHC,
+                         withinSuperview: self.navigationController?.view,
+                         text: "Tip view inside the navigation controller's view. Tap to dismiss!",
+                         preferences: preferences)
+   }
     
     func makeUIChanges() {
 
@@ -191,11 +214,16 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         btnStarred.setImage(starredIconImage, for: .normal)
         
         
-        
+        // reminder icon
+        let reminderImage = FAKFontAwesome.bellOIcon(withSize: 20).image(with: CGSize(width: 35, height: 20))
+        btnReminder.tintColor = Commons.myColor
+        btnReminder.image = reminderImage
         
         
         
     }
+    
+
     
     @IBAction func phoneClick(_ sender: UIButton) {
         

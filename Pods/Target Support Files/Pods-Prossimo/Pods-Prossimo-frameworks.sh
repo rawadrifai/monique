@@ -90,6 +90,7 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/DatePickerDialog/DatePickerDialog.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/EasyTipView/EasyTipView.framework"
   install_framework "$BUILT_PRODUCTS_DIR/FLAnimatedImage/FLAnimatedImage.framework"
   install_framework "$BUILT_PRODUCTS_DIR/FontAwesomeKit/FontAwesomeKit.framework"
   install_framework "$BUILT_PRODUCTS_DIR/GTMOAuth2/GTMOAuth2.framework"
@@ -102,6 +103,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/DatePickerDialog/DatePickerDialog.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/EasyTipView/EasyTipView.framework"
   install_framework "$BUILT_PRODUCTS_DIR/FLAnimatedImage/FLAnimatedImage.framework"
   install_framework "$BUILT_PRODUCTS_DIR/FontAwesomeKit/FontAwesomeKit.framework"
   install_framework "$BUILT_PRODUCTS_DIR/GTMOAuth2/GTMOAuth2.framework"

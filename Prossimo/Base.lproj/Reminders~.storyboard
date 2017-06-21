@@ -322,7 +322,7 @@
                             <barButtonItem id="mMC-Ho-gMi">
                                 <connections>
                                     <action selector="reminderClick:" destination="cdu-h2-G3J" id="eLe-ZJ-QwE"/>
-                                    <segue destination="Acv-Ga-Tdk" kind="show" identifier="remindersSegue" id="rMD-QB-frq"/>
+                                    <segue destination="eMs-7Y-f90" kind="show" identifier="remindersSegue" id="a9S-E7-wTI"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -354,6 +354,34 @@
             </objects>
             <point key="canvasLocation" x="2351.1999999999998" y="-121.88905547226388"/>
         </scene>
+        <!--Table View Controller-->
+        <scene sceneID="ZEu-1m-O6M">
+            <objects>
+                <tableViewController id="eMs-7Y-f90" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Eru-sQ-S5r">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="H21-t9-KiL">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="H21-t9-KiL" id="WEK-DY-vFm">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="eMs-7Y-f90" id="rZC-oL-OeB"/>
+                            <outlet property="delegate" destination="eMs-7Y-f90" id="FIa-lE-hO5"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Jz-aE-uZf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3634" y="-408"/>
+        </scene>
         <!--EditClient-->
         <scene sceneID="X07-Y2-SVj">
             <objects>
@@ -369,14 +397,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H4b-Vz-LMe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3158" y="183"/>
-        </scene>
-        <!--Reminders-->
-        <scene sceneID="Xkh-EG-VDz">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Reminders" id="Acv-Ga-Tdk" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="OrF-JT-WK2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3170" y="-365"/>
         </scene>
     </scenes>
     <resources>
