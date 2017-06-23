@@ -33,10 +33,13 @@ class StoreManager:NSObject {
     var registeredInFirebase = false
 
     // instantiate an object of receipt manager
-    var receiptManager:ReceiptManager = ReceiptManager()
+    var receiptManager:ReceiptManager?
+    
     
     func setup() {
      
+        receiptManager = ReceiptManager()
+        
         // request products
         self.requestProducts(ids: self.purchasableProductIds)
         
@@ -102,6 +105,9 @@ extension StoreManager:SKPaymentTransactionObserver {
             return
         }
         
+        // refresh receipts by re instantiating receipt manager
+        receiptManager = ReceiptManager()
+        
         // register product locally in user defaults
         registerProductPurchasedLocally(product: purchasedProduct)
         
@@ -122,6 +128,9 @@ extension StoreManager:SKPaymentTransactionObserver {
         guard let purchasedProduct = productsMap[purchasedProductId] else {
             return
         }
+        
+        // refresh receipts by re instantiating receipt manager
+        receiptManager = ReceiptManager()
         
         // register product locally in user defaults
         registerProductPurchasedLocally(product: purchasedProduct)
@@ -231,13 +240,17 @@ extension StoreManager {
         if !registeredLocally {
             
             // store it in user defaults only if it's a non-consumable (life time)
-            if product.productIdentifier == Commons.lifetimeProductId {
+            if product.productIdentifier == Commons.lifetimeProductId ||
+                Commons.lifetimeDiscountedProductIds.contains(product.productIdentifier) {
+                
                 print("adding pro to local")
                 
                 UserDefaults.standard.set(true, forKey: Commons.lifetimeProductId)
                 UserDefaults.standard.synchronize()
+                
+                registeredLocally = true
             }
-            registeredLocally = true
+            
             
         }
     }
@@ -249,7 +262,7 @@ extension StoreManager {
     }
     
     func isSubscriptionActive()->Bool {
-        return isPurchased(id: Commons.lifetimeProductId) || receiptManager.isSubscribed
+        return isPurchased(id: Commons.lifetimeProductId) || receiptManager!.isSubscribed
     }
     
     

@@ -322,7 +322,7 @@
                             <barButtonItem id="mMC-Ho-gMi">
                                 <connections>
                                     <action selector="reminderClick:" destination="cdu-h2-G3J" id="eLe-ZJ-QwE"/>
-                                    <segue destination="Acv-Ga-Tdk" kind="show" identifier="remindersSegue" id="rMD-QB-frq"/>
+                                    <segue destination="Acv-Ga-Tdk" kind="presentation" identifier="remindersSegue" modalTransitionStyle="crossDissolve" id="rMD-QB-frq"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -360,7 +360,7 @@
                 <viewControllerPlaceholder storyboardName="EditClient" id="k27-ew-ekf" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HBh-09-eoe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3158" y="-206"/>
+            <point key="canvasLocation" x="3142" y="-122"/>
         </scene>
         <!--HaircutDetail-->
         <scene sceneID="bDf-L8-eOf">
@@ -368,7 +368,7 @@
                 <viewControllerPlaceholder storyboardName="HaircutDetail" id="x5a-N5-Rfo" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H4b-Vz-LMe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3158" y="183"/>
+            <point key="canvasLocation" x="3158" y="94"/>
         </scene>
         <!--Reminders-->
         <scene sceneID="Xkh-EG-VDz">
@@ -376,7 +376,7 @@
                 <viewControllerPlaceholder storyboardName="Reminders" id="Acv-Ga-Tdk" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OrF-JT-WK2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3170" y="-365"/>
+            <point key="canvasLocation" x="3157" y="-304"/>
         </scene>
     </scenes>
     <resources>

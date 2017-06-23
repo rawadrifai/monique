@@ -46,7 +46,6 @@ class InfoView: UITableViewController {
         searchImage = searchImage?.imageWithColor(color: Commons.myColor)
         tabBarItem.image = searchImage
         
-        
 
     }
     
@@ -180,26 +179,20 @@ class InfoView: UITableViewController {
                 }
             })
             
-            
-            
             self.tableView.deselectRow(at: indexPath, animated: true)
             
-            
-            
-            
         }
-        
-        
     }
     
     let upgradeSectionIndex = 1
     let upgradeRowIndex = 0
+    var isSubscriptionPro = false
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         var height:CGFloat = 70.0;
 
-        if StoreManager.shared.isSubscriptionActive() {
+        if StoreManager.shared.isSubscriptionActive() || isSubscriptionPro {
             
             if indexPath.section == self.upgradeSectionIndex && indexPath.row == upgradeRowIndex
             {
@@ -266,6 +259,8 @@ class InfoView: UITableViewController {
 extension InfoView: UpgradeDelegate {
     
     func subscriptionChangedToPro() {
+        
+        isSubscriptionPro = true
         
         DispatchQueue.main.async {
             self.tableView.reloadData()

@@ -111,7 +111,7 @@ class UpgradeView: UIViewController {
         registerProInFirebase(product: productPurchased, promoCode: self.promoCodeToUse)
         
         
-        // fire the delegate back to info view
+        // fire the delegate back to info view to make the upgrade to pro row disappear
         if let del = self.delegate {
             del.subscriptionChangedToPro()
         }

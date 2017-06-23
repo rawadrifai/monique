@@ -23,6 +23,7 @@
 		792C86F51ED258A60082E9F0 /* PictureTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 792C86F31ED258A60082E9F0 /* PictureTimeCell.xib */; };
 		792C86F71ED55C950082E9F0 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792C86F61ED55C950082E9F0 /* Product.swift */; };
 		79417B791EF4CAE6009A45A7 /* Reminders.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79417B781EF4CAE6009A45A7 /* Reminders.storyboard */; };
+		79417B7B1EFB16F5009A45A7 /* RemindersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79417B7A1EFB16F5009A45A7 /* RemindersVC.swift */; };
 		7942943B1EE238E700FBC813 /* Money.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7942943A1EE238E700FBC813 /* Money.storyboard */; };
 		794294491EE23B9B00FBC813 /* Clients.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 794294471EE23B9B00FBC813 /* Clients.storyboard */; };
 		7942944B1EE2475900FBC813 /* ExpensesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7942944A1EE2475900FBC813 /* ExpensesTVC.swift */; };
@@ -183,6 +184,7 @@
 		792C86F31ED258A60082E9F0 /* PictureTimeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PictureTimeCell.xib; path = Prossimo/PictureTimeCell.xib; sourceTree = "<group>"; };
 		792C86F61ED55C950082E9F0 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Product.swift; path = Prossimo/Product.swift; sourceTree = "<group>"; };
 		79417B781EF4CAE6009A45A7 /* Reminders.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Reminders.storyboard; sourceTree = "<group>"; };
+		79417B7A1EFB16F5009A45A7 /* RemindersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RemindersVC.swift; path = Prossimo/RemindersVC.swift; sourceTree = "<group>"; };
 		7942943A1EE238E700FBC813 /* Money.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Money.storyboard; path = Prossimo/Money.storyboard; sourceTree = "<group>"; };
 		794294481EE23B9B00FBC813 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Prossimo/Base.lproj/Clients.storyboard; sourceTree = "<group>"; };
 		7942944A1EE2475900FBC813 /* ExpensesTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExpensesTVC.swift; path = Prossimo/ExpensesTVC.swift; sourceTree = "<group>"; };
@@ -370,6 +372,7 @@
 				7905A6CA1EC93F260008D2ED /* Domain */,
 				7905A6CC1EC93F930008D2ED /* Miscellaneous */,
 				7905A6CB1EC93F360008D2ED /* UI */,
+				79417B7A1EFB16F5009A45A7 /* RemindersVC.swift */,
 				9A371A281EB8007000A52DDD /* OptionsView.swift */,
 				792C86EE1ECE922A0082E9F0 /* FemaleOptionsView.swift */,
 				794294521EE3C08B00FBC813 /* ExpenseDetailsTVC.swift */,
@@ -731,6 +734,7 @@
 				792C86F41ED258A60082E9F0 /* PictureTimeCell.swift in Sources */,
 				9A371A291EB8007000A52DDD /* CrashController.swift in Sources */,
 				9A371A2C1EB8008A00A52DDD /* PageVC.swift in Sources */,
+				79417B7B1EFB16F5009A45A7 /* RemindersVC.swift in Sources */,
 				79C043B61EDC20DE004907E2 /* StoreManager.swift in Sources */,
 				7975C91A1ECC356300C93845 /* UserInfo.swift in Sources */,
 				9A371A2A1EB8007000A52DDD /* OptionsView.swift in Sources */,

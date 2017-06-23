@@ -20,11 +20,7 @@ public class Commons {
     static let monthlyProductId = "rifai.prossimo.ios.ppmonthly"
     static let annualProductId = "rifai.prossimo.ios.ppannual"
     static let lifetimeProductId = "rifai.prossimo.ios.pp"
-    
-    static let monthlyLength = "monthly"
-    static let annualLength = "ppannual"
-    static let lifetimeLength = "lifetime"
-    
+    static let lifetimeDiscountedProductIds = ["rifai.prossimo.ios.pp00", "rifai.prossimo.ios.pp70"]
     
     static let appStoreUrl = "itms-apps://itunes.apple.com/us/app/prossimo-hair-stylist-assistant/id1220990527?ls=1&mt=8"
     
