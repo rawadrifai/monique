@@ -24,6 +24,7 @@ class SaveUserInfo: UIViewController {
     @IBOutlet weak var txfEmail: UITextField!
     @IBOutlet weak var txfPhone: UITextField!
     @IBOutlet weak var btnSave: UIButton!
+    @IBOutlet weak var txfBusinessPhone: UITextField!
     
     
     override func viewDidLoad() {
@@ -31,6 +32,7 @@ class SaveUserInfo: UIViewController {
         
         self.ref = FIRDatabase.database().reference()
         self.txfPhone.delegate = self
+        self.txfBusinessPhone.delegate = self
         setBorders()
     }
     
@@ -44,6 +46,11 @@ class SaveUserInfo: UIViewController {
         self.txfPhone.clipsToBounds = true
         self.txfPhone.layer.borderColor = UIColor.lightGray.cgColor
         self.txfPhone.layer.borderWidth=1
+        
+        self.txfBusinessPhone.layer.cornerRadius = 7
+        self.txfBusinessPhone.clipsToBounds = true
+        self.txfBusinessPhone.layer.borderColor = UIColor.lightGray.cgColor
+        self.txfBusinessPhone.layer.borderWidth=1
         
         self.txfEmail.layer.cornerRadius = 7
         self.txfEmail.clipsToBounds = true
@@ -77,6 +84,29 @@ class SaveUserInfo: UIViewController {
         
     }
     
+    var tmpBusinessPhone = ""
+    
+    @IBAction func txfBusinessPhoneEditingChanged(_ sender: UITextField) {
+        
+        if let businessPhone = txfBusinessPhone.text {
+            
+            if (businessPhone.characters.count > tmpBusinessPhone.characters.count) {
+                
+                if (businessPhone.characters.count) == 3 {
+                    
+                    txfBusinessPhone.text = businessPhone + "-"
+                } else
+                    if (businessPhone.characters.count) == 7 {
+                        
+                        txfBusinessPhone.text = businessPhone + "-"
+                }
+            }
+            tmpBusinessPhone = txfBusinessPhone.text!
+        }
+    }
+    
+    
+    
     @IBAction func signInWithDeviceId(_ sender: UIButton) {
         
         if validateInput() {
@@ -87,6 +117,7 @@ class SaveUserInfo: UIViewController {
             user["deviceId"] = self.userId
             user["name"] = txfName.text!
             user["phone"] = txfPhone.text!
+            user["businessphone"] = txfBusinessPhone.text!
             user["email"] = txfEmail.text!
             
             self.ref.child("users").child(self.userId).setValue(user) { (err, ref) in
@@ -160,13 +191,21 @@ class SaveUserInfo: UIViewController {
             // set the userId
             if let destinationTabBar = segue.destination as? UITabBarController {
                 
+                
+                
                 if let destinationNavigation = destinationTabBar.viewControllers!.first as? UINavigationController {
                     if let destinationClientsView = destinationNavigation.topViewController as? ClientsView {
                         destinationClientsView.userId = self.userId
                     }
                 }
                 
-                if let d = destinationTabBar.viewControllers![1] as? UINavigationController {
+                if let moneyNavigation = destinationTabBar.viewControllers![1] as? UINavigationController {
+                    if let moneyView = moneyNavigation.topViewController as? ExpensesTVC {
+                        moneyView.userId = self.userId
+                    }
+                }
+                
+                if let d = destinationTabBar.viewControllers![2] as? UINavigationController {
                     if let infoView = d.topViewController as? InfoView {
                         infoView.userId = self.userId
                     }

@@ -540,7 +540,18 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
                 destination.selectedVisitIndex = self.selectedVisitIndex
                 destination.delegate = self
             }
+        } else if segue.identifier == "remindersSegue" {
+            
+            // set the userId
+            if let destination = segue.destination as? RemindersVC {
+                
+                destination.userId = self.userId
+                destination.client = self.client
+
+            }
         }
+        
+        
     }
     
 

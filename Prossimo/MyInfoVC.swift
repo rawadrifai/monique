@@ -30,6 +30,7 @@ class MyInfoVC: UIViewController {
     @IBOutlet weak var txfName: UITextField!
     @IBOutlet weak var txfPhone: UITextField!
     @IBOutlet weak var txfEmail: UITextField!
+    @IBOutlet weak var txfBusinessPhone: UITextField!
     
     
     var ref: FIRDatabaseReference!
@@ -40,7 +41,7 @@ class MyInfoVC: UIViewController {
         super.viewDidLoad()
         self.ref = FIRDatabase.database().reference()
         self.txfPhone.delegate = self
-
+        self.txfBusinessPhone.delegate = self
         setBorders()
         loadData()
     }
@@ -55,6 +56,11 @@ class MyInfoVC: UIViewController {
         self.txfPhone.clipsToBounds = true
         self.txfPhone.layer.borderColor = UIColor.lightGray.cgColor
         self.txfPhone.layer.borderWidth=1
+        
+        self.txfBusinessPhone.layer.cornerRadius = 7
+        self.txfBusinessPhone.clipsToBounds = true
+        self.txfBusinessPhone.layer.borderColor = UIColor.lightGray.cgColor
+        self.txfBusinessPhone.layer.borderWidth=1
         
         self.txfEmail.layer.cornerRadius = 7
         self.txfEmail.clipsToBounds = true
@@ -88,6 +94,13 @@ class MyInfoVC: UIViewController {
                 self.txfEmail.text = email
             }
         })
+        
+        self.ref.child("users/" + self.userId + "/businessphone").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let businessPhone = snapshot.value as? String {
+                self.txfBusinessPhone.text = businessPhone
+            }
+        })
     }
     
     @IBAction func saveBtnClicked(_ sender: UIButton) {
@@ -98,10 +111,12 @@ class MyInfoVC: UIViewController {
             let name = txfName.text
             let phone = txfPhone.text
             let email = txfEmail.text
+            let businessPhone = txfBusinessPhone.text
             
             self.ref.child("users").child(self.userId).child("name").setValue(name) { (err, ref) in }
             self.ref.child("users").child(self.userId).child("phone").setValue(phone) { (err, ref) in }
             self.ref.child("users").child(self.userId).child("email").setValue(email) { (err, ref) in }
+            self.ref.child("users").child(self.userId).child("businessphone").setValue(businessPhone) { (err, ref) in }
             
             self.navigationController?.popViewController(animated: true)
         }
@@ -128,6 +143,28 @@ class MyInfoVC: UIViewController {
             tmpPhone = txfPhone.text!
         }
     }
+    
+    var tmpBusinessPhone=""
+
+    @IBAction func txfBusinessPhoneEditingChanged(_ sender: UITextField) {
+        
+        if let businessPhone = txfBusinessPhone.text {
+            
+            if (businessPhone.characters.count > tmpBusinessPhone.characters.count) {
+                
+                if (businessPhone.characters.count) == 3 {
+                    
+                    txfBusinessPhone.text = businessPhone + "-"
+                } else
+                    if (businessPhone.characters.count) == 7 {
+                        
+                        txfBusinessPhone.text = businessPhone + "-"
+                }
+            }
+            tmpBusinessPhone = txfBusinessPhone.text!
+        }
+    }
+    
     
     func validateInput() -> Bool {
         
