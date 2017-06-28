@@ -53,6 +53,20 @@ public class Commons {
         
     }
     
+    static func getShortDate(from fromDate:Date) -> String {
+        
+    
+        let calendar = Calendar.current
+        let year = calendar.component(.year, from: fromDate)
+        
+        let month = calendar.component(.month, from: fromDate)
+        let day = calendar.component(.day, from: fromDate)
+        let date = String(month) + "-" + String(day) + "-" + String(year)
+        
+        return date
+        
+    }
+    
     static func getTodaysSortingDate() -> String {
         
         let date = Date()
@@ -64,6 +78,24 @@ public class Commons {
         let monthString = String(format: "%02d", month)
         
         let day = calendar.component(.day, from: date)
+        let dayString = String(format: "%02d", day)
+        
+        let sortingDate = yearString + "-" + monthString + "-" + dayString
+        return sortingDate
+        
+    }
+    
+    static func getSortingDate(from fromDate:Date) -> String {
+        
+        
+        let calendar = Calendar.current
+        let year = calendar.component(.year, from: fromDate)
+        let yearString = String(format: "%04d", year)
+        
+        let month = calendar.component(.month, from: fromDate)
+        let monthString = String(format: "%02d", month)
+        
+        let day = calendar.component(.day, from: fromDate)
         let dayString = String(format: "%02d", day)
         
         let sortingDate = yearString + "-" + monthString + "-" + dayString

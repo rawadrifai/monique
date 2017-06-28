@@ -26,6 +26,8 @@ extension UIImage {
 }
 
 
+
+
 class ClientDetailView: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     
@@ -85,7 +87,7 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         fillData()
         setAggregates()
         
-        
+
     }
     
     
@@ -106,25 +108,32 @@ class ClientDetailView: UITableViewController, UINavigationControllerDelegate, U
         
         self.setAggregates()
         
+        checkIfFirstTimeUse()
+
         
-        
-        var preferences = EasyTipView.Preferences()
-        preferences.drawing.font = UIFont(name: "Futura-Medium", size: 13)!
-        preferences.drawing.foregroundColor = UIColor.white
-        preferences.drawing.backgroundColor = UIColor(hue:0.46, saturation:0.99, brightness:0.6, alpha:1)
-        preferences.drawing.arrowPosition = EasyTipView.ArrowPosition.top
-        
-        
-        EasyTipView.globalPreferences = preferences
-        
-    
-        
-        
-        EasyTipView.show(forView: self.btnNewHC,
-                         withinSuperview: self.navigationController?.view,
-                         text: "Tip view inside the navigation controller's view. Tap to dismiss!",
-                         preferences: preferences)
    }
+    
+    func checkIfFirstTimeUse() {
+        
+        guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else { return }
+        
+        guard let lastVersionUsed = UserDefaults.standard.string(forKey: "ClientDetailView")
+            else {
+                // if first time user
+                UserDefaults.standard.set(version, forKey: "ClientDetailView")
+
+                EasyTipView.show(forView: self.btnNewHC, withinSuperview: self.navigationController?.view, text: TipViews.shared.newHcText, preferences: EasyTipView.globalPreferences, delegate: self)
+                
+                return
+        }
+        
+        if version != lastVersionUsed {
+            
+            UserDefaults.standard.set(version, forKey: "ClientDetailView")
+            
+            EasyTipView.show(forView: self.btnNewHC, withinSuperview: self.navigationController?.view, text: TipViews.shared.newHcText, preferences: EasyTipView.globalPreferences, delegate: self)
+        }
+    }
     
     func makeUIChanges() {
 
@@ -777,5 +786,30 @@ extension Date {
     }
     
     
+}
+
+
+extension ClientDetailView: EasyTipViewDelegate {
+    
+    func easyTipViewDidDismiss(_ tipView: EasyTipView) {
+        
+        switch tipView.text {
+        case TipViews.shared.newHcText:
+            
+            EasyTipView.show(forView: self.btnStarred, withinSuperview: self.navigationController?.view, text: TipViews.shared.favoritesText, preferences: EasyTipView.globalPreferences, delegate: self)
+            
+            break
+            
+        case TipViews.shared.favoritesText:
+            
+            EasyTipView.show(animated: true, forItem: btnReminder, withinSuperview: self.navigationController?.view, text: TipViews.shared.remindersText, preferences: EasyTipView.globalPreferences, delegate: self)
+
+            
+            break
+        default:
+            break
+        }
+        
+    }
 }
 

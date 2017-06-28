@@ -7,7 +7,6 @@
 //
 
 import UIKit
-//import Google
 import GoogleSignIn
 import Firebase
 import FirebaseDatabase
@@ -16,8 +15,28 @@ import Crashlytics
 import Contacts
 import ContactsUI
 import FontAwesomeKit
+import EasyTipView
+
+extension ClientsView: EasyTipViewDelegate {
+
+    func easyTipViewDidDismiss(_ tipView: EasyTipView) {
+        
+        switch tipView.text {
+        case TipViews.shared.addClientText:
+            
+            EasyTipView.show(animated: true, forItem: btnImport, withinSuperview: self.navigationController?.view, text: TipViews.shared.importClientText, preferences: EasyTipView.globalPreferences, delegate: self)
+            
+            break
+        default:
+            break
+        }
+        
+    }
+}
+
 
 class ClientsView: UITableViewController, UISearchResultsUpdating {
+    
     
     
     var ref: FIRDatabaseReference!
@@ -30,6 +49,8 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
     var cellData = [Client]()
     var filteredData = [Client]()
     var importClicked:Bool!
+    
+    @IBOutlet weak var btnAddClient: UIBarButtonItem!
     
     @IBOutlet weak var btnImport: UIBarButtonItem!
     
@@ -46,7 +67,32 @@ class ClientsView: UITableViewController, UISearchResultsUpdating {
         importClicked = false
         setIcons()
         
+        checkIfFirstTimeUse()
     }
+    
+    func checkIfFirstTimeUse() {
+        
+        guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else { return }
+        
+        guard let lastVersionUsed = UserDefaults.standard.string(forKey: "ClientsView")
+            else {
+                // if first time user
+                UserDefaults.standard.set(version, forKey: "ClientsView")
+
+                EasyTipView.show(animated: true, forItem: btnAddClient, withinSuperview: self.navigationController?.view, text: TipViews.shared.addClientText, preferences: EasyTipView.globalPreferences, delegate: self)
+
+                return
+        }
+        
+        if version != lastVersionUsed {
+            
+            UserDefaults.standard.set(version, forKey: "ClientsView")
+            
+            EasyTipView.show(animated: true, forItem: btnAddClient, withinSuperview: self.navigationController?.view, text: TipViews.shared.addClientText, preferences: EasyTipView.globalPreferences, delegate: self)
+        }
+    }
+    
+    
 
     
     func setIcons() {

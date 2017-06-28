@@ -24,6 +24,7 @@
 		792C86F71ED55C950082E9F0 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792C86F61ED55C950082E9F0 /* Product.swift */; };
 		79417B791EF4CAE6009A45A7 /* Reminders.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79417B781EF4CAE6009A45A7 /* Reminders.storyboard */; };
 		79417B7B1EFB16F5009A45A7 /* RemindersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79417B7A1EFB16F5009A45A7 /* RemindersVC.swift */; };
+		79417B7E1F023123009A45A7 /* TipViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79417B7D1F023123009A45A7 /* TipViews.swift */; };
 		7942943B1EE238E700FBC813 /* Money.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7942943A1EE238E700FBC813 /* Money.storyboard */; };
 		794294491EE23B9B00FBC813 /* Clients.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 794294471EE23B9B00FBC813 /* Clients.storyboard */; };
 		7942944B1EE2475900FBC813 /* ExpensesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7942944A1EE2475900FBC813 /* ExpensesTVC.swift */; };
@@ -80,6 +81,20 @@
 			proxyType = 2;
 			remoteGlobalIDString = 3000FF684FD54C4BCB12D162E999BE29;
 			remoteInfo = EasyTipView;
+		};
+		79417B8E1F023124009A45A7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9AD2B33A1E8AE50800DF308C /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D075A39802740B1FE8F979C605214CD5;
+			remoteInfo = AMTooltip;
+		};
+		79417B901F023124009A45A7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9AD2B33A1E8AE50800DF308C /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 277B7724E5159AE053F71B064171D8A0;
+			remoteInfo = "AMTooltip-AMTooltip";
 		};
 		794294631EE4EF7200FBC813 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -185,6 +200,7 @@
 		792C86F61ED55C950082E9F0 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Product.swift; path = Prossimo/Product.swift; sourceTree = "<group>"; };
 		79417B781EF4CAE6009A45A7 /* Reminders.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Reminders.storyboard; sourceTree = "<group>"; };
 		79417B7A1EFB16F5009A45A7 /* RemindersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RemindersVC.swift; path = Prossimo/RemindersVC.swift; sourceTree = "<group>"; };
+		79417B7D1F023123009A45A7 /* TipViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TipViews.swift; path = Prossimo/TipViews.swift; sourceTree = "<group>"; };
 		7942943A1EE238E700FBC813 /* Money.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Money.storyboard; path = Prossimo/Money.storyboard; sourceTree = "<group>"; };
 		794294481EE23B9B00FBC813 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Prossimo/Base.lproj/Clients.storyboard; sourceTree = "<group>"; };
 		7942944A1EE2475900FBC813 /* ExpensesTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExpensesTVC.swift; path = Prossimo/ExpensesTVC.swift; sourceTree = "<group>"; };
@@ -319,6 +335,7 @@
 				792C86F61ED55C950082E9F0 /* Product.swift */,
 				7912E8B31ED665F400DDC55B /* PromoCode.swift */,
 				79557F751EDFEFAD0000505A /* TabControl.swift */,
+				79417B7D1F023123009A45A7 /* TipViews.swift */,
 			);
 			name = Domain;
 			sourceTree = "<group>";
@@ -417,6 +434,8 @@
 		9AD2B33B1E8AE50800DF308C /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				79417B8F1F023124009A45A7 /* AMTooltip.framework */,
+				79417B911F023124009A45A7 /* AMTooltip.bundle */,
 				794294641EE4EF7200FBC813 /* DatePickerDialog.framework */,
 				79417B661EF4C814009A45A7 /* EasyTipView.framework */,
 				9A371A411EB9A84B00A52DDD /* FLAnimatedImage.framework */,
@@ -514,6 +533,20 @@
 			fileType = wrapper.framework;
 			path = EasyTipView.framework;
 			remoteRef = 79417B651EF4C814009A45A7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		79417B8F1F023124009A45A7 /* AMTooltip.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = AMTooltip.framework;
+			remoteRef = 79417B8E1F023124009A45A7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		79417B911F023124009A45A7 /* AMTooltip.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = AMTooltip.bundle;
+			remoteRef = 79417B901F023124009A45A7 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		794294641EE4EF7200FBC813 /* DatePickerDialog.framework */ = {
@@ -701,6 +734,7 @@
 				9A3BC6461E5A9AA700E9CA71 /* AppDelegate.swift in Sources */,
 				9AD116621E5E7A9F00113753 /* ClientDetailView.swift in Sources */,
 				9A40F5881EAB62C900092723 /* FinalVC.swift in Sources */,
+				79417B7E1F023123009A45A7 /* TipViews.swift in Sources */,
 				792C86F71ED55C950082E9F0 /* Product.swift in Sources */,
 				9AE7A1C81EB5A5080004FCC2 /* EditClientVC.swift in Sources */,
 				9AE7A1BF1EB4336A0004FCC2 /* NewClientVC.swift in Sources */,

@@ -120,8 +120,7 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="phonePad"/>
                                                         <connections>
-                                                            <action selector="txfBusinessPhoneEditingChanged:" destination="296-gp-6M8" eventType="editingDidEnd" id="qsQ-rf-2WN"/>
-                                                            <action selector="txfPhoneEditingChanged:" destination="296-gp-6M8" eventType="editingChanged" id="CqP-ka-v7G"/>
+                                                            <action selector="txfBusinessPhoneEditingChanged:" destination="296-gp-6M8" eventType="editingChanged" id="6ct-5O-wqG"/>
                                                         </connections>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="olF-1O-eh3">
@@ -301,7 +300,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9yR-0W-Xz0" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" id="rcm-6f-XcJ"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" alpha="0.29999999999999999" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="AfO-F3-mUS">
+                    <navigationBar key="navigationBar" alpha="0.29999999999999999" contentMode="scaleToFill" barStyle="black" id="AfO-F3-mUS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -322,7 +321,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="m32-ze-ylf" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" id="ysb-Oa-uIw"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" alpha="0.29999999999999999" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="hdr-Ba-Po8">
+                    <navigationBar key="navigationBar" alpha="0.29999999999999999" contentMode="scaleToFill" barStyle="black" id="hdr-Ba-Po8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -361,7 +360,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="f6K-Hz-qdV" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" id="rgf-eg-vlh"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" alpha="0.5" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="clV-Qn-FnH">
+                    <navigationBar key="navigationBar" alpha="0.5" contentMode="scaleToFill" barStyle="black" id="clV-Qn-FnH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -374,7 +373,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="odA-vJ-ZhK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1057" y="598"/>
+            <point key="canvasLocation" x="1057" y="718"/>
         </scene>
         <!--Money-->
         <scene sceneID="DqQ-Cl-Glk">

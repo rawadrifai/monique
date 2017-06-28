@@ -22,10 +22,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KtY-ZS-EeT">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="btnBackgroundClick:" destination="5PH-F5-MRC" eventType="touchUpInside" id="ah5-XI-b3W"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bie-3B-W3M">
-                                <rect key="frame" x="41" y="152" width="293" height="363"/>
+                                <rect key="frame" x="41" y="148" width="293" height="371"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Reminder for Client" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gD5-oh-8oA">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SMS Reminder for Client" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gD5-oh-8oA">
                                         <rect key="frame" x="8" y="8" width="277" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Afw-MR-Jfw"/>
@@ -35,21 +42,33 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Hi" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8G8-i6-fWD">
-                                        <rect key="frame" x="22" y="235" width="249" height="65"/>
+                                        <rect key="frame" x="22" y="243" width="249" height="70"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="65" id="inz-yh-LbH"/>
+                                            <constraint firstAttribute="height" constant="70" id="HSD-q9-4g8"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EEu-Bu-596">
+                                        <rect key="frame" x="0.0" y="318" width="293" height="53"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="53" id="fRl-LP-4Gt"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Schedule Reminder"/>
+                                        <connections>
+                                            <action selector="setReminderClick:" destination="5PH-F5-MRC" eventType="touchUpInside" id="cNR-MS-fcd"/>
+                                        </connections>
+                                    </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="wr5-Zz-A8u">
-                                        <rect key="frame" x="10" y="69" width="273" height="100"/>
+                                        <rect key="frame" x="10" y="108" width="273" height="120"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="o1I-FY-QlV">
-                                                <rect key="frame" x="0.0" y="0.0" width="273" height="48.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="273" height="58.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OVQ-ic-NQV">
-                                                        <rect key="frame" x="0.0" y="0.0" width="89" height="48.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="89" height="58.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                         <state key="normal" title="1 week"/>
                                                         <connections>
@@ -57,7 +76,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yaj-nP-XMs">
-                                                        <rect key="frame" x="92" y="0.0" width="89" height="48.5"/>
+                                                        <rect key="frame" x="92" y="0.0" width="89" height="58.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                         <state key="normal" title="2 weeks"/>
                                                         <connections>
@@ -65,7 +84,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yqf-ks-vT5">
-                                                        <rect key="frame" x="184" y="0.0" width="89" height="48.5"/>
+                                                        <rect key="frame" x="184" y="0.0" width="89" height="58.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                         <state key="normal" title="3 weeks"/>
                                                         <connections>
@@ -75,10 +94,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="m9B-kA-43f">
-                                                <rect key="frame" x="0.0" y="51.5" width="273" height="48.5"/>
+                                                <rect key="frame" x="0.0" y="61.5" width="273" height="58.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="htd-ww-MVj">
-                                                        <rect key="frame" x="0.0" y="0.0" width="89" height="48.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="89" height="58.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                         <state key="normal" title="4 weeks"/>
                                                         <connections>
@@ -86,7 +105,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U5q-bP-rZw">
-                                                        <rect key="frame" x="92" y="0.0" width="89" height="48.5"/>
+                                                        <rect key="frame" x="92" y="0.0" width="89" height="58.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                         <state key="normal" title="5 weeks"/>
                                                         <connections>
@@ -94,7 +113,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tVa-JJ-1Fi">
-                                                        <rect key="frame" x="184" y="0.0" width="89" height="48.5"/>
+                                                        <rect key="frame" x="184" y="0.0" width="89" height="58.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                         <state key="normal" title="6 weeks"/>
                                                         <connections>
@@ -105,23 +124,14 @@
                                             </stackView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="pmf-ry-B8a"/>
+                                            <constraint firstAttribute="height" constant="120" id="0ek-2p-DaZ"/>
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="azS-wp-jyW">
-                                        <rect key="frame" x="25" y="185" width="194.5" height="30"/>
+                                        <rect key="frame" x="54" y="65" width="185" height="30"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Or" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hCN-zk-gBO">
-                                                <rect key="frame" x="0.0" y="0.0" width="18" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="18" id="FLU-zz-NTj"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="os2-Vb-lxc">
-                                                <rect key="frame" x="28" y="0.0" width="50" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="mmf-Rp-d24"/>
                                                 </constraints>
@@ -132,10 +142,10 @@
                                                     <action selector="txfDaysTextChanged:" destination="5PH-F5-MRC" eventType="editingChanged" id="WqK-S1-xXm"/>
                                                 </connections>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="days from now" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S7T-gd-ICk">
-                                                <rect key="frame" x="88" y="0.0" width="106.5" height="30"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="days from today" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S7T-gd-ICk">
+                                                <rect key="frame" x="60" y="0.0" width="125" height="30"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="107" id="02Y-cf-gUr"/>
+                                                    <constraint firstAttribute="width" constant="125" id="02Y-cf-gUr"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <nil key="textColor"/>
@@ -143,45 +153,38 @@
                                             </label>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="lbR-K0-i7e"/>
+                                            <constraint firstAttribute="height" constant="30" id="8ZK-ck-UND"/>
                                         </constraints>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EEu-Bu-596">
-                                        <rect key="frame" x="61" y="308" width="170" height="43"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="170" id="DaR-XM-1iV"/>
-                                            <constraint firstAttribute="height" constant="43" id="ftt-Iz-RFe"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <state key="normal" title="Set Reminder"/>
-                                        <connections>
-                                            <action selector="setReminderClick:" destination="5PH-F5-MRC" eventType="touchUpInside" id="cNR-MS-fcd"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="8G8-i6-fWD" firstAttribute="top" secondItem="wr5-Zz-A8u" secondAttribute="bottom" constant="15" id="5vO-TZ-S9k"/>
+                                    <constraint firstItem="azS-wp-jyW" firstAttribute="top" secondItem="gD5-oh-8oA" secondAttribute="bottom" constant="17" id="8Wr-Kh-chH"/>
                                     <constraint firstAttribute="trailing" secondItem="gD5-oh-8oA" secondAttribute="trailing" constant="8" id="967-PE-QDx"/>
-                                    <constraint firstItem="8G8-i6-fWD" firstAttribute="leading" secondItem="bie-3B-W3M" secondAttribute="leading" constant="22" id="9D9-aJ-v1D"/>
-                                    <constraint firstItem="azS-wp-jyW" firstAttribute="top" secondItem="wr5-Zz-A8u" secondAttribute="bottom" constant="16" id="A8b-W1-AGg"/>
-                                    <constraint firstAttribute="trailing" secondItem="8G8-i6-fWD" secondAttribute="trailing" constant="22" id="C8z-hs-TBe"/>
-                                    <constraint firstAttribute="height" constant="363" id="P4J-6v-TVi"/>
+                                    <constraint firstItem="8G8-i6-fWD" firstAttribute="leading" secondItem="bie-3B-W3M" secondAttribute="leading" constant="22" id="Hwj-4R-kPt"/>
+                                    <constraint firstAttribute="trailing" secondItem="8G8-i6-fWD" secondAttribute="trailing" constant="22" id="IVh-Gj-BJq"/>
+                                    <constraint firstAttribute="bottom" secondItem="EEu-Bu-596" secondAttribute="bottom" id="Jzu-cS-dzn"/>
+                                    <constraint firstItem="azS-wp-jyW" firstAttribute="centerX" secondItem="bie-3B-W3M" secondAttribute="centerX" id="Of1-dm-yYP"/>
+                                    <constraint firstAttribute="height" constant="371" id="P4J-6v-TVi"/>
+                                    <constraint firstItem="wr5-Zz-A8u" firstAttribute="top" secondItem="azS-wp-jyW" secondAttribute="bottom" constant="13" id="QWH-EH-cF6"/>
                                     <constraint firstItem="gD5-oh-8oA" firstAttribute="leading" secondItem="bie-3B-W3M" secondAttribute="leading" constant="8" id="Tlc-dU-iMq"/>
-                                    <constraint firstItem="EEu-Bu-596" firstAttribute="top" secondItem="8G8-i6-fWD" secondAttribute="bottom" constant="8" id="WMO-ti-c0o"/>
-                                    <constraint firstItem="wr5-Zz-A8u" firstAttribute="top" secondItem="gD5-oh-8oA" secondAttribute="bottom" constant="21" id="bmG-gB-TsH"/>
-                                    <constraint firstItem="wr5-Zz-A8u" firstAttribute="leading" secondItem="bie-3B-W3M" secondAttribute="leading" constant="10" id="byQ-9q-ik4"/>
-                                    <constraint firstItem="EEu-Bu-596" firstAttribute="centerX" secondItem="bie-3B-W3M" secondAttribute="centerX" id="iLA-tz-UeP"/>
-                                    <constraint firstItem="azS-wp-jyW" firstAttribute="leading" secondItem="bie-3B-W3M" secondAttribute="leading" constant="25" id="kgC-SB-YdL"/>
-                                    <constraint firstAttribute="trailing" secondItem="wr5-Zz-A8u" secondAttribute="trailing" constant="10" id="lHR-9i-SFB"/>
-                                    <constraint firstItem="8G8-i6-fWD" firstAttribute="top" secondItem="azS-wp-jyW" secondAttribute="bottom" constant="20" id="mKH-fS-3Sb"/>
+                                    <constraint firstItem="wr5-Zz-A8u" firstAttribute="leading" secondItem="bie-3B-W3M" secondAttribute="leading" constant="10" id="U5P-0M-m5d"/>
+                                    <constraint firstItem="EEu-Bu-596" firstAttribute="leading" secondItem="bie-3B-W3M" secondAttribute="leading" id="fZ0-Pz-zvp"/>
+                                    <constraint firstAttribute="trailing" secondItem="EEu-Bu-596" secondAttribute="trailing" id="mPN-4y-6R4"/>
                                     <constraint firstItem="gD5-oh-8oA" firstAttribute="top" secondItem="bie-3B-W3M" secondAttribute="top" constant="8" id="obR-Vc-iVA"/>
+                                    <constraint firstAttribute="trailing" secondItem="wr5-Zz-A8u" secondAttribute="trailing" constant="10" id="tRC-Da-165"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.40140732020547948" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="bie-3B-W3M" firstAttribute="leading" secondItem="y2D-WS-U0d" secondAttribute="leadingMargin" constant="25" id="E21-ay-Nnh"/>
+                            <constraint firstItem="KtY-ZS-EeT" firstAttribute="width" secondItem="y2D-WS-U0d" secondAttribute="width" id="Ky5-k2-Ocf"/>
+                            <constraint firstItem="KtY-ZS-EeT" firstAttribute="height" secondItem="y2D-WS-U0d" secondAttribute="height" id="P8p-S3-3lC"/>
+                            <constraint firstItem="KtY-ZS-EeT" firstAttribute="centerY" secondItem="y2D-WS-U0d" secondAttribute="centerY" id="TC3-tr-JUp"/>
                             <constraint firstItem="bie-3B-W3M" firstAttribute="centerY" secondItem="y2D-WS-U0d" secondAttribute="centerY" id="Vf8-s6-UkQ"/>
+                            <constraint firstItem="KtY-ZS-EeT" firstAttribute="centerX" secondItem="y2D-WS-U0d" secondAttribute="centerX" id="ZR7-MU-Khx"/>
                             <constraint firstAttribute="trailingMargin" secondItem="bie-3B-W3M" secondAttribute="trailing" constant="25" id="l4U-jf-0tT"/>
                         </constraints>
                     </view>
