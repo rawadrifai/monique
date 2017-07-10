@@ -82,20 +82,6 @@
 			remoteGlobalIDString = 3000FF684FD54C4BCB12D162E999BE29;
 			remoteInfo = EasyTipView;
 		};
-		79417B8E1F023124009A45A7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9AD2B33A1E8AE50800DF308C /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D075A39802740B1FE8F979C605214CD5;
-			remoteInfo = AMTooltip;
-		};
-		79417B901F023124009A45A7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9AD2B33A1E8AE50800DF308C /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 277B7724E5159AE053F71B064171D8A0;
-			remoteInfo = "AMTooltip-AMTooltip";
-		};
 		794294631EE4EF7200FBC813 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9AD2B33A1E8AE50800DF308C /* Pods.xcodeproj */;
@@ -434,8 +420,6 @@
 		9AD2B33B1E8AE50800DF308C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				79417B8F1F023124009A45A7 /* AMTooltip.framework */,
-				79417B911F023124009A45A7 /* AMTooltip.bundle */,
 				794294641EE4EF7200FBC813 /* DatePickerDialog.framework */,
 				79417B661EF4C814009A45A7 /* EasyTipView.framework */,
 				9A371A411EB9A84B00A52DDD /* FLAnimatedImage.framework */,
@@ -533,20 +517,6 @@
 			fileType = wrapper.framework;
 			path = EasyTipView.framework;
 			remoteRef = 79417B651EF4C814009A45A7 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		79417B8F1F023124009A45A7 /* AMTooltip.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = AMTooltip.framework;
-			remoteRef = 79417B8E1F023124009A45A7 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		79417B911F023124009A45A7 /* AMTooltip.bundle */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = AMTooltip.bundle;
-			remoteRef = 79417B901F023124009A45A7 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		794294641EE4EF7200FBC813 /* DatePickerDialog.framework */ = {

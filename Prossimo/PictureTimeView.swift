@@ -12,7 +12,7 @@ import FirebaseDatabase
 import Social
 import FontAwesomeKit
 import NYTPhotoViewer
-
+import EasyTipView
 
 class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
@@ -52,9 +52,38 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        checkIfFirstTimeUse()
+        
+    }
+    
     override func viewWillDisappear(_ animated: Bool)
     {
         save()
+    }
+    
+    func checkIfFirstTimeUse() {
+        
+        guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else { return }
+        
+        guard let lastVersionUsed = UserDefaults.standard.string(forKey: "PictureTimeView")
+            else {
+                // if first time user
+                UserDefaults.standard.set(version, forKey: "PictureTimeView")
+                
+                EasyTipView.show(forView: self.btnPrice1, withinSuperview: self.navigationController?.view, text: TipViews.shared.priceText, preferences: EasyTipView.globalPreferences, delegate: self)
+
+                return
+        }
+        
+        if version != lastVersionUsed {
+            
+            UserDefaults.standard.set(version, forKey: "PictureTimeView")
+            
+            EasyTipView.show(forView: self.btnPrice1, withinSuperview: self.navigationController?.view, text: TipViews.shared.priceText, preferences: EasyTipView.globalPreferences, delegate: self)
+        }
     }
     
     func setStarIcon(selected:Bool) {
@@ -646,6 +675,41 @@ class PictureTimeView: UITableViewController, UINavigationControllerDelegate, UI
     }
 
     
+}
+
+
+extension PictureTimeView: EasyTipViewDelegate {
+    
+    func easyTipViewDidDismiss(_ tipView: EasyTipView) {
+        
+        switch tipView.text {
+            
+        case TipViews.shared.priceText:
+            
+            EasyTipView.show(forView: self.txvNotes, withinSuperview: self.navigationController?.view, text: TipViews.shared.notesText, preferences: EasyTipView.globalPreferences, delegate: self)
+            
+            break
+            
+            
+        case TipViews.shared.notesText:
+            
+            EasyTipView.show(forView: self.btnMale, withinSuperview: self.navigationController?.view, text: TipViews.shared.stylesText, preferences: EasyTipView.globalPreferences, delegate: self)
+            
+            break
+            
+            
+        case TipViews.shared.stylesText:
+            
+            EasyTipView.show(forView: self.btnCamera, withinSuperview: self.navigationController?.view, text: TipViews.shared.picturesText, preferences: EasyTipView.globalPreferences, delegate: self)
+            
+            break
+            
+            
+        default:
+            break
+        }
+        
+    }
 }
 
 

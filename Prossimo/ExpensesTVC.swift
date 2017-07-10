@@ -12,6 +12,7 @@ import FirebaseDatabase
 import Fabric
 import Crashlytics
 import FontAwesomeKit
+import EasyTipView
 
 class ExpensesTVC: UITableViewController {
     
@@ -26,6 +27,7 @@ class ExpensesTVC: UITableViewController {
     var resultsController = UITableViewController()
     
     @IBOutlet weak var labelTotalExpenses: UILabel!
+    @IBOutlet weak var btnAddExpenses: UIBarButtonItem!
     
     
     
@@ -42,6 +44,30 @@ class ExpensesTVC: UITableViewController {
         
         getExpenses()
         plusClicked = false
+        
+        checkIfFirstTimeUse()
+    }
+    
+    func checkIfFirstTimeUse() {
+        
+        guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else { return }
+        
+        guard let lastVersionUsed = UserDefaults.standard.string(forKey: "ExpensesTVC")
+            else {
+                // if first time user
+                UserDefaults.standard.set(version, forKey: "ExpensesTVC")
+                
+                EasyTipView.show(animated: true, forItem: btnAddExpenses, withinSuperview: self.navigationController?.view, text: TipViews.shared.addExpenseText, preferences: EasyTipView.globalPreferences, delegate: self)
+                
+                return
+        }
+        
+        if version != lastVersionUsed {
+            
+            UserDefaults.standard.set(version, forKey: "ExpensesTVC")
+            
+            EasyTipView.show(animated: true, forItem: btnAddExpenses, withinSuperview: self.navigationController?.view, text: TipViews.shared.addExpenseText, preferences: EasyTipView.globalPreferences, delegate: self)
+        }
     }
 
     
@@ -373,5 +399,13 @@ extension ExpensesTVC: UISearchResultsUpdating {
     }
 }
 
+extension ExpensesTVC: EasyTipViewDelegate {
+    
+    func easyTipViewDidDismiss(_ tipView: EasyTipView) {
+        
+        
+        
+    }
+}
 
 

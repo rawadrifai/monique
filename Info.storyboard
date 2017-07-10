@@ -505,9 +505,9 @@ This Agreement was last modified on 03/20/2017</string>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4RT-Mg-PIu">
                                 <rect key="frame" x="16" y="64" width="343" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">This Privacy Policy describes all Prossimo apps policies and procedures on the collection, use and disclosure of your information. Prossimo receives your information through our various web sites, SMS, APIs, and other services (“Services”). When using any of our Services you consent to the collection, transfer, manipulation, storage, disclosure and other uses of your information as described in this Privacy Policy. Irrespective of which country that you reside in or create information from, your information may be used by Prossimo in the United States or any other country where Prossimo operates.
+                                <mutableString key="text">This Privacy Policy describes all Prossimo apps policies and procedures on the collection, use and disclosure of your information. Prossimo receives your information through our various web sites, SMS, APIs, and other services (“Services”). When using any of our Services you consent to the collection, transfer, manipulation, storage, disclosure and other uses of your information as described in this Privacy Policy. Irrespective of which country that you reside in or create information from, your information may be used by Prossimo in the United States or any other country where Prossimo operates.
 
-If you have any questions or comments about this Privacy Policy, please contact us at Prossimoinfo@gmail.com
+If you have any questions or comments about this Privacy Policy, please contact us at contact@prossimostylist.com
 
 Information Collection &amp; Use
 
@@ -545,7 +545,7 @@ If you are a registered user of our Services, we provide you with tools to acces
 
 Information Sharing &amp; Disclosure
 
-This Privacy Policy may be updated from time to time for any reason. We will notify you of any changes to our Privacy Policy by posting the new Privacy Policy here. You are advised to consult this Privacy Policy regularly for any changes, as continued use is deemed approval of all changes.</string>
+This Privacy Policy may be updated from time to time for any reason. We will notify you of any changes to our Privacy Policy by posting the new Privacy Policy here. You are advised to consult this Privacy Policy regularly for any changes, as continued use is deemed approval of all changes.</mutableString>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -596,7 +596,7 @@ This Privacy Policy may be updated from time to time for any reason. We will not
                                                     <action selector="restoreClicked:" destination="hZa-Pe-Vyq" eventType="touchUpInside" id="SZN-cN-4iX"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact us for promo codes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n7W-a5-Elq">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="p.s. Monthly and Annual are auto renewing" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n7W-a5-Elq">
                                                 <rect key="frame" x="0.0" y="516" width="375" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="crT-9g-Frq"/>
@@ -624,7 +624,7 @@ This Privacy Policy may be updated from time to time for any reason. We will not
                                                                 <rect key="frame" x="0.0" y="0.0" width="285" height="68.5"/>
                                                                 <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                                                                <state key="normal" title="   ONE MONTH">
+                                                                <state key="normal" title="   MONTHLY">
                                                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                                 </state>
                                                                 <connections>
@@ -657,7 +657,7 @@ This Privacy Policy may be updated from time to time for any reason. We will not
                                                                     <constraint firstAttribute="width" constant="100" id="iv2-5G-xhO"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                                                                <state key="normal" title="   ONE YEAR">
+                                                                <state key="normal" title="   ANNUAL">
                                                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                                 </state>
                                                                 <connections>

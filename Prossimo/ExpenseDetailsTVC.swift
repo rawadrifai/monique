@@ -12,6 +12,7 @@ import FontAwesomeKit
 import FirebaseStorage
 import DatePickerDialog
 import NYTPhotoViewer
+import EasyTipView
 
 class ExpenseDetailsTVC: UITableViewController {
 
@@ -35,6 +36,34 @@ class ExpenseDetailsTVC: UITableViewController {
         setIcons()
         loadExpense()
 
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        checkIfFirstTimeUse()
+    }
+    
+    func checkIfFirstTimeUse() {
+        
+        guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else { return }
+        
+        guard let lastVersionUsed = UserDefaults.standard.string(forKey: "ExpenseDetailsTVC")
+            else {
+                // if first time user
+                UserDefaults.standard.set(version, forKey: "ExpenseDetailsTVC")
+                
+                EasyTipView.show(forView: self.btnCamera, withinSuperview: self.navigationController?.view, text: TipViews.shared.receiptsText, preferences: EasyTipView.globalPreferences, delegate: self)
+                
+                return
+        }
+        
+        if version != lastVersionUsed {
+            
+            UserDefaults.standard.set(version, forKey: "ExpenseDetailsTVC")
+            
+            EasyTipView.show(forView: self.btnCamera, withinSuperview: self.navigationController?.view, text: TipViews.shared.receiptsText, preferences: EasyTipView.globalPreferences, delegate: self)
+        }
     }
     
     
@@ -439,3 +468,13 @@ extension ExpenseDetailsTVC: UIImagePickerControllerDelegate, UINavigationContro
 protocol ExpenseDetailsDelegate {
     func expenseChanged()
 }
+
+extension ExpenseDetailsTVC: EasyTipViewDelegate {
+    
+    func easyTipViewDidDismiss(_ tipView: EasyTipView) {
+        
+        
+        
+    }
+}
+
